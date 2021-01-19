@@ -7,11 +7,16 @@
 //
 
 import UIKit
+import TonNfcClientSwift
 
+@available(iOS 13.0, *)
 class ViewController: UIViewController {
+    
+    var cardCoinManagerNfcApi: CardCoinManagerNfcApi = CardCoinManagerNfcApi()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        cardCoinManagerNfcApi.getMaxPinTries()
         // Do any additional setup after loading the view, typically from a nib.
     }
 

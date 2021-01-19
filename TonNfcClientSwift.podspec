@@ -8,18 +8,9 @@
 
 Pod::Spec.new do |s|
   s.name             = 'TonNfcClientSwift'
-  s.version          = '0.0.1'
-  s.summary          = 'A short description of TonNfcClientSwift.'
-
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!
-
-  s.description      = <<-DESC
-TODO: Add long description of the pod here.
-                       DESC
+  s.version          = '0.0.2'
+  s.summary          = 'This is a library to work with TON NFC security cards.'
+  s.description      = 'This library provides functions allowing to make all available TON NFC cards operations.'
 
   s.homepage         = 'https://github.com/tonlabs/TonNfcClientSwift'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
@@ -29,10 +20,14 @@ TODO: Add long description of the pod here.
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '11.0'
+  
+  s.platforms    = { :ios => "11.0" }
 
   s.source_files = 'TonNfcClientSwift/Classes/**/*'
   
   s.swift_version = '5.0'
+  
+  s.dependency "PromiseKit", "~> 6.8"
   
   # s.resource_bundles = {
   #   'TonNfcClientSwift' => ['TonNfcClientSwift/Assets/*.png']
