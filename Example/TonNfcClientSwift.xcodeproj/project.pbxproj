@@ -28,9 +28,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		08DD8EB09D3147BCDA28E720 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		08DD8EB09D3147BCDA28E720 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		1FB46AC369991BA2A81539DF /* Pods_TonNfcClientSwift_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TonNfcClientSwift_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4A9710F0953AB7637E0F215D /* TonNfcClientSwift.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = TonNfcClientSwift.podspec; path = ../TonNfcClientSwift.podspec; sourceTree = "<group>"; };
+		4A9710F0953AB7637E0F215D /* TonNfcClientSwift.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = TonNfcClientSwift.podspec; path = ../TonNfcClientSwift.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		607FACD01AFB9204008FA782 /* TonNfcClientSwift_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TonNfcClientSwift_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -45,7 +45,7 @@
 		B2D93345099D9AC2CEE09E91 /* Pods-TonNfcClientSwift_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TonNfcClientSwift_Example.debug.xcconfig"; path = "Target Support Files/Pods-TonNfcClientSwift_Example/Pods-TonNfcClientSwift_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		BA00795E5673B94B04FF2F2F /* Pods_TonNfcClientSwift_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TonNfcClientSwift_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7EA424AA3A1777CB83F2426 /* Pods-TonNfcClientSwift_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TonNfcClientSwift_Tests.debug.xcconfig"; path = "Target Support Files/Pods-TonNfcClientSwift_Tests/Pods-TonNfcClientSwift_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		FB34DB87F230AFC2786A677B /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		FB34DB87F230AFC2786A677B /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		FFC45FAEFBE4FB0B3ADD6969 /* Pods-TonNfcClientSwift_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TonNfcClientSwift_Example.release.xcconfig"; path = "Target Support Files/Pods-TonNfcClientSwift_Example/Pods-TonNfcClientSwift_Example.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -156,7 +156,6 @@
 				F7EA424AA3A1777CB83F2426 /* Pods-TonNfcClientSwift_Tests.debug.xcconfig */,
 				89AF2F1BE3FC8A10F39F0CC5 /* Pods-TonNfcClientSwift_Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -228,6 +227,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);

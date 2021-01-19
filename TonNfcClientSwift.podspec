@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'TonNfcClientSwift'
-  s.version          = '0.1.0'
+  s.version          = '0.0.1'
   s.summary          = 'A short description of TonNfcClientSwift.'
 
 # This description is used to generate tags and improve search results.
@@ -21,16 +21,18 @@ Pod::Spec.new do |s|
 TODO: Add long description of the pod here.
                        DESC
 
-  s.homepage         = 'https://github.com/alinaT95/TonNfcClientSwift'
+  s.homepage         = 'https://github.com/tonlabs/TonNfcClientSwift'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'alinaT95' => 'alina.t@tonlabs.io' }
-  s.source           = { :git => 'https://github.com/alinaT95/TonNfcClientSwift.git', :tag => s.version.to_s }
+  s.author           = { 'tonlabs' => 'alina.t@tonlabs.io' }
+  s.source           = { :git => 'https://github.com/tonlabs/TonNfcClientSwift.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '9.0'
+  s.ios.deployment_target = '11.0'
 
   s.source_files = 'TonNfcClientSwift/Classes/**/*'
+  
+  s.swift_version = '5.0'
   
   # s.resource_bundles = {
   #   'TonNfcClientSwift' => ['TonNfcClientSwift/Assets/*.png']

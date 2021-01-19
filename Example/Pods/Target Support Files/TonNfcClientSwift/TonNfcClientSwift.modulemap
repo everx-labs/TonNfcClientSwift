@@ -1,0 +1,6 @@
+framework module TonNfcClientSwift {
+  umbrella header "TonNfcClientSwift-umbrella.h"
+
+  export *
+  module * { export * }
+}

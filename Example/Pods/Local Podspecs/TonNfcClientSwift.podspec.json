@@ -1,0 +1,22 @@
+{
+  "name": "TonNfcClientSwift",
+  "version": "0.1.0",
+  "summary": "A short description of TonNfcClientSwift.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/alinaT95/TonNfcClientSwift",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "alinaT95": "alina.t@tonlabs.io"
+  },
+  "source": {
+    "git": "https://github.com/alinaT95/TonNfcClientSwift.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "9.0"
+  },
+  "source_files": "TonNfcClientSwift/Classes/**/*"
+}
