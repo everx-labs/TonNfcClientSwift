@@ -33,6 +33,16 @@ _Note_ : you can not work with NFC using simulator, you must run it on iPhone, s
 
 To run the example project inside this lib, clone the repo, and run `pod install` from the Example directory first.
 
+## Usage (Simple example)
+
+Let's suppose you want to work with NFC TON Labs security card in your Swift app. And you want to make a simple request to the card: return the maximum number of card's PIN tries. For this request there is a special APDU command supported by the card. And there is a corresponding function in TonNfcClientSwift library sending it to the card and making postprocessing of card's response for you.  To make it work you should go through the following steps.
+
++ Make the following import.
+
+```swift
+import TonNfcClientSwift
+```
+
 ## Requirements
 
 
