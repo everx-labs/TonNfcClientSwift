@@ -125,9 +125,7 @@ Here B81F0E0E07316DAB6C320ECC6BF3DBA48A70101C5251CC31B1D8F831B36E9F2A is a 32 by
 
 ## Test work with the card
 
-"folderName/screenshot.png" 
-
-![Optional Text](../master/docs/images/Screenshot 2021-02-08 at 9.13.32 AM.png)
+![Optional Text](../master/docs/images/Screenshot1.png)
 
 After you prepared the application, you may run it on your Android device (not simulator). Then you need to establish NFC connection. For this hold the card to the top of the smartphone (field near the camera) as close as possible. Usually smartphone vibrates after establishing a connection. And if you use above example, you must get the toast with the message "NFC hardware touched". It means that NFC connection is established. To keep connection alive you must not move the card and smartphone and they should have physical contact.
 
