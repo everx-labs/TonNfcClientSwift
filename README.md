@@ -43,6 +43,19 @@ Let's suppose you want to work with NFC TON Labs security card in your Swift app
 import TonNfcClientSwift
 ```
 
++ Add the following snippet.
+
+```swift
+var cardCoinManagerNfcApi: CardCoinManagerNfcApi = CardCoinManagerNfcApi()
+cardCoinManagerNfcApi.getMaxPinTries()
+```
+
+Run application and you must get an invitation dialog to connect the card. Then wait for 1-2 seconds to get the response from the card. Check your Xcode console. You should find the following output.
+
+    {"message":"10","status":"ok"}
+    
+This is a response from card wrapped into json of special format.
+
 ## Requirements
 
 
