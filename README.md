@@ -27,6 +27,8 @@ Also you must go through the following steps to make NFC working for you.
 
 - Add into info.plist the point **com.apple.developer.nfc.readersession.formats** and for it string item **TAG**.
 
+_Note_ : you can not work with NFC using simulator, you must run it on iPhone, so you also should set development team.
+
 ## Example
 
 To run the example project inside this lib, clone the repo, and run `pod install` from the Example directory first.
