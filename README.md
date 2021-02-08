@@ -29,11 +29,11 @@ Also you must go through the following steps to make NFC working for you.
 
 _Note_ : you can not work with NFC using simulator, you must run it on iPhone, so you also should set development team.
 
-## Example
+## Exemplary app 
 
 To run the example project inside this lib, clone the repo, and run `pod install` from the Example directory first.
 
-## About NfcCallback	
+## About NfcCallback plus simple example of library usage
 
 For each NFC card operation now there is a function in API implemented in TonNfcClientSwift. These functions use callbacks mechanism to output results of work into caller. We defined NfcCallback class for this.
 
