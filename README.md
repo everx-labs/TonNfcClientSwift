@@ -127,7 +127,9 @@ Here B81F0E0E07316DAB6C320ECC6BF3DBA48A70101C5251CC31B1D8F831B36E9F2A is a 32 by
 
 After you prepared the application, you may run it on your iPhone. Then you need to establish NFC connection. For this you should call the necessary function from TonNfcClientSwift api (like cardCoinManagerNfcApi.getMaxPinTries()). It will start NFC session and you will get invitation to connect the card.
 
-<img src="../master/docs/images/Screenshot2.png" class="center" width="200">
+<p align="center">
+<img src="../master/docs/images/Screenshot2.png" width="200">
+</p>
 
 To establish connection hold the card to the top of iPhone (field near the camera) as close as possible. After that iPhone sends APDU commands to the card. In above example it sends request getMaxPinTries. To keep connection alive you must not move the card and iPhone and they should have physical contact. Wait until you see the following picture.
 
