@@ -35,7 +35,7 @@ To run the example project inside this lib, clone the repo, and run `pod install
 
 ## About NfcCallback plus simple example of library usage
 
-For each NFC card operation there is a function in TonNfcClientSwift API. These functions use callbacks mechanism to output results into caller. We defined NfcCallback class for this.
+For each NFC card operation there is a function in TonNfcClientSwift API. These functions use callbacks mechanism to output results into caller. We defined NfcCallback for this.
 
 ```swift
 public typealias NfcResolver = ((Any) -> Void)
