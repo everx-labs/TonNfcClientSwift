@@ -33,9 +33,43 @@ _Note_ : you can not work with NFC using simulator, you must run it on iPhone, s
 
 To run the example project inside this lib, clone the repo, and run `pod install` from the Example directory first.
 
-## Usage (Simple example)
+## About NfcCallback	
 
-Let's suppose you want to work with NFC TON Labs security card in your Swift app. And you want to make a simple request to the card: return the maximum number of card's PIN tries. For this request there is a special APDU command supported by the card. And there is a corresponding function in TonNfcClientSwift library sending it to the card and making postprocessing of card's response for you.  To make it work you should go through the following steps.
+For each NFC card operation now there is a function in API implemented in TonNfcClientSwift. These functions use callbacks mechanism to output results of work into caller. We defined NfcCallback class for this.
+
+```swift
+public typealias NfcResolver = ((Any) -> Void)
+public typealias NfcRejecter = ((String, NSError) -> Void)
+
+public class NfcCallback {
+    var resolve: NfcResolver?
+    var reject: NfcRejecter?
+
+    public init(resolve: @escaping NfcResolver, reject: @escaping NfcRejecter) {
+        set(resolve: resolve, reject: reject)
+    }
+
+    public func set(resolve: @escaping NfcResolver, reject: @escaping NfcRejecter) {
+        self.resolve = resolve
+        self.reject = reject
+    }
+
+    public func clear() {
+        self.resolve = nil
+        self.reject = nil
+    }
+
+}
+```
+
+So any function from the API returns void and has the last argument _NfcCallback calback_. It passes the postprocessed card's response into _resolve_ and it passes error message and error object into _reject_ in the case of any exception. So to use the API you must define your _NfcRejecter_ and _NfcResolver_ callback functions.
+
+Let's look at simple exemplary function _getMaxPinTries_ from class _CardCoinManagerNfcApi_. It returns the maximum number of PIN tries from the card. It has the following signature.
+
+```swift
+public func getMaxPinTries(callback: NfcCallback)
+```
+To make it work you should go through the following steps.
 
 + Make the following import.
 
@@ -47,12 +81,25 @@ import TonNfcClientSwift
 
 ```swift
 var cardCoinManagerNfcApi: CardCoinManagerNfcApi = CardCoinManagerNfcApi()
-cardCoinManagerNfcApi.getMaxPinTries()
+
+let resolve : NfcResolver = {(msg : Any) -> Void  in
+	print("Caught msg : ")
+	print(msg)
+}
+let reject : NfcRejecter = {(errMsg : String, err : NSError) -> Void in
+	print("Error happened : " + errMsg)
+}
+let nfcCallback = NfcCallback(resolve: resolve, reject: reject)
+cardCoinManagerNfcApi.getMaxPinTries(callback: nfcCallback)
 ```
 
 Run application and you must get an invitation dialog to connect the card. Then wait for 1-2 seconds to get the response from the card. Check your Xcode console. You should find the following output.
 
-    {"message":"10","status":"ok"}
+```
+Caught msg :
+
+{"message":"10","status":"ok"}
+```
     
 This is a response from card wrapped into json of special format.
 
@@ -169,42 +216,7 @@ APDU Response: 0a
 
 Here you see the log of APDU commands sent to the card and their responses in raw format. And in the end there is a final wrapped response.
 
-## About NfcCallback	
 
-For each card operation now there is a pair of functions. The first one returns json response or throws a exception containing json error message. The second function does the same work, but it puts json response/json error message into callback. For this we defined NfcCallback.
-
-	public class NfcCallback {
-  		private NfcResolver resolve;
-  		private NfcRejecter reject;
-
-  		public NfcCallback(NfcResolver resolve, NfcRejecter reject) {
-    			set(resolve, reject);
-  		}
-	}
-
-	@FunctionalInterface
-	public interface NfcRejecter {
-  		void reject(String errorMsg);
-	}
-
-	@FunctionalInterface
-	public interface NfcResolver {
-  		void resolve(Object value);
-	}
-
-To use you must override NfcRejecter and NfcResolver interfaces.
-
-For example let's look at operation getMaxPinTries. Previously we tried it already. There are two functions for it.
-
-	public String getMaxPinTriesAndGetJson() throws Exception
-
-	public void getMaxPinTries(final NfcCallback callback)
-	
-Example of work with NfcCallback.
-
-	import com.facebook.react.bridge.Promise;
-	...
-	cardCoinManagerNfcApi.getMaxPinTries(NfcCallback(promise::resolve, promise::reject));
 
 ## Card activation
 
