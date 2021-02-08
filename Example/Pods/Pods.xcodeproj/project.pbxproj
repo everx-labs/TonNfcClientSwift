@@ -7,36 +7,37 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00542E749518733F88FD9339F521159E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64BAD19F52DB0FBA0441CA31A7066C16 /* UIKit.framework */; };
 		018228C4760DF4F8B80630BC9ACCB39E /* DSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C3A7972D535D7EC6405C931E5BCE64 /* DSL.swift */; };
 		025EED6A44FE486DD84DA9D38AC02AA0 /* Thenable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D600D159B6895847C531EBDB159BB7 /* Thenable.swift */; };
-		02DD7FC6A855D0675EA8B3BE66C99BBB /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14EEE017B114F04A65D00DC4EA620C84 /* XCTest.framework */; };
+		02EDE6F260E8E95CAC741342606CBE65 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 543541D2D4D4A14A05F36C45426EBEFF /* Foundation.framework */; };
+		02EE447ED84D8529A02BCF5125D591F3 /* DataVerifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377D573B793E4E71CE46734E6827ECE6 /* DataVerifier.swift */; };
+		06D32E63538E837CFAC9937BBC324A7E /* RecoveryDataApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BC0693AACEF2B8048EDD95661D6624 /* RecoveryDataApi.swift */; };
 		0892D14FE7A3452423E9129D7917664B /* MatchError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8107C4ECA0C6F950D9B160E365BFA00E /* MatchError.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		092256E303520E50ADEFF25EEB4E73EE /* CwlCatchException.h in Headers */ = {isa = PBXBuildFile; fileRef = 18C93F48C764F5FC124B453A2165C84D /* CwlCatchException.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0A8EC627EDFA1D66AB02CE46AB221833 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA58F0C24EE16199B210E8D86FCF0C7E /* String.swift */; };
+		0D80D6D6BBEB4DADF2417AC5C231EB67 /* CryptoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57D651277D5303079D205F3982AA1B8 /* CryptoHelper.swift */; };
 		10C8810E574F925B5CD3449B6DBE6EC0 /* Quick.h in Headers */ = {isa = PBXBuildFile; fileRef = A4DA0133FA078E1FBCFAB9C0146BC009 /* Quick.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1330B77396AEDE130F2D2AD766D272AB /* TonNfcClientSwift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C82FFF226273D720A8BB0C00E99FB46 /* TonNfcClientSwift-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		13D2A4D59DD9612E1AA7F3182A342162 /* mach_excServer.c in Sources */ = {isa = PBXBuildFile; fileRef = C6E1C70785C40EA9A429CD5AEA0AB320 /* mach_excServer.c */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
-		141B87D201FC315F48170547A0F7A566 /* ErrorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5276F608FB84E3B81C7DDACDEF676F9 /* ErrorHelper.swift */; };
 		14ECE81218F5F5C9BEF00819A7C078EC /* Closures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF295567B4CB95E6C67D5539898632C /* Closures.swift */; };
 		15901C26A398A72C746D1369042356B6 /* join.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A042223E4279B30D4FF73187721A569 /* join.m */; };
-		163C2D9C86D8AA40817453CC2F41F5BE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 350DF887D9046EC3C2135235399E9510 /* Foundation.framework */; };
 		18DF6A317CCB7F5BEE8D7AF5D79AEB38 /* PromiseKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D639308509E9F2D7A61AB5A8DAD71628 /* PromiseKit-dummy.m */; };
 		192A3F8BEC1A99FD8712D3E09724D72C /* FailureMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E4839258179C417074B8266CC48A3A /* FailureMessage.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		1A8DF79F5EF3D69864A84173E7C9810E /* QCKDSL.h in Headers */ = {isa = PBXBuildFile; fileRef = 7395B6446F29D357800F993B8F253690 /* QCKDSL.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1C5D3593B983B9369EFCFDE7D4DE0D19 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F2C39625E51F843126BFDEF550A8E7 /* Configuration.swift */; };
-		200614D54F1E50C5A9262E90C4BF871E /* TonNfcApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = E884EB54FDC68B2C74CDA4BA4C96DEF8 /* TonNfcApi.swift */; };
 		208EDAA1D258CAA2BD08E462359D4FFF /* when.m in Sources */ = {isa = PBXBuildFile; fileRef = 87A044E014BA3536C876D56924F61478 /* when.m */; };
 		209F98BB7B328893FB64BA0393B4BD57 /* HooksPhase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A3B009260CE248BD220EA4F312BEEF /* HooksPhase.swift */; };
 		22B5B4ED0824E7BAF2091AAD6238A73F /* QuickSpecBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 4481B0ECAE44F6EE7DABC84FC70970B7 /* QuickSpecBase.m */; };
 		234849AD309265FD107C74357FC8C0CF /* DSL+Wait.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1486F50B203E16FAD56E766B75F11F98 /* DSL+Wait.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		2391FFD3230B40E2348B5257D6296BBB /* BeGreaterThanOrEqualTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BCE1B41F344EA263E846083130E2A6 /* BeGreaterThanOrEqualTo.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
-		246E008E2DD6EB4DF308E9E561EF4F90 /* ResponsesConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B118158A368C7ED811E2469F3957E4DD /* ResponsesConstants.swift */; };
+		253F17291E0C4A147D7FF9D908281930 /* TonWalletAppletConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CC5D119E7727379143CE99DD18BF2C /* TonWalletAppletConstants.swift */; };
 		26B9FEAB3DE0C8B91709D53571752A3B /* MatcherFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5A249C14F4C3F31F5E0F2EC42D6DB6 /* MatcherFunc.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
-		2715F8FC1129ED99F000EE5941505E81 /* NfcCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC667529B23C82C49E126DAAD489861F /* NfcCallback.swift */; };
 		29643F7A000899634C9174BCB8D1A1AB /* NSNotificationCenter+Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90472D36A289F7AF8260D54A31134A5 /* NSNotificationCenter+Promise.swift */; };
+		2A5D8A43EF095CFF52CA3874F4C01170 /* CardActivationNfcApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D141F326E177255B8D0EF772C9E714D /* CardActivationNfcApi.swift */; };
 		2B350015B9F7546D0769649EE12D7D1A /* NimbleXCTestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C799C84C8182BAB4545A5729739598 /* NimbleXCTestHandler.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
-		2C936DBBAA4F1BFA6B6FA25622004BDA /* Pods-TonNfcClientSwift_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DCE4F40F9CC8E228211DAAD9981237E1 /* Pods-TonNfcClientSwift_Example-dummy.m */; };
 		2F0B5199CDB717CA9F680579900ABF15 /* QuickSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 7083A8C120110AB5EFAC35BF9C8B0669 /* QuickSpec.m */; };
 		301B5F7669D2DC7E46384FBAC71B7C19 /* hang.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B10B37B176C955D5C50CA2F51F99354 /* hang.m */; };
+		31594E004EE5230F1068939A012AFAF1 /* TonNfcClientSwift-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CE72ED780D0EBBD0E69DFA6D4BC9465 /* TonNfcClientSwift-dummy.m */; };
 		3208DDEB9CAC16AC7D2C7E9A7F057DC1 /* NSURLSession+Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2394D51F0077A8E50878D69B149858 /* NSURLSession+Promise.swift */; };
 		3262B230B938C8D6522790093FEAF69D /* EndWith.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709E860D5B3340F6082BDD0D72E67F64 /* EndWith.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		330E8E4A6596ED625E9B34C94CC4136E /* Await.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2AA2C795AA8829D2A41A8E8FC1EFE2 /* Await.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
@@ -44,75 +45,86 @@
 		33B79E4BFF8D25E1A705E2C469BBCA9B /* PromiseKit.h in Headers */ = {isa = PBXBuildFile; fileRef = A2EB832E281A7548BE0890BD03DB63CB /* PromiseKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3460FEA0CEADB05D3B56C2E1CAF9590C /* ElementsEqual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D03D33BB6406530329218EAD9D16263 /* ElementsEqual.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		37018D3DC554A00E9B3E306A28296316 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173306198DDB553294FDC64C369EA3F2 /* Error.swift */; };
-		38931A55ED7D545F04F127296CEB9F31 /* TonWalletAppletConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC05960DAE10EA245A6A06468425C20 /* TonWalletAppletConstants.swift */; };
 		39133A7716CEDEB690A7DA9D12C45C4D /* CwlDarwinDefinitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEF9E50B45E7080314D2E313AA49DED /* CwlDarwinDefinitions.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		39382B0A1EF090D15BA6C89FC3DCB099 /* QuickTestObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515FF6602F322A6A55C89B06A7DF2721 /* QuickTestObservation.swift */; };
 		3AAE347ADDFEFAC7DDECBC744D1BD6AC /* NSTask+AnyPromise.h in Headers */ = {isa = PBXBuildFile; fileRef = 4231BEC64009F76132088ED25013353B /* NSTask+AnyPromise.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3BD0C370BBCEBDEA68B8EDBD969370EB /* mach_excServer.h in Headers */ = {isa = PBXBuildFile; fileRef = ACD5382212F94EFFB9DC5AB213D143DB /* mach_excServer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3D6A581E79FD9EAC1A948D8BC53F1EB0 /* QuickConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA60F432063DCFB9FE479F65820F8DEE /* QuickConfiguration.swift */; };
+		4015D3C4D553BFE56369D4C4503B3DD7 /* JsonHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6659898001988F907E6458511B17541 /* JsonHelper.swift */; };
+		4056DE31021C49EC9F1ECA89046480CB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD4790CB736CA7EAE95ECE62F10234C /* Constants.swift */; };
 		4203EF96811AE514D64AE069311B1575 /* AllPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352863BBD68FE2CA6BD8FB25FA6A863E /* AllPass.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		42495A8941D9B42B07F032390AA2389F /* UIViewPropertyAnimator+Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D3E7D6F0B7172BBAA607210F7F111D /* UIViewPropertyAnimator+Promise.swift */; };
+		42CAE6E2B40E91E9579B9A816339EB84 /* ToastHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E52C582F7120F9171BDC1916023475 /* ToastHelper.swift */; };
 		42F76698690916E0407F51610D829412 /* BeGreaterThan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615A0457912CC8187597EF725C899F45 /* BeGreaterThan.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		4418281931C4D1176F2C541CDD770F14 /* Catchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD397C96963417F9F893D0ECBE4C7BBB /* Catchable.swift */; };
+		4484427037CEFAB5417AA9EE679AABAC /* CardKeyChainNfcApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A513474BA4F9BDA4E47154334C3C31 /* CardKeyChainNfcApi.swift */; };
 		44C9470137EF941955A1FDCE71D68C26 /* MatcherProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2934A5235996532FDABC445E0B4A5CA6 /* MatcherProtocols.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
+		45B48F57B1039D463A2CB04349F22C5A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 543541D2D4D4A14A05F36C45426EBEFF /* Foundation.framework */; };
 		46B90B2CF2EB97B38C43A31E9A5478C2 /* PostNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B32AD76F3965F8CB4960D2BF51D140F /* PostNotification.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		46BDEBF35D99D2CC53EF72DFC5BDCDCC /* BeLessThanOrEqual.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26D760965878EE4D0210FE9F5CA5979 /* BeLessThanOrEqual.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		46C4120B8C66DBCBEEC55D09F043D618 /* race.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A82D71AE0C56307FD35B7B2508B74D2 /* race.m */; };
-		4757C3A7EE7CC0CB712D76E628344737 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 350DF887D9046EC3C2135235399E9510 /* Foundation.framework */; };
+		48A2FBE7B2EA7E892B0E05FD5F87837C /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1EB71C6B7D976D4E457A5044C45555 /* String.swift */; };
 		4981C37D541CDA8BCB7DE77E6607AC50 /* after.m in Sources */ = {isa = PBXBuildFile; fileRef = 9529F2B1EBD2DC8315F613F27657D9A7 /* after.m */; };
-		4A613C22671DE0E90BC4F1B70CB3B479 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 350DF887D9046EC3C2135235399E9510 /* Foundation.framework */; };
 		4A9E7C1A8B697A1C0B0A1E0DF855A591 /* CwlCatchException.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B90CDF43FBAE9CB84E6EF9124F03EC /* CwlCatchException.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		4ADE5FC9505A3BF7DF17AF9756585116 /* QCKDSL.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1DA813D16E0C1F726578C14C72C71C /* QCKDSL.m */; };
+		4B0760F5A68B061B3B709B052031D110 /* ErrorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3DEE8767B59655CD8919720D9AB0B5 /* ErrorHelper.swift */; };
+		4CA924B0173ED04CC56D5C18B5FBF6CD /* NfcCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83A71B36B03827723A2663EF4211B67 /* NfcCallback.swift */; };
 		4D65C782220C5E27BF8A3B61EBBDAB3E /* Guarantee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399D337200FD8ED13174D32151971A76 /* Guarantee.swift */; };
 		4E1DBC9FF76D6AD924D1356260438074 /* QuickSelectedTestSuiteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F8C4FA6A1A1CCEF29237265CD95E08 /* QuickSelectedTestSuiteBuilder.swift */; };
+		4E3882D4C6FA2E9BB9F6EA99DDD06131 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C7C10D889A583DBFC41411F84616D3 /* Data.swift */; };
 		4EC7BD8654B3587F1F725E812C9D828C /* race.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3272C6BE200E8EE36A370EABA1F8DF5 /* race.swift */; };
 		512AAF465EE936155DD9BBA92368928E /* Quick-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A787927D04742F14425A13440A3860E8 /* Quick-dummy.m */; };
 		52AB6461CAA9481D24835F3E48301FC6 /* BeIdenticalTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA400D95959B9BC618EF472935BD29D /* BeIdenticalTo.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		52F57EB35132E86D75FE9443258EFDBF /* UIView+AnyPromise.m in Sources */ = {isa = PBXBuildFile; fileRef = 536FF152146EB87AD178E2799424CBE1 /* UIView+AnyPromise.m */; };
 		5578F928AEFA8B2B7CC542033590DFD6 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = E525A6344F5A6B3BB845C6AD623449FC /* Match.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
-		56D8783CBF33646ECBF610FCC8EFC43E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32DFB9A7F8FD78480ED86F82E711E32E /* UIKit.framework */; };
+		5667510F6FF5833249062FA64963DE90 /* CardCoinManagerNfcApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E94BC73707E643DE01767F30B09BC4 /* CardCoinManagerNfcApi.swift */; };
 		5802BD2A7E671D3015BE4E98C13D10CB /* NSURLSession+AnyPromise.m in Sources */ = {isa = PBXBuildFile; fileRef = 83F1DEBDC03D7CF66A1151314E405705 /* NSURLSession+AnyPromise.m */; };
 		58A884856B7E64EE3C204D9EDAA14045 /* Behavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C30999B46578FC4ED4B5A9A1F4026B7 /* Behavior.swift */; };
 		59AA176600E91A56BC244B381305060B /* UIView+AnyPromise.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E383DD6715785BB22B0EA92A694AABF /* UIView+AnyPromise.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		59BF9ABA8BB14E0E4E345D13AB6D49FB /* ExampleMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABF1EB7925526C473712081E8CFFCFC /* ExampleMetadata.swift */; };
 		5B6F70DDD4C63CF6ED95291BCB633494 /* ContainElementSatisfying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027C3D7419AEAEAA9CC3C9283DDDCD34 /* ContainElementSatisfying.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
-		5CD8C8AB883F85DD4958D652A65DFA20 /* KeychainQueryHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E123FC65C35D7EF880CB4B88416092 /* KeychainQueryHelper.swift */; };
 		5D2D358E754D92564B259BBACFBA8271 /* PMKFoundation.h in Headers */ = {isa = PBXBuildFile; fileRef = 096C384B914821101FFBC2A73EEDCA78 /* PMKFoundation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5DEEB19E90B17C38B1313811683E598E /* CardCryptoNfcApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AC6DCFA7028EF9A722E81FF03E4064 /* CardCryptoNfcApi.swift */; };
+		5E34923466610076504D513F468649F3 /* TonNfcApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81F5638F9C63AF663E6F67FBA9AF65D /* TonNfcApi.swift */; };
 		602E3758C0EF64AF6B7FCEA05BF5B9B9 /* Expectation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836C28344B7A90E44D8EB106BF7653BA /* Expectation.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		60F874ED0F6234A4417CAFDE554D088D /* PMKUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = E5CE4C91021C1B94AD218BB6E449A084 /* PMKUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		64E26D7D025AC4462DFA8BA66B38C9D8 /* HaveCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0557F007D949618DE1C4ED937DDF98A /* HaveCount.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
+		650B04FEBAED97369D512CB8F3707F53 /* Pods-TonNfcClientSwift_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B15D8A473B2972ED6A13A87B47BE104 /* Pods-TonNfcClientSwift_Tests-dummy.m */; };
+		65AFB883DC33E616E6102F5AEAE9D706 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC98063C7EAA39571795D8617B1DA37 /* XCTest.framework */; };
+		695A619EED2D4CCB3E6C18532270B262 /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C6B79080132FEF547CDAB549FCF6EBA /* PromiseKit.framework */; };
 		69DBAB1E3A8EEBFCC466D95509DE7125 /* UIView+Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E713588752B1400EC3A0FA48FC684E /* UIView+Promise.swift */; };
+		69E52D97F8DCACB628815E06D46ED38E /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266C931A20DFB531287C0F0E309032BB /* Array.swift */; };
 		6DE830042E36FDE326546970CA90F9B6 /* Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8798C3E090994C0B193745C862FF4464 /* Promise.swift */; };
 		72FB8CEABF346A37D54CC08647489A98 /* ThrowAssertion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD0582CBDC964A8EE2101094730664B /* ThrowAssertion.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		73EA1C553B580637369E1D5A72A425B3 /* when.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC40C645BBC677513A6BA4239845994 /* when.swift */; };
+		7484B6A8D4A066E367275931FD21EA03 /* CardErrorCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1FCB374C0D627467D5369564C62346 /* CardErrorCodes.swift */; };
 		7536DD99ACEDE673713161E597B7B447 /* ExampleHooks.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0146430EFB4C12AC0770FB6995D5651 /* ExampleHooks.swift */; };
 		76E7C7CDAA543C791A714B991F595F2B /* QuickSpecBase.h in Headers */ = {isa = PBXBuildFile; fileRef = AD517C9B51003F322D93F0B1C5051E85 /* QuickSpecBase.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		78A51B7FCC1DFB888AAA254529013C12 /* BeginWith.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BD88DA79B794FBA82AED3BC0C2A68B /* BeginWith.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		79F73BA854A7EC559E464EC446493D52 /* AnyPromise.h in Headers */ = {isa = PBXBuildFile; fileRef = 37297E5B846FAE7554B9594C84203E88 /* AnyPromise.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7AC93EB6DCDA9226165D5BC354FE7BC6 /* DSL.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AB9C72CE837F88620083AAE01B5DF87 /* DSL.m */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
-		7AEE12B95448E9744021693080FD37DC /* ToastHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8797201B8DA894204AB59A55C636D4AF /* ToastHelper.swift */; };
-		7B2BFAA4E5BDEB3FD80456F0E22CC339 /* Pods-TonNfcClientSwift_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DEB4BCF5145E88FA28E2E6FEA037229F /* Pods-TonNfcClientSwift_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7CE6049975894E447F2D4071C74F6F8F /* Callsite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B0523BB8C3DE66DB8CF999287994FC5 /* Callsite.swift */; };
 		7DAC86DCBC36C10F43FA5FEB819B7BF1 /* Functional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429C62D0EBF52B89A0E02F5F88E26B14 /* Functional.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		7EB28FEC3D0ABA1A2A6CFE57C400F74D /* QuickSpec.h in Headers */ = {isa = PBXBuildFile; fileRef = 8126C612A31327CD7FC4B2703D3D0384 /* QuickSpec.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7F3F7D52F6F82AE36F7797DC419251EB /* DataVerifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7333981B4EA2B1A5C5E60C93621E3DD2 /* DataVerifier.swift */; };
+		7FA5B72A48639FCF0A4F4BBFBF392A04 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 543541D2D4D4A14A05F36C45426EBEFF /* Foundation.framework */; };
 		806B9040D79A3DC58FB56EAC16FE19BF /* Stringers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597EA7ED5FCA94A9A37016CC96F0A170 /* Stringers.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		80DEBE41D84FBA1C4D4FE00C8D797E82 /* CwlPreconditionTesting.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F88E74520A63FADFF5BE9AD9CA5B8F3 /* CwlPreconditionTesting.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		82ADB099E9D86A1ABA5C77227A6A1739 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 543541D2D4D4A14A05F36C45426EBEFF /* Foundation.framework */; };
 		887AF8C809D60140319DE71D6427F370 /* NSBundle+CurrentTestBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA1B56C82E06571FAD4643DBE9B469E /* NSBundle+CurrentTestBundle.swift */; };
-		89A98EA2C81228C1AD760A131EC3D9DB /* Pods-TonNfcClientSwift_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B15D8A473B2972ED6A13A87B47BE104 /* Pods-TonNfcClientSwift_Tests-dummy.m */; };
 		89EE4D6DBDB79963D65AA1E67B543B6D /* CwlCatchBadInstruction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F9011CB36CB1DF2BE5770B627DA2EF /* CwlCatchBadInstruction.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		8A0EF19254BAC5DF0885D1FBA345E016 /* CwlMachBadInstructionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 8238383463C823A2FD4B6BA59332312A /* CwlMachBadInstructionHandler.m */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		8D17749611AB0C8BD51C068749D8DF68 /* NMBExceptionCapture.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D3BDB9059D7DA0470D8AF2653A833F5 /* NMBExceptionCapture.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8D543DAD9A6C0B8BF8A5DB38AD876677 /* SatisfyAnyOf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F0A1D5ED594521E59C2DEFD8CF04FC /* SatisfyAnyOf.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		8D75EC8969EA46FBD6E1BED7791A3C37 /* BeLogical.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1734CE9B1FFD691BAFFBA1F15B58206 /* BeLogical.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
+		8DDF82ED421CFF1CC25A3F1770385F2C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 543541D2D4D4A14A05F36C45426EBEFF /* Foundation.framework */; };
 		8E4A2F4A1EF16B63817A516CC2743619 /* Quick-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 69A498CECA0BDF82EACC062CF124FFAE /* Quick-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		90DE50EBD282EEFF174DA29044851531 /* ResponsesConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585B22B49FCFFBB58845A9CAB3D25639 /* ResponsesConstants.swift */; };
 		9231B70907F130F31CF5717C502B780C /* ExampleGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD1CA08C4F094CB379E452093130668 /* ExampleGroup.swift */; };
+		92DDF40B5C887EEBCEF96CE8C9D43814 /* Pods-TonNfcClientSwift_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 383F4105C3F1FAA4CD81923EBB2A1DCD /* Pods-TonNfcClientSwift_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		93ACD9A053C38DDDA36FA1B58AF73780 /* ApduRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9417D8B3CC667D7ACAE9632856E8F55D /* ApduRunner.swift */; };
 		9447BD0FB408B2A7C9BFDFF99BBE1EBE /* UIViewController+AnyPromise.m in Sources */ = {isa = PBXBuildFile; fileRef = F690CB00B2FBC4C12F22698070D1BA5A /* UIViewController+AnyPromise.m */; };
 		94B18F2CFF543F6B2E43E84630C337E2 /* SuiteHooks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0CCCDEA56DD967ACB8810F38E908AD /* SuiteHooks.swift */; };
 		94DA3131D64B3D904BE28E72F1871065 /* BeAKindOf.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB87A7AE3BBC36524CB7B559356751D /* BeAKindOf.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		968B5CC9B9B0A7E92FACEEBEA3C0DA13 /* PromiseKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A4E34D7C44B53CC70999B3AF67042B19 /* PromiseKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		979336E96F73FDD2FAAE1D7CB2B4FD53 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA3A63BAC40806888542D8E02809EF1 /* Array.swift */; };
 		997870D5F490326F024B4D8687FF18DC /* Resolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7351884CD1C320415DB2A4AC2C6C572 /* Resolver.swift */; };
 		99E8019F4689A514DAC6AA40AFF7352E /* NMBObjCMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AB301FC782641ED0FFCE383B8B30A9 /* NMBObjCMatcher.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		9B65647B927085E2366117D59DC1586D /* CustomStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322C794D8661D070A3645E2E8933EFC1 /* CustomStringConvertible.swift */; };
@@ -120,20 +132,22 @@
 		9BB5E9B6487FE95C710687B484C17161 /* Nimble.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A015E16D8C221E969EBC1EAB1761738 /* Nimble.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9BFE70DD7ECA3C6183B82DE691FE4491 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91F37032A717216E38D7558D1BA3C6A /* Box.swift */; };
 		9C460BA614D4B1D314A252C4C5CE1D87 /* BeAnInstanceOf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779669660CE9A2038CC85A9BBF32743F /* BeAnInstanceOf.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
+		9D7B1AFB65DC11E69C3EB1CB41DC1EBA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 543541D2D4D4A14A05F36C45426EBEFF /* Foundation.framework */; };
 		9E874C00792FA983399C03EC00AE326D /* XCTestSuite+QuickTestSuiteBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 02223441F264994B9FDC9959E656FC5B /* XCTestSuite+QuickTestSuiteBuilder.m */; };
 		9F70369EF71BD9ABAFF687AF532CC20D /* CwlMachBadInstructionHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 3170F4BD879C7D6F1E464647DDA444F4 /* CwlMachBadInstructionHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9FAB2F0C8F018D3E8AC45CBC3B241A99 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FDAA92E4A9BFDF5422978E491ABF97 /* Data.swift */; };
 		9FB5F3B3AAF3103848313FACD0CACBCD /* QuickConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB9AA0304CD090416C5C69A13A7A364 /* QuickConfiguration.m */; };
 		A1E6C35C5B3ECB558FE1AF9B1FAAB53B /* AnyPromise.m in Sources */ = {isa = PBXBuildFile; fileRef = B9BD10B977EC4AD9F6632D8291510E1A /* AnyPromise.m */; };
-		A2038ED2104E992C1556BF66B7A673BD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 350DF887D9046EC3C2135235399E9510 /* Foundation.framework */; };
+		A324A2A52103D6A5F2E4785678483B21 /* Pods-TonNfcClientSwift_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DEB4BCF5145E88FA28E2E6FEA037229F /* Pods-TonNfcClientSwift_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A35159AD5A7A49BA9093F29B63DBD30D /* String+C99ExtendedIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC626336A07D33EEBB726D823E4BD1D2 /* String+C99ExtendedIdentifier.swift */; };
 		A5F5D7A20264221D4A7F489FB0060D34 /* afterlife.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54AFC921488B017CE2AC6ED9CC3CE33D /* afterlife.swift */; };
 		A6CE2E672C8EB4DF57485428AFD64A3C /* URL+FileName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8D52328101978930F96F1F32DDEF6F /* URL+FileName.swift */; };
-		A77E045BFC07DF4446B2C3B26750616A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD1B258DE661BE1A103808DD5A61EF8 /* Constants.swift */; };
 		A7F5B07BF96955EFDC9106335235EDB2 /* QuickTestSuite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3632C53B84D8D20C861EF9A2F370ADE0 /* QuickTestSuite.swift */; };
 		A9996A6303084D17B9C439CB132A1F69 /* DSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D5BB7C0EB412C603FFB56ED5312CF2 /* DSL.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
+		ABF738C4FF0844A6810FDBB3F346C9A9 /* CoinManagerApduCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5197502A4D6F9D024E2F2A5D2ECB40A3 /* CoinManagerApduCommands.swift */; };
 		AD69407E2FA1D39A9E09248052F2D81B /* ExpectationMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5990D40AB76870AA3B363D67193EC1 /* ExpectationMessage.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
+		AD919DC33DF0588112DD30A57CDE8397 /* ByteArrayAndHexHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA0A998790630DD014D4C09DA371ADA /* ByteArrayAndHexHelper.swift */; };
 		AF60C00928A7AFE04E374B620EEA5F49 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BD3A2C07D67CE5AE1DCFDBEC654AA3 /* Filter.swift */; };
+		AFCEC21B0551A325821105699B4B529D /* CardCryptoNfcApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5ED0B1839127F22D106353F26D03D9F /* CardCryptoNfcApi.swift */; };
 		B2A65EEDB5D5EC246EA68E10964FF7B3 /* ThrowError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4529804F249D002E0ADDEE0DBB0DD3 /* ThrowError.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		B4058A2AA8486E9879F113E6F67B9679 /* AdapterProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC22016FA4967E6C0D17B8EA4336BE1 /* AdapterProtocols.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		B48508EB39EE315F5A00429EEA69DD63 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F0AB297258CDE83162009803ACEBC6 /* Configuration.swift */; };
@@ -147,8 +161,6 @@
 		BFEBC90223F66B0FF770B92B1C670BCF /* QuickConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 0E4614A41EC87CA218BED37A35D17B5C /* QuickConfiguration.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C051C0411627BD5FCDA031782EB1F716 /* DSL.h in Headers */ = {isa = PBXBuildFile; fileRef = 0C47A043AA12AB00ABFE2527647717C0 /* DSL.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C0C98C8C7D07E1598F20EE2F0539197D /* NMBExpectation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0936F16A4BDA6F098367B468DD13E027 /* NMBExpectation.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
-		C2154E39BFC259FD4A96F46062B2B5B2 /* TonNfcClientSwift-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F3BB3526AA445731C63BCCD1A2699D5 /* TonNfcClientSwift-dummy.m */; };
-		C27ECDF97D953A75C2B2DA691818800E /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C6B79080132FEF547CDAB549FCF6EBA /* PromiseKit.framework */; };
 		C426E30A28E2545BCA2824DBCF90816F /* NSNotificationCenter+AnyPromise.m in Sources */ = {isa = PBXBuildFile; fileRef = E063C3012300A071309A86FD2EEA12EF /* NSNotificationCenter+AnyPromise.m */; };
 		C5EF8FBC11CA9E66100F6489B57E35A6 /* LogEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BFFE648DC806BA8C0D77A076EABE82 /* LogEvent.swift */; };
 		C7ECF714064C1188A6D042C6ACFD9504 /* dispatch_promise.m in Sources */ = {isa = PBXBuildFile; fileRef = C06AD53790281FA27D4AEAAEEC93E984 /* dispatch_promise.m */; };
@@ -156,13 +168,9 @@
 		C979EEB0159A65246F6BD2C906A8ADB7 /* BeVoid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2510C9188DC920549CB65BD64CD2FC8F /* BeVoid.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		C99BBC3F70E056CB6A3CC0516318939D /* AssertionDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3463D3E450938E11F627AC7741E92C3C /* AssertionDispatcher.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		C9E716023868A97D2F5B19934D93045E /* World+DSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC77264977163ED13572BFF7404D3AD5 /* World+DSL.swift */; };
-		CCF0D5BA29272B1F15C9DAE4E2CCEB73 /* Pods-TonNfcClientSwift_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 383F4105C3F1FAA4CD81923EBB2A1DCD /* Pods-TonNfcClientSwift_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CD6B1F146B0E157FE5B9CAFFAE77A5B5 /* Nimble-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DFC6AB88ECB835627E2D4793FF92332 /* Nimble-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CEE8D31A4E76BB7B350BF2A7175D4BC2 /* NMBExceptionCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = A7A89EF765030C0165D0B0AADD342597 /* NMBExceptionCapture.m */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
-		CF646C2BDD113BB1260FE93617867BA1 /* CryptoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD80DE36A1D123F1977EA547EB4FB31B /* CryptoHelper.swift */; };
 		CF9218FF56D8EE43681150A3E1635C9A /* ToSucceed.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC325C1996F6FDBA1294D3EE5456A5AF /* ToSucceed.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
-		D1117F8F2A13F4281DB5E49469003116 /* ApduRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EE932066AEE886F477085529D73A5A /* ApduRunner.swift */; };
-		D16F71EF7565421F62ECAACE5DFF2FC3 /* TonNfcClientSwift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8781C486F317E74078300105AB97C8A8 /* TonNfcClientSwift-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D2C041844A0EB4EB2E8C7B9DAA748EEB /* Example.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AA4151BEDB69DDDE6F913258FBF46F /* Example.swift */; };
 		D34D0540ADCBF163575B6B5444B1AAF6 /* Contain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537ECB8A3EACEC8BFA87159A3B64B414 /* Contain.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		D4C52546E7DEE38CEE04F2B6D61BB9E2 /* fwd.h in Headers */ = {isa = PBXBuildFile; fileRef = 099AFC29C3F396162B27A009D900D684 /* fwd.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -170,75 +178,67 @@
 		D9D6150D329A87CBB415FD349F0C50FD /* SourceLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416D73B1B5DFE8F7B9358A27EC0BDAAA /* SourceLocation.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		DB84342A0C0DEABBF7F729DE55225D82 /* XCTestObservationCenter+Register.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E35D4BCE99042C53180199871224934 /* XCTestObservationCenter+Register.m */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		DBEF0F49E57B3321CC7067EEF33AB582 /* NSNotificationCenter+AnyPromise.h in Headers */ = {isa = PBXBuildFile; fileRef = 13B7DA7FA9D44684AEE691FF5272D7B6 /* NSNotificationCenter+AnyPromise.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DCA9B797B1510EC5A3B75709B3E106E1 /* ByteArrayAndHexHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3393CF5164E9DC1188C2E495CFB143CD /* ByteArrayAndHexHelper.swift */; };
 		DCD198D49C0A198A09525B7688EE3BC9 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC23D8404E07A82F9E184AD82FC52A2 /* Async.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
-		DD1027F3013B6CE4558F3446A421E89E /* CoinManagerApduCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393BD56E0B9B063E12ECE23747A13416 /* CoinManagerApduCommands.swift */; };
-		DF4214039E4DFB7CA25586E1ECF6D349 /* CardKeyChainNfcApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E700D13A677E2C191B0FFDD76696C6B /* CardKeyChainNfcApi.swift */; };
 		E0EAC85F7ACFAD998B14FCE66144000E /* NMBStringify.h in Headers */ = {isa = PBXBuildFile; fileRef = 403542388FD2D711AE7CD3DF3ED01C14 /* NMBStringify.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E425FBEC27FF20E38E5F71856145D72C /* UIViewController+AnyPromise.h in Headers */ = {isa = PBXBuildFile; fileRef = C4EDCA887241DE84E6370A2E1F35BF14 /* UIViewController+AnyPromise.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E458AAE1AE9E2250F29806E5633B1860 /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DC668035B1C10E31D123A9B47AECB7 /* Expression.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
+		E567FBD7D38FCFC9997988C0A7367D50 /* Pods-TonNfcClientSwift_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DCE4F40F9CC8E228211DAAD9981237E1 /* Pods-TonNfcClientSwift_Example-dummy.m */; };
+		EA089A892D0DC22F0B4A3F2CDF113B80 /* KeychainQueryHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9324FFB6299AABB66E9FCAB1F47F62 /* KeychainQueryHelper.swift */; };
 		EAC994EA457048CA6AA49B82C9F05DF4 /* NSURLSession+AnyPromise.h in Headers */ = {isa = PBXBuildFile; fileRef = EB74DACA88D2DEDB9650ECD9FF267247 /* NSURLSession+AnyPromise.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EC7B043149194F9F327DB143075956F8 /* CardCoinManagerNfcApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157E0C255E26B2B10A00080A5EFE1C79 /* CardCoinManagerNfcApi.swift */; };
 		EC7EF3D5778783BD93EBC6F82016ADA9 /* BeNil.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5C7665F6D32984794FE44A4B342B6D /* BeNil.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		ECCA1FA570A912E8CDB54EB843F1D030 /* NimbleEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7C08C42413BE2C15B0E95C39019D96 /* NimbleEnvironment.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
-		EE2CE28BA3B6E876AB0A54CA43C27453 /* TonWalletAppletApduCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = E142599D5449EABDA4E1390D17E01220 /* TonWalletAppletApduCommands.swift */; };
 		EF8241DFA90BCDBB97B8C504BB80D05C /* AnyPromise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5372BBB1CFC174AFFA0E0B1704DE98CF /* AnyPromise.swift */; };
 		EF9BBCE851B820D4F5DA3163BF466A38 /* Process+Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42F3F2E4ACC87608C6DAF0731191375 /* Process+Promise.swift */; };
-		EFB9CC9267297D8104141A4046AAD14E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 350DF887D9046EC3C2135235399E9510 /* Foundation.framework */; };
 		F01995755687FA91F51A15ED8FD9D125 /* World.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9ECBB4A0B39BFA319BEC4AB0F43BD5 /* World.swift */; };
 		F27A7DE93F66B0C12B4C646D99F5B9F4 /* CwlCatchException.m in Sources */ = {isa = PBXBuildFile; fileRef = B79350218D0B1CB5412F484833FA90F3 /* CwlCatchException.m */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		F310B21703A7BC438A09DDB96670583F /* AssertionRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABFBDD011EF6C61812BB04B56DCD130 /* AssertionRecorder.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
-		F34CA44F131B62927BFAF6060DCCD898 /* RecoveryDataApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CE7755919E2619D26B6855E87281D6 /* RecoveryDataApi.swift */; };
-		F4202E2F9B2E6E56A70097B60C5621C5 /* CardErrorCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16CBA710E19F0F42095CD24D1BBC22D /* CardErrorCodes.swift */; };
 		F4877B3857C780DCDB7F413A03F95600 /* BeCloseTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14B3A8B151D42C0C57DD0BB6562F17B /* BeCloseTo.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		F78E35D04F09485FA5DFA72FE1AD5AB2 /* NMBStringify.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE0F48EA9312C93D9F6C14C428B36BD /* NMBStringify.m */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		F9E85548BF1EF8C5035BAF92233C34B6 /* RaisesException.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D0786A50A4F1AFEB58E1E71C22C5CF /* RaisesException.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		FB797FAA96B41ACE7474B8ADEF8107EC /* firstly.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDF5294A05F3EC22ACCB1D8DFA429C9 /* firstly.swift */; };
-		FBBEAFF62A74629131E1E4E23EF4EC1F /* CardActivationNfcApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C0C2D603A779BF88377527944F02CA /* CardActivationNfcApi.swift */; };
-		FCF3854D8EFB19EEBB333FF30B5EABEB /* JsonHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA79581136A6F5AD3F5289A3342AA41 /* JsonHelper.swift */; };
-		FD3A849D8380EC24F4065B6E80BB6557 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 350DF887D9046EC3C2135235399E9510 /* Foundation.framework */; };
+		FCA498A4C96CDBD6D684F51D8C0EECDD /* TonWalletAppletApduCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C143DA054073584ED009F7BE96AD32 /* TonWalletAppletApduCommands.swift */; };
 		FDF12428281F08B3F5F2B7DB68E3925D /* NSTask+AnyPromise.m in Sources */ = {isa = PBXBuildFile; fileRef = 7982040B8A30DBD6302D0889258F8C7F /* NSTask+AnyPromise.m */; };
 		FED8C9BB577D35DBB6E5347B750C184C /* hang.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BED2A75C3FEE740CC71F8ADA160D4E5 /* hang.swift */; };
 		FF920E965F1CA016FF302DE8C92C5122 /* CwlBadInstructionException.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EDCE2F36ED7AA8ABBA8B434876EB19 /* CwlBadInstructionException.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		1F31F299D8F10D8CA56006DE30D9A989 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 6F13695E06195A78EA8A95F8C7ED0D2F;
-			remoteInfo = Nimble;
-		};
-		4D09A4D2D0BA1DE4EC5857960C443B98 /* PBXContainerItemProxy */ = {
+		280638F525AA7CB5D56BE33713DC3AAC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = F0FDF79DC7E2B896FA5AFD3E4758F258;
 			remoteInfo = TonNfcClientSwift;
 		};
-		6890477E10A0E4500E2B36266884C1EF /* PBXContainerItemProxy */ = {
+		54A3E8BE2F427251BD1A7799F3BDF3DD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = C82891EAB7293DBEE916B21F57E8474D;
-			remoteInfo = Quick;
+			remoteGlobalIDString = 6F13695E06195A78EA8A95F8C7ED0D2F;
+			remoteInfo = Nimble;
 		};
-		75C05F1AB51CABB40003E68855549115 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 929F91C4F7BFCFF8B44DA84E551D76A6;
-			remoteInfo = "Pods-TonNfcClientSwift_Example";
-		};
-		BEA2FD695216EB763B78F0A77EC4CAC4 /* PBXContainerItemProxy */ = {
+		7A0F75E6E4E6B1254D0E13EF942D68A2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 7C579CE66A1E7A9AA33CA5F97F9C22C5;
 			remoteInfo = PromiseKit;
 		};
-		C56FE1CC151DC7522774A5DBD66F2FD3 /* PBXContainerItemProxy */ = {
+		877E1BDC62F2C1EC65E3B509A1D616DC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 929F91C4F7BFCFF8B44DA84E551D76A6;
+			remoteInfo = "Pods-TonNfcClientSwift_Example";
+		};
+		A19593AB82F3484BB94D8B38ADF9F2BD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C82891EAB7293DBEE916B21F57E8474D;
+			remoteInfo = Quick;
+		};
+		CA80AC14B34F2ED7B7EB2BDC90DDC855 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
@@ -249,45 +249,41 @@
 
 /* Begin PBXFileReference section */
 		002B1E88BA14EBF633CD66EBFBA107E9 /* PromiseKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = PromiseKit.framework; path = PromiseKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		005BA14093A6951DF3926EE286F190C7 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
 		01ED867FF5A5A2C7EE15F0EE163866A2 /* Pods_TonNfcClientSwift_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_TonNfcClientSwift_Tests.framework; path = "Pods-TonNfcClientSwift_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		02223441F264994B9FDC9959E656FC5B /* XCTestSuite+QuickTestSuiteBuilder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "XCTestSuite+QuickTestSuiteBuilder.m"; path = "Sources/QuickObjectiveC/XCTestSuite+QuickTestSuiteBuilder.m"; sourceTree = "<group>"; };
 		027C3D7419AEAEAA9CC3C9283DDDCD34 /* ContainElementSatisfying.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ContainElementSatisfying.swift; path = Sources/Nimble/Matchers/ContainElementSatisfying.swift; sourceTree = "<group>"; };
-		03C0C2D603A779BF88377527944F02CA /* CardActivationNfcApi.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CardActivationNfcApi.swift; sourceTree = "<group>"; };
 		03E6D2C10FDA30FF45C5765E6D29EC33 /* Deprecations.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Deprecations.swift; path = Sources/Deprecations.swift; sourceTree = "<group>"; };
 		03F8C4FA6A1A1CCEF29237265CD95E08 /* QuickSelectedTestSuiteBuilder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuickSelectedTestSuiteBuilder.swift; path = Sources/Quick/QuickSelectedTestSuiteBuilder.swift; sourceTree = "<group>"; };
 		04AB301FC782641ED0FFCE383B8B30A9 /* NMBObjCMatcher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NMBObjCMatcher.swift; path = Sources/Nimble/Adapters/NMBObjCMatcher.swift; sourceTree = "<group>"; };
+		04E7501E92E8F79F96CB7CC72B0FACCE /* TonNfcClientSwift.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = TonNfcClientSwift.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		0936F16A4BDA6F098367B468DD13E027 /* NMBExpectation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NMBExpectation.swift; path = Sources/Nimble/Adapters/NMBExpectation.swift; sourceTree = "<group>"; };
 		096C384B914821101FFBC2A73EEDCA78 /* PMKFoundation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PMKFoundation.h; path = Extensions/Foundation/Sources/PMKFoundation.h; sourceTree = "<group>"; };
 		099AFC29C3F396162B27A009D900D684 /* fwd.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = fwd.h; path = Sources/fwd.h; sourceTree = "<group>"; };
-		09E123FC65C35D7EF880CB4B88416092 /* KeychainQueryHelper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = KeychainQueryHelper.swift; sourceTree = "<group>"; };
 		0ABF1EB7925526C473712081E8CFFCFC /* ExampleMetadata.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExampleMetadata.swift; path = Sources/Quick/ExampleMetadata.swift; sourceTree = "<group>"; };
 		0B10B37B176C955D5C50CA2F51F99354 /* hang.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = hang.m; path = Sources/hang.m; sourceTree = "<group>"; };
 		0C47A043AA12AB00ABFE2527647717C0 /* DSL.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DSL.h; path = Sources/NimbleObjectiveC/DSL.h; sourceTree = "<group>"; };
-		0CDFD4CF2E03DEB21D6158BE585DAC69 /* TonNfcClientSwift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = TonNfcClientSwift.modulemap; sourceTree = "<group>"; };
 		0D03D33BB6406530329218EAD9D16263 /* ElementsEqual.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ElementsEqual.swift; path = Sources/Nimble/Matchers/ElementsEqual.swift; sourceTree = "<group>"; };
 		0D631E9908483F9525A6B3F36F16CC61 /* Quick.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Quick.framework; path = Quick.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		0D687D7D62155A3F4611E4270B5762DB /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
 		0E35D4BCE99042C53180199871224934 /* XCTestObservationCenter+Register.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "XCTestObservationCenter+Register.m"; path = "Sources/NimbleObjectiveC/XCTestObservationCenter+Register.m"; sourceTree = "<group>"; };
 		0E4614A41EC87CA218BED37A35D17B5C /* QuickConfiguration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QuickConfiguration.h; path = Sources/QuickObjectiveC/Configuration/QuickConfiguration.h; sourceTree = "<group>"; };
-		0F3BB3526AA445731C63BCCD1A2699D5 /* TonNfcClientSwift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "TonNfcClientSwift-dummy.m"; sourceTree = "<group>"; };
 		0F8D52328101978930F96F1F32DDEF6F /* URL+FileName.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "URL+FileName.swift"; path = "Sources/Quick/URL+FileName.swift"; sourceTree = "<group>"; };
-		10AC6DCFA7028EF9A722E81FF03E4064 /* CardCryptoNfcApi.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CardCryptoNfcApi.swift; sourceTree = "<group>"; };
+		12CC5D119E7727379143CE99DD18BF2C /* TonWalletAppletConstants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TonWalletAppletConstants.swift; sourceTree = "<group>"; };
 		13B7DA7FA9D44684AEE691FF5272D7B6 /* NSNotificationCenter+AnyPromise.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSNotificationCenter+AnyPromise.h"; path = "Extensions/Foundation/Sources/NSNotificationCenter+AnyPromise.h"; sourceTree = "<group>"; };
 		1486F50B203E16FAD56E766B75F11F98 /* DSL+Wait.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DSL+Wait.swift"; path = "Sources/Nimble/DSL+Wait.swift"; sourceTree = "<group>"; };
-		14EEE017B114F04A65D00DC4EA620C84 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		157E0C255E26B2B10A00080A5EFE1C79 /* CardCoinManagerNfcApi.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CardCoinManagerNfcApi.swift; sourceTree = "<group>"; };
 		173306198DDB553294FDC64C369EA3F2 /* Error.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Error.swift; path = Sources/Error.swift; sourceTree = "<group>"; };
 		18C93F48C764F5FC124B453A2165C84D /* CwlCatchException.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CwlCatchException.h; path = Carthage/Checkouts/CwlPreconditionTesting/Dependencies/CwlCatchException/Sources/CwlCatchExceptionSupport/include/CwlCatchException.h; sourceTree = "<group>"; };
 		18F2C39625E51F843126BFDEF550A8E7 /* Configuration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Configuration.swift; path = Sources/Configuration.swift; sourceTree = "<group>"; };
 		1A042223E4279B30D4FF73187721A569 /* join.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = join.m; path = Sources/join.m; sourceTree = "<group>"; };
 		1A82D71AE0C56307FD35B7B2508B74D2 /* race.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = race.m; path = Sources/race.m; sourceTree = "<group>"; };
-		1AC05960DAE10EA245A6A06468425C20 /* TonWalletAppletConstants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TonWalletAppletConstants.swift; sourceTree = "<group>"; };
 		1B0523BB8C3DE66DB8CF999287994FC5 /* Callsite.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Callsite.swift; path = Sources/Quick/Callsite.swift; sourceTree = "<group>"; };
-		1BD1B258DE661BE1A103808DD5A61EF8 /* Constants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		1C83445D765D99BB4DD8C05A93F128DF /* FunctionsList.md */ = {isa = PBXFileReference; includeInIndex = 1; name = FunctionsList.md; path = docs/FunctionsList.md; sourceTree = "<group>"; };
 		1DC23D8404E07A82F9E184AD82FC52A2 /* Async.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Async.swift; path = Sources/Nimble/Matchers/Async.swift; sourceTree = "<group>"; };
 		1F88E74520A63FADFF5BE9AD9CA5B8F3 /* CwlPreconditionTesting.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CwlPreconditionTesting.h; path = Carthage/Checkouts/CwlPreconditionTesting/Sources/CwlPreconditionTesting/include/CwlPreconditionTesting.h; sourceTree = "<group>"; };
 		21D79831B1F260E6368594ECA2489726 /* Pods-TonNfcClientSwift_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-TonNfcClientSwift_Example-Info.plist"; sourceTree = "<group>"; };
 		2510C9188DC920549CB65BD64CD2FC8F /* BeVoid.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeVoid.swift; path = Sources/Nimble/Matchers/BeVoid.swift; sourceTree = "<group>"; };
+		25C143DA054073584ED009F7BE96AD32 /* TonWalletAppletApduCommands.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TonWalletAppletApduCommands.swift; sourceTree = "<group>"; };
+		266C931A20DFB531287C0F0E309032BB /* Array.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		2934A5235996532FDABC445E0B4A5CA6 /* MatcherProtocols.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MatcherProtocols.swift; path = Sources/Nimble/Matchers/MatcherProtocols.swift; sourceTree = "<group>"; };
 		29D3E7D6F0B7172BBAA607210F7F111D /* UIViewPropertyAnimator+Promise.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIViewPropertyAnimator+Promise.swift"; path = "Extensions/UIKit/Sources/UIViewPropertyAnimator+Promise.swift"; sourceTree = "<group>"; };
 		2A2AA2C795AA8829D2A41A8E8FC1EFE2 /* Await.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Await.swift; path = Sources/Nimble/Utils/Await.swift; sourceTree = "<group>"; };
@@ -297,65 +293,72 @@
 		2D3BDB9059D7DA0470D8AF2653A833F5 /* NMBExceptionCapture.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NMBExceptionCapture.h; path = Sources/NimbleObjectiveC/NMBExceptionCapture.h; sourceTree = "<group>"; };
 		2DFC6AB88ECB835627E2D4793FF92332 /* Nimble-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Nimble-umbrella.h"; sourceTree = "<group>"; };
 		2E383DD6715785BB22B0EA92A694AABF /* UIView+AnyPromise.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView+AnyPromise.h"; path = "Extensions/UIKit/Sources/UIView+AnyPromise.h"; sourceTree = "<group>"; };
+		2E9324FFB6299AABB66E9FCAB1F47F62 /* KeychainQueryHelper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = KeychainQueryHelper.swift; sourceTree = "<group>"; };
 		3117095DF951EE88D989C10037340122 /* Pods-TonNfcClientSwift_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TonNfcClientSwift_Example-frameworks.sh"; sourceTree = "<group>"; };
 		3170F4BD879C7D6F1E464647DDA444F4 /* CwlMachBadInstructionHandler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CwlMachBadInstructionHandler.h; path = Carthage/Checkouts/CwlPreconditionTesting/Sources/CwlMachBadInstructionHandler/include/CwlMachBadInstructionHandler.h; sourceTree = "<group>"; };
 		31ECB91854ACA243C7FA46F5A0B62401 /* Predicate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Predicate.swift; path = Sources/Nimble/Matchers/Predicate.swift; sourceTree = "<group>"; };
 		31F0A1D5ED594521E59C2DEFD8CF04FC /* SatisfyAnyOf.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SatisfyAnyOf.swift; path = Sources/Nimble/Matchers/SatisfyAnyOf.swift; sourceTree = "<group>"; };
 		322C794D8661D070A3645E2E8933EFC1 /* CustomStringConvertible.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CustomStringConvertible.swift; path = Sources/CustomStringConvertible.swift; sourceTree = "<group>"; };
-		32DFB9A7F8FD78480ED86F82E711E32E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		3393CF5164E9DC1188C2E495CFB143CD /* ByteArrayAndHexHelper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ByteArrayAndHexHelper.swift; sourceTree = "<group>"; };
 		3463D3E450938E11F627AC7741E92C3C /* AssertionDispatcher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AssertionDispatcher.swift; path = Sources/Nimble/Adapters/AssertionDispatcher.swift; sourceTree = "<group>"; };
-		350DF887D9046EC3C2135235399E9510 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		352863BBD68FE2CA6BD8FB25FA6A863E /* AllPass.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AllPass.swift; path = Sources/Nimble/Matchers/AllPass.swift; sourceTree = "<group>"; };
 		3632C53B84D8D20C861EF9A2F370ADE0 /* QuickTestSuite.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuickTestSuite.swift; path = Sources/Quick/QuickTestSuite.swift; sourceTree = "<group>"; };
 		37297E5B846FAE7554B9594C84203E88 /* AnyPromise.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AnyPromise.h; path = Sources/AnyPromise.h; sourceTree = "<group>"; };
+		377D573B793E4E71CE46734E6827ECE6 /* DataVerifier.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DataVerifier.swift; sourceTree = "<group>"; };
 		383F4105C3F1FAA4CD81923EBB2A1DCD /* Pods-TonNfcClientSwift_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-TonNfcClientSwift_Tests-umbrella.h"; sourceTree = "<group>"; };
-		393BD56E0B9B063E12ECE23747A13416 /* CoinManagerApduCommands.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CoinManagerApduCommands.swift; sourceTree = "<group>"; };
+		3845D381373F426B2490AF27AD32A53B /* TonNfcClientSwift-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "TonNfcClientSwift-Info.plist"; sourceTree = "<group>"; };
 		399D337200FD8ED13174D32151971A76 /* Guarantee.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Guarantee.swift; path = Sources/Guarantee.swift; sourceTree = "<group>"; };
 		39BD88DA79B794FBA82AED3BC0C2A68B /* BeginWith.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeginWith.swift; path = Sources/Nimble/Matchers/BeginWith.swift; sourceTree = "<group>"; };
 		3ABFBDD011EF6C61812BB04B56DCD130 /* AssertionRecorder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AssertionRecorder.swift; path = Sources/Nimble/Adapters/AssertionRecorder.swift; sourceTree = "<group>"; };
 		3B32AD76F3965F8CB4960D2BF51D140F /* PostNotification.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PostNotification.swift; path = Sources/Nimble/Matchers/PostNotification.swift; sourceTree = "<group>"; };
+		3CE72ED780D0EBBD0E69DFA6D4BC9465 /* TonNfcClientSwift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "TonNfcClientSwift-dummy.m"; sourceTree = "<group>"; };
 		403542388FD2D711AE7CD3DF3ED01C14 /* NMBStringify.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NMBStringify.h; path = Sources/NimbleObjectiveC/NMBStringify.h; sourceTree = "<group>"; };
 		416D73B1B5DFE8F7B9358A27EC0BDAAA /* SourceLocation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SourceLocation.swift; path = Sources/Nimble/Utils/SourceLocation.swift; sourceTree = "<group>"; };
 		4231BEC64009F76132088ED25013353B /* NSTask+AnyPromise.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSTask+AnyPromise.h"; path = "Extensions/Foundation/Sources/NSTask+AnyPromise.h"; sourceTree = "<group>"; };
 		429C62D0EBF52B89A0E02F5F88E26B14 /* Functional.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Functional.swift; path = Sources/Nimble/Utils/Functional.swift; sourceTree = "<group>"; };
 		4481B0ECAE44F6EE7DABC84FC70970B7 /* QuickSpecBase.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QuickSpecBase.m; path = Sources/QuickObjCRuntime/QuickSpecBase.m; sourceTree = "<group>"; };
-		4BA79581136A6F5AD3F5289A3342AA41 /* JsonHelper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JsonHelper.swift; sourceTree = "<group>"; };
+		465FF675BB1D261C440CEA76B461B700 /* TonNfcClientSwift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TonNfcClientSwift-prefix.pch"; sourceTree = "<group>"; };
+		46C7C10D889A583DBFC41411F84616D3 /* Data.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		4C30999B46578FC4ED4B5A9A1F4026B7 /* Behavior.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Behavior.swift; path = Sources/Quick/Behavior.swift; sourceTree = "<group>"; };
-		4E700D13A677E2C191B0FFDD76696C6B /* CardKeyChainNfcApi.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CardKeyChainNfcApi.swift; sourceTree = "<group>"; };
 		4F9FF41DDA06484723719DD3F1DE2B92 /* Nimble-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Nimble-Info.plist"; sourceTree = "<group>"; };
 		515FF6602F322A6A55C89B06A7DF2721 /* QuickTestObservation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuickTestObservation.swift; path = Sources/Quick/QuickTestObservation.swift; sourceTree = "<group>"; };
+		5197502A4D6F9D024E2F2A5D2ECB40A3 /* CoinManagerApduCommands.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CoinManagerApduCommands.swift; sourceTree = "<group>"; };
 		51B83BC9F69329B4B8D1FEA31C5DD246 /* Nimble.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Nimble.modulemap; sourceTree = "<group>"; };
 		536FF152146EB87AD178E2799424CBE1 /* UIView+AnyPromise.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIView+AnyPromise.m"; path = "Extensions/UIKit/Sources/UIView+AnyPromise.m"; sourceTree = "<group>"; };
 		5372BBB1CFC174AFFA0E0B1704DE98CF /* AnyPromise.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnyPromise.swift; path = Sources/AnyPromise.swift; sourceTree = "<group>"; };
 		537ECB8A3EACEC8BFA87159A3B64B414 /* Contain.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Contain.swift; path = Sources/Nimble/Matchers/Contain.swift; sourceTree = "<group>"; };
+		543541D2D4D4A14A05F36C45426EBEFF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		5475A27D81EA24AA7A85BECE63646BD8 /* Pods-TonNfcClientSwift_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TonNfcClientSwift_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		54AFC921488B017CE2AC6ED9CC3CE33D /* afterlife.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = afterlife.swift; path = Extensions/Foundation/Sources/afterlife.swift; sourceTree = "<group>"; };
 		56E713588752B1400EC3A0FA48FC684E /* UIView+Promise.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIView+Promise.swift"; path = "Extensions/UIKit/Sources/UIView+Promise.swift"; sourceTree = "<group>"; };
+		585B22B49FCFFBB58845A9CAB3D25639 /* ResponsesConstants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ResponsesConstants.swift; sourceTree = "<group>"; };
 		597EA7ED5FCA94A9A37016CC96F0A170 /* Stringers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Stringers.swift; path = Sources/Nimble/Utils/Stringers.swift; sourceTree = "<group>"; };
 		5A8AA549B2B2B9C7E107DBC50071C738 /* Quick-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Quick-prefix.pch"; sourceTree = "<group>"; };
 		5B15D8A473B2972ED6A13A87B47BE104 /* Pods-TonNfcClientSwift_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-TonNfcClientSwift_Tests-dummy.m"; sourceTree = "<group>"; };
+		5BA0A998790630DD014D4C09DA371ADA /* ByteArrayAndHexHelper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ByteArrayAndHexHelper.swift; sourceTree = "<group>"; };
 		5C0CCCDEA56DD967ACB8810F38E908AD /* SuiteHooks.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SuiteHooks.swift; path = Sources/Quick/Hooks/SuiteHooks.swift; sourceTree = "<group>"; };
 		5FC1DE7B9500A814E84899A12DA6F8D6 /* SatisfyAllOf.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SatisfyAllOf.swift; path = Sources/Nimble/Matchers/SatisfyAllOf.swift; sourceTree = "<group>"; };
 		5FF56C4D47B6B135C89C5AF99876D619 /* PromiseKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = PromiseKit.modulemap; sourceTree = "<group>"; };
 		605A7548CA1D604F36FF17F55EDE9582 /* Pods-TonNfcClientSwift_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TonNfcClientSwift_Example.release.xcconfig"; sourceTree = "<group>"; };
 		615A0457912CC8187597EF725C899F45 /* BeGreaterThan.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeGreaterThan.swift; path = Sources/Nimble/Matchers/BeGreaterThan.swift; sourceTree = "<group>"; };
 		61A3B009260CE248BD220EA4F312BEEF /* HooksPhase.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HooksPhase.swift; path = Sources/Quick/Hooks/HooksPhase.swift; sourceTree = "<group>"; };
-		683E2B8EB3767BB4DA8866A6FD223C5A /* TonNfcClientSwift.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = TonNfcClientSwift.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		64BAD19F52DB0FBA0441CA31A7066C16 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		68A50F35663BFD029B99C3F0C442443A /* Nimble.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Nimble.release.xcconfig; sourceTree = "<group>"; };
 		69A498CECA0BDF82EACC062CF124FFAE /* Quick-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Quick-umbrella.h"; sourceTree = "<group>"; };
+		69A513474BA4F9BDA4E47154334C3C31 /* CardKeyChainNfcApi.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CardKeyChainNfcApi.swift; sourceTree = "<group>"; };
+		6BD0AED804C5C2F128DE972179F007B1 /* Screenshot1.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = Screenshot1.png; path = docs/images/Screenshot1.png; sourceTree = "<group>"; };
 		6E68A51AFE6FACDE7E60B0621876CE72 /* Quick.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Quick.release.xcconfig; sourceTree = "<group>"; };
 		6F2394D51F0077A8E50878D69B149858 /* NSURLSession+Promise.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSURLSession+Promise.swift"; path = "Extensions/Foundation/Sources/NSURLSession+Promise.swift"; sourceTree = "<group>"; };
+		6F3DEE8767B59655CD8919720D9AB0B5 /* ErrorHelper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ErrorHelper.swift; sourceTree = "<group>"; };
 		7083A8C120110AB5EFAC35BF9C8B0669 /* QuickSpec.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QuickSpec.m; path = Sources/QuickObjectiveC/QuickSpec.m; sourceTree = "<group>"; };
 		709E860D5B3340F6082BDD0D72E67F64 /* EndWith.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EndWith.swift; path = Sources/Nimble/Matchers/EndWith.swift; sourceTree = "<group>"; };
 		731CA68980A7DC025B17AE3F6E042814 /* PromiseKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PromiseKit.release.xcconfig; sourceTree = "<group>"; };
-		7333981B4EA2B1A5C5E60C93621E3DD2 /* DataVerifier.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DataVerifier.swift; sourceTree = "<group>"; };
 		7395B6446F29D357800F993B8F253690 /* QCKDSL.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QCKDSL.h; path = Sources/QuickObjectiveC/DSL/QCKDSL.h; sourceTree = "<group>"; };
 		75F9011CB36CB1DF2BE5770B627DA2EF /* CwlCatchBadInstruction.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CwlCatchBadInstruction.swift; path = Carthage/Checkouts/CwlPreconditionTesting/Sources/CwlPreconditionTesting/CwlCatchBadInstruction.swift; sourceTree = "<group>"; };
 		779669660CE9A2038CC85A9BBF32743F /* BeAnInstanceOf.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeAnInstanceOf.swift; path = Sources/Nimble/Matchers/BeAnInstanceOf.swift; sourceTree = "<group>"; };
 		78F9C9D2306A6F8B3AB772F6FAB736CD /* Pods-TonNfcClientSwift_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-TonNfcClientSwift_Tests-Info.plist"; sourceTree = "<group>"; };
 		7982040B8A30DBD6302D0889258F8C7F /* NSTask+AnyPromise.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSTask+AnyPromise.m"; path = "Extensions/Foundation/Sources/NSTask+AnyPromise.m"; sourceTree = "<group>"; };
 		7A015E16D8C221E969EBC1EAB1761738 /* Nimble.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Nimble.h; path = Sources/Nimble/Nimble.h; sourceTree = "<group>"; };
+		7C82FFF226273D720A8BB0C00E99FB46 /* TonNfcClientSwift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TonNfcClientSwift-umbrella.h"; sourceTree = "<group>"; };
 		7D7C08C42413BE2C15B0E95C39019D96 /* NimbleEnvironment.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NimbleEnvironment.swift; path = Sources/Nimble/Adapters/NimbleEnvironment.swift; sourceTree = "<group>"; };
 		8107C4ECA0C6F950D9B160E365BFA00E /* MatchError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MatchError.swift; path = Sources/Nimble/Matchers/MatchError.swift; sourceTree = "<group>"; };
 		8126C612A31327CD7FC4B2703D3D0384 /* QuickSpec.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QuickSpec.h; path = Sources/QuickObjectiveC/QuickSpec.h; sourceTree = "<group>"; };
@@ -363,48 +366,47 @@
 		8238383463C823A2FD4B6BA59332312A /* CwlMachBadInstructionHandler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CwlMachBadInstructionHandler.m; path = Carthage/Checkouts/CwlPreconditionTesting/Sources/CwlMachBadInstructionHandler/CwlMachBadInstructionHandler.m; sourceTree = "<group>"; };
 		836C28344B7A90E44D8EB106BF7653BA /* Expectation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Expectation.swift; path = Sources/Nimble/Expectation.swift; sourceTree = "<group>"; };
 		83F1DEBDC03D7CF66A1151314E405705 /* NSURLSession+AnyPromise.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSURLSession+AnyPromise.m"; path = "Extensions/Foundation/Sources/NSURLSession+AnyPromise.m"; sourceTree = "<group>"; };
-		8781C486F317E74078300105AB97C8A8 /* TonNfcClientSwift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TonNfcClientSwift-umbrella.h"; sourceTree = "<group>"; };
-		8797201B8DA894204AB59A55C636D4AF /* ToastHelper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ToastHelper.swift; sourceTree = "<group>"; };
 		8798C3E090994C0B193745C862FF4464 /* Promise.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Promise.swift; path = Sources/Promise.swift; sourceTree = "<group>"; };
 		87A044E014BA3536C876D56924F61478 /* when.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = when.m; path = Sources/when.m; sourceTree = "<group>"; };
-		88CF4097964E9AFBD76ED39B08A428C1 /* TonNfcClientSwift-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "TonNfcClientSwift-Info.plist"; sourceTree = "<group>"; };
 		8A5A249C14F4C3F31F5E0F2EC42D6DB6 /* MatcherFunc.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MatcherFunc.swift; path = Sources/Nimble/Matchers/MatcherFunc.swift; sourceTree = "<group>"; };
+		8AA6C0AEA93D9F538EF80F66B0D0E9C7 /* TonNfcClientSwift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = TonNfcClientSwift.modulemap; sourceTree = "<group>"; };
 		8AB9C72CE837F88620083AAE01B5DF87 /* DSL.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DSL.m; path = Sources/NimbleObjectiveC/DSL.m; sourceTree = "<group>"; };
-		8BD052536FB036F56C80D9AE6779C9A9 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		8D141F326E177255B8D0EF772C9E714D /* CardActivationNfcApi.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CardActivationNfcApi.swift; sourceTree = "<group>"; };
 		8DE0F48EA9312C93D9F6C14C428B36BD /* NMBStringify.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NMBStringify.m; path = Sources/NimbleObjectiveC/NMBStringify.m; sourceTree = "<group>"; };
 		8E9ECBB4A0B39BFA319BEC4AB0F43BD5 /* World.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = World.swift; path = Sources/Quick/World.swift; sourceTree = "<group>"; };
-		91FDAA92E4A9BFDF5422978E491ABF97 /* Data.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
-		94CE7755919E2619D26B6855E87281D6 /* RecoveryDataApi.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RecoveryDataApi.swift; sourceTree = "<group>"; };
+		904DC6027A229C733BE9F5DD7D32DDAF /* TonNfcClientSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = TonNfcClientSwift.debug.xcconfig; sourceTree = "<group>"; };
+		9417D8B3CC667D7ACAE9632856E8F55D /* ApduRunner.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ApduRunner.swift; sourceTree = "<group>"; };
 		9529F2B1EBD2DC8315F613F27657D9A7 /* after.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = after.m; path = Sources/after.m; sourceTree = "<group>"; };
 		954B99EC63CC9B5853307DA699C00EC3 /* Nimble.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Nimble.debug.xcconfig; sourceTree = "<group>"; };
 		95C3A7972D535D7EC6405C931E5BCE64 /* DSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DSL.swift; path = Sources/Quick/DSL/DSL.swift; sourceTree = "<group>"; };
-		98EE932066AEE886F477085529D73A5A /* ApduRunner.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ApduRunner.swift; sourceTree = "<group>"; };
 		992DED9EDEDD2B853B918A0B15677E9B /* NSObject+Promise.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSObject+Promise.swift"; path = "Extensions/Foundation/Sources/NSObject+Promise.swift"; sourceTree = "<group>"; };
 		9BED2A75C3FEE740CC71F8ADA160D4E5 /* hang.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = hang.swift; path = Sources/hang.swift; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9EA3A63BAC40806888542D8E02809EF1 /* Array.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		A0557F007D949618DE1C4ED937DDF98A /* HaveCount.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HaveCount.swift; path = Sources/Nimble/Matchers/HaveCount.swift; sourceTree = "<group>"; };
 		A1051BD5CDF94D2F336A23AC1316D9F2 /* Pods-TonNfcClientSwift_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-TonNfcClientSwift_Tests.modulemap"; sourceTree = "<group>"; };
 		A1734CE9B1FFD691BAFFBA1F15B58206 /* BeLogical.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeLogical.swift; path = Sources/Nimble/Matchers/BeLogical.swift; sourceTree = "<group>"; };
 		A1D600D159B6895847C531EBDB159BB7 /* Thenable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Thenable.swift; path = Sources/Thenable.swift; sourceTree = "<group>"; };
 		A2EB832E281A7548BE0890BD03DB63CB /* PromiseKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PromiseKit.h; path = Sources/PromiseKit.h; sourceTree = "<group>"; };
+		A3688E44C064E88B14B672B3FE7BD5EA /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
 		A3D5BB7C0EB412C603FFB56ED5312CF2 /* DSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DSL.swift; path = Sources/Nimble/DSL.swift; sourceTree = "<group>"; };
 		A4D0786A50A4F1AFEB58E1E71C22C5CF /* RaisesException.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RaisesException.swift; path = Sources/Nimble/Matchers/RaisesException.swift; sourceTree = "<group>"; };
 		A4DA0133FA078E1FBCFAB9C0146BC009 /* Quick.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Quick.h; path = Sources/QuickObjectiveC/Quick.h; sourceTree = "<group>"; };
 		A4E34D7C44B53CC70999B3AF67042B19 /* PromiseKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PromiseKit-umbrella.h"; sourceTree = "<group>"; };
 		A4EDCE2F36ED7AA8ABBA8B434876EB19 /* CwlBadInstructionException.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CwlBadInstructionException.swift; path = Carthage/Checkouts/CwlPreconditionTesting/Sources/CwlPreconditionTesting/CwlBadInstructionException.swift; sourceTree = "<group>"; };
-		A5276F608FB84E3B81C7DDACDEF676F9 /* ErrorHelper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ErrorHelper.swift; sourceTree = "<group>"; };
+		A5CA96C4912185800054F52A7B85AB2D /* TonNfcClientSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = TonNfcClientSwift.release.xcconfig; sourceTree = "<group>"; };
 		A5D0F48B9B6A10C8567815BAAA8F0ABF /* Pods-TonNfcClientSwift_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-TonNfcClientSwift_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		A6E4839258179C417074B8266CC48A3A /* FailureMessage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FailureMessage.swift; path = Sources/Nimble/FailureMessage.swift; sourceTree = "<group>"; };
 		A787927D04742F14425A13440A3860E8 /* Quick-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Quick-dummy.m"; sourceTree = "<group>"; };
 		A7A89EF765030C0165D0B0AADD342597 /* NMBExceptionCapture.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NMBExceptionCapture.m; path = Sources/NimbleObjectiveC/NMBExceptionCapture.m; sourceTree = "<group>"; };
+		A8E52C582F7120F9171BDC1916023475 /* ToastHelper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ToastHelper.swift; sourceTree = "<group>"; };
 		A93FC948F164C1B15DBC0F1BE515D628 /* BeEmpty.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeEmpty.swift; path = Sources/Nimble/Matchers/BeEmpty.swift; sourceTree = "<group>"; };
+		AAD4790CB736CA7EAE95ECE62F10234C /* Constants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		AAEE06B6F8FEC643D974D210585A7417 /* Screenshot2.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = Screenshot2.png; path = docs/images/Screenshot2.png; sourceTree = "<group>"; };
 		ACD5382212F94EFFB9DC5AB213D143DB /* mach_excServer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = mach_excServer.h; path = Carthage/Checkouts/CwlPreconditionTesting/Sources/CwlMachBadInstructionHandler/mach_excServer.h; sourceTree = "<group>"; };
 		AD4529804F249D002E0ADDEE0DBB0DD3 /* ThrowError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThrowError.swift; path = Sources/Nimble/Matchers/ThrowError.swift; sourceTree = "<group>"; };
 		AD517C9B51003F322D93F0B1C5051E85 /* QuickSpecBase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QuickSpecBase.h; path = Sources/QuickObjCRuntime/include/QuickSpecBase.h; sourceTree = "<group>"; };
 		ADB9AA0304CD090416C5C69A13A7A364 /* QuickConfiguration.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QuickConfiguration.m; path = Sources/QuickObjectiveC/Configuration/QuickConfiguration.m; sourceTree = "<group>"; };
 		AFDF5294A05F3EC22ACCB1D8DFA429C9 /* firstly.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = firstly.swift; path = Sources/firstly.swift; sourceTree = "<group>"; };
-		B118158A368C7ED811E2469F3957E4DD /* ResponsesConstants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ResponsesConstants.swift; sourceTree = "<group>"; };
 		B162EB467A7F9E3CA4FA3A710F08D74A /* Pods-TonNfcClientSwift_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-TonNfcClientSwift_Example.modulemap"; sourceTree = "<group>"; };
 		B1CE403DCECBC99878AB31B331B9C272 /* TonNfcClientSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = TonNfcClientSwift.framework; path = TonNfcClientSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3BD3A2C07D67CE5AE1DCFDBEC654AA3 /* Filter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Filter.swift; path = Sources/Quick/Filter.swift; sourceTree = "<group>"; };
@@ -413,14 +415,14 @@
 		B71D2B21C9EA94BECAA5830D4650B10C /* BeLessThan.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeLessThan.swift; path = Sources/Nimble/Matchers/BeLessThan.swift; sourceTree = "<group>"; };
 		B79350218D0B1CB5412F484833FA90F3 /* CwlCatchException.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CwlCatchException.m; path = Carthage/Checkouts/CwlPreconditionTesting/Dependencies/CwlCatchException/Sources/CwlCatchExceptionSupport/CwlCatchException.m; sourceTree = "<group>"; };
 		B7B90CDF43FBAE9CB84E6EF9124F03EC /* CwlCatchException.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CwlCatchException.swift; path = Carthage/Checkouts/CwlPreconditionTesting/Dependencies/CwlCatchException/Sources/CwlCatchException/CwlCatchException.swift; sourceTree = "<group>"; };
+		B81F5638F9C63AF663E6F67FBA9AF65D /* TonNfcApi.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TonNfcApi.swift; sourceTree = "<group>"; };
 		B85C3A18A7C9ECAA8F17F4B7777A8804 /* Pods-TonNfcClientSwift_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-TonNfcClientSwift_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		B8DC668035B1C10E31D123A9B47AECB7 /* Expression.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Expression.swift; path = Sources/Nimble/Expression.swift; sourceTree = "<group>"; };
 		B94AA2A7870D2C61193004B6F4571C19 /* Nimble-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Nimble-prefix.pch"; sourceTree = "<group>"; };
 		B9BD10B977EC4AD9F6632D8291510E1A /* AnyPromise.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AnyPromise.m; path = Sources/AnyPromise.m; sourceTree = "<group>"; };
-		BA58F0C24EE16199B210E8D86FCF0C7E /* String.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		BA60F432063DCFB9FE479F65820F8DEE /* QuickConfiguration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuickConfiguration.swift; path = Sources/Quick/Configuration/QuickConfiguration.swift; sourceTree = "<group>"; };
 		BAE263041362D074978BB3B577DF0A05 /* Nimble.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Nimble.framework; path = Nimble.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BC0715EF760A069F9E52223F9EC0AD01 /* TonNfcClientSwift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TonNfcClientSwift-prefix.pch"; sourceTree = "<group>"; };
+		BC1EB71C6B7D976D4E457A5044C45555 /* String.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		BC626336A07D33EEBB726D823E4BD1D2 /* String+C99ExtendedIdentifier.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "String+C99ExtendedIdentifier.swift"; path = "Sources/Quick/String+C99ExtendedIdentifier.swift"; sourceTree = "<group>"; };
 		BD2E2B2EBE98DE5548FAD1900DF8A183 /* after.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = after.swift; path = Sources/after.swift; sourceTree = "<group>"; };
 		BE8849DAF17519C89B833FD6C238A3EC /* Pods-TonNfcClientSwift_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TonNfcClientSwift_Tests-frameworks.sh"; sourceTree = "<group>"; };
@@ -432,45 +434,47 @@
 		C39308F82295FB5A6075E73E409CE28A /* Quick-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Quick-Info.plist"; sourceTree = "<group>"; };
 		C42F3F2E4ACC87608C6DAF0731191375 /* Process+Promise.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Process+Promise.swift"; path = "Extensions/Foundation/Sources/Process+Promise.swift"; sourceTree = "<group>"; };
 		C4EDCA887241DE84E6370A2E1F35BF14 /* UIViewController+AnyPromise.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIViewController+AnyPromise.h"; path = "Extensions/UIKit/Sources/UIViewController+AnyPromise.h"; sourceTree = "<group>"; };
+		C5ED0B1839127F22D106353F26D03D9F /* CardCryptoNfcApi.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CardCryptoNfcApi.swift; sourceTree = "<group>"; };
+		C6659898001988F907E6458511B17541 /* JsonHelper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JsonHelper.swift; sourceTree = "<group>"; };
 		C6E1C70785C40EA9A429CD5AEA0AB320 /* mach_excServer.c */ = {isa = PBXFileReference; includeInIndex = 1; name = mach_excServer.c; path = Carthage/Checkouts/CwlPreconditionTesting/Sources/CwlMachBadInstructionHandler/mach_excServer.c; sourceTree = "<group>"; };
+		C83A71B36B03827723A2663EF4211B67 /* NfcCallback.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NfcCallback.swift; sourceTree = "<group>"; };
 		C91F37032A717216E38D7558D1BA3C6A /* Box.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Box.swift; path = Sources/Box.swift; sourceTree = "<group>"; };
 		CB5C7665F6D32984794FE44A4B342B6D /* BeNil.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeNil.swift; path = Sources/Nimble/Matchers/BeNil.swift; sourceTree = "<group>"; };
 		CBD0582CBDC964A8EE2101094730664B /* ThrowAssertion.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThrowAssertion.swift; path = Sources/Nimble/Matchers/ThrowAssertion.swift; sourceTree = "<group>"; };
 		CD1DA813D16E0C1F726578C14C72C71C /* QCKDSL.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QCKDSL.m; path = Sources/QuickObjectiveC/DSL/QCKDSL.m; sourceTree = "<group>"; };
 		CD397C96963417F9F893D0ECBE4C7BBB /* Catchable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Catchable.swift; path = Sources/Catchable.swift; sourceTree = "<group>"; };
 		CDA400D95959B9BC618EF472935BD29D /* BeIdenticalTo.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeIdenticalTo.swift; path = Sources/Nimble/Matchers/BeIdenticalTo.swift; sourceTree = "<group>"; };
+		CEC98063C7EAA39571795D8617B1DA37 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		CFA2A1AA00B17E8A44C1173B34E436E3 /* ErrorList.md */ = {isa = PBXFileReference; includeInIndex = 1; name = ErrorList.md; path = docs/ErrorList.md; sourceTree = "<group>"; };
 		CFC40C645BBC677513A6BA4239845994 /* when.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = when.swift; path = Sources/when.swift; sourceTree = "<group>"; };
-		D16CBA710E19F0F42095CD24D1BBC22D /* CardErrorCodes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CardErrorCodes.swift; sourceTree = "<group>"; };
 		D5BCE1B41F344EA263E846083130E2A6 /* BeGreaterThanOrEqualTo.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeGreaterThanOrEqualTo.swift; path = Sources/Nimble/Matchers/BeGreaterThanOrEqualTo.swift; sourceTree = "<group>"; };
 		D639308509E9F2D7A61AB5A8DAD71628 /* PromiseKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "PromiseKit-dummy.m"; sourceTree = "<group>"; };
+		D6BC0693AACEF2B8048EDD95661D6624 /* RecoveryDataApi.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RecoveryDataApi.swift; sourceTree = "<group>"; };
 		D7BFFE648DC806BA8C0D77A076EABE82 /* LogEvent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LogEvent.swift; path = Sources/LogEvent.swift; sourceTree = "<group>"; };
 		D90472D36A289F7AF8260D54A31134A5 /* NSNotificationCenter+Promise.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSNotificationCenter+Promise.swift"; path = "Extensions/Foundation/Sources/NSNotificationCenter+Promise.swift"; sourceTree = "<group>"; };
-		DC667529B23C82C49E126DAAD489861F /* NfcCallback.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NfcCallback.swift; sourceTree = "<group>"; };
 		DCB87A7AE3BBC36524CB7B559356751D /* BeAKindOf.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeAKindOf.swift; path = Sources/Nimble/Matchers/BeAKindOf.swift; sourceTree = "<group>"; };
 		DCE4F40F9CC8E228211DAAD9981237E1 /* Pods-TonNfcClientSwift_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-TonNfcClientSwift_Example-dummy.m"; sourceTree = "<group>"; };
-		DD80DE36A1D123F1977EA547EB4FB31B /* CryptoHelper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CryptoHelper.swift; sourceTree = "<group>"; };
 		DE1427E188A0B84046EB84B32CC27F69 /* PromiseKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PromiseKit-prefix.pch"; sourceTree = "<group>"; };
 		DEB4BCF5145E88FA28E2E6FEA037229F /* Pods-TonNfcClientSwift_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-TonNfcClientSwift_Example-umbrella.h"; sourceTree = "<group>"; };
 		E063C3012300A071309A86FD2EEA12EF /* NSNotificationCenter+AnyPromise.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSNotificationCenter+AnyPromise.m"; path = "Extensions/Foundation/Sources/NSNotificationCenter+AnyPromise.m"; sourceTree = "<group>"; };
 		E0AA4151BEDB69DDDE6F913258FBF46F /* Example.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Example.swift; path = Sources/Quick/Example.swift; sourceTree = "<group>"; };
-		E142599D5449EABDA4E1390D17E01220 /* TonWalletAppletApduCommands.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TonWalletAppletApduCommands.swift; sourceTree = "<group>"; };
 		E232888862B31265EA8C7A890B0AE9F1 /* Pods_TonNfcClientSwift_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_TonNfcClientSwift_Example.framework; path = "Pods-TonNfcClientSwift_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E245C5702DC29BA3AB72F00974B4E3B6 /* PromiseKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "PromiseKit-Info.plist"; sourceTree = "<group>"; };
 		E26D760965878EE4D0210FE9F5CA5979 /* BeLessThanOrEqual.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeLessThanOrEqual.swift; path = Sources/Nimble/Matchers/BeLessThanOrEqual.swift; sourceTree = "<group>"; };
-		E2F15037D60B9D54B7B0379C28EE8311 /* TonNfcClientSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = TonNfcClientSwift.release.xcconfig; sourceTree = "<group>"; };
 		E4A8AC35D2A6E2060CAE093EA278F0D4 /* Pods-TonNfcClientSwift_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-TonNfcClientSwift_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		E525A6344F5A6B3BB845C6AD623449FC /* Match.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Match.swift; path = Sources/Nimble/Matchers/Match.swift; sourceTree = "<group>"; };
+		E57D651277D5303079D205F3982AA1B8 /* CryptoHelper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CryptoHelper.swift; sourceTree = "<group>"; };
 		E5C799C84C8182BAB4545A5729739598 /* NimbleXCTestHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NimbleXCTestHandler.swift; path = Sources/Nimble/Adapters/NimbleXCTestHandler.swift; sourceTree = "<group>"; };
 		E5CE4C91021C1B94AD218BB6E449A084 /* PMKUIKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PMKUIKit.h; path = Extensions/UIKit/Sources/PMKUIKit.h; sourceTree = "<group>"; };
-		E666D38CA71AC7993571580C4D92A397 /* TonNfcClientSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = TonNfcClientSwift.debug.xcconfig; sourceTree = "<group>"; };
 		E73E623B7E9935C18D19F3353A3B38A4 /* Quick.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Quick.modulemap; sourceTree = "<group>"; };
-		E884EB54FDC68B2C74CDA4BA4C96DEF8 /* TonNfcApi.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TonNfcApi.swift; sourceTree = "<group>"; };
 		E8F0AB297258CDE83162009803ACEBC6 /* Configuration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Configuration.swift; path = Sources/Quick/Configuration/Configuration.swift; sourceTree = "<group>"; };
 		EB74DACA88D2DEDB9650ECD9FF267247 /* NSURLSession+AnyPromise.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSURLSession+AnyPromise.h"; path = "Extensions/Foundation/Sources/NSURLSession+AnyPromise.h"; sourceTree = "<group>"; };
 		EC325C1996F6FDBA1294D3EE5456A5AF /* ToSucceed.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ToSucceed.swift; path = Sources/Nimble/Matchers/ToSucceed.swift; sourceTree = "<group>"; };
 		EC77264977163ED13572BFF7404D3AD5 /* World+DSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "World+DSL.swift"; path = "Sources/Quick/DSL/World+DSL.swift"; sourceTree = "<group>"; };
+		ED1FCB374C0D627467D5369564C62346 /* CardErrorCodes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CardErrorCodes.swift; sourceTree = "<group>"; };
 		EDC22016FA4967E6C0D17B8EA4336BE1 /* AdapterProtocols.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AdapterProtocols.swift; path = Sources/Nimble/Adapters/AdapterProtocols.swift; sourceTree = "<group>"; };
 		EE5990D40AB76870AA3B363D67193EC1 /* ExpectationMessage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpectationMessage.swift; path = Sources/Nimble/ExpectationMessage.swift; sourceTree = "<group>"; };
+		F0E94BC73707E643DE01767F30B09BC4 /* CardCoinManagerNfcApi.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CardCoinManagerNfcApi.swift; sourceTree = "<group>"; };
 		F28FF9351628B2526BB229E51EF50792 /* Quick.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Quick.debug.xcconfig; sourceTree = "<group>"; };
 		F3272C6BE200E8EE36A370EABA1F8DF5 /* race.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = race.swift; path = Sources/race.swift; sourceTree = "<group>"; };
 		F6037CAE8430BC9D84FE56EA509C652A /* Pods-TonNfcClientSwift_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TonNfcClientSwift_Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -487,8 +491,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				163C2D9C86D8AA40817453CC2F41F5BE /* Foundation.framework in Frameworks */,
-				02DD7FC6A855D0675EA8B3BE66C99BBB /* XCTest.framework in Frameworks */,
+				9D7B1AFB65DC11E69C3EB1CB41DC1EBA /* Foundation.framework in Frameworks */,
+				65AFB883DC33E616E6102F5AEAE9D706 /* XCTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3952B29C6FA818004821C4071EB3753F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				82ADB099E9D86A1ABA5C77227A6A1739 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,24 +508,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4A613C22671DE0E90BC4F1B70CB3B479 /* Foundation.framework in Frameworks */,
-				56D8783CBF33646ECBF610FCC8EFC43E /* UIKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4980CED552680C5BB26587A6C5630C91 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				FD3A849D8380EC24F4065B6E80BB6557 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4F18AE09E8D857F679D2CE4E668A6359 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A2038ED2104E992C1556BF66B7A673BD /* Foundation.framework in Frameworks */,
+				45B48F57B1039D463A2CB04349F22C5A /* Foundation.framework in Frameworks */,
+				00542E749518733F88FD9339F521159E /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -521,36 +517,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EFB9CC9267297D8104141A4046AAD14E /* Foundation.framework in Frameworks */,
+				02EDE6F260E8E95CAC741342606CBE65 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BB8CF15B452A0612CAAE0F62F4B5D97F /* Frameworks */ = {
+		6FB92C53F511CF136490DFEFE0CCDDD1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4757C3A7EE7CC0CB712D76E628344737 /* Foundation.framework in Frameworks */,
-				C27ECDF97D953A75C2B2DA691818800E /* PromiseKit.framework in Frameworks */,
+				7FA5B72A48639FCF0A4F4BBFBF392A04 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		74D38FED3DD965E0DB9049D5E9B79315 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8DDF82ED421CFF1CC25A3F1770385F2C /* Foundation.framework in Frameworks */,
+				695A619EED2D4CCB3E6C18532270B262 /* PromiseKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0674F20B466FDB001566679256B7B27C /* utils */ = {
-			isa = PBXGroup;
-			children = (
-				3393CF5164E9DC1188C2E495CFB143CD /* ByteArrayAndHexHelper.swift */,
-				7333981B4EA2B1A5C5E60C93621E3DD2 /* DataVerifier.swift */,
-				A5276F608FB84E3B81C7DDACDEF676F9 /* ErrorHelper.swift */,
-				4BA79581136A6F5AD3F5289A3342AA41 /* JsonHelper.swift */,
-				09E123FC65C35D7EF880CB4B88416092 /* KeychainQueryHelper.swift */,
-				B118158A368C7ED811E2469F3957E4DD /* ResponsesConstants.swift */,
-			);
-			name = utils;
-			path = utils;
-			sourceTree = "<group>";
-		};
 		1204252A590DF573CFB75384F096E95B /* Pods-TonNfcClientSwift_Example */ = {
 			isa = PBXGroup;
 			children = (
@@ -568,13 +558,30 @@
 			path = "Target Support Files/Pods-TonNfcClientSwift_Example";
 			sourceTree = "<group>";
 		};
-		2AF05C76A792C5D2975B485A9EBDFD81 /* cryptoUtils */ = {
+		19568D8DEA93ACC03E2A7AE6ECBD6164 /* api */ = {
 			isa = PBXGroup;
 			children = (
-				DD80DE36A1D123F1977EA547EB4FB31B /* CryptoHelper.swift */,
+				8D141F326E177255B8D0EF772C9E714D /* CardActivationNfcApi.swift */,
+				F0E94BC73707E643DE01767F30B09BC4 /* CardCoinManagerNfcApi.swift */,
+				C5ED0B1839127F22D106353F26D03D9F /* CardCryptoNfcApi.swift */,
+				69A513474BA4F9BDA4E47154334C3C31 /* CardKeyChainNfcApi.swift */,
+				D6BC0693AACEF2B8048EDD95661D6624 /* RecoveryDataApi.swift */,
+				B81F5638F9C63AF663E6F67FBA9AF65D /* TonNfcApi.swift */,
+				7BB8CFCEB739281FF5E54DCE9F6A4708 /* callback */,
+				BE401AC38A334B6F0833632E2FD60C85 /* nfc */,
+				61255851238E7F0521B86B4B82941908 /* utils */,
 			);
-			name = cryptoUtils;
-			path = cryptoUtils;
+			name = api;
+			path = TonNfcClientSwift/Classes/api;
+			sourceTree = "<group>";
+		};
+		1D4F7245F915F230634DB86B9E432258 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				A8E52C582F7120F9171BDC1916023475 /* ToastHelper.swift */,
+			);
+			name = utils;
+			path = TonNfcClientSwift/Classes/utils;
 			sourceTree = "<group>";
 		};
 		31D0CFFBB543EAF70192F0F318F21509 /* CorePromise */ = {
@@ -620,23 +627,18 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		56380A263EBA8A0B7442A264708CCB6A /* Pod */ = {
+		61255851238E7F0521B86B4B82941908 /* utils */ = {
 			isa = PBXGroup;
 			children = (
-				8BD052536FB036F56C80D9AE6779C9A9 /* LICENSE */,
-				0D687D7D62155A3F4611E4270B5762DB /* README.md */,
-				683E2B8EB3767BB4DA8866A6FD223C5A /* TonNfcClientSwift.podspec */,
+				5BA0A998790630DD014D4C09DA371ADA /* ByteArrayAndHexHelper.swift */,
+				377D573B793E4E71CE46734E6827ECE6 /* DataVerifier.swift */,
+				6F3DEE8767B59655CD8919720D9AB0B5 /* ErrorHelper.swift */,
+				C6659898001988F907E6458511B17541 /* JsonHelper.swift */,
+				2E9324FFB6299AABB66E9FCAB1F47F62 /* KeychainQueryHelper.swift */,
+				585B22B49FCFFBB58845A9CAB3D25639 /* ResponsesConstants.swift */,
 			);
-			name = Pod;
-			sourceTree = "<group>";
-		};
-		6286B1ECCAB87A69CFD1E4089C7F1483 /* nfc */ = {
-			isa = PBXGroup;
-			children = (
-				98EE932066AEE886F477085529D73A5A /* ApduRunner.swift */,
-			);
-			name = nfc;
-			path = nfc;
+			name = utils;
+			path = utils;
 			sourceTree = "<group>";
 		};
 		6BD04856A35DACA384BFF62B9896A48F /* PromiseKit */ = {
@@ -649,6 +651,20 @@
 			);
 			name = PromiseKit;
 			path = PromiseKit;
+			sourceTree = "<group>";
+		};
+		6E4F7A882ACA108798DC22BDD3CDAB60 /* TonNfcClientSwift */ = {
+			isa = PBXGroup;
+			children = (
+				19568D8DEA93ACC03E2A7AE6ECBD6164 /* api */,
+				8FB6EE8BEAB8CB1FC3CB6C76F7924605 /* extensions */,
+				BF5A4B64AF22DA1F340DE4B3AEA3EA1D /* Pod */,
+				C07ED6C8C523504269269C8163ED155D /* smartCard */,
+				C966AF05F4C34A8CE3EE706AE2F1F5F3 /* Support Files */,
+				1D4F7245F915F230634DB86B9E432258 /* utils */,
+			);
+			name = TonNfcClientSwift;
+			path = ../..;
 			sourceTree = "<group>";
 		};
 		78F761604C2FC5D5BD70A83F6BDD8B00 /* UIKit */ = {
@@ -665,18 +681,24 @@
 			name = UIKit;
 			sourceTree = "<group>";
 		};
-		88D463BC3CBB963FA12306C174325953 /* smartCard */ = {
+		7BB8CFCEB739281FF5E54DCE9F6A4708 /* callback */ = {
 			isa = PBXGroup;
 			children = (
-				D16CBA710E19F0F42095CD24D1BBC22D /* CardErrorCodes.swift */,
-				393BD56E0B9B063E12ECE23747A13416 /* CoinManagerApduCommands.swift */,
-				1BD1B258DE661BE1A103808DD5A61EF8 /* Constants.swift */,
-				E142599D5449EABDA4E1390D17E01220 /* TonWalletAppletApduCommands.swift */,
-				1AC05960DAE10EA245A6A06468425C20 /* TonWalletAppletConstants.swift */,
-				2AF05C76A792C5D2975B485A9EBDFD81 /* cryptoUtils */,
+				C83A71B36B03827723A2663EF4211B67 /* NfcCallback.swift */,
 			);
-			name = smartCard;
-			path = TonNfcClientSwift/Classes/smartCard;
+			name = callback;
+			path = callback;
+			sourceTree = "<group>";
+		};
+		8FB6EE8BEAB8CB1FC3CB6C76F7924605 /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+				266C931A20DFB531287C0F0E309032BB /* Array.swift */,
+				46C7C10D889A583DBFC41411F84616D3 /* Data.swift */,
+				BC1EB71C6B7D976D4E457A5044C45555 /* String.swift */,
+			);
+			name = extensions;
+			path = TonNfcClientSwift/Classes/extensions;
 			sourceTree = "<group>";
 		};
 		9902B8FA2E0655919208FFEDBA6E302B /* Support Files */ = {
@@ -694,6 +716,15 @@
 			path = "../Target Support Files/Quick";
 			sourceTree = "<group>";
 		};
+		A2D1C0EEA0F09143E2AE9A5B89107C1E /* cryptoUtils */ = {
+			isa = PBXGroup;
+			children = (
+				E57D651277D5303079D205F3982AA1B8 /* CryptoHelper.swift */,
+			);
+			name = cryptoUtils;
+			path = cryptoUtils;
+			sourceTree = "<group>";
+		};
 		AC77716B24B589EFDC209EB47CE18FB3 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -707,37 +738,6 @@
 			);
 			name = "Support Files";
 			path = "../Target Support Files/PromiseKit";
-			sourceTree = "<group>";
-		};
-		ADC2B0E77F929C351D234DCD057798BE /* api */ = {
-			isa = PBXGroup;
-			children = (
-				03C0C2D603A779BF88377527944F02CA /* CardActivationNfcApi.swift */,
-				157E0C255E26B2B10A00080A5EFE1C79 /* CardCoinManagerNfcApi.swift */,
-				10AC6DCFA7028EF9A722E81FF03E4064 /* CardCryptoNfcApi.swift */,
-				4E700D13A677E2C191B0FFDD76696C6B /* CardKeyChainNfcApi.swift */,
-				94CE7755919E2619D26B6855E87281D6 /* RecoveryDataApi.swift */,
-				E884EB54FDC68B2C74CDA4BA4C96DEF8 /* TonNfcApi.swift */,
-				F6820F0B58EEE923363A60D90BD84CAD /* callback */,
-				6286B1ECCAB87A69CFD1E4089C7F1483 /* nfc */,
-				0674F20B466FDB001566679256B7B27C /* utils */,
-			);
-			name = api;
-			path = TonNfcClientSwift/Classes/api;
-			sourceTree = "<group>";
-		};
-		B100EBD6DE3ADA3ECFBC4B3049FE42C9 /* TonNfcClientSwift */ = {
-			isa = PBXGroup;
-			children = (
-				ADC2B0E77F929C351D234DCD057798BE /* api */,
-				E804DA76F012EA976B592BCC54DA2CF8 /* extensions */,
-				56380A263EBA8A0B7442A264708CCB6A /* Pod */,
-				88D463BC3CBB963FA12306C174325953 /* smartCard */,
-				D4A87EA35D727649D08A673A1209BD7C /* Support Files */,
-				E95CA6B6790DBBB24FF575A53D21C90C /* utils */,
-			);
-			name = TonNfcClientSwift;
-			path = ../..;
 			sourceTree = "<group>";
 		};
 		B16E8735B6B74BC60E0A78D7B28E4DED /* Pods-TonNfcClientSwift_Tests */ = {
@@ -757,14 +757,13 @@
 			path = "Target Support Files/Pods-TonNfcClientSwift_Tests";
 			sourceTree = "<group>";
 		};
-		B3F985F2EE53108B1D2059AE32CC6939 /* iOS */ = {
+		BE401AC38A334B6F0833632E2FD60C85 /* nfc */ = {
 			isa = PBXGroup;
 			children = (
-				350DF887D9046EC3C2135235399E9510 /* Foundation.framework */,
-				32DFB9A7F8FD78480ED86F82E711E32E /* UIKit.framework */,
-				14EEE017B114F04A65D00DC4EA620C84 /* XCTest.framework */,
+				9417D8B3CC667D7ACAE9632856E8F55D /* ApduRunner.swift */,
 			);
-			name = iOS;
+			name = nfc;
+			path = nfc;
 			sourceTree = "<group>";
 		};
 		BEC12F5A86AE8F08493C1961C3E39C54 /* Foundation */ = {
@@ -784,6 +783,20 @@
 				C42F3F2E4ACC87608C6DAF0731191375 /* Process+Promise.swift */,
 			);
 			name = Foundation;
+			sourceTree = "<group>";
+		};
+		BF5A4B64AF22DA1F340DE4B3AEA3EA1D /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				CFA2A1AA00B17E8A44C1173B34E436E3 /* ErrorList.md */,
+				1C83445D765D99BB4DD8C05A93F128DF /* FunctionsList.md */,
+				A3688E44C064E88B14B672B3FE7BD5EA /* LICENSE */,
+				005BA14093A6951DF3926EE286F190C7 /* README.md */,
+				6BD0AED804C5C2F128DE972179F007B1 /* Screenshot1.png */,
+				AAEE06B6F8FEC643D974D210585A7417 /* Screenshot2.png */,
+				04E7501E92E8F79F96CB7CC72B0FACCE /* TonNfcClientSwift.podspec */,
+			);
+			name = Pod;
 			sourceTree = "<group>";
 		};
 		C0170E6D0896929832DD9F3494861881 /* Nimble */ = {
@@ -865,6 +878,20 @@
 			path = Nimble;
 			sourceTree = "<group>";
 		};
+		C07ED6C8C523504269269C8163ED155D /* smartCard */ = {
+			isa = PBXGroup;
+			children = (
+				ED1FCB374C0D627467D5369564C62346 /* CardErrorCodes.swift */,
+				5197502A4D6F9D024E2F2A5D2ECB40A3 /* CoinManagerApduCommands.swift */,
+				AAD4790CB736CA7EAE95ECE62F10234C /* Constants.swift */,
+				25C143DA054073584ED009F7BE96AD32 /* TonWalletAppletApduCommands.swift */,
+				12CC5D119E7727379143CE99DD18BF2C /* TonWalletAppletConstants.swift */,
+				A2D1C0EEA0F09143E2AE9A5B89107C1E /* cryptoUtils */,
+			);
+			name = smartCard;
+			path = TonNfcClientSwift/Classes/smartCard;
+			sourceTree = "<group>";
+		};
 		C757CADC1EEF899DF737380930EAC9D4 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -878,6 +905,21 @@
 			);
 			name = "Support Files";
 			path = "../Target Support Files/Nimble";
+			sourceTree = "<group>";
+		};
+		C966AF05F4C34A8CE3EE706AE2F1F5F3 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				8AA6C0AEA93D9F538EF80F66B0D0E9C7 /* TonNfcClientSwift.modulemap */,
+				3CE72ED780D0EBBD0E69DFA6D4BC9465 /* TonNfcClientSwift-dummy.m */,
+				3845D381373F426B2490AF27AD32A53B /* TonNfcClientSwift-Info.plist */,
+				465FF675BB1D261C440CEA76B461B700 /* TonNfcClientSwift-prefix.pch */,
+				7C82FFF226273D720A8BB0C00E99FB46 /* TonNfcClientSwift-umbrella.h */,
+				904DC6027A229C733BE9F5DD7D32DDAF /* TonNfcClientSwift.debug.xcconfig */,
+				A5CA96C4912185800054F52A7B85AB2D /* TonNfcClientSwift.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/TonNfcClientSwift";
 			sourceTree = "<group>";
 		};
 		CD8CEB922C92347FD8D6C846D0D3684F /* Products */ = {
@@ -903,21 +945,6 @@
 				CD8CEB922C92347FD8D6C846D0D3684F /* Products */,
 				4CAC29094F63DCE4E705B70757E5408C /* Targets Support Files */,
 			);
-			sourceTree = "<group>";
-		};
-		D4A87EA35D727649D08A673A1209BD7C /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				0CDFD4CF2E03DEB21D6158BE585DAC69 /* TonNfcClientSwift.modulemap */,
-				0F3BB3526AA445731C63BCCD1A2699D5 /* TonNfcClientSwift-dummy.m */,
-				88CF4097964E9AFBD76ED39B08A428C1 /* TonNfcClientSwift-Info.plist */,
-				BC0715EF760A069F9E52223F9EC0AD01 /* TonNfcClientSwift-prefix.pch */,
-				8781C486F317E74078300105AB97C8A8 /* TonNfcClientSwift-umbrella.h */,
-				E666D38CA71AC7993571580C4D92A397 /* TonNfcClientSwift.debug.xcconfig */,
-				E2F15037D60B9D54B7B0379C28EE8311 /* TonNfcClientSwift.release.xcconfig */,
-			);
-			name = "Support Files";
-			path = "Example/Pods/Target Support Files/TonNfcClientSwift";
 			sourceTree = "<group>";
 		};
 		D57B1113B7EB4CA2E30066B2D06917C2 /* Pods */ = {
@@ -971,10 +998,20 @@
 			path = Quick;
 			sourceTree = "<group>";
 		};
+		DCF3A7A700AEC96C5C6075FBA361AB09 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				543541D2D4D4A14A05F36C45426EBEFF /* Foundation.framework */,
+				64BAD19F52DB0FBA0441CA31A7066C16 /* UIKit.framework */,
+				CEC98063C7EAA39571795D8617B1DA37 /* XCTest.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
 		DEA2CDFE985791D97026DA5D7A1734BF /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
-				B100EBD6DE3ADA3ECFBC4B3049FE42C9 /* TonNfcClientSwift */,
+				6E4F7A882ACA108798DC22BDD3CDAB60 /* TonNfcClientSwift */,
 			);
 			name = "Development Pods";
 			sourceTree = "<group>";
@@ -983,64 +1020,19 @@
 			isa = PBXGroup;
 			children = (
 				2C6B79080132FEF547CDAB549FCF6EBA /* PromiseKit.framework */,
-				B3F985F2EE53108B1D2059AE32CC6939 /* iOS */,
+				DCF3A7A700AEC96C5C6075FBA361AB09 /* iOS */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		E804DA76F012EA976B592BCC54DA2CF8 /* extensions */ = {
-			isa = PBXGroup;
-			children = (
-				9EA3A63BAC40806888542D8E02809EF1 /* Array.swift */,
-				91FDAA92E4A9BFDF5422978E491ABF97 /* Data.swift */,
-				BA58F0C24EE16199B210E8D86FCF0C7E /* String.swift */,
-			);
-			name = extensions;
-			path = TonNfcClientSwift/Classes/extensions;
-			sourceTree = "<group>";
-		};
-		E95CA6B6790DBBB24FF575A53D21C90C /* utils */ = {
-			isa = PBXGroup;
-			children = (
-				8797201B8DA894204AB59A55C636D4AF /* ToastHelper.swift */,
-			);
-			name = utils;
-			path = TonNfcClientSwift/Classes/utils;
-			sourceTree = "<group>";
-		};
-		F6820F0B58EEE923363A60D90BD84CAD /* callback */ = {
-			isa = PBXGroup;
-			children = (
-				DC667529B23C82C49E126DAAD489861F /* NfcCallback.swift */,
-			);
-			name = callback;
-			path = callback;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		1EC553B0D414F77FB65371AD8D87DE9D /* Headers */ = {
+		35BEBAAD89CD8E5993D0E6E8BD2DBB22 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7B2BFAA4E5BDEB3FD80456F0E22CC339 /* Pods-TonNfcClientSwift_Example-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		313BA41DB8585DF8E657A8FBCA3537FF /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D16F71EF7565421F62ECAACE5DFF2FC3 /* TonNfcClientSwift-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		49C99A2E687B335F7E36464A2B5F1833 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CCF0D5BA29272B1F15C9DAE4E2CCEB73 /* Pods-TonNfcClientSwift_Tests-umbrella.h in Headers */,
+				92DDF40B5C887EEBCEF96CE8C9D43814 /* Pods-TonNfcClientSwift_Tests-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1091,24 +1083,40 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		97A101D7A12943E9C99647402EE5AB0C /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A324A2A52103D6A5F2E4785678483B21 /* Pods-TonNfcClientSwift_Example-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D1AC0DD86F39624719C83016721AA55B /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1330B77396AEDE130F2D2AD766D272AB /* TonNfcClientSwift-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		326E6E34C37102297F14D42255F14229 /* Pods-TonNfcClientSwift_Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F063007ED34162B81D3A0A04BAB08FF2 /* Build configuration list for PBXNativeTarget "Pods-TonNfcClientSwift_Tests" */;
+			buildConfigurationList = 9452D27BAC67CCCB94BBC3AADA273426 /* Build configuration list for PBXNativeTarget "Pods-TonNfcClientSwift_Tests" */;
 			buildPhases = (
-				49C99A2E687B335F7E36464A2B5F1833 /* Headers */,
-				746E0F02F81D4B8D97E74054335FFA46 /* Sources */,
-				4980CED552680C5BB26587A6C5630C91 /* Frameworks */,
-				81A81F9BF4A1F48E2BF970238301F105 /* Resources */,
+				35BEBAAD89CD8E5993D0E6E8BD2DBB22 /* Headers */,
+				87912E75CFFCCABF7AF40CF56A8246E5 /* Sources */,
+				3952B29C6FA818004821C4071EB3753F /* Frameworks */,
+				D62D19523FEB37B95BB5C90EFF79FB3C /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				D88C3484BD1CD7C6A0F630E1F42FB86C /* PBXTargetDependency */,
-				CC54E21D44E2B0E1D5577249772D842E /* PBXTargetDependency */,
-				E41C75E2AC62B2C98DCCD0503BDD78DF /* PBXTargetDependency */,
+				FE7F7EB5022ABB15EA94F7AA2A8B1ECC /* PBXTargetDependency */,
+				457646EF5E1DD1A9FD9D2EC31D0A0DF2 /* PBXTargetDependency */,
+				B9F4AB20FE34542043023FD62C793986 /* PBXTargetDependency */,
 			);
 			name = "Pods-TonNfcClientSwift_Tests";
 			productName = "Pods-TonNfcClientSwift_Tests";
@@ -1153,18 +1161,18 @@
 		};
 		929F91C4F7BFCFF8B44DA84E551D76A6 /* Pods-TonNfcClientSwift_Example */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6BF470A9283815ED9F0189C2C567844D /* Build configuration list for PBXNativeTarget "Pods-TonNfcClientSwift_Example" */;
+			buildConfigurationList = 70E5AEC6B0C5DF2E6C57C92B2B5001DF /* Build configuration list for PBXNativeTarget "Pods-TonNfcClientSwift_Example" */;
 			buildPhases = (
-				1EC553B0D414F77FB65371AD8D87DE9D /* Headers */,
-				67B1082FB75F8769987FECDF9312BB1A /* Sources */,
-				4F18AE09E8D857F679D2CE4E668A6359 /* Frameworks */,
-				4DE65E60FFEE7241738894775D6A6CE5 /* Resources */,
+				97A101D7A12943E9C99647402EE5AB0C /* Headers */,
+				D836956C20F84E0EF2FE5EC886B5C2F4 /* Sources */,
+				6FB92C53F511CF136490DFEFE0CCDDD1 /* Frameworks */,
+				47B8740C43755B6E2CED739076F5B29D /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				F40D5018DEB7E59B8DB63836026C5514 /* PBXTargetDependency */,
-				C122653EEA55FA5EA20E3F055EE251F8 /* PBXTargetDependency */,
+				905F79532740C23D7A656327E80BE735 /* PBXTargetDependency */,
+				F3F81E5ABB94E708A44C88D94D50BDA6 /* PBXTargetDependency */,
 			);
 			name = "Pods-TonNfcClientSwift_Example";
 			productName = "Pods-TonNfcClientSwift_Example";
@@ -1191,17 +1199,17 @@
 		};
 		F0FDF79DC7E2B896FA5AFD3E4758F258 /* TonNfcClientSwift */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 255B6E8C013A0135947FD7FECB7811F1 /* Build configuration list for PBXNativeTarget "TonNfcClientSwift" */;
+			buildConfigurationList = D31EC8B1F6AF5742A3E8F368D6AF86EA /* Build configuration list for PBXNativeTarget "TonNfcClientSwift" */;
 			buildPhases = (
-				313BA41DB8585DF8E657A8FBCA3537FF /* Headers */,
-				EDFFF2CB36C51F8E1B96C750B26A0E85 /* Sources */,
-				BB8CF15B452A0612CAAE0F62F4B5D97F /* Frameworks */,
-				8966F111B25B38E4E6699A496E3938AF /* Resources */,
+				D1AC0DD86F39624719C83016721AA55B /* Headers */,
+				B67A4FD10D2526AA6EEB0DDD1A42C54D /* Sources */,
+				74D38FED3DD965E0DB9049D5E9B79315 /* Frameworks */,
+				CCF5CC0E7ED8347EDD95202D5A41FC15 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				A50032862B6B6F9DDBD42DC55787EFDB /* PBXTargetDependency */,
+				5473EDEE478F914624C1585D397DB050 /* PBXTargetDependency */,
 			);
 			name = TonNfcClientSwift;
 			productName = TonNfcClientSwift;
@@ -1255,21 +1263,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4DE65E60FFEE7241738894775D6A6CE5 /* Resources */ = {
+		47B8740C43755B6E2CED739076F5B29D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		81A81F9BF4A1F48E2BF970238301F105 /* Resources */ = {
+		CCF5CC0E7ED8347EDD95202D5A41FC15 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8966F111B25B38E4E6699A496E3938AF /* Resources */ = {
+		D62D19523FEB37B95BB5C90EFF79FB3C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1330,14 +1338,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		67B1082FB75F8769987FECDF9312BB1A /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2C936DBBAA4F1BFA6B6FA25622004BDA /* Pods-TonNfcClientSwift_Example-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		694205E4C1C5652ABC91AB6B8D119A52 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1373,11 +1373,43 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		746E0F02F81D4B8D97E74054335FFA46 /* Sources */ = {
+		87912E75CFFCCABF7AF40CF56A8246E5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				89A98EA2C81228C1AD760A131EC3D9DB /* Pods-TonNfcClientSwift_Tests-dummy.m in Sources */,
+				650B04FEBAED97369D512CB8F3707F53 /* Pods-TonNfcClientSwift_Tests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B67A4FD10D2526AA6EEB0DDD1A42C54D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				93ACD9A053C38DDDA36FA1B58AF73780 /* ApduRunner.swift in Sources */,
+				69E52D97F8DCACB628815E06D46ED38E /* Array.swift in Sources */,
+				AD919DC33DF0588112DD30A57CDE8397 /* ByteArrayAndHexHelper.swift in Sources */,
+				2A5D8A43EF095CFF52CA3874F4C01170 /* CardActivationNfcApi.swift in Sources */,
+				5667510F6FF5833249062FA64963DE90 /* CardCoinManagerNfcApi.swift in Sources */,
+				AFCEC21B0551A325821105699B4B529D /* CardCryptoNfcApi.swift in Sources */,
+				7484B6A8D4A066E367275931FD21EA03 /* CardErrorCodes.swift in Sources */,
+				4484427037CEFAB5417AA9EE679AABAC /* CardKeyChainNfcApi.swift in Sources */,
+				ABF738C4FF0844A6810FDBB3F346C9A9 /* CoinManagerApduCommands.swift in Sources */,
+				4056DE31021C49EC9F1ECA89046480CB /* Constants.swift in Sources */,
+				0D80D6D6BBEB4DADF2417AC5C231EB67 /* CryptoHelper.swift in Sources */,
+				4E3882D4C6FA2E9BB9F6EA99DDD06131 /* Data.swift in Sources */,
+				02EE447ED84D8529A02BCF5125D591F3 /* DataVerifier.swift in Sources */,
+				4B0760F5A68B061B3B709B052031D110 /* ErrorHelper.swift in Sources */,
+				4015D3C4D553BFE56369D4C4503B3DD7 /* JsonHelper.swift in Sources */,
+				EA089A892D0DC22F0B4A3F2CDF113B80 /* KeychainQueryHelper.swift in Sources */,
+				4CA924B0173ED04CC56D5C18B5FBF6CD /* NfcCallback.swift in Sources */,
+				06D32E63538E837CFAC9937BBC324A7E /* RecoveryDataApi.swift in Sources */,
+				90DE50EBD282EEFF174DA29044851531 /* ResponsesConstants.swift in Sources */,
+				48A2FBE7B2EA7E892B0E05FD5F87837C /* String.swift in Sources */,
+				42CAE6E2B40E91E9579B9A816339EB84 /* ToastHelper.swift in Sources */,
+				5E34923466610076504D513F468649F3 /* TonNfcApi.swift in Sources */,
+				31594E004EE5230F1068939A012AFAF1 /* TonNfcClientSwift-dummy.m in Sources */,
+				FCA498A4C96CDBD6D684F51D8C0EECDD /* TonWalletAppletApduCommands.swift in Sources */,
+				253F17291E0C4A147D7FF9D908281930 /* TonWalletAppletConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1451,117 +1483,61 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EDFFF2CB36C51F8E1B96C750B26A0E85 /* Sources */ = {
+		D836956C20F84E0EF2FE5EC886B5C2F4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D1117F8F2A13F4281DB5E49469003116 /* ApduRunner.swift in Sources */,
-				979336E96F73FDD2FAAE1D7CB2B4FD53 /* Array.swift in Sources */,
-				DCA9B797B1510EC5A3B75709B3E106E1 /* ByteArrayAndHexHelper.swift in Sources */,
-				FBBEAFF62A74629131E1E4E23EF4EC1F /* CardActivationNfcApi.swift in Sources */,
-				EC7B043149194F9F327DB143075956F8 /* CardCoinManagerNfcApi.swift in Sources */,
-				5DEEB19E90B17C38B1313811683E598E /* CardCryptoNfcApi.swift in Sources */,
-				F4202E2F9B2E6E56A70097B60C5621C5 /* CardErrorCodes.swift in Sources */,
-				DF4214039E4DFB7CA25586E1ECF6D349 /* CardKeyChainNfcApi.swift in Sources */,
-				DD1027F3013B6CE4558F3446A421E89E /* CoinManagerApduCommands.swift in Sources */,
-				A77E045BFC07DF4446B2C3B26750616A /* Constants.swift in Sources */,
-				CF646C2BDD113BB1260FE93617867BA1 /* CryptoHelper.swift in Sources */,
-				9FAB2F0C8F018D3E8AC45CBC3B241A99 /* Data.swift in Sources */,
-				7F3F7D52F6F82AE36F7797DC419251EB /* DataVerifier.swift in Sources */,
-				141B87D201FC315F48170547A0F7A566 /* ErrorHelper.swift in Sources */,
-				FCF3854D8EFB19EEBB333FF30B5EABEB /* JsonHelper.swift in Sources */,
-				5CD8C8AB883F85DD4958D652A65DFA20 /* KeychainQueryHelper.swift in Sources */,
-				2715F8FC1129ED99F000EE5941505E81 /* NfcCallback.swift in Sources */,
-				F34CA44F131B62927BFAF6060DCCD898 /* RecoveryDataApi.swift in Sources */,
-				246E008E2DD6EB4DF308E9E561EF4F90 /* ResponsesConstants.swift in Sources */,
-				0A8EC627EDFA1D66AB02CE46AB221833 /* String.swift in Sources */,
-				7AEE12B95448E9744021693080FD37DC /* ToastHelper.swift in Sources */,
-				200614D54F1E50C5A9262E90C4BF871E /* TonNfcApi.swift in Sources */,
-				C2154E39BFC259FD4A96F46062B2B5B2 /* TonNfcClientSwift-dummy.m in Sources */,
-				EE2CE28BA3B6E876AB0A54CA43C27453 /* TonWalletAppletApduCommands.swift in Sources */,
-				38931A55ED7D545F04F127296CEB9F31 /* TonWalletAppletConstants.swift in Sources */,
+				E567FBD7D38FCFC9997988C0A7367D50 /* Pods-TonNfcClientSwift_Example-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		A50032862B6B6F9DDBD42DC55787EFDB /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = PromiseKit;
-			target = 7C579CE66A1E7A9AA33CA5F97F9C22C5 /* PromiseKit */;
-			targetProxy = BEA2FD695216EB763B78F0A77EC4CAC4 /* PBXContainerItemProxy */;
-		};
-		C122653EEA55FA5EA20E3F055EE251F8 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = TonNfcClientSwift;
-			target = F0FDF79DC7E2B896FA5AFD3E4758F258 /* TonNfcClientSwift */;
-			targetProxy = 4D09A4D2D0BA1DE4EC5857960C443B98 /* PBXContainerItemProxy */;
-		};
-		CC54E21D44E2B0E1D5577249772D842E /* PBXTargetDependency */ = {
+		457646EF5E1DD1A9FD9D2EC31D0A0DF2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-TonNfcClientSwift_Example";
 			target = 929F91C4F7BFCFF8B44DA84E551D76A6 /* Pods-TonNfcClientSwift_Example */;
-			targetProxy = 75C05F1AB51CABB40003E68855549115 /* PBXContainerItemProxy */;
+			targetProxy = 877E1BDC62F2C1EC65E3B509A1D616DC /* PBXContainerItemProxy */;
 		};
-		D88C3484BD1CD7C6A0F630E1F42FB86C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Nimble;
-			target = 6F13695E06195A78EA8A95F8C7ED0D2F /* Nimble */;
-			targetProxy = 1F31F299D8F10D8CA56006DE30D9A989 /* PBXContainerItemProxy */;
-		};
-		E41C75E2AC62B2C98DCCD0503BDD78DF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Quick;
-			target = C82891EAB7293DBEE916B21F57E8474D /* Quick */;
-			targetProxy = 6890477E10A0E4500E2B36266884C1EF /* PBXContainerItemProxy */;
-		};
-		F40D5018DEB7E59B8DB63836026C5514 /* PBXTargetDependency */ = {
+		5473EDEE478F914624C1585D397DB050 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = PromiseKit;
 			target = 7C579CE66A1E7A9AA33CA5F97F9C22C5 /* PromiseKit */;
-			targetProxy = C56FE1CC151DC7522774A5DBD66F2FD3 /* PBXContainerItemProxy */;
+			targetProxy = 7A0F75E6E4E6B1254D0E13EF942D68A2 /* PBXContainerItemProxy */;
+		};
+		905F79532740C23D7A656327E80BE735 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PromiseKit;
+			target = 7C579CE66A1E7A9AA33CA5F97F9C22C5 /* PromiseKit */;
+			targetProxy = CA80AC14B34F2ED7B7EB2BDC90DDC855 /* PBXContainerItemProxy */;
+		};
+		B9F4AB20FE34542043023FD62C793986 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Quick;
+			target = C82891EAB7293DBEE916B21F57E8474D /* Quick */;
+			targetProxy = A19593AB82F3484BB94D8B38ADF9F2BD /* PBXContainerItemProxy */;
+		};
+		F3F81E5ABB94E708A44C88D94D50BDA6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = TonNfcClientSwift;
+			target = F0FDF79DC7E2B896FA5AFD3E4758F258 /* TonNfcClientSwift */;
+			targetProxy = 280638F525AA7CB5D56BE33713DC3AAC /* PBXContainerItemProxy */;
+		};
+		FE7F7EB5022ABB15EA94F7AA2A8B1ECC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Nimble;
+			target = 6F13695E06195A78EA8A95F8C7ED0D2F /* Nimble */;
+			targetProxy = 54A3E8BE2F427251BD1A7799F3BDF3DD /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		019FDA69066080537AF78BDF015D62DA /* Release */ = {
+		14ECE05B4E9A59DEC83A17828C1C5E9D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6E68A51AFE6FACDE7E60B0621876CE72 /* Quick.release.xcconfig */;
+			baseConfigurationReference = 2CD40D773F147BD2CDC8DA6A5B0C903F /* Pods-TonNfcClientSwift_Tests.release.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/Quick/Quick-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Quick/Quick-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Quick/Quick.modulemap";
-				PRODUCT_MODULE_NAME = Quick;
-				PRODUCT_NAME = Quick;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		0687BFE5920030E359E26A471D10DB3E /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E2F15037D60B9D54B7B0379C28EE8311 /* TonNfcClientSwift.release.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -1570,18 +1546,19 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/TonNfcClientSwift/TonNfcClientSwift-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/TonNfcClientSwift/TonNfcClientSwift-Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-TonNfcClientSwift_Tests/Pods-TonNfcClientSwift_Tests-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/TonNfcClientSwift/TonNfcClientSwift.modulemap";
-				PRODUCT_MODULE_NAME = TonNfcClientSwift;
-				PRODUCT_NAME = TonNfcClientSwift;
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-TonNfcClientSwift_Tests/Pods-TonNfcClientSwift_Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1589,136 +1566,11 @@
 			};
 			name = Release;
 		};
-		0A60C21B129FE3303C83F348225D0B9D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = F28FF9351628B2526BB229E51EF50792 /* Quick.debug.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/Quick/Quick-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Quick/Quick-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Quick/Quick.modulemap";
-				PRODUCT_MODULE_NAME = Quick;
-				PRODUCT_NAME = Quick;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		1D5151581A0B42C2AD05F43F8D22B6EF /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 68A50F35663BFD029B99C3F0C442443A /* Nimble.release.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/Nimble/Nimble-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Nimble/Nimble-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Nimble/Nimble.modulemap";
-				PRODUCT_MODULE_NAME = Nimble;
-				PRODUCT_NAME = Nimble;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		1DD6BF85C48DF361EB581525AAB96498 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 81685ADA60666E2CDD321DAB2FC5EE2C /* PromiseKit.debug.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/PromiseKit/PromiseKit-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/PromiseKit/PromiseKit-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/PromiseKit/PromiseKit.modulemap";
-				PRODUCT_MODULE_NAME = PromiseKit;
-				PRODUCT_NAME = PromiseKit;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.1;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		5249B6D88DD161E4A311E747BF47A162 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 731CA68980A7DC025B17AE3F6E042814 /* PromiseKit.release.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/PromiseKit/PromiseKit-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/PromiseKit/PromiseKit-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/PromiseKit/PromiseKit.modulemap";
-				PRODUCT_MODULE_NAME = PromiseKit;
-				PRODUCT_NAME = PromiseKit;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.1;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		730B64C0705635ABB4FF1E588001A893 /* Debug */ = {
+		1EC21E40EBF856AF867E60275D783B11 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5475A27D81EA24AA7A85BECE63646BD8 /* Pods-TonNfcClientSwift_Example.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -1746,77 +1598,11 @@
 			};
 			name = Debug;
 		};
-		84284748B53D2B28685BE303FF15D7A8 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = F6037CAE8430BC9D84FE56EA509C652A /* Pods-TonNfcClientSwift_Tests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-TonNfcClientSwift_Tests/Pods-TonNfcClientSwift_Tests-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-TonNfcClientSwift_Tests/Pods-TonNfcClientSwift_Tests.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		85355CEDA2F2F5C91B753930F85ED6DA /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2CD40D773F147BD2CDC8DA6A5B0C903F /* Pods-TonNfcClientSwift_Tests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-TonNfcClientSwift_Tests/Pods-TonNfcClientSwift_Tests-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-TonNfcClientSwift_Tests/Pods-TonNfcClientSwift_Tests.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		8F17DC3A99F99FBAD606CE6963886315 /* Release */ = {
+		25AD9454612BF454A1E3DC4CD4FA8C6D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1839,66 +1625,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"POD_CONFIGURATION_RELEASE=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				MTL_FAST_MATH = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_VERSION = 5.0;
-				SYMROOT = "${SRCROOT}/../build";
-			};
-			name = Release;
-		};
-		916E0404255105F480DC4950B7625F7A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1937,12 +1664,42 @@
 			};
 			name = Debug;
 		};
-		9E5C3A0B9AE39ABA7ACA675783164696 /* Debug */ = {
+		41C5E9EC5455E4D7FC7E12F93C216FDB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E666D38CA71AC7993571580C4D92A397 /* TonNfcClientSwift.debug.xcconfig */;
+			baseConfigurationReference = 731CA68980A7DC025B17AE3F6E042814 /* PromiseKit.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/PromiseKit/PromiseKit-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/PromiseKit/PromiseKit-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/PromiseKit/PromiseKit.modulemap";
+				PRODUCT_MODULE_NAME = PromiseKit;
+				PRODUCT_NAME = PromiseKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.1;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		4E785DB90346C54F109EE59689159BB6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 904DC6027A229C733BE9F5DD7D32DDAF /* TonNfcClientSwift.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -1969,11 +1726,40 @@
 			};
 			name = Debug;
 		};
-		BC2F9ACF6532E38BFD9609FF5AB4771F /* Debug */ = {
+		5BD7DF6FC27AD284AF350D3B23323F5C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 954B99EC63CC9B5853307DA699C00EC3 /* Nimble.debug.xcconfig */;
+			baseConfigurationReference = 6E68A51AFE6FACDE7E60B0621876CE72 /* Quick.release.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/Quick/Quick-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Quick/Quick-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Quick/Quick.modulemap";
+				PRODUCT_MODULE_NAME = Quick;
+				PRODUCT_NAME = Quick;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		698ABB6B7439A184528C6C75E2EB140B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 68A50F35663BFD029B99C3F0C442443A /* Nimble.release.xcconfig */;
+			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -1994,17 +1780,17 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Debug;
+			name = Release;
 		};
-		F62937D2D7EBAD6F3952A462436C6F8E /* Release */ = {
+		74307EBCB828B54F539824B79F2B8C6C /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 605A7548CA1D604F36FF17F55EDE9582 /* Pods-TonNfcClientSwift_Example.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -2033,14 +1819,228 @@
 			};
 			name = Release;
 		};
+		A29F5E63DF3A2FBE7EA5752C36B0E397 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 81685ADA60666E2CDD321DAB2FC5EE2C /* PromiseKit.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/PromiseKit/PromiseKit-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/PromiseKit/PromiseKit-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/PromiseKit/PromiseKit.modulemap";
+				PRODUCT_MODULE_NAME = PromiseKit;
+				PRODUCT_NAME = PromiseKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.1;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		B8B496E0C2D55E5646C9F79185E14F11 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F6037CAE8430BC9D84FE56EA509C652A /* Pods-TonNfcClientSwift_Tests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-TonNfcClientSwift_Tests/Pods-TonNfcClientSwift_Tests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-TonNfcClientSwift_Tests/Pods-TonNfcClientSwift_Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		C86015F6F981834184A2186E62B2D009 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A5CA96C4912185800054F52A7B85AB2D /* TonNfcClientSwift.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/TonNfcClientSwift/TonNfcClientSwift-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/TonNfcClientSwift/TonNfcClientSwift-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/TonNfcClientSwift/TonNfcClientSwift.modulemap";
+				PRODUCT_MODULE_NAME = TonNfcClientSwift;
+				PRODUCT_NAME = TonNfcClientSwift;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		CA547D2C7E9A8A153DC2B27FBE00B112 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		ECAC997DEEBE519A57A45EE715DC53C2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 954B99EC63CC9B5853307DA699C00EC3 /* Nimble.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/Nimble/Nimble-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Nimble/Nimble-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Nimble/Nimble.modulemap";
+				PRODUCT_MODULE_NAME = Nimble;
+				PRODUCT_NAME = Nimble;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		F18BFDF4D55EEEA5E40084B7F7DD58E7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F28FF9351628B2526BB229E51EF50792 /* Quick.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/Quick/Quick-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Quick/Quick-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Quick/Quick.modulemap";
+				PRODUCT_MODULE_NAME = Quick;
+				PRODUCT_NAME = Quick;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
 		058DF38F5922F24842B97693B0188F2D /* Build configuration list for PBXNativeTarget "PromiseKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1DD6BF85C48DF361EB581525AAB96498 /* Debug */,
-				5249B6D88DD161E4A311E747BF47A162 /* Release */,
+				A29F5E63DF3A2FBE7EA5752C36B0E397 /* Debug */,
+				41C5E9EC5455E4D7FC7E12F93C216FDB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -2048,17 +2048,8 @@
 		189D56F652B0345CC3E1073543C1B391 /* Build configuration list for PBXNativeTarget "Quick" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				0A60C21B129FE3303C83F348225D0B9D /* Debug */,
-				019FDA69066080537AF78BDF015D62DA /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		255B6E8C013A0135947FD7FECB7811F1 /* Build configuration list for PBXNativeTarget "TonNfcClientSwift" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9E5C3A0B9AE39ABA7ACA675783164696 /* Debug */,
-				0687BFE5920030E359E26A471D10DB3E /* Release */,
+				F18BFDF4D55EEEA5E40084B7F7DD58E7 /* Debug */,
+				5BD7DF6FC27AD284AF350D3B23323F5C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -2066,17 +2057,26 @@
 		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				916E0404255105F480DC4950B7625F7A /* Debug */,
-				8F17DC3A99F99FBAD606CE6963886315 /* Release */,
+				25AD9454612BF454A1E3DC4CD4FA8C6D /* Debug */,
+				CA547D2C7E9A8A153DC2B27FBE00B112 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6BF470A9283815ED9F0189C2C567844D /* Build configuration list for PBXNativeTarget "Pods-TonNfcClientSwift_Example" */ = {
+		70E5AEC6B0C5DF2E6C57C92B2B5001DF /* Build configuration list for PBXNativeTarget "Pods-TonNfcClientSwift_Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				730B64C0705635ABB4FF1E588001A893 /* Debug */,
-				F62937D2D7EBAD6F3952A462436C6F8E /* Release */,
+				1EC21E40EBF856AF867E60275D783B11 /* Debug */,
+				74307EBCB828B54F539824B79F2B8C6C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9452D27BAC67CCCB94BBC3AADA273426 /* Build configuration list for PBXNativeTarget "Pods-TonNfcClientSwift_Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B8B496E0C2D55E5646C9F79185E14F11 /* Debug */,
+				14ECE05B4E9A59DEC83A17828C1C5E9D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -2084,17 +2084,17 @@
 		9AC65E53333ACA93EEB1D8EBAB58CBB6 /* Build configuration list for PBXNativeTarget "Nimble" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				BC2F9ACF6532E38BFD9609FF5AB4771F /* Debug */,
-				1D5151581A0B42C2AD05F43F8D22B6EF /* Release */,
+				ECAC997DEEBE519A57A45EE715DC53C2 /* Debug */,
+				698ABB6B7439A184528C6C75E2EB140B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F063007ED34162B81D3A0A04BAB08FF2 /* Build configuration list for PBXNativeTarget "Pods-TonNfcClientSwift_Tests" */ = {
+		D31EC8B1F6AF5742A3E8F368D6AF86EA /* Build configuration list for PBXNativeTarget "TonNfcClientSwift" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				84284748B53D2B28685BE303FF15D7A8 /* Debug */,
-				85355CEDA2F2F5C91B753930F85ED6DA /* Release */,
+				4E785DB90346C54F109EE59689159BB6 /* Debug */,
+				C86015F6F981834184A2186E62B2D009 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

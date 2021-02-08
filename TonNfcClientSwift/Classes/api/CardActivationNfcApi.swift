@@ -15,32 +15,29 @@ public class CardActivationNfcApi: CardCoinManagerNfcApi {
     
     public override init() {}
 
-    public func turnOnWallet(newPin : String, password : String, commonSecret : String, initialVector : String) {
+    public func turnOnWallet(newPin : String, password : String, commonSecret : String, initialVector : String, callback: NfcCallback) {
         print("Start card operation: turnOnColdWallet" )
-        guard  dataVerifier.checkPasswordSize(password: password) &&
-                dataVerifier.checkPasswordFormat(password: password) &&
-                dataVerifier.checkCommonSecretSize(commonSecret: commonSecret) &&
-                dataVerifier.checkCommonSecretFormat(commonSecret: commonSecret) &&
-                dataVerifier.checkInitialVectorSize(initialVector: initialVector) &&
-                dataVerifier.checkInitialVectorFormat(initialVector: initialVector) &&
-                dataVerifier.checkPinSize(pin: newPin) &&
-                dataVerifier.checkPinFormat(pin: newPin) else {
+        guard  dataVerifier.checkPasswordSize(password: password, callback: callback) &&
+                dataVerifier.checkPasswordFormat(password: password, callback: callback) &&
+                dataVerifier.checkCommonSecretSize(commonSecret: commonSecret, callback: callback) &&
+                dataVerifier.checkCommonSecretFormat(commonSecret: commonSecret, callback: callback) &&
+                dataVerifier.checkInitialVectorSize(initialVector: initialVector, callback: callback) &&
+                dataVerifier.checkInitialVectorFormat(initialVector: initialVector, callback: callback) &&
+                dataVerifier.checkPinSize(pin: newPin, callback: callback) &&
+                dataVerifier.checkPinFormat(pin: newPin, callback: callback) else {
             return
         }
         print("Got newPin:" + newPin)
         print("Got password:" + password)
         print("Got commonSecret:" + commonSecret)
         print("Got initialVector:" + initialVector)
-        
         let passwordBytes = ByteArrayAndHexHelper.hex(from: password)
         let passwordHash = passwordBytes.hash()
         let commonSecretBytes = ByteArrayAndHexHelper.hex(from: commonSecret)
         let initialVectorBytes = ByteArrayAndHexHelper.hex(from: initialVector)
-        
         let aes128 = AES(key: passwordHash.subdata(in: 0..<16), iv: initialVectorBytes)
-        
         let newPinData = ByteArrayAndHexHelper.digitalStrIntoAsciiUInt8Array(digitalStr: newPin)
-        
+        apduRunner.setCallback(callback: callback)
         apduRunner.setCardOperation(cardOperation: {() in
             self.apduRunner.sendCoinManagerAppletApdu(apduCommand: CoinManagerApduCommands.RESET_WALLET_APDU)
                 .then{(response : Data)  -> Promise<Data> in
@@ -101,14 +98,15 @@ public class CardActivationNfcApi: CardCoinManagerNfcApi {
         apduRunner.startScan()
     }
     
-    public func verifyPassword(password : String, initialVector : String) {
+    public func verifyPassword(password : String, initialVector : String, callback: NfcCallback) {
         print("Start card operation: verifyPassword")
-        guard  dataVerifier.checkPasswordSize(password: password) &&
-                dataVerifier.checkPasswordFormat(password: password) else {
+        guard  dataVerifier.checkPasswordSize(password: password, callback: callback) &&
+                dataVerifier.checkPasswordFormat(password: password, callback: callback) else {
             return
         }
         print("Got password:" + password)
         print("Got initialVector:" + initialVector)
+        apduRunner.setCallback(callback: callback)
         apduRunner.setCardOperation(cardOperation: { () in
             self.apduRunner.sendApdu(apduCommand:
                     TonWalletAppletApduCommands.SELECT_TON_WALLET_APPLET_APDU)
@@ -123,8 +121,9 @@ public class CardActivationNfcApi: CardCoinManagerNfcApi {
         
     }
     
-    public func getHashOfEncryptedCommonSecret() {
+    public func getHashOfEncryptedCommonSecret(callback: NfcCallback) {
         print("Start card operation: getHashOfEncryptedCommonSecret")
+        apduRunner.setCallback(callback: callback)
         apduRunner.setCardOperation(cardOperation: { () in
             self.apduRunner.sendTonWalletAppletApdu(apduCommand: TonWalletAppletApduCommands.GET_HASH_OF_ENCRYPTED_COMMON_SECRET_APDU)
                 .then{(response : Data)  -> Promise<String> in
@@ -137,8 +136,9 @@ public class CardActivationNfcApi: CardCoinManagerNfcApi {
         apduRunner.startScan()
     }
     
-    public func getHashOfEncryptedPassword() {
+    public func getHashOfEncryptedPassword(callback: NfcCallback) {
         print("Start card operation: getHashOfEncryptedPassword")
+        apduRunner.setCallback(callback: callback)
         apduRunner.setCardOperation(cardOperation: { () in
             self.apduRunner.sendTonWalletAppletApdu(apduCommand: TonWalletAppletApduCommands.GET_HASH_OF_ENCRYPTED_PASSWORD_APDU)
                 .then{(response : Data)  -> Promise<String> in

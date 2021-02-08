@@ -16,13 +16,14 @@ public class CardCoinManagerNfcApi: TonNfcApi {
 
     public override init() {}
     
-    public func generateSeed(pin: String) {
+    public func generateSeed(pin: String, callback: NfcCallback) {
         print("Start card operation: genGenerateSeed")
-        guard dataVerifier.checkPinSize(pin: pin) &&
-                dataVerifier.checkPinFormat(pin: pin) else {
+        guard dataVerifier.checkPinSize(pin: pin, callback: callback) &&
+                dataVerifier.checkPinFormat(pin: pin, callback: callback) else {
             return
         }
         print("Got pin:" + pin)
+        apduRunner.setCallback(callback: callback)
         apduRunner.setCardOperation(cardOperation: { () in
             self.apduRunner.sendApdu(apduCommand: CoinManagerApduCommands.SELECT_COIN_MANAGER_APDU)
                 .then{_ in self.apduRunner.sendApdu(apduCommand: try CoinManagerApduCommands.getGenSeedApdu(pin: ByteArrayAndHexHelper.digitalStrIntoAsciiUInt8Array(digitalStr: pin)))
@@ -34,18 +35,19 @@ public class CardCoinManagerNfcApi: TonNfcApi {
         apduRunner.startScan()
     }
     
-    public func changePin(oldPin: String, newPin: String) {
+    public func changePin(oldPin: String, newPin: String, callback: NfcCallback) {
         print("Start card operation: changePin" )
-        guard dataVerifier.checkPinSize(pin: oldPin) &&
-                dataVerifier.checkPinFormat(pin: oldPin) &&
-                dataVerifier.checkPinSize(pin: newPin) &&
-                dataVerifier.checkPinFormat(pin: newPin) else {
+        guard dataVerifier.checkPinSize(pin: oldPin, callback: callback) &&
+                dataVerifier.checkPinFormat(pin: oldPin, callback: callback) &&
+                dataVerifier.checkPinSize(pin: newPin, callback: callback) &&
+                dataVerifier.checkPinFormat(pin: newPin, callback: callback) else {
             return
         }
         print("Got oldPin:" + oldPin)
         print("Got newPin:" + newPin)
         let oldPin = ByteArrayAndHexHelper.digitalStrIntoAsciiUInt8Array(digitalStr: oldPin)
         let newPin = ByteArrayAndHexHelper.digitalStrIntoAsciiUInt8Array(digitalStr: newPin)
+        apduRunner.setCallback(callback: callback)
         apduRunner.setCardOperation(cardOperation: { () in
             self.apduRunner.sendApdu(apduCommand: CoinManagerApduCommands.SELECT_COIN_MANAGER_APDU)
                 .then{_ in self.apduRunner.sendApdu(apduCommand: try CoinManagerApduCommands.getChangePinApdu(oldPin: oldPin, newPin: newPin))
@@ -57,8 +59,9 @@ public class CardCoinManagerNfcApi: TonNfcApi {
         apduRunner.startScan()
     }
     
-    public func resetWallet() {
+    public func resetWallet(callback: NfcCallback) {
         print("Start card operation: resetWallet")
+        apduRunner.setCallback(callback: callback)
         apduRunner.setCardOperation(cardOperation: { () in
             self.apduRunner.sendCoinManagerAppletApdu(apduCommand: CoinManagerApduCommands.RESET_WALLET_APDU)
                 .then{_ in
@@ -68,13 +71,14 @@ public class CardCoinManagerNfcApi: TonNfcApi {
         apduRunner.startScan()
     }
     
-    public func setDeviceLabel(label: String) {
+    public func setDeviceLabel(label: String, callback: NfcCallback) {
         print("Start card operation: setDeviceLabel")
-        guard dataVerifier.checkLabelSize(label: label) &&
-                dataVerifier.checkLabelFormat(label: label) else {
+        guard dataVerifier.checkLabelSize(label: label, callback: callback) &&
+                dataVerifier.checkLabelFormat(label: label, callback: callback) else {
             return
         }
         print("Got label: " + label)
+        apduRunner.setCallback(callback: callback)
         apduRunner.setCardOperation(cardOperation: { () in
             self.apduRunner.sendApdu(apduCommand:
                     CoinManagerApduCommands.SELECT_COIN_MANAGER_APDU)
@@ -87,17 +91,18 @@ public class CardCoinManagerNfcApi: TonNfcApi {
         apduRunner.startScan()
     }
     
-    public func getRemainingPinTries() {
+    public func getRemainingPinTries(callback: NfcCallback) {
         print("Start card operation: getRemainingPinTries")
-        getPinTries(apduCommand: CoinManagerApduCommands.GET_PIN_RTL_APDU)
+        getPinTries(apduCommand: CoinManagerApduCommands.GET_PIN_RTL_APDU, callback: callback)
     }
     
-    public func getMaxPinTries() {
+    public func getMaxPinTries(callback: NfcCallback) {
         print("Start card operation: getMaxPinTries")
-        getPinTries(apduCommand: CoinManagerApduCommands.GET_PIN_TLT_APDU)
+        getPinTries(apduCommand: CoinManagerApduCommands.GET_PIN_TLT_APDU, callback: callback)
     }
     
-    private func getPinTries(apduCommand: NFCISO7816APDU) {
+    private func getPinTries(apduCommand: NFCISO7816APDU, callback: NfcCallback) {
+        apduRunner.setCallback(callback: callback)
         apduRunner.setCardOperation(cardOperation: { () in
             self.apduRunner.sendCoinManagerAppletApdu(apduCommand: apduCommand)
                 .then{(response : Data)  -> Promise<String> in
@@ -114,8 +119,9 @@ public class CardCoinManagerNfcApi: TonNfcApi {
         apduRunner.startScan()
     }
     
-    public func getRootKeyStatus() {
+    public func getRootKeyStatus(callback: NfcCallback) {
         print("Start card operation: getRootKeyStatus")
+        apduRunner.setCallback(callback: callback)
         apduRunner.setCardOperation(cardOperation: { () in
             self.apduRunner.sendCoinManagerAppletApdu(apduCommand:
                     CoinManagerApduCommands.GET_ROOT_KEY_STATUS_APDU)
@@ -130,37 +136,38 @@ public class CardCoinManagerNfcApi: TonNfcApi {
         apduRunner.startScan()
     }
     
-    public func getDeviceLabel() {
+    public func getDeviceLabel(callback: NfcCallback) {
         print("Start card operation: getDeviceLabel")
-        executeCoinManagerOperationAndSendHex(apdu: CoinManagerApduCommands.GET_DEVICE_LABEL_APDU, errorMsg: ResponsesConstants.ERROR_MSG_GET_DEVICE_LABEL_RESPONSE_LEN_INCORRECT)
-    
+        executeCoinManagerOperationAndSendHex(apdu: CoinManagerApduCommands.GET_DEVICE_LABEL_APDU, errorMsg: ResponsesConstants.ERROR_MSG_GET_DEVICE_LABEL_RESPONSE_LEN_INCORRECT, callback: callback
+        )
         apduRunner.startScan()
     }
     
-    public func getCsn() {
+    public func getCsn(callback: NfcCallback) {
         print("Start card operation: getCsn")
-        executeCoinManagerOperationAndSendHex(apdu: CoinManagerApduCommands.GET_CSN_APDU, errorMsg: ResponsesConstants.ERROR_MSG_GET_CSN_RESPONSE_LEN_INCORRECT)
+        executeCoinManagerOperationAndSendHex(apdu: CoinManagerApduCommands.GET_CSN_APDU, errorMsg: ResponsesConstants.ERROR_MSG_GET_CSN_RESPONSE_LEN_INCORRECT, callback: callback)
     }
     
-    public func getSeVersion() {
+    public func getSeVersion(callback: NfcCallback) {
         print("Start card operation: getSeVersion")
         executeCoinManagerOperationAndSendHex(apdu: CoinManagerApduCommands.GET_SE_VERSION_APDU,
-            errorMsg: ResponsesConstants.ERROR_MSG_GET_SE_VERSION_RESPONSE_LEN_INCORRECT)
+            errorMsg: ResponsesConstants.ERROR_MSG_GET_SE_VERSION_RESPONSE_LEN_INCORRECT, callback: callback)
     }
     
-    public func getAvailableMemory() {
+    public func getAvailableMemory(callback: NfcCallback) {
         print("Start card operation: getAvailableMemory")
         executeCoinManagerOperationAndSendHex(apdu: CoinManagerApduCommands.GET_AVAILABLE_MEMORY_APDU,
-            errorMsg: ResponsesConstants.ERROR_MSG_GET_AVAILABLE_MEMORY_RESPONSE_LEN_INCORRECT)
+            errorMsg: ResponsesConstants.ERROR_MSG_GET_AVAILABLE_MEMORY_RESPONSE_LEN_INCORRECT, callback: callback)
     }
     
-    public func getAppsList() {
+    public func getAppsList(callback: NfcCallback) {
         print("Start card operation: getAppsList")
         executeCoinManagerOperationAndSendHex(apdu: CoinManagerApduCommands.GET_APPLET_LIST_APDU,
-            errorMsg: ResponsesConstants.ERROR_MSG_GET_APPLET_LIST_RESPONSE_LEN_INCORRECT)
+            errorMsg: ResponsesConstants.ERROR_MSG_GET_APPLET_LIST_RESPONSE_LEN_INCORRECT, callback: callback)
     }
     
-    private func executeCoinManagerOperationAndSendHex(apdu: NFCISO7816APDU, errorMsg: String) {
+    private func executeCoinManagerOperationAndSendHex(apdu: NFCISO7816APDU, errorMsg: String, callback:  NfcCallback) {
+        apduRunner.setCallback(callback: callback)
         apduRunner.setCardOperation(cardOperation: { () in
             self.apduRunner.sendCoinManagerAppletApdu(apduCommand: apdu)
                 .then{(response : Data)  -> Promise<String> in

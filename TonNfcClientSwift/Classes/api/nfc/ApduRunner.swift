@@ -21,12 +21,18 @@ extension NFCISO7816APDU {
 
 @available(iOS 13.0, *)
 class ApduRunner: NSObject, NFCTagReaderSessionDelegate {
-    var sessionEx:NFCTagReaderSession?
+    var sessionEx: NFCTagReaderSession?
     var cardOperation: (() -> Promise<String>)?
+    var callback: NfcCallback?
     let errorHelper = ErrorHelper.getInstance()
+    
     
     func setCardOperation(cardOperation: @escaping () -> Promise<String>) {
         self.cardOperation = cardOperation
+    }
+    
+    func setCallback(callback: NfcCallback) {
+        self.callback = callback
     }
     
     func startScan() {
@@ -35,23 +41,27 @@ class ApduRunner: NSObject, NFCTagReaderSessionDelegate {
     }
     
     func tagReaderSession(_ session: NFCTagReaderSession, didDetect tags: [NFCTag]) {
+        guard self.callback != nil else {
+            print("NfcCallback is empty.")
+            return
+        }
         guard self.sessionEx != nil else {
-            errorHelper.callRejectWith(errMsg : ResponsesConstants.ERROR_MSG_NFC_SESSION_IS_NIL, reject: NfcCallback.callback.reject)
+            errorHelper.callRejectWith(errMsg : ResponsesConstants.ERROR_MSG_NFC_SESSION_IS_NIL, reject: callback?.reject)
             return
         }
         guard self.cardOperation != nil else {
-            errorHelper.callRejectWith(errMsg : ResponsesConstants.ERROR_MSG_CARD_OPERATION_EMPTY, reject: NfcCallback.callback.reject)
+            errorHelper.callRejectWith(errMsg : ResponsesConstants.ERROR_MSG_CARD_OPERATION_EMPTY, reject: callback?.reject)
             return
         }
         guard tags.count > 0 else {
-            errorHelper.callRejectWith(errMsg : ResponsesConstants.ERROR_MSG_NFC_TAG_NOT_DETECTED, reject: NfcCallback.callback.reject)
+            errorHelper.callRejectWith(errMsg : ResponsesConstants.ERROR_MSG_NFC_TAG_NOT_DETECTED, reject: callback?.reject)
             return
         }
         if case NFCTag.iso7816(_) = tags.first! {
             sessionEx?.connect(to: tags.first!) { (error: Error?) in
                 if let err = error {
                     print( "Error connecting to Nfc Tag" + err.localizedDescription)
-                    self.errorHelper.callRejectWith(errMsg : ResponsesConstants.ERROR_MSG_NFC_TAG_NOT_CONNECTED, reject: NfcCallback.callback.reject)
+                    self.errorHelper.callRejectWith(errMsg : ResponsesConstants.ERROR_MSG_NFC_TAG_NOT_CONNECTED, reject: self.callback?.reject)
                     return
                 }
                 
@@ -65,15 +75,15 @@ class ApduRunner: NSObject, NFCTagReaderSessionDelegate {
     
     private func handleApduResponse(apduResponse: Promise<String>) {
         apduResponse.done{response in
-            NfcCallback.callback.resolve?(response)
+            self.callback?.resolve!(response)
             self.invalidateSession()
         }.catch{ error in
             switch error {
                 case is NSError: // we throw NSError from sendApdu if card sent error response
-                    NfcCallback.callback.reject?(ResponsesConstants.CARD_ERROR_TYPE_MSG,/* error.localizedDescription,*/ error as NSError)
+                    self.callback?.reject!(ResponsesConstants.CARD_ERROR_TYPE_MSG,/* error.localizedDescription,*/ error as NSError)
                     
                 default:
-                    self.errorHelper.callRejectWith(errMsg : error.localizedDescription, reject: NfcCallback.callback.reject)
+                    self.errorHelper.callRejectWith(errMsg : error.localizedDescription, reject: self.callback?.reject)
                 }
             print(error.localizedDescription)
             self.invalidateSession(msg: "Application failure: " +  error.localizedDescription)
