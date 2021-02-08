@@ -169,6 +169,43 @@ APDU Response: 0a
 
 Here you see the log of APDU commands sent to the card and their responses in raw format. And in the end there is a final wrapped response.
 
+## About NfcCallback	
+
+For each card operation now there is a pair of functions. The first one returns json response or throws a exception containing json error message. The second function does the same work, but it puts json response/json error message into callback. For this we defined NfcCallback.
+
+	public class NfcCallback {
+  		private NfcResolver resolve;
+  		private NfcRejecter reject;
+
+  		public NfcCallback(NfcResolver resolve, NfcRejecter reject) {
+    			set(resolve, reject);
+  		}
+	}
+
+	@FunctionalInterface
+	public interface NfcRejecter {
+  		void reject(String errorMsg);
+	}
+
+	@FunctionalInterface
+	public interface NfcResolver {
+  		void resolve(Object value);
+	}
+
+To use you must override NfcRejecter and NfcResolver interfaces.
+
+For example let's look at operation getMaxPinTries. Previously we tried it already. There are two functions for it.
+
+	public String getMaxPinTriesAndGetJson() throws Exception
+
+	public void getMaxPinTries(final NfcCallback callback)
+	
+Example of work with NfcCallback.
+
+	import com.facebook.react.bridge.Promise;
+	...
+	cardCoinManagerNfcApi.getMaxPinTries(NfcCallback(promise::resolve, promise::reject));
+
 ## Card activation
 
 When user gets NFC TON Labs security card  at the first time, the applet on the card is in a special state.  The main functionality of applet is blocked for now. Applet waits for user authentication. To pass authentication user must have three secret hex strings **authenticationPassword, commonSecret, initialVector**. The tuple **(authenticationPassword, commonSecret, initialVector)** is called _card activation data._  The user is going to get (using debots) his activation data from Tracking Smartcontract deployed for his security card.
@@ -180,6 +217,8 @@ At this step not only the card waits for user authentication. The user also auth
 The detailed info about card activation and related workflow is [here]().
 
 For now let's suppose the user somehow got activation data into his application from debot (the details of working with debot will be given later). Then to activate the card he may use the following exemplary snippets.
+
+
 
 ## About applet states and provided functionality
 
@@ -245,42 +284,7 @@ This module is to store/maintain the data for recovering service: multisignature
 
 There is an snippet demonstrating the structure of recovery data and the way of adding it into NFC TON Labs security card.
 
-## About NfcCallback	
 
-For each card operation now there is a pair of functions. The first one returns json response or throws a exception containing json error message. The second function does the same work, but it puts json response/json error message into callback. For this we defined NfcCallback.
-
-	public class NfcCallback {
-  		private NfcResolver resolve;
-  		private NfcRejecter reject;
-
-  		public NfcCallback(NfcResolver resolve, NfcRejecter reject) {
-    			set(resolve, reject);
-  		}
-	}
-
-	@FunctionalInterface
-	public interface NfcRejecter {
-  		void reject(String errorMsg);
-	}
-
-	@FunctionalInterface
-	public interface NfcResolver {
-  		void resolve(Object value);
-	}
-
-To use you must override NfcRejecter and NfcResolver interfaces.
-
-For example let's look at operation getMaxPinTries. Previously we tried it already. There are two functions for it.
-
-	public String getMaxPinTriesAndGetJson() throws Exception
-
-	public void getMaxPinTries(final NfcCallback callback)
-	
-Example of work with NfcCallback.
-
-	import com.facebook.react.bridge.Promise;
-	...
-	cardCoinManagerNfcApi.getMaxPinTries(NfcCallback(promise::resolve, promise::reject));
 	
 ## Full functions list 
 
