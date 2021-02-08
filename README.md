@@ -62,7 +62,7 @@ public class NfcCallback {
 }
 ```
 
-So any function from the API returns void and has the last argument _NfcCallback calback_. It passes the postprocessed card's response into _resolve_ and it passes error message and error object into _reject_ in the case of any exception. So to use the API you must define your _NfcRejecter_ and _NfcResolver_ callback functions.
+Any function from the API returns void and has the last argument _NfcCallback calback_. It passes the postprocessed card's response into _resolve_ and it passes error message and error object into _reject_ in the case of any exception. So to use the API you must define your _NfcRejecter_ and _NfcResolver_ callback functions.
 
 Let's look at simple exemplary function _getMaxPinTries_ from class _CardCoinManagerNfcApi_. It returns the maximum number of PIN tries from the card. It has the following signature.
 
@@ -71,13 +71,13 @@ public func getMaxPinTries(callback: NfcCallback)
 ```
 To make it work you should go through the following steps.
 
-+ Make the following import.
++ Make the import.
 
 ```swift
 import TonNfcClientSwift
 ```
 
-+ Add the following snippet.
++ Add the snippet.
 
 ```swift
 var cardCoinManagerNfcApi: CardCoinManagerNfcApi = CardCoinManagerNfcApi()
@@ -93,7 +93,7 @@ let nfcCallback = NfcCallback(resolve: resolve, reject: reject)
 cardCoinManagerNfcApi.getMaxPinTries(callback: nfcCallback)
 ```
 
-Run application and you must get an invitation dialog to connect the card. Then wait for 1-2 seconds to get the response from the card. Check your Xcode console. You should find the following output.
+Run application and you get an invitation dialog to connect the card. Wait for 1-2 seconds to get the response from the card. Check your Xcode console. You should find the following output.
 
 ```
 Caught msg :
@@ -101,7 +101,7 @@ Caught msg :
 {"message":"10","status":"ok"}
 ```
     
-This is a response from card wrapped into json of special format.
+This is a response from card wrapped into json.
 
 ## More about responses format
 
@@ -172,7 +172,7 @@ Here B81F0E0E07316DAB6C320ECC6BF3DBA48A70101C5251CC31B1D8F831B36E9F2A is a 32 by
 
 ## Test work with the card
 
-After you prepared the application, you may run it on your iPhone (not simulator). Then you need to establish NFC connection. For this you should call the necessary function from TonNfcClientSwift api (like cardCoinManagerNfcApi.getMaxPinTries()). It will start NFC session and you will get invitation to connect the card.
+After you prepared the application, you may run it on your iPhone. Then you need to establish NFC connection. For this you should call the necessary function from TonNfcClientSwift api (like getMaxPinTries). It will start NFC session and you will get invitation to connect the card.
 
 <p align="center">
 <img src="../master/docs/images/Screenshot2.png" width="200">
