@@ -25,7 +25,7 @@ Also you must go through the following steps to make NFC working for you.
 
 - Add into info.plist the point **ISO7816 application identifiers for NFC Tag Reader Session** and add for it the following items: 313132323333343435353636, A000000151000000.
 
-- Add into info.plist the point **com.apple.developer.nfc.readersession.formats** and for it string item **TAG**.
+- Add into info.plist the point **com.apple.developer.nfc.readersession.formats** and add for it string item **TAG**.
 
 _Note_ : you can not work with NFC using simulator, you must run it on iPhone, so you also should set development team.
 
