@@ -22,10 +22,10 @@ import CoreNFC
     
     public override init() {}
     
-    public func getKeyChainDataAboutAllKeys(callback: NfcCallback) {
+    public func getKeyChainDataAboutAllKeys(resolve : @escaping NfcResolver, reject : @escaping NfcRejecter) {
         print("Start card operation: getAllHmacsOfKeysFromCard")
         var keyHmacsAndLens = [[String: String]]()
-        apduRunner.setCallback(callback: callback)
+        apduRunner.setCallback(resolve : resolve, reject : reject)
         apduRunner.setCardOperation(cardOperation: { () in
             self.reselectKeyForHmac()
                 .then{(response : Data) -> Promise<Data> in
@@ -63,10 +63,10 @@ import CoreNFC
         apduRunner.startScan()
     }
     
-    public func getKeyChainInfo(callback: NfcCallback) {
+    public func getKeyChainInfo(resolve : @escaping NfcResolver, reject : @escaping NfcRejecter) {
         print("Start card operation: getKeyChainInfo")
         var keyChainInfo: [String : String] = [:]
-        apduRunner.setCallback(callback: callback)
+        apduRunner.setCallback(resolve : resolve, reject : reject)
         apduRunner.setCardOperation(cardOperation: { () in
             self.reselectKeyForHmac()
                 .then{(response : Data) -> Promise<Data> in
@@ -102,10 +102,10 @@ import CoreNFC
         apduRunner.startScan()
     }
     
-    public func addKeyIntoKeyChain(newKey: String, callback: NfcCallback){
+    public func addKeyIntoKeyChain(newKey: String, resolve : @escaping NfcResolver, reject : @escaping NfcRejecter){
         print("Start card operation: addKeyIntoKeyChain" )
-        guard dataVerifier.checkKeySize(key: newKey, callback: callback) &&
-                dataVerifier.checkKeyFormat(key: newKey, callback: callback) else {
+        guard dataVerifier.checkKeySize(key: newKey, reject : reject) &&
+                dataVerifier.checkKeyFormat(key: newKey, reject : reject) else {
             return
         }
         print("Got newKey to add:" + newKey)
@@ -119,7 +119,7 @@ import CoreNFC
         print("keySize = " + String(keySize))
         var macOfKey = Data(_ : [])
         var oldNumOfKeys: Int = 0
-        apduRunner.setCallback(callback: callback)
+        apduRunner.setCallback(resolve : resolve, reject : reject)
         apduRunner.setCardOperation(cardOperation: { () in
             self.selectTonAppletAndCheckPersonalizedState()
                 .then{(response : Data)  -> Promise<Data> in
@@ -152,12 +152,12 @@ import CoreNFC
         apduRunner.startScan()
     }
     
-    public func changeKeyInKeyChain(newKey : String, oldKeyHMac : String, callback: NfcCallback) {
+    public func changeKeyInKeyChain(newKey : String, oldKeyHMac : String, resolve : @escaping NfcResolver, reject : @escaping NfcRejecter) {
         print("Start card operation: changeKeyInKeyChain" )
-        guard dataVerifier.checkMacSize(mac: oldKeyHMac, callback: callback) &&
-                dataVerifier.checkMacFormat(mac: oldKeyHMac, callback: callback) &&
-                dataVerifier.checkKeySize(key: newKey, callback: callback) &&
-                dataVerifier.checkKeyFormat(key: newKey, callback: callback) else {
+        guard dataVerifier.checkMacSize(mac: oldKeyHMac, reject : reject) &&
+                dataVerifier.checkMacFormat(mac: oldKeyHMac, reject : reject) &&
+                dataVerifier.checkKeySize(key: newKey, reject : reject) &&
+                dataVerifier.checkKeyFormat(key: newKey, reject : reject) else {
             return
         }
         print("Got newKey: " + newKey)
@@ -168,7 +168,7 @@ import CoreNFC
         print("newKeySize = " + String(newKeyBytes.count))
         var keyIndexToChange: [UInt8] = []
         var oldNumOfKeys: Int = 0
-        apduRunner.setCallback(callback: callback)
+        apduRunner.setCallback(resolve : resolve, reject : reject)
         apduRunner.setCardOperation(cardOperation: { () in
             self.selectTonAppletAndCheckPersonalizedState()
                 .then{(response : Data)  -> Promise<Data> in
@@ -269,14 +269,14 @@ import CoreNFC
         }
     }
     
-    public func getKeyFromKeyChain(keyMac: String, callback: NfcCallback) {
+    public func getKeyFromKeyChain(keyMac: String, resolve : @escaping NfcResolver, reject : @escaping NfcRejecter) {
         print("Start card operation: getKeyFromKeyChain" )
-        guard dataVerifier.checkMacSize(mac: keyMac, callback: callback) &&
-                dataVerifier.checkMacFormat(mac: keyMac, callback: callback) else {
+        guard dataVerifier.checkMacSize(mac: keyMac, reject : reject) &&
+                dataVerifier.checkMacFormat(mac: keyMac, reject : reject) else {
             return
         }
         print("Got mac: " + keyMac)
-        apduRunner.setCallback(callback: callback)
+        apduRunner.setCallback(resolve : resolve, reject : reject)
         apduRunner.setCardOperation(cardOperation: { () in
             self.getIndexAndLenOfKeyInKeyChainPromise(keyHmac: keyMac)
             .then{(response : Data) -> Promise<String> in
@@ -334,14 +334,14 @@ import CoreNFC
         }
     }
     
-    public func deleteKeyFromKeyChain(keyMac: String, callback: NfcCallback) {
+    public func deleteKeyFromKeyChain(keyMac: String, resolve : @escaping NfcResolver, reject : @escaping NfcRejecter) {
         print("Start card operation: deleteKeyFromKeyChain" )
-        guard dataVerifier.checkMacSize(mac: keyMac, callback: callback) &&
-                dataVerifier.checkMacFormat(mac: keyMac, callback: callback) else {
+        guard dataVerifier.checkMacSize(mac: keyMac, reject : reject) &&
+                dataVerifier.checkMacFormat(mac: keyMac, reject : reject) else {
             return
         }
         print("Got mac: " + keyMac)
-        apduRunner.setCallback(callback: callback)
+        apduRunner.setCallback(resolve : resolve, reject : reject)
         apduRunner.setCardOperation(cardOperation: { () in
             self.selectTonAppletAndCheckDeleteState()
             .then{(response : Data)  -> Promise<Data> in
@@ -411,14 +411,14 @@ import CoreNFC
         apduRunner.startScan()
     }
     
-    public func finishDeleteKeyFromKeyChainAfterInterruption(keyMac: String, callback: NfcCallback) {
+    public func finishDeleteKeyFromKeyChainAfterInterruption(keyMac: String, resolve : @escaping NfcResolver, reject : @escaping NfcRejecter) {
         print("Start card operation: finishDeleteKeyFromKeyChainAfterInterruption" )
-        guard dataVerifier.checkMacSize(mac: keyMac, callback: callback) &&
-                dataVerifier.checkMacFormat(mac: keyMac, callback: callback) else {
+        guard dataVerifier.checkMacSize(mac: keyMac, reject : reject) &&
+                dataVerifier.checkMacFormat(mac: keyMac, reject : reject) else {
             return
         }
         print("Got mac: " + keyMac)
-        apduRunner.setCallback(callback: callback)
+        apduRunner.setCallback(resolve : resolve, reject : reject)
         apduRunner.setCardOperation(cardOperation: { () in
             self.selectTonAppletAndCheckDeleteState()
             .then{(response : Data)  -> Promise<Data> in
@@ -551,9 +551,9 @@ import CoreNFC
             }
     }
     
-    public func getDeleteKeyRecordNumOfPackets(callback: NfcCallback) {
+    public func getDeleteKeyRecordNumOfPackets(resolve : @escaping NfcResolver, reject : @escaping NfcRejecter) {
         print("Start card operation: getDeleteKeyRecordNumOfPackets")
-        apduRunner.setCallback(callback: callback)
+        apduRunner.setCallback(resolve : resolve, reject : reject)
         apduRunner.setCardOperation(cardOperation: { () in
             return self.reselectKeyForHmac()
                 .then{(response : Data) -> Promise<Int> in
@@ -583,9 +583,9 @@ import CoreNFC
             }
     }
     
-    public func getDeleteKeyChunkNumOfPackets(callback: NfcCallback) {
+    public func getDeleteKeyChunkNumOfPackets(resolve : @escaping NfcResolver, reject : @escaping NfcRejecter) {
         print("Start card operation: getDeleteKeyChunkNumOfPackets")
-        apduRunner.setCallback(callback: callback)
+        apduRunner.setCallback(resolve : resolve, reject : reject)
         apduRunner.setCardOperation(cardOperation: { () in
             return self.reselectKeyForHmac()
                 .then{(response : Data) -> Promise<Int> in
@@ -615,9 +615,9 @@ import CoreNFC
             }
     }
     
-    public func resetKeyChain(callback: NfcCallback) {
+    public func resetKeyChain(resolve : @escaping NfcResolver, reject : @escaping NfcRejecter) {
         print("Start card operation resetKeyChain" )
-        apduRunner.setCallback(callback: callback)
+        apduRunner.setCallback(resolve : resolve, reject : reject)
         apduRunner.setCardOperation(cardOperation: { () in
             return self.reselectKeyForHmac()
                 .then{(response : Data) -> Promise<Data> in
@@ -635,9 +635,9 @@ import CoreNFC
     }
     
     
-    public func getNumberOfKeys(callback: NfcCallback) {
+    public func getNumberOfKeys(resolve : @escaping NfcResolver, reject : @escaping NfcRejecter) {
         print("Start card operation: getNumberOfKeys" )
-        apduRunner.setCallback(callback: callback)
+        apduRunner.setCallback(resolve : resolve, reject : reject)
         apduRunner.setCardOperation(cardOperation: { () in
             return self.reselectKeyForHmac()
                 .then{(response : Data) -> Promise<Data> in
@@ -660,9 +660,9 @@ import CoreNFC
         apduRunner.startScan()
     }
     
-    public func getOccupiedStorageSize(callback: NfcCallback) {
+    public func getOccupiedStorageSize(resolve : @escaping NfcResolver, reject : @escaping NfcRejecter) {
         print("Start card operation: getOccupiedSize")
-        apduRunner.setCallback(callback: callback)
+        apduRunner.setCallback(resolve : resolve, reject : reject)
         apduRunner.setCardOperation(cardOperation: { () in
             return self.reselectKeyForHmac()
                 .then{(response : Data) -> Promise<Data> in
@@ -685,9 +685,9 @@ import CoreNFC
         apduRunner.startScan()
     }
     
-    public func getFreeStorageSize(callback: NfcCallback) {
+    public func getFreeStorageSize(resolve : @escaping NfcResolver, reject : @escaping NfcRejecter) {
         print("Start card operation: getFreeSize")
-        apduRunner.setCallback(callback: callback)
+        apduRunner.setCallback(resolve : resolve, reject : reject)
         apduRunner.setCardOperation(cardOperation: { () in
             return self.reselectKeyForHmac()
                 .then{(response : Data) -> Promise<Data> in
@@ -710,15 +710,15 @@ import CoreNFC
         apduRunner.startScan()
     }
     
-    public func checkKeyHmacConsistency(keyHmac: String, callback: NfcCallback){
+    public func checkKeyHmacConsistency(keyHmac: String, resolve : @escaping NfcResolver, reject : @escaping NfcRejecter){
         print("Start card operation: checkKeyHmacConsistency" )
-        guard dataVerifier.checkMacSize(mac: keyHmac, callback: callback) &&
-                dataVerifier.checkMacFormat(mac: keyHmac, callback: callback) else {
+        guard dataVerifier.checkMacSize(mac: keyHmac, reject : reject) &&
+                dataVerifier.checkMacFormat(mac: keyHmac, reject : reject) else {
             return
         }
         print("Got keyHmac:" + keyHmac)
         let keyHmacBytes = ByteArrayAndHexHelper.hexStrToUInt8Array(hexStr: keyHmac)
-        apduRunner.setCallback(callback: callback)
+        apduRunner.setCallback(resolve : resolve, reject : reject)
         apduRunner.setCardOperation(cardOperation: { () in
             return self.reselectKeyForHmac()
                 .then{(response : Data) -> Promise<Data> in
@@ -734,14 +734,14 @@ import CoreNFC
         apduRunner.startScan()
     }
     
-    public func getIndexAndLenOfKeyInKeyChain(keyHmac: String, callback: NfcCallback){
+    public func getIndexAndLenOfKeyInKeyChain(keyHmac: String, resolve : @escaping NfcResolver, reject : @escaping NfcRejecter){
         print("Start card operation: getIndexAndLenOfKeyInKeyChain" )
-        guard dataVerifier.checkMacSize(mac: keyHmac, callback: callback) &&
-                dataVerifier.checkMacFormat(mac: keyHmac, callback: callback) else {
+        guard dataVerifier.checkMacSize(mac: keyHmac, reject : reject) &&
+                dataVerifier.checkMacFormat(mac: keyHmac, reject : reject) else {
             return
         }
         print("Got keyHmac:" + keyHmac)
-        apduRunner.setCallback(callback: callback)
+        apduRunner.setCallback(resolve : resolve, reject : reject)
         apduRunner.setCardOperation(cardOperation: { () in
             self.getIndexAndLenOfKeyInKeyChainPromise(keyHmac: keyHmac)
                 .then{(response : (Data))  -> Promise<String> in
@@ -778,15 +778,15 @@ import CoreNFC
             }
     }
     
-    public func checkAvailableVolForNewKey(keySize: String, callback: NfcCallback){
+    public func checkAvailableVolForNewKey(keySize: String, resolve : @escaping NfcResolver, reject : @escaping NfcRejecter){
         print("Start card operation: checkAvailableVolForNewKey")
         let keySizeVal = UInt16(keySize) ?? 0
-        guard dataVerifier.checkKeySizeVal(keySizeVal : keySizeVal, callback: callback) else {
+        guard dataVerifier.checkKeySizeVal(keySizeVal : keySizeVal, reject : reject) else {
             return
         }
         print("Got keySize:" + keySize)
         let keySize = UInt16(keySize)
-        apduRunner.setCallback(callback: callback)
+        apduRunner.setCallback(resolve : resolve, reject : reject)
         apduRunner.setCardOperation(cardOperation: { () in
             self.selectTonAppletAndCheckPersonalizedState()
                 .then{(response : Data)  -> Promise<Data> in
@@ -818,17 +818,17 @@ import CoreNFC
             }
     }
     
-    public func getHmac(index: String, callback: NfcCallback){
+    public func getHmac(index: String, resolve : @escaping NfcResolver, reject : @escaping NfcRejecter){
         print("Start card operation: getHmac" )
-        guard dataVerifier.checkKeyIndexFormat(index : index, callback: callback) else {
+        guard dataVerifier.checkKeyIndexFormat(index : index, reject : reject) else {
             return
         }
         let keyIndex = UInt16(index) ?? 0
-        guard dataVerifier.checkKeyIndexSize(index : keyIndex, callback: callback) else {
+        guard dataVerifier.checkKeyIndexSize(index : keyIndex, reject : reject) else {
             return
         }
         print("Got index of key:" + index)
-        apduRunner.setCallback(callback: callback)
+        apduRunner.setCallback(resolve : resolve, reject : reject)
         apduRunner.setCardOperation(cardOperation: { () in
             self.getHmac(keyIndex: keyIndex)
                 .then{(response : Data)  -> Promise<String> in

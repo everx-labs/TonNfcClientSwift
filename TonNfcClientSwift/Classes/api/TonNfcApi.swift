@@ -42,27 +42,27 @@ public class TonNfcApi {
         hmacHelper.currentSerialNumber = serialNumber
     }
     
-    public func getCurrentSerialNumberAndPutIntoCallback(callback: NfcCallback) {
-        callback.resolve?(jsonHelper.createJson(msg : hmacHelper.currentSerialNumber))
+    public func getCurrentSerialNumberAndPutIntoCallback(resolve : @escaping NfcResolver, reject : @escaping NfcRejecter) {
+        resolve(jsonHelper.createJson(msg : hmacHelper.currentSerialNumber))
     }
     
-    public func getAllSerialNumbers(callback: NfcCallback) {
+    public func getAllSerialNumbers(resolve : @escaping NfcResolver, reject : @escaping NfcRejecter) {
         print("Start operation: getAllSerialNumbers")
         do {
             let accounts = try getAllAccounts()
             if (accounts.count == 0) {
-                callback.resolve?(jsonHelper.createJson(msg : ResponsesConstants.HMAC_KEYS_DOES_NOT_FOUND_MSG))
+                resolve(jsonHelper.createJson(msg : ResponsesConstants.HMAC_KEYS_DOES_NOT_FOUND_MSG))
             }
             else {
                 var serialNumbers : [String] = []
                 for acc in accounts {
                     serialNumbers.append(acc.deletingPrefix(KeychainQueryHelper.HMAC_ACCOUNT))
                 }
-                callback.resolve?(jsonHelper.createJsonWithSerialNumbers(serialNumbers: serialNumbers))
+                resolve(jsonHelper.createJsonWithSerialNumbers(serialNumbers: serialNumbers))
             }
         }
         catch {
-            errorHelper.callRejectWith(errMsg : error as! String, reject: callback.reject)
+            errorHelper.callRejectWith(errMsg : error as! String, reject : reject)
         }
     }
     
@@ -82,19 +82,19 @@ public class TonNfcApi {
         return accounts
     }
     
-    public func isKeyForHmacExistAndReturnIntoCallback(serialNumber : String, callback: NfcCallback) {
+    public func isKeyForHmacExistAndReturnIntoCallback(serialNumber : String, resolve : @escaping NfcResolver, reject : @escaping NfcRejecter) {
         print("Start operation: isKeyForHmacExist")
-        guard dataVerifier.checkSerialNumberFormat(serialNumber: serialNumber, callback: callback) &&
-                dataVerifier.checkSerialNumberSize(serialNumber: serialNumber, callback: callback) else {
+        guard dataVerifier.checkSerialNumberFormat(serialNumber: serialNumber, reject : reject) &&
+                dataVerifier.checkSerialNumberSize(serialNumber: serialNumber, reject : reject) else {
             return
         }
         do {
             let res = try isKeyForHmacExist(serialNumber : serialNumber)
             let msg = res == true ? ResponsesConstants.TRUE_MSG : ResponsesConstants.FALSE_MSG
-            callback.resolve?(jsonHelper.createJson(msg : msg))
+            resolve(jsonHelper.createJson(msg : msg))
         }
         catch {
-            errorHelper.callRejectWith(errMsg : error as! String, reject: callback.reject)
+            errorHelper.callRejectWith(errMsg : error as! String, reject : reject)
         }
     }
     
@@ -110,23 +110,23 @@ public class TonNfcApi {
         return status == errSecSuccess
     }
     
-    public func selectKeyForHmacAndReturnIntoCallback(serialNumber : String, callback: NfcCallback) {
+    public func selectKeyForHmacAndReturnIntoCallback(serialNumber : String, resolve : @escaping NfcResolver, reject : @escaping NfcRejecter) {
         print("Start operation: selectKeyForHmac")
-        guard dataVerifier.checkSerialNumberFormat(serialNumber: serialNumber, callback: callback) &&
-                dataVerifier.checkSerialNumberSize(serialNumber: serialNumber, callback: callback) else {
+        guard dataVerifier.checkSerialNumberFormat(serialNumber: serialNumber, reject : reject) &&
+                dataVerifier.checkSerialNumberSize(serialNumber: serialNumber, reject : reject) else {
             return
         }
         do {
             let existFlag = try selectKeyForHmac(serialNumber: serialNumber)
             if (existFlag == true) {
-                callback.resolve?(jsonHelper.createJson(msg : ResponsesConstants.DONE_MSG))
+                resolve(jsonHelper.createJson(msg : ResponsesConstants.DONE_MSG))
             }
             else {
                 throw ResponsesConstants.ERROR_MSG_KEY_FOR_HMAC_DOES_NOT_EXIST_IN_IOS_KEYCHAIN
             }
         }
         catch {
-            errorHelper.callRejectWith(errMsg : error as! String, reject: callback.reject)
+            errorHelper.callRejectWith(errMsg : error as! String, reject : reject)
         }
     }
     
@@ -145,14 +145,14 @@ public class TonNfcApi {
         return existFlag
     }
     
-    public func createKeyForHmac(password : String, commonSecret : String, serialNumber : String, callback: NfcCallback) {
+    public func createKeyForHmac(password : String, commonSecret : String, serialNumber : String, resolve : @escaping NfcResolver, reject : @escaping NfcRejecter) {
         print("Start operation: createKeyForHmac" )
-        guard dataVerifier.checkPasswordSize(password: password, callback: callback) &&
-                dataVerifier.checkPasswordFormat(password: password, callback: callback) &&
-                dataVerifier.checkCommonSecretSize(commonSecret: commonSecret, callback: callback) &&
-                dataVerifier.checkCommonSecretFormat(commonSecret: commonSecret, callback: callback) &&
-                dataVerifier.checkSerialNumberFormat(serialNumber: serialNumber, callback: callback) &&
-                dataVerifier.checkSerialNumberSize(serialNumber: serialNumber, callback: callback) else {
+        guard dataVerifier.checkPasswordSize(password: password, reject : reject) &&
+                dataVerifier.checkPasswordFormat(password: password, reject : reject) &&
+                dataVerifier.checkCommonSecretSize(commonSecret: commonSecret, reject : reject) &&
+                dataVerifier.checkCommonSecretFormat(commonSecret: commonSecret, reject : reject) &&
+                dataVerifier.checkSerialNumberFormat(serialNumber: serialNumber, reject : reject) &&
+                dataVerifier.checkSerialNumberSize(serialNumber: serialNumber, reject : reject) else {
             return
         }
         print("Got password:" + password)
@@ -162,10 +162,10 @@ public class TonNfcApi {
             let passwordBytes = ByteArrayAndHexHelper.hex(from: password)
             let commonSecretBytes = ByteArrayAndHexHelper.hex(from: commonSecret)
             try self.createKeyForHmac(password : passwordBytes, commonSecret : commonSecretBytes, serialNumber : serialNumber)
-            callback.resolve?(jsonHelper.createJson(msg : ResponsesConstants.DONE_MSG))
+            resolve(jsonHelper.createJson(msg : ResponsesConstants.DONE_MSG))
         }
         catch {
-            errorHelper.callRejectWith(errMsg : error as! String, reject: callback.reject)
+            errorHelper.callRejectWith(errMsg : error as! String, reject : reject)
         }
     }
     
@@ -201,10 +201,10 @@ public class TonNfcApi {
         setCurrentSerialNumber(serialNumber: serialNumber)
     }
     
-    public func deleteKeyForHmac(serialNumber : String, callback: NfcCallback)  {
+    public func deleteKeyForHmac(serialNumber : String, resolve : @escaping NfcResolver, reject : @escaping NfcRejecter)  {
         print("Start operation: deleteKeyForHmac" )
-        guard dataVerifier.checkSerialNumberFormat(serialNumber: serialNumber, callback: callback) &&
-                dataVerifier.checkSerialNumberSize(serialNumber: serialNumber, callback: callback) else {
+        guard dataVerifier.checkSerialNumberFormat(serialNumber: serialNumber, reject : reject) &&
+                dataVerifier.checkSerialNumberSize(serialNumber: serialNumber, reject : reject) else {
             return
         }
         do {
@@ -218,20 +218,20 @@ public class TonNfcApi {
                 if (status == errSecSuccess && hmacHelper.currentSerialNumber == serialNumber) {
                     setCurrentSerialNumber(serialNumber: TonWalletAppletConstants.EMPTY_SERIAL_NUMBER)
                 }
-                callback.resolve?(jsonHelper.createJson(msg : ResponsesConstants.DONE_MSG))
+                resolve(jsonHelper.createJson(msg : ResponsesConstants.DONE_MSG))
             }
             else {
                 throw ResponsesConstants.ERROR_MSG_KEY_FOR_HMAC_DOES_NOT_EXIST_IN_IOS_KEYCHAIN
             }
         }
         catch {
-            errorHelper.callRejectWith(errMsg : error as! String, reject: callback.reject)
+            errorHelper.callRejectWith(errMsg : error as! String, reject : reject)
         }
     }
     
-    public func getSault(callback: NfcCallback) {
+    public func getSault(resolve : @escaping NfcResolver, reject : @escaping NfcRejecter) {
         print("Start card operation: getSault")
-        apduRunner.setCallback(callback: callback)
+        apduRunner.setCallback(resolve : resolve, reject : reject)
         apduRunner.setCardOperation(cardOperation: { () in
             self.apduRunner.sendTonWalletAppletApdu(apduCommand:
                     TonWalletAppletApduCommands.GET_SAULT_APDU)
@@ -245,9 +245,9 @@ public class TonNfcApi {
         apduRunner.startScan()
     }
     
-    public func getSerialNumber(callback: NfcCallback) {
+    public func getSerialNumber(resolve : @escaping NfcResolver, reject : @escaping NfcRejecter) {
         print("Start card operation: getSerialNumber")
-        apduRunner.setCallback(callback: callback)
+        apduRunner.setCallback(resolve : resolve, reject : reject)
         apduRunner.setCardOperation(cardOperation: { () in
             self.apduRunner.sendTonWalletAppletApdu(apduCommand:
                     TonWalletAppletApduCommands.GET_SERIAL_NUMBER_APDU)
@@ -261,9 +261,9 @@ public class TonNfcApi {
         apduRunner.startScan()
     }
     
-    public func getTonAppletState(callback: NfcCallback) {
+    public func getTonAppletState(resolve : @escaping NfcResolver, reject : @escaping NfcRejecter) {
         print("Start card operation: getTonAppletState")
-        apduRunner.setCallback(callback: callback)
+        apduRunner.setCallback(resolve : resolve, reject : reject)
         apduRunner.setCardOperation(cardOperation: { () in
             self.apduRunner.sendTonWalletAppletApdu(apduCommand: TonWalletAppletApduCommands.GET_APP_INFO_APDU)
                 .then{(response : Data)  -> Promise<String> in
@@ -278,8 +278,8 @@ public class TonNfcApi {
         apduRunner.startScan()
     }
     
-    func executeTonWalletOperationAndSendBool(apdu: NFCISO7816APDU, callback: NfcCallback) {
-        apduRunner.setCallback(callback: callback)
+    func executeTonWalletOperationAndSendBool(apdu: NFCISO7816APDU, resolve : @escaping NfcResolver, reject : @escaping NfcRejecter) {
+        apduRunner.setCallback(resolve : resolve, reject : reject)
         apduRunner.setCardOperation(cardOperation: { () in
             self.apduRunner.sendTonWalletAppletApdu(apduCommand: apdu)
                 .then{(response : Data)  -> Promise<String> in
@@ -290,8 +290,8 @@ public class TonNfcApi {
         apduRunner.startScan()
     }
     
-    func executeTonWalletOperationAndSendHex(apdu: NFCISO7816APDU, callback: NfcCallback) {
-        apduRunner.setCallback(callback: callback)
+    func executeTonWalletOperationAndSendHex(apdu: NFCISO7816APDU, resolve : @escaping NfcResolver, reject : @escaping NfcRejecter) {
+        apduRunner.setCallback(resolve : resolve, reject : reject)
         apduRunner.setCardOperation(cardOperation: { () in
             self.apduRunner.sendTonWalletAppletApdu(apduCommand: apdu)
                 .then{(response : Data)  -> Promise<String> in
@@ -301,8 +301,8 @@ public class TonNfcApi {
         apduRunner.startScan()
     }
     
-    func executeTonWalletOperationAndSendNumericStr(apdu: NFCISO7816APDU, callback: NfcCallback) {
-        apduRunner.setCallback(callback: callback)
+    func executeTonWalletOperationAndSendNumericStr(apdu: NFCISO7816APDU, resolve : @escaping NfcResolver, reject : @escaping NfcRejecter) {
+        apduRunner.setCallback(resolve : resolve, reject : reject)
         apduRunner.setCardOperation(cardOperation: { () in
             self.apduRunner.sendTonWalletAppletApdu(apduCommand: apdu)
                 .then{(response : Data)  -> Promise<String> in
@@ -312,8 +312,8 @@ public class TonNfcApi {
         apduRunner.startScan()
     }
     
-    func executeTonWalletOperation(apdu: NFCISO7816APDU, callback: NfcCallback) {
-        apduRunner.setCallback(callback: callback)
+    func executeTonWalletOperation(apdu: NFCISO7816APDU, resolve : @escaping NfcResolver, reject : @escaping NfcRejecter) {
+        apduRunner.setCallback(resolve : resolve, reject : reject)
         apduRunner.setCardOperation(cardOperation: { () in
             self.apduRunner.sendTonWalletAppletApdu(apduCommand: apdu)
                 .then{(response : Data)  -> Promise<String> in

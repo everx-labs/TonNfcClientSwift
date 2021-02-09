@@ -15,14 +15,14 @@ import CoreNFC
 public class RecoveryDataApi: TonNfcApi {
     public override init() {}
     
-    public func resetRecoveryData(callback: NfcCallback) {
+    public func resetRecoveryData(resolve : @escaping NfcResolver, reject : @escaping NfcRejecter) {
         print("Start card operation: resetRecoveryData")
-        executeTonWalletOperation(apdu: TonWalletAppletApduCommands.RESET_RECOVERY_DATA_APDU, callback: callback)
+        executeTonWalletOperation(apdu: TonWalletAppletApduCommands.RESET_RECOVERY_DATA_APDU, resolve : resolve, reject : reject)
     }
 
-    public func isRecoveryDataSet(callback: NfcCallback) {
+    public func isRecoveryDataSet(resolve : @escaping NfcResolver, reject : @escaping NfcRejecter) {
         print("Start card operation: isRecoveryDataSet")
-        apduRunner.setCallback(callback: callback)
+        apduRunner.setCallback(resolve : resolve, reject : reject)
         apduRunner.setCardOperation(cardOperation: { () in
             self.apduRunner.sendTonWalletAppletApdu(apduCommand:
                     TonWalletAppletApduCommands.IS_RECOVERY_DATA_SET_APDU)
@@ -37,9 +37,9 @@ public class RecoveryDataApi: TonNfcApi {
         apduRunner.startScan()
     }
     
-    public func getRecoveryDataHash(callback: NfcCallback) {
+    public func getRecoveryDataHash(resolve : @escaping NfcResolver, reject : @escaping NfcRejecter) {
         print("Start card operation: getRecoveryDataHash")
-        apduRunner.setCallback(callback: callback)
+        apduRunner.setCallback(resolve : resolve, reject : reject)
         apduRunner.setCardOperation(cardOperation: { () in
             self.apduRunner.sendTonWalletAppletApdu(apduCommand:
                     TonWalletAppletApduCommands.GET_RECOVERY_DATA_HASH_APDU)
@@ -53,9 +53,9 @@ public class RecoveryDataApi: TonNfcApi {
         apduRunner.startScan()
     }
     
-    public func getRecoveryDataLen(callback: NfcCallback) {
+    public func getRecoveryDataLen(resolve : @escaping NfcResolver, reject : @escaping NfcRejecter) {
         print("Start card operation: getRecoveryDataLen")
-        apduRunner.setCallback(callback: callback)
+        apduRunner.setCallback(resolve : resolve, reject : reject)
         apduRunner.setCardOperation(cardOperation: { () in
             self.apduRunner.sendTonWalletAppletApdu(apduCommand:
                     TonWalletAppletApduCommands.GET_RECOVERY_DATA_LEN_APDU)
@@ -74,17 +74,17 @@ public class RecoveryDataApi: TonNfcApi {
         apduRunner.startScan()
     }
     
-    public func addRecoveryData(recoveryData: String, callback: NfcCallback) {
+    public func addRecoveryData(recoveryData: String, resolve : @escaping NfcResolver, reject : @escaping NfcRejecter) {
         print("Start card operation: addRecoveryData")
-        guard dataVerifier.checkRecoveryDataSize(recoveryData: recoveryData, callback: callback) &&
-                dataVerifier.checkRecoveryDataFormat(recoveryData: recoveryData, callback: callback) else {
+        guard dataVerifier.checkRecoveryDataSize(recoveryData: recoveryData, reject : reject) &&
+                dataVerifier.checkRecoveryDataFormat(recoveryData: recoveryData, reject : reject) else {
             return
         }
         print("Got recoveryData:" + recoveryData)
         let recoveryDataBytes = ByteArrayAndHexHelper.hexStrToUInt8Array(hexStr: recoveryData)
         let recoveryDataSize = UInt16(recoveryDataBytes.count)
         print("recoveryDataSize = " + String(recoveryDataSize))
-        apduRunner.setCallback(callback: callback)
+        apduRunner.setCallback(resolve : resolve, reject : reject)
         apduRunner.setCardOperation(cardOperation: { () in
             self.addRecoveryData(recoveryDataBytes: recoveryDataBytes)
                 .then{(response : Data)  -> Promise<String> in
@@ -122,9 +122,9 @@ public class RecoveryDataApi: TonNfcApi {
         }
     }
     
-    public func getRecoveryData(callback: NfcCallback) {
+    public func getRecoveryData(resolve : @escaping NfcResolver, reject : @escaping NfcRejecter) {
         print("Start card operation: getRecoveryData")
-        apduRunner.setCallback(callback: callback)
+        apduRunner.setCallback(resolve : resolve, reject : reject)
         apduRunner.setCardOperation(cardOperation: { () in
             self.apduRunner.sendTonWalletAppletApdu(apduCommand: TonWalletAppletApduCommands.GET_RECOVERY_DATA_LEN_APDU)
                 .then{(response : Data) -> Promise<String> in
