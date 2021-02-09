@@ -81,7 +81,7 @@ Caught msg :
 {"message":"10","status":"ok"}
 ```
     
-This is a response from card wrapped into json.
+This is a response from NFC card wrapped into json.
 
 ## Work with promises
 
