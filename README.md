@@ -47,7 +47,7 @@ Any function from the API returns void and has the lasts two arguments: _resolve
 Let's look at simple exemplary function _getMaxPinTries_ from class _CardCoinManagerNfcApi_. It returns the maximum number of PIN tries from the card. It has the following signature.
 
 ```swift
-public func getMaxPinTries(callback: NfcCallback)
+public func getMaxPinTries(resolve : @escaping NfcResolver, reject : @escaping NfcRejecter)
 ```
 To make it work you should go through the following steps.
 
