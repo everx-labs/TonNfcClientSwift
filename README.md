@@ -381,6 +381,49 @@ The basic functionality provided by NFC TON Labs security card is Ed25519 signat
 
 _Note:_ Functions signForDefaultHdPath, sign are protected by HMAC SHA256 signature (see previous section). But also there is an additional protection for them by PIN code. You have 10 attempts to enter PIN, after 10th fail you will not be able to use existing seed (keys for ed25519) . The only way to unblock these functions is to reset the seed (see resetWallet function) and generate new seed (see generateSeed). After resetting the seed PIN will be also reset to default value 5555.
 
+```swift
+let hdIndex = "65"
+Promise<String> { promise in
+	cardCryptoNfcApi.getPublicKey(hdIndex: hdIndex, 
+		resolve: { msg in promise.fulfill(msg as! String) }, 
+		reject: { (errMsg : String, err : NSError) in promise.reject(err) }
+	)
+}
+.done{response in
+	print("Got public key : "  + response)
+}
+.catch{ error in
+	print("Error happened : " + error.localizedDescription)
+}
+```
+
+```swift
+let hdIndex = "65"
+let msg = "A456"
+let pin = "5555"
+Promise<String> { promise in
+	cardCryptoNfcApi.createKeyForHmac(password: PASSWORD, commonSecret: COMMON_SECRET, serialNumber: SERIAL_NUMBER, 
+		resolve: { msg in promise.fulfill(msg as! String) }, 
+		reject: { (errMsg : String, err : NSError) in promise.reject(err) }
+	)
+}
+.then{(response : String)  -> Promise<String> in
+	print("Response from createKeyForHmac : " + response)
+	return Promise<String> { promise in
+		self.cardCryptoNfcApi.sign(data: msg, hdIndex: hdIndex, pin: pin, 
+			resolve: { msg in promise.fulfill(msg as! String) }, 
+			reject: { (errMsg : String, err : NSError) in promise.reject(err) }
+		)
+	}
+}
+.done{response in
+	print("Got signature : "  + response)
+}
+.catch{ error in
+	print("Error happened : " + error.localizedDescription)
+}
+```
+
 ## Card keychain
 
 Inside NFC TON Labs security card we implemented small flexible independent keychain. It allows to store some user's keys and secrets. The maximum number of keys is 1023, maximum key size — 8192 bytes and the total available volume of storage — 32767 bytes.
