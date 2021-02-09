@@ -110,6 +110,7 @@ Promise<String> { promise in
 	print("Error happened : " + error.localizedDescription)
 }
 ```
+Below you will find more examples and some gory details of NFC card coperations chaining for iPhone.
 
 ## More about responses format
 
