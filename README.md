@@ -327,6 +327,13 @@ Promise<String> { promise in
 	print(" !Error happened : " + error.localizedDescription)
 }
 ```
+Here there is a chain of NFC card operations built using promises. To make each card operation you must reconnect the card. Each time you will get invitation dialog to establish the connection (see previous section _Test work with the card_). iPhones have peculiarities of working with NFC. After one NFC session is finished, it may be not possible to establish new session immediately (at least for iPhone 7 and 8 it is true). So if you write the following code you may get a error.
+
+```swift
+cardCoinManagerNfcApi.getRootKeyStatus(resolve: resolve, reject: reject)
+cardCoinManagerNfcApi.generateSeed(pin: DEFAULT_PIN, resolve: resolve, reject: reject)
+```
+Here the first call of _getRootKeyStatus_ will work, but attempt to call _generateSeed_ immediately will throw a error _"System resource is unavailable"_. We need to make a short delay (approximately 3-5 seconds) before we start new NFC session. So these two calls must be separated for example by the call of _sleep_. That is why in above snippet demonstrating card activation before each API call there is _sleep(5)_.   
 
 ## About applet states and provided functionality
 
