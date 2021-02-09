@@ -171,7 +171,7 @@ In this [document](https://github.com/tonlabs/TonNfcClientSwift/blob/master/docs
 
 ### String format
 
-The majority of input data passed into TonNfcClientSwift library is represented by hex strings of even length > 0. These hex strings are naturally converted into byte arrays inside the library, like: "0A0A" → new byte[]{10, 10}. 
+The majority of input data passed into TonNfcClientSwift library is represented by hex strings of even length > 0. These hex strings are naturally converted into byte arrays inside the library, like: "0A0A" → [10, 10] as [UInt8]. 
 
 And also the payload produced by the card and wrapped into json responses is usually represented by hex strings of even length > 0.  For example, this is a response from getPublicKey function  returning ed25519 public key.
 
