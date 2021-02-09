@@ -8,15 +8,16 @@
 
 import Foundation
 
-class ResponsesConstants {
-    static let FAIL_STATUS: String =  "fail"
-    static let SUCCESS_STATUS: String =  "ok"
-    static let DONE_MSG: String =  "done"
+public class ResponsesConstants {
+    public static let FAIL_STATUS: String =  "fail"
+    public static let SUCCESS_STATUS: String =  "ok"
+    public static let DONE_MSG: String =  "done"
     
-    static let FALSE_MSG: String =  "false"
-    static let TRUE_MSG: String =  "true"
-    static let GENERATED_MSG: String =  "generated"
-    static let NOT_GENERATED_MSG: String =  "not generated"
+    public static let FALSE_MSG: String =  "false"
+    public static let TRUE_MSG: String =  "true"
+    public static let GENERATED_MSG: String =  "generated"
+    public static let NOT_GENERATED_MSG: String =  "not generated"
+    
     static let HMAC_KEYS_DOES_NOT_FOUND_MSG: String =  "HMac keys are not found in iOS keychain."
     static let HMAC_KEY_GENERATED_MSG: String =  "HMac key to sign APDU data is generated"
     static let PIN_SET_MSG: String =  "Pin is set"

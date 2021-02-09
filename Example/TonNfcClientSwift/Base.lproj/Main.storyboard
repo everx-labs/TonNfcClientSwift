@@ -30,7 +30,7 @@
                                     <color key="titleShadowColor" systemColor="labelColor"/>
                                 </state>
                                 <connections>
-                                    <action selector="getMaxPinTries:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="nlX-Sz-af8"/>
+                                    <action selector="getMaxPinTries:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="BEK-hj-czn"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tVX-w2-STa">
@@ -41,7 +41,7 @@
                                     <color key="titleColor" systemColor="opaqueSeparatorColor"/>
                                 </state>
                                 <connections>
-                                    <action selector="turnOnWallet:" destination="vXZ-lx-hvc" eventType="touchDragInside" id="a3e-W5-ihB"/>
+                                    <action selector="activateCard:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="0XI-yy-d47"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GT5-wD-pXY">
