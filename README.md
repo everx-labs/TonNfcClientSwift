@@ -33,36 +33,16 @@ _Note_ : you can not work with NFC using simulator, you must run it on iPhone, s
 
 To run the example project inside this lib, clone the repo, and run `pod install` from the Example directory first.
 
-## About NfcCallback plus simple example of library usage
+## Simple example
 
-For each NFC card operation there is a function in TonNfcClientSwift API. These functions use callbacks mechanism to output results into caller. We defined NfcCallback for this.
+For each NFC card operation there is a function in TonNfcClientSwift API. These functions use callbacks mechanism to output results into caller. We defined the following callback types for this.
 
 ```swift
 public typealias NfcResolver = ((Any) -> Void)
 public typealias NfcRejecter = ((String, NSError) -> Void)
-
-public class NfcCallback {
-    var resolve: NfcResolver?
-    var reject: NfcRejecter?
-
-    public init(resolve: @escaping NfcResolver, reject: @escaping NfcRejecter) {
-        set(resolve: resolve, reject: reject)
-    }
-
-    public func set(resolve: @escaping NfcResolver, reject: @escaping NfcRejecter) {
-        self.resolve = resolve
-        self.reject = reject
-    }
-
-    public func clear() {
-        self.resolve = nil
-        self.reject = nil
-    }
-
-}
 ```
 
-Any function from the API returns void and has the last argument _NfcCallback calback_. It passes the postprocessed card's response into _resolve_ and it passes error message and error object into _reject_ in the case of any exception. So to use the API you must define your _NfcRejecter_ and _NfcResolver_ callback functions.
+Any function from the API returns void and has the lasts two arguments _resolve : @escaping NfcResolver, reject : @escaping NfcRejecter_. It passes the postprocessed card's response into _resolve_ and it passes error message and error object into _reject_ in the case of any exception. So to use the API you must define your _NfcRejecter_ and _NfcResolver_ callback functions.
 
 Let's look at simple exemplary function _getMaxPinTries_ from class _CardCoinManagerNfcApi_. It returns the maximum number of PIN tries from the card. It has the following signature.
 
@@ -89,8 +69,8 @@ let resolve : NfcResolver = {(msg : Any) -> Void  in
 let reject : NfcRejecter = {(errMsg : String, err : NSError) -> Void in
 	print("Error happened : " + errMsg)
 }
-let nfcCallback = NfcCallback(resolve: resolve, reject: reject)
-cardCoinManagerNfcApi.getMaxPinTries(callback: nfcCallback)
+
+cardCoinManagerNfcApi.getMaxPinTries(resolve: resolve, reject: reject)
 ```
 
 Run application and you get an invitation dialog to connect the card. Wait for 1-2 seconds to get the response from the card. Check your Xcode console. You should find the following output.
@@ -102,6 +82,28 @@ Caught msg :
 ```
     
 This is a response from card wrapped into json.
+
+## Work with promises
+
+TonNfcClientSwift library uses [PromiseKit](https://cocoapods.org/pods/PromiseKit). So you may also use PromiseKit in the project. It gives a convinient way to make the chain of NFC card operations and avoid callback hell. So let's rewrite above example using promises.
+
+```swift
+import TonNfcClientSwift
+import PromiseKit
+...
+let cardCoinManagerNfcApi: CardCoinManagerNfcApi = CardCoinManagerNfcApi()
+...
+Promise<String> { promise in
+             cardCoinManagerNfcApi.getRemainingPinTries(resolve: { msg in promise.fulfill(msg as! String) }, reject: { (errMsg : String, err : NSError) in promise.reject(err) })
+         }
+         .done{response in
+                 print("Got PIN tries : " + response)
+         }
+         .catch{ error in
+             print("Error happened : " + error.localizedDescription)
+         }
+
+```
 
 ## More about responses format
 
