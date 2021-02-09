@@ -90,19 +90,25 @@ TonNfcClientSwift library uses [PromiseKit](https://cocoapods.org/pods/PromiseKi
 ```swift
 import TonNfcClientSwift
 import PromiseKit
-...
-let cardCoinManagerNfcApi: CardCoinManagerNfcApi = CardCoinManagerNfcApi()
-...
-Promise<String> { promise in
-             cardCoinManagerNfcApi.getRemainingPinTries(resolve: { msg in promise.fulfill(msg as! String) }, reject: { (errMsg : String, err : NSError) in promise.reject(err) })
-         }
-         .done{response in
-                 print("Got PIN tries : " + response)
-         }
-         .catch{ error in
-             print("Error happened : " + error.localizedDescription)
-         }
 
+...
+
+let cardCoinManagerNfcApi: CardCoinManagerNfcApi = CardCoinManagerNfcApi()
+
+...
+
+Promise<String> { promise in
+	cardCoinManagerNfcApi.getRemainingPinTries(
+		resolve: { msg in promise.fulfill(msg as! String) }, 
+		reject: { (errMsg : String, err : NSError) in promise.reject(err) }
+	)
+}
+.done{response in
+	print("Got PIN tries : " + response)
+}
+.catch{ error in
+	print("Error happened : " + error.localizedDescription)
+}
 ```
 
 ## More about responses format
