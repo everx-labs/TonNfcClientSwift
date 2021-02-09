@@ -167,7 +167,7 @@ It is the case when error happened in Swift code itself. The basic examples: tro
 		"status": "fail"
 	}
 	
-In this [document](https://github.com/tonlabs/TonNfcClientSwift/blob/master/docs/ErrorrList.md) you may find the full list of json error messages (and their full classification) that can be thrown by the library.
+In this [document](https://github.com/tonlabs/TonNfcClientSwift/blob/master/docs/ErrorList.md) you may find the full list of json error messages (and their full classification) that can be thrown by the library.
 
 ### String format
 
@@ -432,21 +432,23 @@ Each key has its unique id. This is its HMAC SHA256 signature created using the 
 
 The below snippet demonstrates the work with the keychain. We add one key, then retrieve it from the card. Then we replace it by a new key of the same key. At the end we delete the key.
 
-_Note:_ This test is quite long working. So take care of your NFC connection. To keep it alive your screen must not go out. You may increase timeout for your Android device to achieve this.
+```swift
+//the snippet is going to be hear soon
+```
 
 ## Recovery module
 
-This module is to store/maintain the data for recovering service: multisignature wallet address (hex string of length 64), TON Labs Surf public key (hex string of length 64) and part of card's activation data: authenticationPassword (hex string of length 256), commonSecret(hex string of length 64). This data will allow to recover access to multisignature wallet in the case when user has lost Android device with installed Surf application and also a seed phrase for Surf account. More details about recovery service can be found here.
+This module is to store/maintain the data for recovering service: multisignature wallet address (hex string of length 64), TON Labs Surf public key (hex string of length 64) and part of card's activation data: authenticationPassword (hex string of length 256), commonSecret(hex string of length 64). This data will allow to recover access to multisignature wallet in the case when user has lost iPhone with installed Surf application and also a seed phrase for Surf account. More details about recovery service can be found here.
 
 There is an snippet demonstrating the structure of recovery data and the way of adding it into NFC TON Labs security card.
 
-
+```swift
+//the snippet is going to be hear soon
+```
 	
 ## Full functions list 
 
-The full list of functions provided by the library to communicate with the card you will find [here](https://github.com/tonlabs/TonNfcClientAndroid/blob/master/docs/FuntionsList.md)
-
-## Requirements
+The full list of functions provided by the library to communicate with the card you will find [here](https://github.com/tonlabs/TonNfcClientSwift/blob/master/docs/FunctionsList.md)
 
 ## Author
 
