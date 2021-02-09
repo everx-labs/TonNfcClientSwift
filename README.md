@@ -42,7 +42,7 @@ public typealias NfcResolver = ((Any) -> Void)
 public typealias NfcRejecter = ((String, NSError) -> Void)
 ```
 
-Any function from the API returns void and has the lasts two arguments _resolve : @escaping NfcResolver, reject : @escaping NfcRejecter_. It passes the postprocessed card's response into _resolve_ and it passes error message and error object into _reject_ in the case of any exception. So to use the API you must define your _NfcRejecter_ and _NfcResolver_ callback functions.
+Any function from the API returns void and has the lasts two arguments: _resolve : @escaping NfcResolver, reject : @escaping NfcRejecter_. It passes the postprocessed card's response into _resolve_ and it passes error message and error object into _reject_ in the case of any exception. So to use the API you must define your _NfcRejecter_ and _NfcResolver_ callback functions.
 
 Let's look at simple exemplary function _getMaxPinTries_ from class _CardCoinManagerNfcApi_. It returns the maximum number of PIN tries from the card. It has the following signature.
 
