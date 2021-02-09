@@ -239,7 +239,9 @@ The detailed info about card activation and related workflow is [here]().
 
 For now let's suppose the user somehow got activation data into his application from debot (the details of working with debot will be given later). Then to activate the card he may use the following exemplary snippets.
 
+```swift
 
+```
 
 ## About applet states and provided functionality
 
