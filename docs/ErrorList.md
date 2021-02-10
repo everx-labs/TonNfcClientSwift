@@ -1,4 +1,4 @@
-In the case of any error functions of TonNfcClientSwift library throw an exception. The exception usually contains inside a error message wrapped into json of special format. You can get this json into your callback. There is a full list of json error messages that the library can potentially throw into caller.
+In the case of any error functions of TonNfcClientSwift library throw an exception. The exception usually contains inside a error message wrapped into json of special format. You can get this json into your callback. There is a full list of json error messages that the library can potentially throw into the caller.
 
 ## CARD_ERRORS
 
