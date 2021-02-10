@@ -17,123 +17,141 @@ Here there are functions to check/change the state of your NFC hardware.  In Ton
     {"message":"false","status":"ok"}
 ```
     
-## CoinManager functions
+## CoinManager functions (CardCoinManagerApi)
 
-Here there are functions to call APDU commands of CoinManager. CoinManager is an additional software integrated into NFC TON Labs Security card. It is responsible for maintaining ed25519 seed, related PIN and it provides some other auxiliary operations.  In TonNfcClientAndroid library there is a class CardCoinManagerApi providing all CoinManager functions.
+Here there are functions to call APDU commands of CoinManager. CoinManager is an additional software integrated into NFC TON Labs Security card. It is responsible for maintaining ed25519 seed, related PIN and it provides some auxiliary operations.  In TonNfcClientSwift library there is a class CardCoinManagerApi providing all CoinManager functions.
 
-- **setDeviceLabel(String deviceLabel)**
+- **setDeviceLabel(deviceLabel: String)**
 
     This function is used to set the device label. Now we do not use this device label stored in Coin Manager.
 
     *Arguments requirements:*
-
+```
     deviceLabel — hex string of length 64, example: '005815A3942073A6ADC70C035780FDD09DF09AFEEA4173B92FE559C34DCA0550'
+```
+ 
 
     *Response:*
-
+```
     {"message":"done","status":"ok"}
+```
 
 - **getDeviceLabel()**
 
     This function is used to get device label. Now we do not use this device label stored in Coin Manager.
 
     *Exemplary response:*
-
+```
     {"message":"005815A3942073A6ADC70C035780FDD09DF09AFEEA4173B92FE559C34DCA0550","status":"ok"}
+```
 
 - **getSeVersion()**
 
     This function is used to get SE (secure element) version. 
 
     *Response:*
-
+```
     {"message":"1008","status":"ok"}
+```
 
 - **getCsn()**
 
     This function is used to get CSN (SEID).
 
     *Exemplary response:*
-
+```
     {"message":"11223344556677881122334455667788","status":"ok"}
+```
 
 - **getMaxPinTries()**
 
     This function is used to get retry maximum times of PIN. 
 
     *Response:*
-
+```
     {"message":"10","status":"ok"}
+```
 
 - **getRemainingPinTries()**
 
     This function is used to get remaining retry times of PIN.
 
     *Exemplary response:*
-
+```
     {"message":"10","status":"ok"}
+```
 
 - **getRootKeyStatus()**
 
     This function is used to get the status of seed for ed25519: is it generated or not.
 
     *Response:*
-
+```
     a) If seed is present: {"message":"generated","status":"ok"}
 
     b) If seed is not present: {"message":"not generated","status":"ok"}
+```
 
 - **resetWallet()**
 
-    This function is used to reset the wallet state to the initial state. After resetting the wallet, the default PIN value would be 5555. The remaining retry for the PIN will be reset to MAX (default is 10). The seed for ed25519 will be erased. And after its calling any card operation (except of CoinManager stuff) will fail with 6F02 error. TON Labs wallet applet does not work without seed.
+    This function is used to reset the wallet state to the initial state. After resetting the wallet, the default PIN value would be 5555. The remaining number of retry for PIN will be reset to MAX (default is 10). The seed for ed25519 will be erased. And after its calling any card operation (except of CoinManager stuff) will fail with 6F02 error. TON Labs wallet applet does not work without seed at all.
 
     *Response:*
-
+```
     {"message":"done","status":"ok"}
+```
 
 - **getAvailableMemory()**
 
     This function is used to obtain the amount of memory of the specified type that is available to the applet. Note that implementation-dependent memory overhead structures may also use the same memory pool.
+        
+    *Exemplary response:*
+```
+    will be added soon
+```
 
 - **getAppsList()**
 
     This function is used to get application list. It returns list of applets AIDs that were installed onto card.
 
     *Exemplary response:*
-
+```
     {"message":"4F0D31313232333334343535363600","status":"ok"}
+```
+    _Note:_ Here 313132323333343435353636 is AID of our TON Labs wallet applet
 
-    Note: Here 313132323333343435353636 is AID of our TON Labs wallet applet
-
-- **generateSeed(String pin)**
+- **generateSeed(pin: String)**
 
     This function is used to generate the seed for ed25519 with RNG.
 
     *Arguments requirements:*
-
+```
     pin — numeric string of length 4, example: '5555'
-
+```
     By the way 5555 is a default PIN for all cards. 
 
     *Response:*
-
+```
     If seed does not exist then: {"message":"done","status":"ok"}
 
     If seed already exists and you call generateSeed then it will throw a error.
+```
 
-- **changePin(String oldPin, String newPin)**
+- **changePin(oldPin: String, newPin: String**
 
-    This function is used to change device PIN.
+    This function is used to change PIN.
 
     *Arguments requirements:*
-
+```
     oldPin — numeric string of length 4, example: '5555'
 
     newPin — numeric string of length 4, example: '6666'
+```
 
     *Response:*
-
+```
     {"message":"done","status":"ok"}
+```
 
 ## Functions to work with TON Labs wallet applet
 
