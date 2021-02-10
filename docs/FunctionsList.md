@@ -11,11 +11,10 @@ Here there are functions to check/change the state of your NFC hardware.  In Ton
     Check if your Android device has NFC hardware. 
 
     *Responses:*
-```
-    {"message":"true","status":"ok"}
 
-    {"message":"false","status":"ok"}
-```
+        {"message":"true","status":"ok"}
+        {"message":"false","status":"ok"}
+
     
 ## CoinManager functions (CardCoinManagerApi)
 
