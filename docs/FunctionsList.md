@@ -1,6 +1,6 @@
-# Full functions list
+# Full functions list (TonNfcClientSwift API)
 
-Here there is full functions list provided by TonNfcClientSwift library to make different requests to NFC TON Labs Security cards. 
+There is full functions list provided by TonNfcClientSwift API to make different requests to NFC TON Labs Security cards. All these functions work via callbacks. The last two arguments of each function are _resolve : @escaping NfcResolver, reject : @escaping NfcRejecter_ (we omit them below for short). In the case of success wrapped card response is put into _resolve_. In the case of exception error message and error object are put into _reject_.
 
 ## NFC related functions
 
@@ -11,28 +11,11 @@ Here there are functions to check/change the state of your NFC hardware.  In Ton
     Check if your Android device has NFC hardware. 
 
     *Responses:*
-
+```
     {"message":"true","status":"ok"}
 
     {"message":"false","status":"ok"}
-
-- **checkIfNfcEnabled()**
-
-    Check if NFC option is turned on for your Android device.
-
-    *Responses:*
-
-    {"message":"true","status":"ok"}
-
-    {"message":"false","status":"ok"}
-
-- **openNfcSettings()**
-
-    Open "Settings" panel to mantain NFC option.
-
-    *Response:*
-
-    {"message":"done","status":"ok"}
+```
     
 ## CoinManager functions
 
