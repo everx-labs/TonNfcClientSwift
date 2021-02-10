@@ -196,7 +196,7 @@ The functions are naturally divided into four groups. And there are respectively
 
 - **createKeyForHmac(authenticationPassword : String, commonSecret : String, serialNumber : String)**
 
-    If you reinstalled app and lost HMAC SHA256 symmetric key for the card from your iOS keychain), then create the key for your card using this function.
+    If you reinstalled app and lost HMAC SHA256 symmetric key for the card from your iOS keychain, then create the key for your card using this function.
 
         *Arguments requirements:*
 
