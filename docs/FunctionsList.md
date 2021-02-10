@@ -149,7 +149,7 @@ Here there are functions to call APDU commands of CoinManager. CoinManager is an
 
 TON Labs wallet applet is software developed by TON Labs team and integrated into NFC TON Labs Security card. It provides main card functionality. It takes seed for ed25519 signature from CoinManager entity.
 
-These functions are naturally divided into four groups. And there are respectively four classes in TonNfcClientAndroid library providing an API: CardActivationApi,  CardCryptoApi,  CardKeyChainApi, RecoveryDataApi. And there is a superclass TonWalletApi containing some common functions and functions to maintain keys for HMAC SHA256 signature (see section Protection against MITM).
+The functions are naturally divided into four groups. And there are respectively four classes in TonNfcClientSwift library providing an API: CardActivationApi,  CardCryptoApi,  CardKeyChainApi, RecoveryDataApi. And there is a superclass TonWalletApi containing some common functions and functions to maintain keys for HMAC SHA256 signature (see section Protection against MITM).
 
 ### TonWalletApi functions
 
@@ -161,11 +161,8 @@ These functions are naturally divided into four groups. And there are respective
 
     *Exemplary responses:*
 
-    {"message":"TonWalletApplet waits two-factor authorization.","status":"ok"}
-
-    {"message":"TonWalletApplet is personalized.","status":"ok"}
-
-    Note: Full list of applet states you may find in previous sections.
+        {"message":"TonWalletApplet waits two-factor authorization.","status":"ok"}
+        {"message":"TonWalletApplet is personalized.","status":"ok"}
 
 - **getSerialNumber()**
 
@@ -173,7 +170,7 @@ These functions are naturally divided into four groups. And there are respective
 
     *Exemplary response:*
 
-    {"message":"504394802433901126813236","status":"ok"}
+        {"message":"504394802433901126813236","status":"ok"}
 
 - **getSault()**
 
@@ -181,49 +178,40 @@ These functions are naturally divided into four groups. And there are respective
 
     *Exemplary response:*
 
-    {"message":"B81F0E0E07316DAB6C320ECC6BF3DBA48A70101C5251CC31B1D8F831B36E9F2A","status":"ok"}
-
-- **disconnectCard()**
-
-    Breaks NFC connection. 
-
-    *Response:*
-
-    {"message":"done","status":"ok"}
+        {"message":"B81F0E0E07316DAB6C320ECC6BF3DBA48A70101C5251CC31B1D8F831B36E9F2A","status":"ok"}
 
 #### 2) Functions to mantain keys for HMAC SHA256 
 
-- **selectKeyForHmac(String serialNumber)**
+- **selectKeyForHmac(serialNumber : String)**
 
-    Manually select new active card (it selects the serial number and correspondingly choose the appropriate key HMAC SHA256 from Android Keystore).
-
-    *Arguments requirements:*
-
-    serialNumber — numeric string of length 24, example: "50439480243390112681323"
-
-    *Response:*
-
-    {"message":"done","status":"ok"}
-
-- **createKeyForHmac(String authenticationPassword, String commonSecret, String serialNumber)**
-
-    If you reinstalled app and lost HMAC SHA256 symmetric key for the card from your Android keystore, then create the key for your card using this function.
+    Manually select new active card (it selects the serial number and correspondingly choose the appropriate key HMAC SHA256 from iOS keychain).
 
     *Arguments requirements:*
 
-     authenticationPassword — hex string of length 256, example: "4A0FD62FFC3249A45ED369BD9B9CB340829179E94B8BE546FB19A1BC67C9411BC5DC85B5E38F96689B921A64DEF1A3B6F4D2F5C7D2B0BD7CCE420DBD281BA1CC82EE0B233820EB5CFE505B7201903ABB12959B251A5A8525B2515F57ACDE30905E70C2A375D5C0EC10A5EA6E264206395BF163969632398FA4A88D359FEA21D9"
-
-    commonSecret — hex string of length 64, example: "9CEE28E284487EEB8FA6CE7C101C1184BB368F0CCAD057C9D89F7EC3307E72BA"
-
-    serialNumber — numeric string of length 24, example: "50439480243390112681323"
-
-    *Note 1:* Use here activation data tuple  (authenticationPassword, commonSecret) that is correct for your card, i.e. corresponds to your serialNumber.
-
-    *Note 2:* If the key for your card already exists in keystore it will not throw a error. It will just delete and recreate the key for you.
+        serialNumber — numeric string of length 24, example: "50439480243390112681323"
 
     *Response:*
 
-    {"message":"done","status":"ok"}
+        {"message":"done","status":"ok"}
+
+- **createKeyForHmac(authenticationPassword : String, commonSecret : String, serialNumber : String)**
+
+    If you reinstalled app and lost HMAC SHA256 symmetric key for the card from your iOS keychain), then create the key for your card using this function.
+
+        *Arguments requirements:*
+
+        authenticationPassword — hex string of length 256, 
+        example:    "4A0FD62FFC3249A45ED369BD9B9CB340829179E94B8BE546FB19A1BC67C9411BC5DC85B5E38F96689B921A64DEF1A3B6F4D2F5C7D2B0BD7CCE420DBD281BA1CC82EE0B233820EB5CFE505B7201903ABB12959B251A5A8525B2515F57ACDE30905E70C2A375D5C0EC10A5EA6E264206395BF163969632398FA4A88D359FEA21D9"
+
+        commonSecret — hex string of length 64, example: "9CEE28E284487EEB8FA6CE7C101C1184BB368F0CCAD057C9D89F7EC3307E72BA"
+
+        serialNumber — numeric string of length 24, example: "50439480243390112681323"
+
+    _Note:_ Use here activation data tuple  (authenticationPassword, commonSecret) that is correct for your card, i.e. corresponds to your serialNumber.
+
+    *Response:*
+
+        {"message":"done","status":"ok"}
 
 - **getCurrentSerialNumber()**
 
@@ -231,7 +219,7 @@ These functions are naturally divided into four groups. And there are respective
 
     *Exemplary response:*
 
-    {"message":"504394802433901126813236","status":"ok"}
+        {"message":"504394802433901126813236","status":"ok"}
 
 - **getAllSerialNumbers()**
 
@@ -241,29 +229,29 @@ These functions are naturally divided into four groups. And there are respective
 
     {"serial_number_field":["504394802433901126813236", "455324585319848551839771"],"status":"ok"}
 
-- **isKeyForHmacExist(String serialNumber)**
+- **isKeyForHmacExist(serialNumber : String)**
 
-    Check if key for given serialNumber exists in Android keystore.
+    Check if key for given serialNumber exists in iOS keychain.
 
     *Arguments requirements:*
 
-    serialNumber — numeric string of length 24, example: "50439480243390112681323"
+        serialNumber — numeric string of length 24, example: "50439480243390112681323"
 
     *Exemplary response:*
 
-    {"message":"true","status":"ok"}
+        {"message":"true","status":"ok"}
 
-- **deleteKeyForHmac(String serialNumber)**
+- **deleteKeyForHmac(serialNumber : String)**
 
-    Delete key for given serialNumber from Android keystore.
+    Delete key for given serialNumber from iOS keychain.
 
     *Arguments requirements:*
 
-    serialNumber — numeric string of length 24, example: "50439480243390112681323"
+        serialNumber — numeric string of length 24, example: "50439480243390112681323"
 
     *Response:*
 
-    {"message":"done","status":"ok"}
+        {"message":"done","status":"ok"}
 
 ### CardActivationApi functions
 
