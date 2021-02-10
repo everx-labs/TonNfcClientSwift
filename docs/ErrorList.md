@@ -846,5 +846,74 @@ Any trouble with input data that you pass into TonNfcClientSwift API functions a
 }
 ```
 
+## CARD_RESPONSE_DATA_ERRORS
+
+This sublist of errors is about additional checking of data that comes into TonNfcClientSwift library from the card. We check all responses from card: i.e. their formats, lengthes, ranges in some cases. Normally errors of such type must not happen. Please report if you would get one of them.
+
+```
+{ 
+"errorType": "Native code fail: incorrect response from card", 
+"errorTypeId": "4", 
+"errorCode": "40000", 
+"message": "Sault response from card must have length 32. Current length is ", 
+"status": "fail" 
+}
+
+{ 
+"errorType": "Native code fail: incorrect response from card", 
+"errorTypeId": "4", 
+"errorCode": "40001", 
+"message": "Applet state response from card must have length 1. Current length is ", 
+"status": "fail" 
+}
+
+{ 
+"errorType": "Native code fail: incorrect response from card", 
+"errorTypeId": "4", 
+"errorCode": "40002", 
+"message": "Unknown applet state = ", 
+"status": "fail" 
+}
+
+{ 
+"errorType": "Native code fail: incorrect response from card",
+"errorTypeId": "4", 
+"errorCode": "40003", 
+"message": "Recovery data hash must have length 32.", 
+"status": "fail" 
+}
+
+{ 
+"errorType": "Native code fail: incorrect response from card", 
+"errorTypeId": "4", 
+"errorCode": "40004", 
+"message": "Recovery data length byte array must have length 2.", 
+"status": "fail" 
+}
+
+{ 
+"errorType": "Native code fail: incorrect response from card", 
+"errorTypeId": "4", 
+"errorCode": "40005", 
+"message": "Recovery data length must be > 0 and <= 2048.", 
+"status": "fail" 
+}
+
+{ 
+"errorType": "Native code fail: incorrect response from card", 
+"errorTypeId": "4", 
+"errorCode": "40006", 
+"message": "Response from IS_RECOVERY_DATA_SET card operation must have length 1.", 
+"status": "fail" 
+}
+
+{ 
+"errorType": "Native code fail: incorrect response from card", 
+"errorTypeId": "4", 
+"errorCode": "40007", 
+"message": "Recovery data portion must have length = ", 
+"status": "fail" 
+}
+```
 
 
