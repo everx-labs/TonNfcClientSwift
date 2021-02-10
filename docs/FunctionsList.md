@@ -463,7 +463,7 @@ Here there are functions related to ed25519 signature.
 
     *Response:*
 
-    {"message":"done","status":"ok"}
+        {"message":"done","status":"ok"}
 
 - **getKeyChainDataAboutAllKeys()**
 
@@ -471,7 +471,14 @@ Here there are functions related to ed25519 signature.
 
     *Exemplary response:*
 
-    {"keysData":[{"hmac":"D7E0DFB66A2F72AAD7D66D897C805D307EE1F1CB8077D3B8CF1A942D6A5AC2FF","length":"6"},{"hmac":"D31D1D600F8E5B5951275B9C6DED079011FD852ABB62C14A2EECA2E6924452C0","length":"3"}],"status":"ok"}
+        {
+            "keysData":
+                [
+                    {"hmac":"D7E0DFB66A2F72AAD7D66D897C805D307EE1F1CB8077D3B8CF1A942D6A5AC2FF","length":"6"},           
+                    {"hmac":"D31D1D600F8E5B5951275B9C6DED079011FD852ABB62C14A2EECA2E6924452C0","length":"3"}
+                ],
+            "status":"ok"
+         }
 
 - **getKeyChainInfo()**
 
@@ -479,7 +486,7 @@ Here there are functions related to ed25519 signature.
 
     *Exemplary response:*
 
-    {"numberOfKeys":0,"occupiedSize":0,"freeSize":32767,"status":"ok"}
+        {"numberOfKeys":0,"occupiedSize":0,"freeSize":32767,"status":"ok"}
 
 - **getNumberOfKeys()**
 
@@ -487,7 +494,7 @@ Here there are functions related to ed25519 signature.
 
     *Exemplary response:*
 
-    {"message":"1","status":"ok"}
+        {"message":"1","status":"ok"}
 
 - **getOccupiedStorageSize()**
 
@@ -495,7 +502,7 @@ Here there are functions related to ed25519 signature.
 
     *Exemplary response:*
 
-    {"message":"0","status":"ok"}
+        {"message":"0","status":"ok"}
 
 - **getFreeStorageSize()**
 
@@ -503,7 +510,7 @@ Here there are functions related to ed25519 signature.
 
     *Exemplary response:*
 
-    {"message":"32767","status":"ok"}
+        {"message":"32767","status":"ok"}
 
 - **getKeyFromKeyChain(String keyHmac)**
 
@@ -511,11 +518,11 @@ Here there are functions related to ed25519 signature.
 
     *Arguments requirements:*
 
-    keyHmac — hex string of length 64.
+        keyHmac — hex string of length 64.
 
     *Exemplary response:*
 
-    {"message":"001122334455","status":"ok"}
+        {"message":"001122334455","status":"ok"}
 
 - **addKeyIntoKeyChain(String newKey)**
 
@@ -523,11 +530,11 @@ Here there are functions related to ed25519 signature.
 
     *Arguments requirements:*
 
-    neyKey — hex string of even length ≥ 2 and ≤ 16384.
+        neyKey — hex string of even length ≥ 2 and ≤ 16384.
 
     *Response:*
 
-    {"message":"EFBF24AC1563B34ADB0FFE0B0A53659E72E26765704C109C95346EEAA1D4BEAF","status":"ok"}
+        {"message":"EFBF24AC1563B34ADB0FFE0B0A53659E72E26765704C109C95346EEAA1D4BEAF","status":"ok"}
 
     where "message" contains hmac of newKey.
 
@@ -537,11 +544,11 @@ Here there are functions related to ed25519 signature.
 
     *Arguments requirements:*
 
-    keyHmac — hex string of length 64.
+        keyHmac — hex string of length 64.
 
     *Exemplary response:*
 
-    {"message":"5","status":"ok"}
+        {"message":"5","status":"ok"}
 
     where "message" field contains the number of remaining keys
 
@@ -551,7 +558,7 @@ Here there are functions related to ed25519 signature.
 
     *Exemplary response:*
 
-    {"message":"5","status":"ok"}
+        {"message":"5","status":"ok"}
 
     where "message" field contains the number of remaining keys
 
@@ -561,13 +568,13 @@ Here there are functions related to ed25519 signature.
 
     *Arguments requirements:*
 
-    newKey — hex string of even length ≥ 2 and ≤ 16384. 
+        newKey — hex string of even length ≥ 2 and ≤ 16384. 
 
-    oldKeyHmac — hex string of length 64.
+        oldKeyHmac — hex string of length 64.
 
     *Response:*
 
-    {"message":"EFBF24AC1563B34ADB0FFE0B0A53659E72E26765704C109C95346EEAA1D4BEAF","status":"ok"}
+        {"message":"EFBF24AC1563B34ADB0FFE0B0A53659E72E26765704C109C95346EEAA1D4BEAF","status":"ok"}
 
     where "message" contains hmac of newKey.
 
@@ -577,11 +584,11 @@ Here there are functions related to ed25519 signature.
 
     *Arguments requirements:*
 
-    keyHmac — hex string of length 64.
+        keyHmac — hex string of length 64.
 
     *Exemplary response:*
 
-    {"message":"{\"index\":1,\"length\":3}","status":"ok"}
+        {"message":"{\"index\":1,\"length\":3}","status":"ok"}
 
 - **checkAvailableVolForNewKey(Short keySize)**
 
@@ -589,11 +596,11 @@ Here there are functions related to ed25519 signature.
 
     *Arguments requirements:*
 
-    keySize — numeric string representing short value > 0 and ≤ 8192.
+        keySize — numeric string representing short value > 0 and ≤ 8192.
 
     *Response:*
 
-    {"message":"done","status":"ok"}
+        {"message":"done","status":"ok"}
 
 - **checkKeyHmacConsistency(String keyHmac)**
 
@@ -601,7 +608,7 @@ Here there are functions related to ed25519 signature.
 
     *Response:*
 
-    {"message":"done","status":"ok"}
+        {"message":"done","status":"ok"}
 
 - **getHmac(String index)**
 
@@ -609,11 +616,11 @@ Here there are functions related to ed25519 signature.
 
     *Arguments requirements:*
 
-    index — digital string storing an integer ≥ 0 and ≤1023.
+        index — digital string storing an integer ≥ 0 and ≤1023.
 
     *Exemplary response:*
 
-    {"message":"EFBF24AC1563B34ADB0FFE0B0A53659E72E26765704C109C95346EEAA1D4BEAF","status":"ok"}
+        {"message":"EFBF24AC1563B34ADB0FFE0B0A53659E72E26765704C109C95346EEAA1D4BEAF","status":"ok"}
 
 - **getDeleteKeyRecordNumOfPackets()**
 
@@ -621,7 +628,7 @@ Here there are functions related to ed25519 signature.
 
     *Exemplary response:*
 
-    {"message":"2","status":"ok"}
+        {"message":"2","status":"ok"}
 
 - **getDeleteKeyChunkNumOfPackets()**
 
@@ -629,5 +636,5 @@ Here there are functions related to ed25519 signature.
 
     *Exemplary response:*
 
-    {"message":"5","status":"ok"}
+        {"message":"5","status":"ok"}
 
