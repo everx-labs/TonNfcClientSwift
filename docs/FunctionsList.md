@@ -512,7 +512,7 @@ Here there are functions related to ed25519 signature.
 
         {"message":"32767","status":"ok"}
 
-- **getKeyFromKeyChain(String keyHmac)**
+- **getKeyFromKeyChain(keyHmac : String)**
 
     Read key from card keychain based on its hmac.
 
@@ -524,7 +524,7 @@ Here there are functions related to ed25519 signature.
 
         {"message":"001122334455","status":"ok"}
 
-- **addKeyIntoKeyChain(String newKey)**
+- **addKeyIntoKeyChain(newKey : String)**
 
     Save new key into card keychain.
 
@@ -538,7 +538,7 @@ Here there are functions related to ed25519 signature.
 
     where "message" contains hmac of newKey.
 
-- **deleteKeyFromKeyChain(String keyHmac)**
+- **deleteKeyFromKeyChain(keyHmac : String)**
 
     Delete key from card keychain based on its hmac.
 
@@ -562,7 +562,7 @@ Here there are functions related to ed25519 signature.
 
     where "message" field contains the number of remaining keys
 
-- **changeKeyInKeyChain(String newKey, String oldKeyHmac)**
+- **changeKeyInKeyChain(newKey : String, oldKeyHmac : String)**
 
     Replace existing key by new key. The length of new key must be equal to length of old key.
 
@@ -578,7 +578,7 @@ Here there are functions related to ed25519 signature.
 
     where "message" contains hmac of newKey.
 
-- **getIndexAndLenOfKeyInKeyChain(String keyHmac)**
+- **getIndexAndLenOfKeyInKeyChain(keyHmac : String)**
 
     Read index (inside internal applet storage) and length of key by its hmac.
 
@@ -590,7 +590,7 @@ Here there are functions related to ed25519 signature.
 
         {"message":"{\"index\":1,\"length\":3}","status":"ok"}
 
-- **checkAvailableVolForNewKey(Short keySize)**
+- **checkAvailableVolForNewKey(keySize : String)**
 
     Check if there is enough free volume in card keychain to add new key of length = keySize. If there is no enough space then it throws an exception
 
@@ -602,7 +602,7 @@ Here there are functions related to ed25519 signature.
 
         {"message":"done","status":"ok"}
 
-- **checkKeyHmacConsistency(String keyHmac)**
+- **checkKeyHmacConsistency(keyHmac : String)**
 
     Checks if card's keychain stores a key with such keyHmac and if this hmac really corresponds to the key.
 
@@ -610,7 +610,7 @@ Here there are functions related to ed25519 signature.
 
         {"message":"done","status":"ok"}
 
-- **getHmac(String index)**
+- **getHmac(index : String )**
 
     Get hmac of key in card keychain by its index. 
 
