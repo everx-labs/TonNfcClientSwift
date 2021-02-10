@@ -408,7 +408,7 @@ Here there are functions related to ed25519 signature.
 
     *Exemplary response:* 
 
-    {"message":"7","status":"ok"}
+        {"message":"7","status":"ok"}
 
 - **getRecoveryDataHash()**
 
@@ -416,27 +416,27 @@ Here there are functions related to ed25519 signature.
 
     *Exemplary response:* 
 
-    {"message":"B81F0E0E07316DAB6C320ECC6BF3DBA48A70101C5251CC31B1D8F831B36E9F2A","status":"ok"}
+        {"message":"B81F0E0E07316DAB6C320ECC6BF3DBA48A70101C5251CC31B1D8F831B36E9F2A","status":"ok"}
 
 - **getRecoveryData()**
 
-    Read  recovery data from TON Wallet applet.
+    Read recovery data from TON Labs Wallet applet.
 
     *Exemplary response:* 
 
-    {"message":"00112233445566","status":"ok"}
+        {"message":"00112233445566","status":"ok"}
 
 - **addRecoveryData(String recoveryData)**
 
-    Save recovery data into applet. 
+    Save recovery data into TON Labs Wallet applet. 
 
     *Arguments requirements:*
 
-    recoveryData — hex string of even length ≥ 2 and ≤ 4096.
+        recoveryData — hex string of even length ≥ 2 and ≤ 4096.
 
     *Response:*
 
-    {"message":"done","status":"ok"}
+        {"message":"done","status":"ok"}
 
 - **isRecoveryDataSet()**
 
@@ -444,9 +444,8 @@ Here there are functions related to ed25519 signature.
 
     *Response:*
 
-    1) If we added recovery data, then: {"message":"true","status":"ok"}
-
-    2) If we did not add recovery data, then: {"message":"false","status":"ok"}
+        1) If we added recovery data, then: {"message":"true","status":"ok"}
+        2) If we did not add recovery data, then: {"message":"false","status":"ok"}
 
 - **resetRecoveryData()**
 
@@ -454,7 +453,7 @@ Here there are functions related to ed25519 signature.
 
     *Response:*
 
-    {"message":"done","status":"ok"}
+        {"message":"done","status":"ok"}
 
 ### CardKeyChainApi functions
 
