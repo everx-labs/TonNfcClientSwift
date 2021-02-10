@@ -1,10 +1,23 @@
-In the case of any error functions of library throw an exception. The exception usually contains inside a error message that is packed into json of special format. You can get error message json into your callback.
-
-Below there is a full list of json error messages that the library can potentially throw into outside world.
+In the case of any error functions of TonNfcClientSwift library throw an exception. The exception usually contains inside a error message wrapped into json of special format. You can get this json into your callback. There is a full list of json error messages that the library can potentially throw into caller.
 
 ## CARD_ERRORS
 
-Here there are errors produced by NFC card (Ton wallet applet itself). So Swift code just catches it and put error message it into callback. Below there are exemplary jsons in which field "cardInstruction" always equals to  GET_APP_INFO. In reality in this field you may meet any other card instruction (APDU).
+Here there are errors produced by NFC card (TON Labs wallet applet itself). So Swift code just catches it and puts error message into callback. Below there are exemplary jsons. Their fields have the following meanings:
+
++ *errorCode* — error status word (SW) produced by the card (applet)
+
++ *cardInstruction* — title of APDU command that failed
+
++ *errorTypeId* — id of error type ( it will always be zero here)
+
++ *errorType* — description of error type 
+
++ *message* — contains error message corresponding to errorCode thrown by the card.
+
++ *apdu* — full text of failed APDU command in hex format
+
+
+In below list field "cardInstruction" always equals to  GET_APP_INFO (just as example). But really in this field you may meet any other card instruction (APDU).
 
 {
 "errorType": "Applet fail: card operation error",
