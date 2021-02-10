@@ -1003,7 +1003,70 @@ This sublist of errors is about additional checking of data that comes into TonN
 "status": "fail" 
 }
 
-{ "errorType": "Native code fail: incorrect response from card", "errorTypeId": "4", "errorCode": "40019", "message": "Free size in keychain can not be negative", "status": "fail" }
+{ 
+"errorType": "Native code fail: incorrect response from card", 
+"errorTypeId": "4", 
+"errorCode": "40019", 
+"message": "Free size in keychain can not be negative", 
+"status": "fail" 
+}
+
+{ 
+"errorType": "Native code fail: incorrect response from card", 
+"errorTypeId": "4", 
+"errorCode": "40020", 
+"message": "Response from GET_KEY_INDEX_IN_STORAGE_AND_LEN card operation must have length 4.", 
+"status": 
+"fail" 
+}
+
+{ 
+"errorType": "Native code fail: incorrect response from card", 
+"errorTypeId": "4", 
+"errorCode": "40021", 
+"message": "Key index must be >= 0 and <= 1022.", 
+"status": "fail" 
+}
+
+{ 
+"errorType": "Native code fail: incorrect response from card", 
+"errorTypeId": "4", 
+"errorCode": "40022", 
+"message": "Key length (in keychain) must be > 0 and <= 8192.", 
+"status": "fail" 
+}
+
+{ 
+"errorType": "Native code fail: incorrect response from card", 
+"errorTypeId": "4", 
+"errorCode": "40023", 
+"message": "Response from DELETE_KEY_CHUNK card operation must have length 1.", 
+"status": "fail" 
+}
+
+{ 
+"errorType": "Native code fail: incorrect response from card", 
+"errorTypeId": "4", 
+"errorCode": "40024", 
+"message": "Response from DELETE_KEY_CHUNK card operation must have value 0 or 1.", 
+"status": "fail" 
+}
+
+{ 
+"errorType": "Native code fail: incorrect response from card", 
+"errorTypeId": "4", 
+"errorCode": "40025", 
+"message": "Response from DELETE_KEY_RECORD card operation must have length 1.", 
+"status": "fail" 
+}
+
+{ 
+"errorType": "Native code fail: incorrect response from card", 
+"errorTypeId": "4", 
+"errorCode": "40026", 
+"message": "Response from DELETE_KEY_RECORD card operation must have value 0 or 1.", 
+"status": "fail" 
+}
 ```
 
 
