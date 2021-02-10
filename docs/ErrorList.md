@@ -1258,3 +1258,64 @@ Before sending some APDU command into applet Swift code usually checks applet st
 "status": "fail" 
 }
 ```
+## HMAC_KEY_ERROR
+
+Here there is a list of possible errors that can happen during work with hmac keys living in iOS keychain.
+
+```
+{ 
+"errorType": "Native code fail: hmac key issue", 
+"errorTypeId": "6", 
+"errorCode": "60000", 
+"message": "Key for hmac signing for specified serial number does not exist.", 
+"status": "fail" 
+}
+
+{ 
+"errorType": "Native code fail: hmac key issue", 
+"errorTypeId": "6", 
+"errorCode": "60001", 
+"message": "Current serial number is not set. Can not select key for hmac.", 
+"status": "fail" 
+}
+
+{ 
+"errorType": "Native code fail: hmac key issue", 
+"errorTypeId": "6", 
+"errorCode": "60002", 
+"message": "Unable to retrieve any key from keychain.", 
+"status": "fail" 
+}
+
+{ 
+"errorType": "Native code fail: hmac key issue", 
+"errorTypeId": "6", 
+"errorCode": "60003", 
+"message": "Unable to retrieve info about key from keychain.", 
+"status": "fail" 
+}
+
+{ 
+"errorType": "Native code fail: hmac key issue", 
+"errorTypeId": "6", 
+"errorCode": "60004", 
+"message": "Unable to save key into keychain.", 
+"status": "fail" 
+}
+
+{ 
+"errorType": "Native code fail: hmac key issue", 
+"errorTypeId": "6", 
+"errorCode": "60005", 
+"message": "Unable to delete key from keychain.", 
+"status": "fail" 
+}
+
+{ 
+"errorType": "Native code fail: hmac key issue", 
+"errorTypeId": "6", 
+"errorCode": "60006", 
+"message": "Unable to update key in keychain.", 
+"status": "fail" 
+}
+```
