@@ -601,10 +601,82 @@ Here there are some internal errors that may happen inside Swift code. It means 
 Here there is a list of any troubles with NFC hardware and connection.
 
 ```
-{ "errorType": "Android code fail: NFC error", "errorTypeId": "2", "errorCode": "20000", "message": "NFC session is not established (session is empty).", "status": "fail" }
+{ 
+"errorType": "Android code fail: NFC error", 
+"errorTypeId": "2", 
+"errorCode": "20000", 
+"message": "NFC session is not established (session is empty).", 
+"status": "fail" 
+}
 
-{ "errorType": "Android code fail: NFC error", "errorTypeId": "2", "errorCode": "20001", "message": "NFC Tag is not detected.", "status": "fail" }
+{ 
+"errorType": "Android code fail: NFC error", 
+"errorTypeId": "2", 
+"errorCode": "20001", 
+"message": "NFC Tag is not detected.", 
+"status": "fail" }
 
-{ "errorType": "Android code fail: NFC error", "errorTypeId": "2", "errorCode": "20002", "message": "Can not establish connection with NFC Tag, more details:", "status": "fail" }
+{ 
+"errorType": "Android code fail: NFC error", 
+"errorTypeId": "2", 
+"errorCode": "20002", 
+"message": "Can not establish connection with NFC Tag, more details:", 
+"status": "fail" 
+}
 ```
+## INPUT_DATA_FORMAT_ERRORS
+
+Any trouble with input data that you pass into TonNfcClientSwift API functions as arguments. For example encryptedPassword argument for turnOnWallet function now must be a hex string of length 256 (and inside it is transformed into byte array of length 128). If you would sent string of another length you will get error.
+
+```
+{ 
+"errorType": "Native code fail: incorrect format of input data", 
+"errorTypeId": "3", 
+"errorCode": "30000", 
+"message": "Activation password is a hex string of length 256.", 
+"status": "fail" 
+}
+
+{ 
+"errorType": "Native code fail: incorrect format of input data", 
+"errorTypeId": "3", 
+"errorCode": "30001", 
+"message": "Common secret is a hex string of length 64.", 
+"status": "fail" 
+}
+
+{ 
+"errorType": "Native code fail: incorrect format of input data", 
+"errorTypeId": "3", 
+"errorCode": "30002", 
+"message": "Initial vector is a hex string of length 32.", 
+"status": "fail" 
+}
+
+{ 
+"errorType": "Native code fail: incorrect format of input data", 
+"errorTypeId": "3", 
+"errorCode": "30003", 
+"message": "Activation password is not a valid hex string.", 
+"status": "fail" 
+}
+
+{ 
+"errorType": "Native code fail: incorrect format of input data", 
+"errorTypeId": "3", 
+"errorCode": "30004", 
+"message": "Common secret is not a valid hex string.", 
+"status": "fail" 
+}
+
+{ 
+"errorType": "Native code fail: incorrect format of input data", 
+"errorTypeId": "3", 
+"errorCode": "30005", 
+"message": "Initial vector is not a valid hex string.", 
+"status": "fail" 
+}
+```
+
+
 
