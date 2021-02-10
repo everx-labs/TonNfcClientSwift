@@ -366,7 +366,7 @@ The secret key for HMAC SHA256 is produced based on card activation data (see ab
 
 Another situation is possible. Let's suppose you activated the card earlier. After that you reinstalled the app working with NFC TON Labs security card or you started using new iPhone. Then iPhone may not have the key to sign APDU commands (if iCloud is not set up properly to save all the data from keychain). So if the  key was lost you must recreate it.
 
-     createKeyForHmac(password : String, commonSecret : String, serialNumber : String, resolve : @escaping NfcResolver, reject : @escaping NfcRejecter)
+     createKeyForHmac(authenticationPassword : String, commonSecret : String, serialNumber : String, resolve : @escaping NfcResolver, reject : @escaping NfcRejecter)
      
 You may work with multiple NFC TON Labs security cards. In this case in your iOS keychain there is a bunch of keys. Each keys is marked by corresponding SN. And you can get the list of serial numbers for which you have the key in keychain.
 
