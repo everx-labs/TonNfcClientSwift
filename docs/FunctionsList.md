@@ -306,87 +306,99 @@ Here there are functions related to ed25519 signature.
 
     *Exemplary response:*
 
-    {"message":"B81F0E0E07316DAB6C320ECC6BF3DBA48A70101C5251CC31B1D8F831B36E9F2A","status":"ok"}
+        {"message":"B81F0E0E07316DAB6C320ECC6BF3DBA48A70101C5251CC31B1D8F831B36E9F2A","status":"ok"}
 
-- **verifyPin(String pin)**
+- **verifyPin(pin: String)**
 
     Make pin verification.
 
     *Arguments requirements:*
 
-    pin — numeric string of length 4, example: '5555'
+        pin — numeric string of length 4, example: '5555'
 
     *Response:*
 
-    {"message":"done","status":"ok"}
+        {"message":"done","status":"ok"}
 
-- **signForDefaultHdPath(String dataForSigning)**
+- **signForDefaultHdPath(data: String)**
 
-    Make  data signing by key for HD path m/44'/396'/0'/0'/0'. Prior to call this function you must call verifyPin.
-
-    *Arguments requirements:*
-
-    data — hex string of even length ≥ 2 and ≤ 378.
-
-    *Exemplary response:*
-
-    {"message":"2D6A2749DD5AF5BB356220BFA06A0C624D5814438F37983322BBAD762EFB4759CFA927E6735B7CD556196894F3CE077ADDD6B49447B8B325ADC494B82DC8B605","status":"ok"}
-
-- **sign(String dataForSigning, String index)**
-
-    Make data signing by key for HD path m/44'/396'/0'/0'/index'. Prior to call this function you must call verifyPin.
+    Make data signing by key for HD path m/44'/396'/0'/0'/0'. Prior to call this function you must call verifyPin.
 
     *Arguments requirements:*
 
-    index — numeric string of length > 0 and ≤ 10.
-
-    data — hex string of even length ≥ 2 and ≤ 356.
+        data — hex string of even length ≥ 2 and ≤ 378.
 
     *Exemplary response:*
 
-    {"message":"13FB836213B12BBD41209273F81BCDCF7C226947B18128F73E9A6E96C84B30C3288E51C622C045488981B6544D02D0940DE54D68A0A78BC2A5F9523B8757B904","status":"ok"}
+         {"message":
+            "2D6A2749DD5AF5BB356220BFA06A0C624D5814438F37983322BBAD762EFB4759CFA927E6735B7CD556196894F3CE077ADDD6B49447B8B325ADC494B82DC8B605",
+          "status":"ok"
+         }
 
-- **getPublicKey(String index)**
+- **sign(data: String, hdIndex: String)**
 
-    Return public key for HD path m/44'/396'/0'/0'/index'.
+    Make data signing by key for HD path m/44'/396'/0'/0'/hdIndex'. Prior to call this function you must call verifyPin.
 
     *Arguments requirements:*
 
-    index — numeric string of length > 0 and ≤ 10.
+        hdIndex — numeric string of length > 0 and ≤ 10.
+
+        data — hex string of even length ≥ 2 and ≤ 356.
 
     *Exemplary response:*
 
-    {"message":"B81F0E0E07316DAB6C320ECC6BF3DBA48A70101C5251CC31B1D8F831B36E9F2A","status":"ok"}
+        {"message":
+            "13FB836213B12BBD41209273F81BCDCF7C226947B18128F73E9A6E96C84B30C3288E51C622C045488981B6544D02D0940DE54D68A0A78BC2A5F9523B8757B904",
+         "status":"ok"
+        }
 
-- **verifyPinAndSignForDefaultHdPath(String dataForSigning, String pin)**
+- **getPublicKey(hdIndex: String)**
 
-    Make  pin verification data signing by key for HD path m/44'/396'/0'/0'/0'. Prior to call this function you must call verifyPin.
+    Return public key for HD path m/44'/396'/0'/0'/hdIndex'.
 
     *Arguments requirements:*
 
-    pin — numeric string of length 4, example: '5555'
-
-    data — hex string of even length ≥ 2 and ≤ 378.
+        hdIndex — numeric string of length > 0 and ≤ 10.
 
     *Exemplary response:*
 
-    {"message":"2D6A2749DD5AF5BB356220BFA06A0C624D5814438F37983322BBAD762EFB4759CFA927E6735B7CD556196894F3CE077ADDD6B49447B8B325ADC494B82DC8B605","status":"ok"}
+        {"message":"B81F0E0E07316DAB6C320ECC6BF3DBA48A70101C5251CC31B1D8F831B36E9F2A","status":"ok"}
 
-- **verifyPinAndSign(String dataForSigning, String index, String pin)**
+- **verifyPinAndSignForDefaultHdPath(data: String, pin: String)**
 
-    Make pin verification and data signing by key for HD path m/44'/396'/0'/0'/index'.
+    Make  pin verification data signing by key for HD path m/44'/396'/0'/0'/0'.
 
     *Arguments requirements:*
 
-    pin — numeric string of length 4, example: '5555'
+        pin — numeric string of length 4, example: '5555'
 
-    index — numeric string of length > 0 and ≤ 10.
-
-    data — hex string of even length ≥ 2 and ≤ 356.
+        data — hex string of even length ≥ 2 and ≤ 378.
 
     *Exemplary response:*
 
-    {"message":"13FB836213B12BBD41209273F81BCDCF7C226947B18128F73E9A6E96C84B30C3288E51C622C045488981B6544D02D0940DE54D68A0A78BC2A5F9523B8757B904","status":"ok"}
+        {"message":
+            "2D6A2749DD5AF5BB356220BFA06A0C624D5814438F37983322BBAD762EFB4759CFA927E6735B7CD556196894F3CE077ADDD6B49447B8B325ADC494B82DC8B605",   
+         "status":"ok"
+        }
+
+- **verifyPinAndSign(data: String, hdIndex: String, pin: String)**
+
+    Make pin verification and data signing by key for HD path m/44'/396'/0'/0'/hdIndex'.
+
+    *Arguments requirements:*
+
+        pin — numeric string of length 4, example: '5555'
+
+        hdIndex — numeric string of length > 0 and ≤ 10.
+
+        data — hex string of even length ≥ 2 and ≤ 356.
+
+    *Exemplary response:*
+
+        {"message":
+            "13FB836213B12BBD41209273F81BCDCF7C226947B18128F73E9A6E96C84B30C3288E51C622C045488981B6544D02D0940DE54D68A0A78BC2A5F9523B8757B904",
+         "status":"ok"
+        }
 
 ### RecoveryDataApi functions
 
