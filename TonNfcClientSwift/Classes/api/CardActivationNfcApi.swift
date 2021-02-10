@@ -15,10 +15,10 @@ public class CardActivationNfcApi: CardCoinManagerNfcApi {
     
     public override init() {}
 
-    public func turnOnWallet(newPin : String, password : String, commonSecret : String, initialVector : String, resolve : @escaping NfcResolver, reject : @escaping NfcRejecter) {
+    public func turnOnWallet(newPin : String, authenticationPassword : String, commonSecret : String, initialVector : String, resolve : @escaping NfcResolver, reject : @escaping NfcRejecter) {
         print("Start card operation: turnOnColdWallet" )
-        guard  dataVerifier.checkPasswordSize(password: password, reject : reject) &&
-                dataVerifier.checkPasswordFormat(password: password, reject : reject) &&
+        guard  dataVerifier.checkPasswordSize(password: authenticationPassword, reject : reject) &&
+                dataVerifier.checkPasswordFormat(password: authenticationPassword, reject : reject) &&
                 dataVerifier.checkCommonSecretSize(commonSecret: commonSecret, reject : reject) &&
                 dataVerifier.checkCommonSecretFormat(commonSecret: commonSecret, reject : reject) &&
                 dataVerifier.checkInitialVectorSize(initialVector: initialVector, reject : reject) &&
@@ -28,10 +28,10 @@ public class CardActivationNfcApi: CardCoinManagerNfcApi {
             return
         }
         print("Got newPin:" + newPin)
-        print("Got password:" + password)
+        print("Got password:" + authenticationPassword)
         print("Got commonSecret:" + commonSecret)
         print("Got initialVector:" + initialVector)
-        let passwordBytes = ByteArrayAndHexHelper.hex(from: password)
+        let passwordBytes = ByteArrayAndHexHelper.hex(from: authenticationPassword)
         let passwordHash = passwordBytes.hash()
         let commonSecretBytes = ByteArrayAndHexHelper.hex(from: commonSecret)
         let initialVectorBytes = ByteArrayAndHexHelper.hex(from: initialVector)

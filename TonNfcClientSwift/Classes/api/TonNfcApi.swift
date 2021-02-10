@@ -145,21 +145,21 @@ public class TonNfcApi {
         return existFlag
     }
     
-    public func createKeyForHmac(password : String, commonSecret : String, serialNumber : String, resolve : @escaping NfcResolver, reject : @escaping NfcRejecter) {
+    public func createKeyForHmac(authenticationPassword : String, commonSecret : String, serialNumber : String, resolve : @escaping NfcResolver, reject : @escaping NfcRejecter) {
         print("Start operation: createKeyForHmac" )
-        guard dataVerifier.checkPasswordSize(password: password, reject : reject) &&
-                dataVerifier.checkPasswordFormat(password: password, reject : reject) &&
+        guard dataVerifier.checkPasswordSize(password: authenticationPassword, reject : reject) &&
+                dataVerifier.checkPasswordFormat(password: authenticationPassword, reject : reject) &&
                 dataVerifier.checkCommonSecretSize(commonSecret: commonSecret, reject : reject) &&
                 dataVerifier.checkCommonSecretFormat(commonSecret: commonSecret, reject : reject) &&
                 dataVerifier.checkSerialNumberFormat(serialNumber: serialNumber, reject : reject) &&
                 dataVerifier.checkSerialNumberSize(serialNumber: serialNumber, reject : reject) else {
             return
         }
-        print("Got password:" + password)
+        print("Got password:" + authenticationPassword)
         print("Got commonSecret:" + commonSecret)
         print("Got serialNumber:" + serialNumber)
         do {
-            let passwordBytes = ByteArrayAndHexHelper.hex(from: password)
+            let passwordBytes = ByteArrayAndHexHelper.hex(from: authenticationPassword)
             let commonSecretBytes = ByteArrayAndHexHelper.hex(from: commonSecret)
             try self.createKeyForHmac(password : passwordBytes, commonSecret : commonSecretBytes, serialNumber : serialNumber)
             resolve(jsonHelper.createJson(msg : ResponsesConstants.DONE_MSG))

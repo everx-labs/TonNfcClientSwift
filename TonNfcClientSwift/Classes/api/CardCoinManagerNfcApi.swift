@@ -71,18 +71,18 @@ public class CardCoinManagerNfcApi: TonNfcApi {
         apduRunner.startScan()
     }
     
-    public func setDeviceLabel(label: String, resolve : @escaping NfcResolver, reject : @escaping NfcRejecter) {
+    public func setDeviceLabel(deviceLabel: String, resolve : @escaping NfcResolver, reject : @escaping NfcRejecter) {
         print("Start card operation: setDeviceLabel")
-        guard dataVerifier.checkLabelSize(label: label, reject : reject) &&
-                dataVerifier.checkLabelFormat(label: label, reject : reject) else {
+        guard dataVerifier.checkLabelSize(label: deviceLabel, reject : reject) &&
+                dataVerifier.checkLabelFormat(label: deviceLabel, reject : reject) else {
             return
         }
-        print("Got label: " + label)
+        print("Got deviceLabel: " + deviceLabel)
         apduRunner.setCallback(resolve : resolve, reject : reject)
         apduRunner.setCardOperation(cardOperation: { () in
             self.apduRunner.sendApdu(apduCommand:
                     CoinManagerApduCommands.SELECT_COIN_MANAGER_APDU)
-                .then{_ in self.apduRunner.sendApdu(apduCommand: try CoinManagerApduCommands.getSetDeviceLabelApdu(label: ByteArrayAndHexHelper.hexStrToUInt8Array(hexStr: label)))
+                .then{_ in self.apduRunner.sendApdu(apduCommand: try CoinManagerApduCommands.getSetDeviceLabelApdu(label: ByteArrayAndHexHelper.hexStrToUInt8Array(hexStr: deviceLabel)))
                 }
                 .then{_ in
                     return self.makeFinalPromise(result : ResponsesConstants.DONE_MSG)

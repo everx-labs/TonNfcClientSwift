@@ -76,8 +76,36 @@ public class CardCryptoNfcApi: TonNfcApi {
         apduRunner.startScan()
     }
     
-    public func signForDefaultHdPath(data: String, pin: String, resolve : @escaping NfcResolver, reject : @escaping NfcRejecter) {
+    public func signForDefaultHdPath(data: String, resolve : @escaping NfcResolver, reject : @escaping NfcRejecter) {
         print("Start card operation: signForDefaultHdPath" )
+        guard  dataVerifier.checkDataFormat(data: data, reject : reject) &&
+                dataVerifier.checkDataSize(data: data, reject : reject) else {
+            return
+        }
+        print("Got Data:" + data)
+        apduRunner.setCallback(resolve : resolve, reject : reject)
+        apduRunner.setCardOperation(cardOperation: { () in
+            self.reselectKeyForHmac()
+            .then{(response : Data) -> Promise<Data> in
+                self.getSaultPromise()
+            }
+            .then{(sault : Data) -> Promise<Data> in
+                self.apduRunner.sendApdu(apduCommand:
+                    try TonWalletAppletApduCommands.getSignShortMessageWithDefaultPathApdu(dataForSigning:
+                            ByteArrayAndHexHelper.hexStrToUInt8Array(hexStr: data), sault: sault.bytes))
+            }
+            .then{(response : Data)  -> Promise<String> in
+                if (response.count != TonWalletAppletConstants.SIG_LEN) {
+                    throw ResponsesConstants.ERROR_MSG_SIG_RESPONSE_LEN_INCORRECT
+                }
+                return self.makeFinalPromise(result : response.hexEncodedString())
+            }
+        })
+        apduRunner.startScan()
+    }
+    
+    public func verifyPinAndSignForDefaultHdPath(data: String, pin: String, resolve : @escaping NfcResolver, reject : @escaping NfcRejecter) {
+        print("Start card operation: verifyPinAndSignForDefaultHdPath" )
         guard dataVerifier.checkPinSize(pin: pin, reject : reject) &&
                 dataVerifier.checkPinFormat(pin: pin, reject : reject) &&
                 dataVerifier.checkDataFormat(data: data, reject : reject) &&
@@ -110,8 +138,39 @@ public class CardCryptoNfcApi: TonNfcApi {
         apduRunner.startScan()
     }
     
-    public func sign(data: String, hdIndex: String, pin: String, resolve : @escaping NfcResolver, reject : @escaping NfcRejecter) {
+    public func sign(data: String, hdIndex: String, resolve : @escaping NfcResolver, reject : @escaping NfcRejecter) {
         print("Start card operation: sign" )
+        guard dataVerifier.checkHdIndexSize(hdIndex: hdIndex, reject : reject) &&
+                dataVerifier.checkHdIndexFormat(hdIndex: hdIndex, reject : reject) &&
+                dataVerifier.checkDataFormat(data: data, reject : reject) &&
+                dataVerifier.checkDataSizeForCaseWithPath(data: data, reject : reject) else {
+            return
+        }
+        print("Got Data:" + data)
+        print("Got hdIndex:" + hdIndex)
+        //todo: check correct conversion of hdIndex into byte array
+        apduRunner.setCallback(resolve : resolve, reject : reject)
+        apduRunner.setCardOperation(cardOperation: { () in
+            self.reselectKeyForHmac()
+            .then{(response : Data) -> Promise<Data> in
+                self.getSaultPromise()
+            }
+            .then{(sault : Data) -> Promise<Data> in
+                self.apduRunner.sendApdu(apduCommand:
+                    try TonWalletAppletApduCommands.getSignShortMessageApdu(dataForSigning: ByteArrayAndHexHelper.hexStrToUInt8Array(hexStr: data), ind: ByteArrayAndHexHelper.digitalStrIntoAsciiUInt8Array(digitalStr: hdIndex), sault: sault.bytes))
+            }
+            .then{(response : Data)  -> Promise<String> in
+                if (response.count != TonWalletAppletConstants.SIG_LEN) {
+                    throw ResponsesConstants.ERROR_MSG_SIG_RESPONSE_LEN_INCORRECT
+                }
+                return self.makeFinalPromise(result : response.hexEncodedString())
+            }
+        })
+        apduRunner.startScan()
+    }
+    
+    public func verifyPinAndSign(data: String, hdIndex: String, pin: String, resolve : @escaping NfcResolver, reject : @escaping NfcRejecter) {
+        print("Start card operation: verifyPinAndSign" )
         guard dataVerifier.checkPinSize(pin: pin, reject : reject) &&
                 dataVerifier.checkPinFormat(pin: pin, reject : reject) &&
                 dataVerifier.checkHdIndexSize(hdIndex: hdIndex, reject : reject) &&

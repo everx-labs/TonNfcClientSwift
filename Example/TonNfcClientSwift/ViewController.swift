@@ -82,7 +82,7 @@ class ViewController: UIViewController {
              //check hashOfEncryptedPassword
              sleep(5)
              return Promise<String> { promise in
-                 self.cardActivationApi.turnOnWallet(newPin: self.DEFAULT_PIN, password: self.PASSWORD, commonSecret: self.COMMON_SECRET, initialVector: self.IV, resolve: { msg in promise.fulfill(msg as! String) }, reject: { (errMsg : String, err : NSError) in promise.reject(err) })
+                self.cardActivationApi.turnOnWallet(newPin: self.DEFAULT_PIN, authenticationPassword: self.PASSWORD, commonSecret: self.COMMON_SECRET, initialVector: self.IV, resolve: { msg in promise.fulfill(msg as! String) }, reject: { (errMsg : String, err : NSError) in promise.reject(err) })
              }
          }
          .done{response in
@@ -110,12 +110,12 @@ class ViewController: UIViewController {
         let msg = "A456"
         let pin = "5555"
         Promise<String> { promise in
-            cardCryptoNfcApi.createKeyForHmac(password: PASSWORD, commonSecret: COMMON_SECRET, serialNumber: SERIAL_NUMBER, resolve: { msg in promise.fulfill(msg as! String) }, reject: { (errMsg : String, err : NSError) in promise.reject(err) })
+            cardCryptoNfcApi.createKeyForHmac(authenticationPassword: PASSWORD, commonSecret: COMMON_SECRET, serialNumber: SERIAL_NUMBER, resolve: { msg in promise.fulfill(msg as! String) }, reject: { (errMsg : String, err : NSError) in promise.reject(err) })
         }
         .then{(response : String)  -> Promise<String> in
             print("Response from createKeyForHmac : " + response)
             return Promise<String> { promise in
-                self.cardCryptoNfcApi.sign(data: msg, hdIndex: hdIndex, pin: pin, resolve: { msg in promise.fulfill(msg as! String) }, reject: { (errMsg : String, err : NSError) in promise.reject(err) })
+                self.cardCryptoNfcApi.verifyPinAndSign(data: msg, hdIndex: hdIndex, pin: pin, resolve: { msg in promise.fulfill(msg as! String) }, reject: { (errMsg : String, err : NSError) in promise.reject(err) })
             }
         }
         .done{response in
