@@ -1221,4 +1221,40 @@ This sublist of errors is about additional checking of data that comes into TonN
 }
 ```
 
+## IMPROPER_APPLET_STATE_ERROR
 
+Before sending some APDU command into applet Swift code usually checks applet state. If in current applet state this APDU is not supported, then Swift code throws a error and does not even try to send this APDU into applet (But If it would send it then card will produce _6D00_ error).
+
+```
+{ 
+"errorType": "Native code fail: improper applet state", 
+"errorTypeId": "5", 
+"errorCode": "50000", 
+"message": "APDU command is not supported", 
+"status": "fail" 
+}
+
+{ 
+"errorType": "Native code fail: improper applet state", 
+"errorTypeId": "5", 
+"errorCode": "50001", 
+"message": "Applet must be in mode that waits authorization. Now it is: ", 
+"status": "fail" 
+}
+
+{ 
+"errorType": "Native code fail: improper applet state", 
+"errorTypeId": "5", 
+"errorCode": "50002", 
+"message": "Applet must be in personalized mode. Now it is: ", 
+"status": "fail" 
+}
+
+{ 
+"errorType": "Native code fail: improper applet state", 
+"errorTypeId": "5", 
+"errorCode": "50003", 
+"message": "Applet must be in mode for deleting key. Now it is ", 
+"status": "fail" 
+}
+```
