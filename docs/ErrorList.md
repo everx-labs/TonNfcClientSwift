@@ -1124,8 +1124,101 @@ This sublist of errors is about additional checking of data that comes into TonN
 "status": "fail" 
 }
 
+{ 
+"errorType": "Native code fail: incorrect response from card", 
+"errorTypeId": "4", 
+"errorCode": "40034", 
+"message": "Hash of key (from keychain) must have length 32.", 
+"status": "fail" 
+}
 
+{ 
+"errorType": "Native code fail: incorrect response from card", 
+"errorTypeId": "4", 
+"errorCode": "40035", 
+"message": "Response from INITIATE_DELETE_KEY card operation must have length 2.", 
+"status": "fail" 
+}
 
+{ 
+"errorType": "Native code fail: incorrect response from card", 
+"errorTypeId": "4", 
+"errorCode": "40036", 
+"message": "Key data portion must have length = ", 
+"status": "fail" 
+}
+
+{ 
+"errorType": "Native code fail: incorrect response from card", 
+"errorTypeId": "4", 
+"errorCode": "40037", 
+"message": "Serial number must have length 24.", 
+"status": "fail" 
+}
+
+{ 
+"errorType": "Native code fail: incorrect response from card", 
+"errorTypeId": "4", 
+"errorCode": "40038", 
+"message": "Response from GET_PIN_TLT (GET_PIN_RTL) must have length > 0.", 
+"status": "fail" 
+}
+
+{ 
+"errorType": "Native code fail: incorrect response from card", 
+"errorTypeId": "4", 
+"errorCode": "40039", 
+"message": "Response from GET_PIN_TLT (GET_PIN_RTL) must have value >= 0 and <= 10.", 
+"status": "fail" 
+}
+
+{ 
+"errorType": "Native code fail: incorrect response from card", 
+"errorTypeId": "4", 
+"errorCode": "40040", 
+"message": "Response from GET_ROOT_KEY_STATUS must have length > 0.", 
+"status": "fail" 
+}
+
+{ 
+"errorType": "Native code fail: incorrect response from card", 
+"errorTypeId": "4", 
+"errorCode": "40041", 
+"message": "Response from GET_DEVICE_LABEL must have length = 32.", 
+"status": "fail" 
+}
+
+{ 
+"errorType": "Native code fail: incorrect response from card", 
+"errorTypeId": "4", 
+"errorCode": "40042", 
+"message": "Response from GET_CSN_VERSION must have length > 0.", 
+"status": "fail" 
+}
+
+{ 
+"errorType": "Native code fail: incorrect response from card", 
+"errorTypeId": "4", 
+"errorCode": "40043", 
+"message": "Response from GET_SE_VERSION must have length > 0.", 
+"status": "fail" 
+}
+
+{ 
+"errorType": "Native code fail: incorrect response from card", 
+"errorTypeId": "4", 
+"errorCode": "40044", 
+"message": "Response from GET_AVAILABLE_MEMORY must have length > 0.", 
+"status": "fail" 
+}
+
+{ 
+"errorType": "Native code fail: incorrect response from card", 
+"errorTypeId": "4", 
+"errorCode": "40045", 
+"message": "Response from GET_APPLET_LIST must have length > 0.", 
+"status": "fail" 
+}
 ```
 
 
