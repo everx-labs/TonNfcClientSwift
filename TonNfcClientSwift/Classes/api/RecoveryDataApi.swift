@@ -150,7 +150,9 @@ public class RecoveryDataApi: TonNfcApi {
                 return self.apduRunner.sendAppletApduAndCheckAppletState(apduCommand: try TonWalletAppletApduCommands.getGetRecoveryDataPartApdu(startPositionBytes: [UInt8(startPos >> 8), UInt8(startPos)], le: TonWalletAppletConstants.DATA_RECOVERY_PORTION_MAX_SIZE))
             }
             .then{(chunk : Data) -> Promise<Data> in
-                //TODO: check chunk size, do the same for Android
+                guard chunk.count == TonWalletAppletConstants.DATA_RECOVERY_PORTION_MAX_SIZE else {
+                    throw ResponsesConstants.ERROR_RECOVERY_DATA_PORTION_INCORRECT_LEN + String(TonWalletAppletConstants.DATA_RECOVERY_PORTION_MAX_SIZE) + "."
+                }
                 startPos = startPos + UInt16(TonWalletAppletConstants.DATA_RECOVERY_PORTION_MAX_SIZE)
                 recoveryData.append(chunk)
                 return Promise { promise in promise.fulfill(Data(_ : []))}
@@ -165,6 +167,9 @@ public class RecoveryDataApi: TonNfcApi {
             }
             .then{(chunk : Data) -> Promise<Data> in
                 //TODO: check chunk size, do the same for Android
+                guard chunk.count == tailLen else {
+                    throw ResponsesConstants.ERROR_RECOVERY_DATA_PORTION_INCORRECT_LEN + String(tailLen) + "."
+                }
                 recoveryData.append(chunk)
                 return Promise<Data> { promise in promise.fulfill(recoveryData)}
             }

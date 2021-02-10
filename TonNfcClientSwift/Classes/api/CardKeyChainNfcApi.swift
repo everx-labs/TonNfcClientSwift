@@ -144,7 +144,7 @@ import CoreNFC
                 }
                 .then{(newNumberOfKeys : Int) -> Promise<String> in
                     if (newNumberOfKeys != (oldNumOfKeys + 1)) {
-                        throw ResponsesConstants.ERROR_MSG_AFTER_NUM_OF_KEYS_INCORRECT_AFTER_ADD
+                        throw ResponsesConstants.ERROR_MSG_NUM_OF_KEYS_INCORRECT_AFTER_ADD
                     }
                     return self.makeFinalPromise(result : macOfKey.hexEncodedString())
                 }
@@ -206,7 +206,7 @@ import CoreNFC
                 }
                 .then{(newNumberOfKeys : Int) -> Promise<String> in
                     if (newNumberOfKeys != oldNumOfKeys) {
-                        throw ResponsesConstants.ERROR_MSG_AFTER_NUM_OF_KEYS_INCORRECT_AFTER_CHANGE
+                        throw ResponsesConstants.ERROR_MSG_NUM_OF_KEYS_INCORRECT_AFTER_CHANGE
                     }
                     macOfNewKey.append(try self.hmacHelper.computeHmac(data: Data(_ : newKeyBytes)))
                     return self.makeFinalPromise(result : macOfNewKey.hexEncodedString())
@@ -308,6 +308,9 @@ import CoreNFC
                 
             }
             .then{(keyChunk : Data) -> Promise<Data> in
+                guard keyChunk.count == TonWalletAppletConstants.DATA_PORTION_MAX_SIZE else {
+                    throw ResponsesConstants.ERROR_KEY_DATA_PORTION_INCORRECT_LEN + String(TonWalletAppletConstants.DATA_PORTION_MAX_SIZE) + "."
+                }
                 startPos = startPos + UInt16(TonWalletAppletConstants.DATA_PORTION_MAX_SIZE)
                 key.append(keyChunk)
                 return Promise { promise in promise.fulfill(key)}
@@ -324,6 +327,9 @@ import CoreNFC
                 return self.apduRunner.sendAppletApduAndCheckAppletState(apduCommand: try TonWalletAppletApduCommands.getGetKeyChunkApdu(ind: ind, startPos: startPos, sault: sault.bytes, le: tailLen))
             }
             .then{(keyChunk : Data) -> Promise<Data> in
+                guard keyChunk.count == tailLen else {
+                    throw ResponsesConstants.ERROR_KEY_DATA_PORTION_INCORRECT_LEN + String(tailLen) + "."
+                }
                 key.append(keyChunk)
                 return Promise<Data> { promise in promise.fulfill(key)}
             }

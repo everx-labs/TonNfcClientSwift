@@ -93,7 +93,7 @@ class ViewController: UIViewController {
              }
          }
          .catch{ error in
-             print(" !Error happened : " + error.localizedDescription)
+             print("Error happened : " + error.localizedDescription)
          }
     }
     
