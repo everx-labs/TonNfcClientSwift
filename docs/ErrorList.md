@@ -914,6 +914,96 @@ This sublist of errors is about additional checking of data that comes into TonN
 "message": "Recovery data portion must have length = ", 
 "status": "fail" 
 }
+
+{ 
+"errorType": "Native code fail: incorrect response from card", 
+"errorTypeId": "4", 
+"errorCode": "40008", 
+"message": "Hash of encrypted password must have length 32.", 
+"status": "fail" 
+}
+
+{ 
+"errorType": "Native code fail: incorrect response from card", 
+"errorTypeId": "4", 
+"errorCode": "40009", 
+"message": "Hash of encrypted common secret must have length 32.", 
+"status": "fail" 
+}
+
+{ 
+"errorType": "Native code fail: incorrect response from card", 
+"errorTypeId": "4", 
+"errorCode": "40010", 
+"message": "Card two-factor authorization failed: Hash of encrypted common secret is invalid.", 
+"status": "fail" 
+}
+
+{ 
+"errorType": "Native code fail: incorrect response from card", 
+"errorTypeId": "4", 
+"errorCode": "40011", 
+"message": "Card two-factor authorization failed: Hash of encrypted password is invalid.", 
+"status": "fail" 
+}
+
+{ 
+"errorType": "Native code fail: incorrect response from card", 
+"errorTypeId": "4", 
+"errorCode": "40012", 
+"message": "Signature must have length 64.", 
+"status": "fail" 
+}
+
+{ 
+"errorType": "Native code fail: incorrect response from card", 
+"errorTypeId": "4", 
+"errorCode": "40013", 
+"message": "Public key must have length 32.", 
+"status": "fail" 
+}
+
+{ 
+"errorType": "Native code fail: incorrect response from card", 
+"errorTypeId": "4", 
+"errorCode": "40014", 
+"message": "Response from GET_NUMBER_OF_KEYS card operation must have length 2.", 
+"status": "fail" 
+}
+
+{ 
+"errorType": "Native code fail: incorrect response from card", 
+"errorTypeId": "4", 
+"errorCode": "40015", 
+"message": "Number of keys in keychain must be >= 0 and <= 1023", 
+"status": "fail" 
+}
+
+{ 
+"errorType": "Native code fail: incorrect response from card", 
+"errorTypeId": "4", 
+"errorCode": "40016", 
+"message": "Response from GET_OCCUPIED_SIZE card operation must have length 2.", 
+"status": "fail" 
+}
+
+{ 
+"errorType": "Native code fail: incorrect response from card", 
+"errorTypeId": "4", 
+"errorCode": "40017", 
+"message": "Response from GET_FREE_SIZE_RESPONSE card operation must have length 2.", 
+"status": "fail" 
+}
+
+{ 
+"errorType": "Native code fail: incorrect response from card", 
+"errorTypeId": "4", 
+"errorCode": "40018", 
+"message": "Occupied size in keychain can not be negative", 
+"status": "fail" 
+}
+
+{ "errorType": "Native code fail: incorrect response from card", "errorTypeId": "4", "errorCode": "40019", "message": "Free size in keychain can not be negative", "status": "fail" }
 ```
 
 
