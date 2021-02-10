@@ -131,7 +131,7 @@ Here there are functions to call APDU commands of CoinManager. CoinManager is an
         If seed already exists and you call generateSeed then it will throw a error.
 
 
-- **changePin(oldPin: String, newPin: String**
+- **changePin(oldPin: String, newPin: String)**
 
     This function is used to change PIN.
 
