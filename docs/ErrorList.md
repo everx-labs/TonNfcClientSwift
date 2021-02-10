@@ -596,3 +596,15 @@ Here there are some internal errors that may happen inside Swift code. It means 
 ```
 //List will be added later
 ```
+## IOS_NFC_ERRORS
+
+Here there is a list of any troubles with NFC hardware and connection.
+
+```
+{ "errorType": "Android code fail: NFC error", "errorTypeId": "2", "errorCode": "20000", "message": "NFC session is not established (session is empty).", "status": "fail" }
+
+{ "errorType": "Android code fail: NFC error", "errorTypeId": "2", "errorCode": "20001", "message": "NFC Tag is not detected.", "status": "fail" }
+
+{ "errorType": "Android code fail: NFC error", "errorTypeId": "2", "errorCode": "20002", "message": "Can not establish connection with NFC Tag, more details:", "status": "fail" }
+```
+
