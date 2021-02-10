@@ -198,7 +198,7 @@ The functions are naturally divided into four groups. And there are respectively
 
     If you reinstalled app and lost HMAC SHA256 symmetric key for the card from your iOS keychain, then create the key for your card using this function.
 
-        *Arguments requirements:*
+    *Arguments requirements:*
 
         authenticationPassword — hex string of length 256, 
         example:    "4A0FD62FFC3249A45ED369BD9B9CB340829179E94B8BE546FB19A1BC67C9411BC5DC85B5E38F96689B921A64DEF1A3B6F4D2F5C7D2B0BD7CCE420DBD281BA1CC82EE0B233820EB5CFE505B7201903ABB12959B251A5A8525B2515F57ACDE30905E70C2A375D5C0EC10A5EA6E264206395BF163969632398FA4A88D359FEA21D9"
