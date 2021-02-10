@@ -1067,6 +1067,65 @@ This sublist of errors is about additional checking of data that comes into TonN
 "message": "Response from DELETE_KEY_RECORD card operation must have value 0 or 1.", 
 "status": "fail" 
 }
+
+{ 
+"errorType": "Native code fail: incorrect response from card", 
+"errorTypeId": "4", 
+"errorCode": "40027", 
+"message": "Response from GET_DELETE_KEY_CHUNK_NUM_OF_PACKETS card operation must have length 2.", 
+"status": "fail" 
+}
+
+{ 
+"errorType": "Native code fail: incorrect response from card", 
+"errorTypeId": "4", 
+"errorCode": "40028", 
+"message": "Response from GET_DELETE_KEY_CHUNK_NUM_OF_PACKETS card operation can not be negative.", 
+"status": "fail" 
+}
+
+{ 
+"errorType": "Native code fail: incorrect response from card", 
+"errorTypeId": "4", 
+"errorCode": "40029", 
+"message": "Response from GET_DELETE_KEY_RECORD card operation must have length 2.", 
+"status": "fail" 
+}
+
+{ 
+"errorType": "Native code fail: incorrect response from card", 
+"errorTypeId": "4", 
+"errorCode": "40030", 
+"message": "Response from GET_DELETE_KEY_RECORD_NUM_OF_PACKETS card operation can not be negative.", 
+"status": "fail" 
+}
+
+{ 
+"errorType": "Native code fail: incorrect response from card", 
+"errorTypeId": "4", 
+"errorCode": "40031", 
+"message": "After ADD_KEY card operation number of keys must be increased by 1.", 
+"status": "fail" 
+}
+
+{ 
+"errorType": "Native code fail: incorrect response from card", 
+"errorTypeId": "4", 
+"errorCode": "40032", 
+"message": "After ADD_KEY card operation number of keys must not be changed.", 
+"status": "fail" 
+}
+
+{ 
+"errorType": "Native code fail: incorrect response from card", 
+"errorTypeId": "4", 
+"errorCode": "40033", 
+"message": "Response from SEND_CHUNK card operation must have length 2.", 
+"status": "fail" 
+}
+
+
+
 ```
 
 
