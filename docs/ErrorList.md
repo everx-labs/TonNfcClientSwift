@@ -19,6 +19,7 @@ Here there are errors produced by NFC card (TON Labs wallet applet itself). So S
 
 In below list field "cardInstruction" always equals to  GET_APP_INFO (just as example). But really in this field you may meet any other card instruction (APDU).
 
+```
 {
 "errorType": "Applet fail: card operation error",
 "errorTypeId": "0",
@@ -586,4 +587,12 @@ In below list field "cardInstruction" always equals to  GET_APP_INFO (just as ex
 "apdu": "B0 C1 00 00 ",
 "status": "fail"
 }
+```
 
+## SWIFT_INTERNAL_ERRORS
+
+Here there are some internal errors that may happen inside Swift code. It means that something wrong happened in library and there is a bug in a library. Please report to the team if you would meet it. Normally they must not be met.
+
+```
+//List will be added later
+```
