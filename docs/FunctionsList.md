@@ -26,6 +26,7 @@ Here there are functions to call APDU commands of CoinManager. CoinManager is an
     This function is used to set the device label. Now we do not use this device label stored in Coin Manager.
 
     *Arguments requirements:*
+    
 ```
     deviceLabel — hex string of length 64, example: '005815A3942073A6ADC70C035780FDD09DF09AFEEA4173B92FE559C34DCA0550'
 ```
