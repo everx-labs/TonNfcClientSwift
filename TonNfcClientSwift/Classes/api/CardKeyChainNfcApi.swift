@@ -164,7 +164,6 @@ import CoreNFC
         print("Got oldKeyHMac: " + oldKeyHMac)
         let newKeyBytes = ByteArrayAndHexHelper.hexStrToUInt8Array(hexStr: newKey)
         var macOfNewKey = Data(_ : [])
-        
         print("newKeySize = " + String(newKeyBytes.count))
         var keyIndexToChange: [UInt8] = []
         var oldNumOfKeys: Int = 0
@@ -202,13 +201,13 @@ import CoreNFC
                     self.apduRunner.sendAppletApduAndCheckAppletState(apduCommand: try TonWalletAppletApduCommands.getInitiateChangeOfKeyApdu(index: keyIndexToChange, sault: sault.bytes))
                 }
                 .then{(response : Data) -> Promise<Int> in
-                    self.changeKey(keyBytes : newKeyBytes, macOfKey: macOfNewKey.bytes)
+                    macOfNewKey.append(try self.hmacHelper.computeHmac(data: Data(_ : newKeyBytes)))
+                    return self.changeKey(keyBytes : newKeyBytes, macOfKey: macOfNewKey.bytes)
                 }
                 .then{(newNumberOfKeys : Int) -> Promise<String> in
                     if (newNumberOfKeys != oldNumOfKeys) {
                         throw ResponsesConstants.ERROR_MSG_NUM_OF_KEYS_INCORRECT_AFTER_CHANGE
                     }
-                    macOfNewKey.append(try self.hmacHelper.computeHmac(data: Data(_ : newKeyBytes)))
                     return self.makeFinalPromise(result : macOfNewKey.hexEncodedString())
                 }
         })
@@ -255,7 +254,7 @@ import CoreNFC
             self.checkStateAndGetSault()
         }
         .then{(sault : Data) -> Promise<Data> in
-            self.apduRunner.sendAppletApduAndCheckAppletState(apduCommand: try TonWalletAppletApduCommands.getSendKeyChunkApdu(ins : ins, p1: 0x02, keyChunkOrMacBytes: macOfKey, sault: sault.bytes))
+            return self.apduRunner.sendAppletApduAndCheckAppletState(apduCommand: try TonWalletAppletApduCommands.getSendKeyChunkApdu(ins : ins, p1: 0x02, keyChunkOrMacBytes: macOfKey, sault: sault.bytes))
         }
         .then{(response : Data) -> Promise<Int> in
             if (response.count != TonWalletAppletConstants.SEND_CHUNK_LE) {
