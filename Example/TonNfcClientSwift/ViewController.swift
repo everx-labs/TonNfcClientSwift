@@ -22,8 +22,23 @@ class ViewController: UIViewController {
     let cardCryptoNfcApi : CardCryptoNfcApi = CardCryptoNfcApi()
     let cardCoinManagerNfcApi: CardCoinManagerNfcApi = CardCoinManagerNfcApi()
     let cardActivationApi : CardActivationNfcApi = CardActivationNfcApi()
+    let cardKeyChainNfcApi : CardKeyChainNfcApi = CardKeyChainNfcApi()
 
-
+    @IBAction func addChangeKey(_ sender: Any) {
+    }
+    
+    @IBAction func getKeysInfo(_ sender: Any) {
+        Promise<String> { promise in
+                    cardKeyChainNfcApi.getKeyChainDataAboutAllKeys(resolve: { msg in promise.fulfill(msg as! String) }, reject: { (errMsg : String, err : NSError) in promise.reject(err) })
+                 }
+                 .done{response in
+                         print("KeyChainDataAboutAllKeys : " + response)
+                 }
+                 .catch{ error in
+                     print("Error happened : " + error.localizedDescription)
+                 }
+    }
+    
     @IBAction func getMaxPinTries(_ sender: Any) {
         Promise<String> { promise in
              cardCoinManagerNfcApi.getRemainingPinTries(resolve: { msg in promise.fulfill(msg as! String) }, reject: { (errMsg : String, err : NSError) in promise.reject(err) })

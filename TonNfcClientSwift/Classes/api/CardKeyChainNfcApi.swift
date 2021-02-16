@@ -817,7 +817,7 @@ import CoreNFC
                 self.apduRunner.sendApdu(apduCommand: try TonWalletAppletApduCommands.getGetHmacApdu(ind: [UInt8(keyIndex >> 8), UInt8(keyIndex)], sault: sault.bytes))
             }
             .then{(response : Data)  -> Promise<Data> in
-                if (response.count != TonWalletAppletConstants.HMAC_SHA_SIG_SIZE){
+                if (response.count != TonWalletAppletConstants.HMAC_SHA_SIG_SIZE + 2){
                     throw ResponsesConstants.ERROR_MSG_GET_HMAC_RESPONSE_LEN_INCORRECT
                 }
                 return Promise {promise in promise.fulfill(response)}
