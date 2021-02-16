@@ -23,93 +23,119 @@ class ViewController: UIViewController {
     let cardCoinManagerNfcApi: CardCoinManagerNfcApi = CardCoinManagerNfcApi()
     let cardActivationApi : CardActivationNfcApi = CardActivationNfcApi()
     let cardKeyChainNfcApi : CardKeyChainNfcApi = CardKeyChainNfcApi()
-
+    
     @IBAction func addChangeKey(_ sender: Any) {
+        Promise<String> { promise in
+            cardKeyChainNfcApi.resetKeyChain(resolve: { msg in promise.fulfill(msg as! String) }, reject: { (errMsg : String, err : NSError) in promise.reject(err) })
+        }
+        .then{(response : String)  -> Promise<String> in
+            print("Response from resetKeyChain : " + response)
+            let key = "0000"
+            sleep(5)
+            return Promise<String> { promise in
+                self.cardKeyChainNfcApi.addKeyIntoKeyChain(newKey: key,  resolve: { msg in promise.fulfill(msg as! String) }, reject: { (errMsg : String, err : NSError) in promise.reject(err) })
+            }
+        }
+        .then{(response : String)  -> Promise<String> in
+            print("Response from addKeyIntoKeyChain : " + response)
+            let mac = try self.extractMessage(jsonStr : response)
+            let key = "0011"
+            sleep(5)
+            return Promise<String> { promise in
+                self.cardKeyChainNfcApi.changeKeyInKeyChain(newKey: key, oldKeyHMac: mac,  resolve: { msg in promise.fulfill(msg as! String) }, reject: { (errMsg : String, err : NSError) in promise.reject(err) })
+            }
+        }
+        .done{response in
+            print("Response from changeKeyInKeyChain : " + response)
+        }
+        .catch{ error in
+            print("Error happened : " + error.localizedDescription)
+        }
     }
     
     @IBAction func getKeysInfo(_ sender: Any) {
         Promise<String> { promise in
-                    cardKeyChainNfcApi.getKeyChainDataAboutAllKeys(resolve: { msg in promise.fulfill(msg as! String) }, reject: { (errMsg : String, err : NSError) in promise.reject(err) })
-                 }
-                 .done{response in
-                         print("KeyChainDataAboutAllKeys : " + response)
-                 }
-                 .catch{ error in
-                     print("Error happened : " + error.localizedDescription)
-                 }
+            cardKeyChainNfcApi.getKeyChainDataAboutAllKeys(resolve: { msg in promise.fulfill(msg as! String) }, reject: { (errMsg : String, err : NSError) in promise.reject(err) })
+        }
+        .done{response in
+            print("KeyChainDataAboutAllKeys : " + response)
+        }
+        .catch{ error in
+            print("Error happened : " + error.localizedDescription)
+        }
     }
     
     @IBAction func getMaxPinTries(_ sender: Any) {
         Promise<String> { promise in
-             cardCoinManagerNfcApi.getRemainingPinTries(resolve: { msg in promise.fulfill(msg as! String) }, reject: { (errMsg : String, err : NSError) in promise.reject(err) })
-         }
-         .done{response in
-                 print("Got PIN tries : " + response)
-         }
-         .catch{ error in
-             print("Error happened : " + error.localizedDescription)
-         }
+            cardCoinManagerNfcApi.getRemainingPinTries(resolve: { msg in promise.fulfill(msg as! String) }, reject: { (errMsg : String, err : NSError) in promise.reject(err) })
+        }
+        .done{response in
+            print("Got PIN tries : " + response)
+        }
+        .catch{ error in
+            print("Error happened : " + error.localizedDescription)
+        }
     }
     
     @IBAction func activateCard(_ sender: Any) {
         Promise<String> { promise in
-             cardCoinManagerNfcApi.getRootKeyStatus(resolve: { msg in promise.fulfill(msg as! String) }, reject: { (errMsg : String, err : NSError) in promise.reject(err) })
-         }
-         .then{(response : String)  -> Promise<String> in
-             print("Response from getRootKeyStatus : " + response)
-             let message = try self.extractMessage(jsonStr : response)
-             if (message == "generated") {
-                 return Promise<String> { promise in promise.fulfill("Seed exists already")}
-             }
-             sleep(5)
-             return Promise<String> { promise in
-                 self.cardCoinManagerNfcApi.generateSeed(pin : self.DEFAULT_PIN, resolve: { msg in promise.fulfill(msg as! String) }, reject: { (errMsg : String, err : NSError) in promise.reject(err) })
-             }
-         }
-         .then{(response : String)  -> Promise<String> in
-             print("Response from generateSeed : " + response)
-             sleep(5)
-             return Promise<String> { promise in
-                 self.cardActivationApi.getTonAppletState(resolve: { msg in promise.fulfill(msg as! String) }, reject: { (errMsg : String, err : NSError) in promise.reject(err) })
-             }
-         }
-         .then{(response : String)  -> Promise<String> in
-             print("Response from getTonAppletState : " + response)
-             let message = try self.extractMessage(jsonStr : response)
-             if (message != "TonWalletApplet waits two-factor authorization.") {
-                 throw "Incorrect applet state : " + message
-             }
-             sleep(5)
-             return Promise<String> { promise in
-                 self.cardActivationApi.getHashOfEncryptedCommonSecret(resolve: { msg in promise.fulfill(msg as! String) }, reject: { (errMsg : String, err : NSError) in promise.reject(err) })
-             }
-         }
-         .then{(response : String)  -> Promise<String> in
-             print("Response from getHashOfEncryptedCommonSecret : " + response)
-             //check hashOfEncryptedCommonSecret
-             sleep(5)
-             return Promise<String> { promise in
-                 self.cardActivationApi.getHashOfEncryptedPassword(resolve: { msg in promise.fulfill(msg as! String) }, reject: { (errMsg : String, err : NSError) in promise.reject(err) })
-             }
-         }
-         .then{(response : String)  -> Promise<String> in
-             print("Response from getHashOfEncryptedPassword : " + response)
-             //check hashOfEncryptedPassword
-             sleep(5)
-             return Promise<String> { promise in
+            cardCoinManagerNfcApi.getRootKeyStatus(resolve: { msg in promise.fulfill(msg as! String) }, reject: { (errMsg : String, err : NSError) in promise.reject(err) })
+        }
+        .then{(response : String)  -> Promise<String> in
+            print("Response from getRootKeyStatus : " + response)
+            let message = try self.extractMessage(jsonStr : response)
+            if (message == "generated") {
+                return Promise<String> { promise in promise.fulfill("Seed exists already")}
+            }
+            sleep(5)
+            return Promise<String> { promise in
+                self.cardCoinManagerNfcApi.generateSeed(pin : self.DEFAULT_PIN, resolve: { msg in promise.fulfill(msg as! String) }, reject: { (errMsg : String, err : NSError) in promise.reject(err) })
+            }
+        }
+        .then{(response : String)  -> Promise<String> in
+            print("Response from generateSeed : " + response)
+            sleep(5)
+            return Promise<String> { promise in
+                self.cardActivationApi.getTonAppletState(resolve: { msg in promise.fulfill(msg as! String) }, reject: { (errMsg : String, err : NSError) in promise.reject(err) })
+            }
+        }
+        .then{(response : String)  -> Promise<String> in
+            print("Response from getTonAppletState : " + response)
+            let message = try self.extractMessage(jsonStr : response)
+            if (message != "TonWalletApplet waits two-factor authorization.") {
+                throw "Incorrect applet state : " + message
+            }
+            sleep(5)
+            return Promise<String> { promise in
+                self.cardActivationApi.getHashOfEncryptedCommonSecret(resolve: { msg in promise.fulfill(msg as! String) }, reject: { (errMsg : String, err : NSError) in promise.reject(err) })
+            }
+        }
+        .then{(response : String)  -> Promise<String> in
+            print("Response from getHashOfEncryptedCommonSecret : " + response)
+            //check hashOfEncryptedCommonSecret
+            sleep(5)
+            return Promise<String> { promise in
+                self.cardActivationApi.getHashOfEncryptedPassword(resolve: { msg in promise.fulfill(msg as! String) }, reject: { (errMsg : String, err : NSError) in promise.reject(err) })
+            }
+        }
+        .then{(response : String)  -> Promise<String> in
+            print("Response from getHashOfEncryptedPassword : " + response)
+            //check hashOfEncryptedPassword
+            sleep(5)
+            return Promise<String> { promise in
                 self.cardActivationApi.turnOnWallet(newPin: self.DEFAULT_PIN, authenticationPassword: self.PASSWORD, commonSecret: self.COMMON_SECRET, initialVector: self.IV, resolve: { msg in promise.fulfill(msg as! String) }, reject: { (errMsg : String, err : NSError) in promise.reject(err) })
-             }
-         }
-         .done{response in
-             print("Response from getTonAppletState : " + response)
-             let message = try self.extractMessage(jsonStr : response)
-             if (message != "TonWalletApplet is personalized.") {
-                 throw "Applet state is not personalized. Incorrect applet state : " + message
-             }
-         }
-         .catch{ error in
-             print("Error happened : " + error.localizedDescription)
-         }
+            }
+        }
+        .done{response in
+            print("Response from getTonAppletState : " + response)
+            let message = try self.extractMessage(jsonStr : response)
+            if (message != "TonWalletApplet is personalized.") {
+                throw "Applet state is not personalized. Incorrect applet state : " + message
+            }
+        }
+        .catch{ error in
+            print("Error happened : " + error.localizedDescription)
+        }
     }
     
     func extractMessage(jsonStr : String) throws -> String  {
@@ -134,7 +160,7 @@ class ViewController: UIViewController {
             }
         }
         .done{response in
-                print("Got signature : "  + response)
+            print("Got signature : "  + response)
         }
         .catch{ error in
             print("Error happened : " + error.localizedDescription)
@@ -147,7 +173,7 @@ class ViewController: UIViewController {
             cardCryptoNfcApi.getPublicKey(hdIndex: hdIndex, resolve: { msg in promise.fulfill(msg as! String) }, reject: { (errMsg : String, err : NSError) in promise.reject(err) })
         }
         .done{response in
-                print("Got public key : "  + response)
+            print("Got public key : "  + response)
         }
         .catch{ error in
             print("Error happened : " + error.localizedDescription)
@@ -158,7 +184,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
     }
     
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
