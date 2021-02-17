@@ -29,6 +29,8 @@ Also you must go through the following steps to make NFC working for you.
 
 - Add into info.plist the point **com.apple.developer.nfc.readersession.formats** and add for it string item **TAG**.
 
+- Check that everywhere you have iOS11+ deployment version. Otherwise, pod installation will complain about it.
+
 _Note_ : you can not work with NFC using simulator, you must run it on iPhone, so you also should set development team.
 
 ## Exemplary app 
