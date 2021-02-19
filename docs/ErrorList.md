@@ -19,7 +19,7 @@ Here there are errors produced by NFC card (TON Labs wallet applet itself). So S
 
 In below list field "cardInstruction" always equals to  GET_APP_INFO (just as example). But really in this field you may meet any other card instruction (APDU).
 
-```
+```json
 {
 "errorType": "Applet fail: card operation error",
 "errorTypeId": "0",
