@@ -153,7 +153,7 @@ The functions are naturally divided into four groups. And there are respectively
 
 ### TonWalletApi functions
 
-#### 1) Common functions
+#### Common functions
 
 - **getTonAppletState()**
 
@@ -180,7 +180,7 @@ The functions are naturally divided into four groups. And there are respectively
 
         {"message":"B81F0E0E07316DAB6C320ECC6BF3DBA48A70101C5251CC31B1D8F831B36E9F2A","status":"ok"}
 
-#### 2) Functions to mantain keys for HMAC SHA256 
+#### Functions to mantain keys for HMAC SHA256 
 
 - **selectKeyForHmac(serialNumber : String)**
 
@@ -426,7 +426,7 @@ Here there are functions related to ed25519 signature.
 
         {"message":"00112233445566","status":"ok"}
 
-- **addRecoveryData(String recoveryData)**
+- **addRecoveryData(recoveryData: String)**
 
     Save recovery data into TON Labs Wallet applet. 
 
