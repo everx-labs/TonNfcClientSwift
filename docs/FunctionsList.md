@@ -22,7 +22,7 @@ Here there are functions to call APDU commands of CoinManager. CoinManager is an
 
 - **setDeviceLabel(deviceLabel: String)**
 
-    This function is used to set the device label. Now we do not use this device label stored in Coin Manager.
+    This function is used to set the device label. Now we do not use this device label stored in CoinManager.
 
     *Arguments requirements:*
     
@@ -36,7 +36,7 @@ Here there are functions to call APDU commands of CoinManager. CoinManager is an
 
 - **getDeviceLabel()**
 
-    This function is used to get device label. Now we do not use this device label stored in Coin Manager.
+    This function is used to get device label. Now we do not use this device label stored in CoinManager.
 
     *Exemplary response:*
 
