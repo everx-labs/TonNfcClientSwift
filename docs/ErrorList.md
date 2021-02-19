@@ -16,7 +16,6 @@ Here there are errors produced by NFC card (TON Labs wallet applet itself). So S
 
 + *apdu* — full text of failed APDU command in hex format
 
-
 In below list field "cardInstruction" always equals to  GET_APP_INFO (just as example). But really in this field you may meet any other card instruction (APDU).
 
 ```json
@@ -626,7 +625,7 @@ Here there is a list of any troubles with NFC hardware and connection.
 ```
 ## INPUT_DATA_FORMAT_ERRORS
 
-Any trouble with input data that you pass into TonNfcClientSwift API functions as arguments. For example encryptedPassword argument for turnOnWallet function now must be a hex string of length 256 (and inside it is transformed into byte array of length 128). If you would sent string of another length you will get error.
+Any trouble with input data passing into TonNfcClientSwift API functions. For example, encryptedPassword argument for turnOnWallet function must be a hex string of length 256 (and inside it is transformed into byte array of length 128). If you would send string of another length you will get error.
 
 ```
 { 
