@@ -8,7 +8,7 @@ Here there are functions to check/change the state of your NFC hardware.  In Ton
 
 - **checkIfNfcSupported()**
 
-    Check if your Android device has NFC hardware. 
+    Check if your iPhone has NFC hardware. 
 
     *Responses:*
 
@@ -223,7 +223,7 @@ The functions are naturally divided into four groups. And there are respectively
 
 - **getAllSerialNumbers()**
 
-    Get the list of card serial numbers for which we have keys in Android keystore.
+    Get the list of card serial numbers for which we have keys in iOS keychain.
 
     *Exemplary response:*
 
