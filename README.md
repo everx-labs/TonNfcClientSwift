@@ -454,6 +454,11 @@ There is an snippet demonstrating the structure of recovery data and the way of 
 
 The full list of functions provided by the library to communicate with the card you will find [here](https://github.com/tonlabs/TonNfcClientSwift/blob/master/docs/FunctionsList.md)
 
+## Auxiliary classes
+
++ In [TonWalletConstants](https://github.com/tonlabs/TonNfcClientSwift/blob/master/TonNfcClientSwift/Classes/smartCard/TonWalletAppletConstants.swift) one may find the list of all constants required for work. 
+ + Class [ByteArrayAndHexHelper](https://github.com/tonlabs/TonNfcClientSwift/blob/master/TonNfcClientSwift/Classes/api/utils/ByteArrayAndHexHelper.swift) provides functions to handle byte arrays, hex representations of byte arrays and integer numbers. It is to simplify the work with the main API.
+
 ## Author
 
 alinaT95, alina.t@tonlabs.io
