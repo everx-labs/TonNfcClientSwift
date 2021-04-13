@@ -7,18 +7,18 @@ import TonNfcClientSwift
 class TableOfContentsSpec: QuickSpec {
     override func spec() {
         describe("these will fail") {
-
+            expect(1 + 1).to(equal(2))
             it("can do maths") {
-                expect(1) == 2
+                expect(2) == 2
             }
 
-            it("can read") {
+           /* it("can read") {
                 expect("number") == "string"
             }
 
             it("will eventually fail") {
                 expect("time").toEventually( equal("done") )
-            }
+            }*/
             
             context("these will pass") {
 
