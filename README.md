@@ -134,7 +134,7 @@ If some error happened then functions of TonNfcClientSwift library produce error
 
 #### Applet (card) errors
 
-It is the case when applet (installed on the card) threw some error status word (SW). So Swift code just catches it and throws away. The exemplary error json looks like this.
+It is the case when applet (installed on the card) threw some error status word (SW). So Swift code just catches it and throws away. The typical error json looks like this.
 
 	{
 		"message":"Incorrect PIN (from Ton wallet applet).",
