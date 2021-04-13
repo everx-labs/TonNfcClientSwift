@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B0AB7252625B95A0021DE90 /* CoinManagerApduCommandsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0AB7242625B95A0021DE90 /* CoinManagerApduCommandsTest.swift */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
@@ -31,6 +32,7 @@
 		08DD8EB09D3147BCDA28E720 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		1FB46AC369991BA2A81539DF /* Pods_TonNfcClientSwift_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TonNfcClientSwift_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A9710F0953AB7637E0F215D /* TonNfcClientSwift.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = TonNfcClientSwift.podspec; path = ../TonNfcClientSwift.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		5B0AB7242625B95A0021DE90 /* CoinManagerApduCommandsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinManagerApduCommandsTest.swift; sourceTree = "<group>"; };
 		5B17DC4025B70B910052462D /* TonNfcClientSwift_ExampleRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TonNfcClientSwift_ExampleRelease.entitlements; sourceTree = "<group>"; };
 		5B17DC7525B70E7E0052462D /* TonNfcClientSwift_ExampleDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TonNfcClientSwift_ExampleDebug.entitlements; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* TonNfcClientSwift_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TonNfcClientSwift_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -128,6 +130,7 @@
 		607FACE81AFB9204008FA782 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				5B0AB7242625B95A0021DE90 /* CoinManagerApduCommandsTest.swift */,
 				607FACEB1AFB9204008FA782 /* Tests.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 			);
@@ -369,6 +372,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B0AB7252625B95A0021DE90 /* CoinManagerApduCommandsTest.swift in Sources */,
 				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

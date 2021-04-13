@@ -16,7 +16,7 @@ import CoreNFC
 
 @available(iOS 13.0, *)
 class CoinManagerApduCommands {
-  
+
   static let CURVE_TYPE_SUFFIX = "0102"
   static let CLA:UInt8 = 0x80
   static let INS:UInt8 = 0xCB
@@ -89,9 +89,6 @@ class CoinManagerApduCommands {
   static let GEN_SEED_FOR_DEFAULT_PIN = NFCISO7816APDU(instructionClass:CLA, instructionCode:INS, p1Parameter:P1, p2Parameter:P2, data: Data(_ : GENERATE_SEED_BYTES + [UInt8(TonWalletAppletConstants.PIN_SIZE)] + TonWalletAppletConstants.DEFAULT_PIN), expectedResponseLength:-1)
   
   static func getGenSeedApdu(pin : [UInt8]) throws -> NFCISO7816APDU {
-    if pin.count !=  TonWalletAppletConstants.PIN_SIZE {
-      throw "Bad length of PIN (must be \(TonWalletAppletConstants.PIN_SIZE) bytes)."
-    }
     try checkPin(pin : pin)
     return NFCISO7816APDU(instructionClass:CLA, instructionCode:INS, p1Parameter:P1, p2Parameter:P2, data: Data(_ : GENERATE_SEED_BYTES + [UInt8(TonWalletAppletConstants.PIN_SIZE)] + pin), expectedResponseLength:-1)
   }
@@ -99,14 +96,14 @@ class CoinManagerApduCommands {
   static func getChangePinApdu(oldPin : [UInt8], newPin : [UInt8]) throws -> NFCISO7816APDU {
     try checkPin(pin : oldPin)
     try checkPin(pin : newPin)
-    return NFCISO7816APDU(instructionClass:CLA, instructionCode:INS, p1Parameter:P1, p2Parameter:P2, data: Data(_ : CHANGE_PIN_BYTES + [0x04] + oldPin + [0x04] + newPin), expectedResponseLength:-1)
+    return NFCISO7816APDU(instructionClass:CLA, instructionCode:INS, p1Parameter:P1, p2Parameter:P2, data: Data(_ : CHANGE_PIN_BYTES + [UInt8(TonWalletAppletConstants.PIN_SIZE)] + oldPin + [UInt8(TonWalletAppletConstants.PIN_SIZE)] + newPin), expectedResponseLength:-1)
   }
   
   static func getSetDeviceLabelApdu(label : [UInt8]) throws -> NFCISO7816APDU {
     if label.count != CoinManagerConstants.LABEL_LENGTH  {
         throw ResponsesConstants.ERROR_MSG_LABEL_BYTES_SIZE_INCORRECT
     }
-    return NFCISO7816APDU(instructionClass : CLA, instructionCode : INS, p1Parameter : P1, p2Parameter : P2, data : Data(_ : SET_DEVICE_LABEL_BYTES + [0x20] + label), expectedResponseLength : -1)
+    return NFCISO7816APDU(instructionClass : CLA, instructionCode : INS, p1Parameter : P1, p2Parameter : P2, data : Data(_ : SET_DEVICE_LABEL_BYTES + [UInt8(CoinManagerConstants.LABEL_LENGTH)] + label), expectedResponseLength : -1)
   }
   
   static func checkPin(pin : [UInt8]) throws {
