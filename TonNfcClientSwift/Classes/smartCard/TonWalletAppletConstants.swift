@@ -32,7 +32,7 @@ public class TonWalletAppletConstants {
     static let WAITE_AUTHORIZATION_STATE = [APP_WAITE_AUTHORIZATION_MODE]
     static let PERSONALIZED_AND_DELETE_STATE = [APP_PERSONALIZED, APP_DELETE_KEY_FROM_KEYCHAIN_MODE]
     
-    public  static let DEFAULT_PIN:[UInt8] = [0x35, 0x35, 0x35, 0x35]
+    
     
     public static let PK_LEN = 0x20
     public static let SIG_LEN = 0x40
@@ -40,7 +40,6 @@ public class TonWalletAppletConstants {
     public static let SHA_HASH_SIZE = 32
     public static let SAULT_LENGTH = 32
     public static let TRANSACTION_HASH_SIZE = 32
-    public static let PIN_SIZE = 4
     
     public static let MAX_PIN_TRIES_NUM: UInt8 = 10
     public static let DATA_FOR_SIGNING_MAX_SIZE: UInt16 = 189

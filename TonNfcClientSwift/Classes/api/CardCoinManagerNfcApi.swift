@@ -31,7 +31,7 @@ public class CardCoinManagerNfcApi: TonNfcApi {
         apduRunner.setCallback(resolve : resolve, reject : reject)
         apduRunner.setCardOperation(cardOperation: { () in
             self.apduRunner.sendApdu(apduCommand: CoinManagerApduCommands.SELECT_COIN_MANAGER_APDU)
-                .then{_ in self.apduRunner.sendApdu(apduCommand: try CoinManagerApduCommands.getGenSeedApdu(pin: ByteArrayAndHexHelper.digitalStrIntoAsciiUInt8Array(digitalStr: pin)))
+                .then{_ in self.apduRunner.sendApdu(apduCommand: try CoinManagerApduCommands.getGenSeedApdu( ByteArrayAndHexHelper.digitalStrIntoAsciiUInt8Array(digitalStr: pin)))
                 }
                 .then{_ in
                     self.makeFinalPromise(result : ResponsesConstants.DONE_MSG)
@@ -87,7 +87,7 @@ public class CardCoinManagerNfcApi: TonNfcApi {
         apduRunner.setCardOperation(cardOperation: { () in
             self.apduRunner.sendApdu(apduCommand:
                     CoinManagerApduCommands.SELECT_COIN_MANAGER_APDU)
-                .then{_ in self.apduRunner.sendApdu(apduCommand: try CoinManagerApduCommands.getSetDeviceLabelApdu(label: ByteArrayAndHexHelper.hexStrToUInt8Array(hexStr: deviceLabel)))
+                .then{_ in self.apduRunner.sendApdu(apduCommand: try CoinManagerApduCommands.getSetDeviceLabelApdu( ByteArrayAndHexHelper.hexStrToUInt8Array(hexStr: deviceLabel)))
                 }
                 .then{_ in
                     return self.makeFinalPromise(result : ResponsesConstants.DONE_MSG)

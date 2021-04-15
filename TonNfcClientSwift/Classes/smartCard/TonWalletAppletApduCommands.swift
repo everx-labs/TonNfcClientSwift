@@ -166,7 +166,7 @@ class TonWalletAppletApduCommands {
         INS_IS_RECOVERY_DATA_SET : TonWalletAppletConstants.PERSONALIZED_AND_DELETE_STATE
     ]
     
-    static let SELECT_TON_WALLET_APPLET_APDU = NFCISO7816APDU(instructionClass:0x00, instructionCode:0xA4, p1Parameter:0x04, p2Parameter:0x00, data: Data(_ :  CommonConstants.WALLET_APPLET_AID),expectedResponseLength:-1)
+    static let SELECT_TON_WALLET_APPLET_APDU = NFCISO7816APDU(instructionClass:0x00, instructionCode:0xA4, p1Parameter:0x04, p2Parameter:0x00, data: Data(_ :  CommonConstants.TON_WALLET_APPLET_AID),expectedResponseLength:-1)
     
     static let GET_APP_INFO_APDU =  NFCISO7816APDU(instructionClass: WALLET_APPLET_CLA, instructionCode: INS_GET_APP_INFO, p1Parameter:0x00, p2Parameter:0x00, data: Data(), expectedResponseLength: TonWalletAppletConstants.GET_APP_INFO_LE)
     
@@ -219,7 +219,7 @@ class TonWalletAppletApduCommands {
     }
     
     static func getVerifyPinApdu(pinBytes: [UInt8], sault : [UInt8]) throws -> NFCISO7816APDU {
-        if pinBytes.count != TonWalletAppletConstants.PIN_SIZE {
+        if pinBytes.count != CommonConstants.PIN_SIZE {
             throw ResponsesConstants.ERROR_MSG_PIN_BYTES_SIZE_INCORRECT
         }
         try checkSault(sault: sault)

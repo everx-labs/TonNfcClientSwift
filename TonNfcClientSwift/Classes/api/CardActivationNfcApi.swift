@@ -86,7 +86,7 @@ public class CardActivationNfcApi: CardCoinManagerNfcApi {
                     self.apduRunner.sendApdu(apduCommand: try TonWalletAppletApduCommands.getVerifyPasswordApdu(password: passwordBytes.bytes, initialVector: initialVectorBytes.bytes))
                 }
                 .then{(response : Data)  -> Promise<Data> in
-                    self.apduRunner.sendCoinManagerAppletApdu(apduCommand: try CoinManagerApduCommands.getChangePinApdu(oldPin : TonWalletAppletConstants.DEFAULT_PIN, newPin : newPinData))
+                    self.apduRunner.sendCoinManagerAppletApdu(apduCommand: try CoinManagerApduCommands.getChangePinApdu(oldPin : CommonConstants.DEFAULT_PIN, newPin : newPinData))
                 }
                 .then{(response : Data)  -> Promise<Data> in
                     self.apduRunner.sendTonWalletAppletApdu(apduCommand: TonWalletAppletApduCommands.GET_SERIAL_NUMBER_APDU)

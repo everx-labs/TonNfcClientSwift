@@ -34,7 +34,7 @@ class DataVerifier {
     }
     
     func checkPinSize(pin : String, reject : @escaping NfcRejecter) -> Bool {
-        guard pin.count == TonWalletAppletConstants.PIN_SIZE else {
+        guard pin.count == CommonConstants.PIN_SIZE else {
             errorHelper.callRejectWith(errMsg :  ResponsesConstants.ERROR_MSG_PIN_LEN_INCORRECT, reject: reject)
             return false
         }
