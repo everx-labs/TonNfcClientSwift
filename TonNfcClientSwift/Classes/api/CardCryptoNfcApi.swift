@@ -52,7 +52,7 @@ public class CardCryptoNfcApi: TonNfcApi {
             self.apduRunner.sendApdu(apduCommand:
                     TonWalletAppletApduCommands.SELECT_TON_WALLET_APPLET_APDU)
                 .then{_ in
-                    self.apduRunner.sendAppletApduAndCheckAppletState(apduCommand: try TonWalletAppletApduCommands.getPublicKeyApdu(ind: hdIndex))
+                    self.apduRunner.sendAppletApduAndCheckAppletState(apduCommand: try TonWalletAppletApduCommands.getPublicKeyApdu(hdIndex))
                 }
                 .then{(response : Data)  -> Promise<String> in
                     if (response.count != TonWalletAppletConstants.PK_LEN) {

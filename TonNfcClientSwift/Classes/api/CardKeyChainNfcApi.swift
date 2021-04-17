@@ -634,7 +634,7 @@ import CoreNFC
                     self.getSaultPromise()
                 }
                 .then{(sault : Data) -> Promise<Data> in
-                    self.apduRunner.sendApdu(apduCommand: try TonWalletAppletApduCommands.getResetKeyChainApdu(sault: sault.bytes))
+                    self.apduRunner.sendApdu(apduCommand: try TonWalletAppletApduCommands.getResetKeyChainApdu(sault.bytes))
                 }
                 .then{(response : Data)  -> Promise<String> in
                     self.keyMacs = []

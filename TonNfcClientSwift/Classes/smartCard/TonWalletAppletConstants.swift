@@ -32,8 +32,6 @@ public class TonWalletAppletConstants {
     static let WAITE_AUTHORIZATION_STATE = [APP_WAITE_AUTHORIZATION_MODE]
     static let PERSONALIZED_AND_DELETE_STATE = [APP_PERSONALIZED, APP_DELETE_KEY_FROM_KEYCHAIN_MODE]
     
-    
-    
     public static let PK_LEN = 0x20
     public static let SIG_LEN = 0x40
     public static let HMAC_SHA_SIG_SIZE = 32
@@ -59,6 +57,8 @@ public class TonWalletAppletConstants {
     
     public static let DATA_RECOVERY_PORTION_MAX_SIZE: Int = 250
     public static let RECOVERY_DATA_MAX_SIZE: Int = 2048
+    
+    public static let START_POS_LEN = 2
     
     public static let SERIAL_NUMBER_SIZE: Int = 24
     
