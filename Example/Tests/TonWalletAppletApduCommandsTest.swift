@@ -19,14 +19,14 @@ class TonWalletAppletApduCommandsTest: QuickSpec  {
         
         let hmacHelper = HmacHelper.getInstance()
         let SERIAL_NUMBER = "504394802433901126813236"
-        let COMMON_SECRET = ByteArrayAndHexHelper.hex(from:"7256EFE7A77AFC7E9088266EF27A93CB01CD9432E0DB66D600745D506EE04AC4")
-        let IV = ByteArrayAndHexHelper.hex(from:"1A550F4B413D0E971C28293F9183EA8A")
-        let PASSWORD  = ByteArrayAndHexHelper.hex(from:"F4B072E1DF2DB7CF6CD0CD681EC5CD2D071458D278E6546763CBB4860F8082FE14418C8A8A55E2106CBC6CB1174F4BA6D827A26A2D205F99B7E00401DA4C15ACC943274B92258114B5E11C16DA64484034F93771547FBE60DA70E273E6BD64F8A4201A9913B386BCA55B6678CFD7E7E68A646A7543E9E439DD5B60B9615079FE")
+        let COMMON_SECRET = ByteArrayAndHexHelper.hex(from : "7256EFE7A77AFC7E9088266EF27A93CB01CD9432E0DB66D600745D506EE04AC4")
+        let IV = ByteArrayAndHexHelper.hex(from : "1A550F4B413D0E971C28293F9183EA8A")
+        let PASSWORD  = ByteArrayAndHexHelper.hex(from : "F4B072E1DF2DB7CF6CD0CD681EC5CD2D071458D278E6546763CBB4860F8082FE14418C8A8A55E2106CBC6CB1174F4BA6D827A26A2D205F99B7E00401DA4C15ACC943274B92258114B5E11C16DA64484034F93771547FBE60DA70E273E6BD64F8A4201A9913B386BCA55B6678CFD7E7E68A646A7543E9E439DD5B60B9615079FE")
         hmacHelper.currentSerialNumber = SERIAL_NUMBER 
         let cardActivationApi : CardActivationNfcApi = CardActivationNfcApi()
         
         do {
-            try cardActivationApi.createKeyForHmac(password: PASSWORD, commonSecret: COMMON_SECRET, serialNumber: SERIAL_NUMBER)
+            try cardActivationApi.createKeyForHmac(password : PASSWORD, commonSecret : COMMON_SECRET, serialNumber : SERIAL_NUMBER)
         }
         catch {
             fail()
@@ -66,8 +66,8 @@ class TonWalletAppletApduCommandsTest: QuickSpec  {
         let dataForSigning  : [UInt8] = [0x00, 0x01, 0x02, 0x03, 0x04]
         let badDataForSigning  : [[UInt8]] = [
             [],
-            [UInt8](repeating: 0x02, count: Int(TonWalletAppletConstants.DATA_FOR_SIGNING_MAX_SIZE_FOR_CASE_WITH_PATH) + 1),
-            [UInt8](repeating: 0x39, count: Int(TonWalletAppletConstants.DATA_FOR_SIGNING_MAX_SIZE_FOR_CASE_WITH_PATH) + 100)
+            [UInt8](repeating: 0x02, count : Int(TonWalletAppletConstants.DATA_FOR_SIGNING_MAX_SIZE_FOR_CASE_WITH_PATH) + 1),
+            [UInt8](repeating: 0x39, count : Int(TonWalletAppletConstants.DATA_FOR_SIGNING_MAX_SIZE_FOR_CASE_WITH_PATH) + 100)
         ]
         let badDataForSigningForDefaultHdPath  : [[UInt8]] = [
             [],
@@ -1376,7 +1376,7 @@ class TonWalletAppletApduCommandsTest: QuickSpec  {
             it("throws a error") {
                 for badLe in badLEs {
                     expect ( expression: {try TonWalletAppletApduCommands.checkLe(badLe)})
-                        .to(throwError { (error: Error) in
+                        .to(throwError { (error : Error) in
                                 expect(error.localizedDescription) == ResponsesConstants.ERROR_MSG_LE_INCORRECT})
                 }
             }

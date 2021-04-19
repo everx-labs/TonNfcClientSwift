@@ -241,58 +241,127 @@ class TonWalletAppletApduCommands {
     static let SELECT_TON_WALLET_APPLET_APDU = NFCISO7816APDU(instructionClass : CommonConstants.CLA_SELECT, instructionCode : CommonConstants.INS_SELECT, p1Parameter : CommonConstants.SELECT_P1, p2Parameter : CommonConstants.SELECT_P2, data : Data(_ :  CommonConstants.TON_WALLET_APPLET_AID), expectedResponseLength : CommonConstants.LE_NO_RESPONSE_DATA)
     
     /**
-       This command returns applet state. Available in any applet state.
+       * GET_APP_INFO
+
+       * CLA: 0xB0
+       * INS: 0xC1
+       * P1: 0x00
+       * P2: 0x00
+       * LE: 0x01
+     
+       * This command returns applet state. Available in any applet state. Applet state = 0x07, 0x17, 0x27, 0x37 or 0x47
     */
     static let GET_APP_INFO_APDU =  NFCISO7816APDU(instructionClass : WALLET_APPLET_CLA, instructionCode : INS_GET_APP_INFO, p1Parameter : P1, p2Parameter : P2, data: Data(), expectedResponseLength : TonWalletAppletConstants.GET_APP_INFO_LE)
     
-    /**
-       This command returns card serial number. Available in any applet state.
-    */
+    
     static let GET_SERIAL_NUMBER_APDU =  NFCISO7816APDU(instructionClass: WALLET_APPLET_CLA, instructionCode: INS_GET_SERIAL_NUMBER, p1Parameter : P1, p2Parameter : P2, data : Data(), expectedResponseLength: TonWalletAppletConstants.GET_SERIAL_NUMBER_LE)
     
     /**
-       This command returns SHA256 hash of encrypted (by AES) activation password. Available only in WAITE_AUTHORIZATION_MODE state of applet.
+       * GET_HASH_OF_ENCRYPTED_PASSWORD
+
+       * CLA: 0xB0
+       * INS: 0x93
+       * P1: 0x00
+       * P2: 0x00
+       * LE: 0x20
+    
+       * This command returns SHA256 hash of encrypted (by AES) activation password. Available only in WAITE_AUTHORIZATION_MODE state of applet.
     */
     static let GET_HASH_OF_ENCRYPTED_PASSWORD_APDU = NFCISO7816APDU(instructionClass: WALLET_APPLET_CLA, instructionCode: INS_GET_HASH_OF_ENCRYPTED_PASSWORD, p1Parameter : P1, p2Parameter : P2, data : Data(), expectedResponseLength: TonWalletAppletConstants.SHA_HASH_SIZE)
     
     /**
-       This command returns SHA256 hash of encrypted (by AES) activation common secret. Available only in WAITE_AUTHORIZATION_MODE state of applet.
+       * GET_HASH_OF_COMMON_SECRET
+       
+       * CLA: 0xB0
+       * INS: 0x95
+       * P1: 0x00
+       * P2: 0x00
+       * LE: 0x20
+       
+       * This command returns SHA256 hash of encrypted (by AES) activation common secret. Available only in WAITE_AUTHORIZATION_MODE state of applet.
     */
     static let GET_HASH_OF_ENCRYPTED_COMMON_SECRET_APDU = NFCISO7816APDU(instructionClass : WALLET_APPLET_CLA, instructionCode : INS_GET_HASH_OF_ENCRYPTED_COMMON_SECRET, p1Parameter : P1, p2Parameter : P2, data : Data(), expectedResponseLength : TonWalletAppletConstants.SHA_HASH_SIZE)
     
     /**
-       This function retrieves ED25519 public key from CoinManager for fixed bip44 HD path m/44'/396'/0'/0'/0
+       * GET_PUBLIC_KEY_WITH_DEFAULT_HD_PATH
+       
+       * CLA: 0xB0
+       * INS: 0xA7
+       * P1: 0x00
+       * P2: 0x00
+       * LE: 0x20
+       
+       * This function retrieves ED25519 public key from CoinManager for fixed bip44 HD path m/44'/396'/0'/0'/0
     */
     static let GET_PUB_KEY_WITH_DEFAULT_PATH_APDU =  NFCISO7816APDU(instructionClass : WALLET_APPLET_CLA, instructionCode : INS_GET_PUBLIC_KEY_WITH_DEFAULT_HD_PATH, p1Parameter : P1, p2Parameter : P2, data : Data(), expectedResponseLength : TonWalletAppletConstants.PK_LEN)
     
     /**
-       The command outputs random 32-bytes sault produced by card. This sault must be used  by the host to generate HMAC.
-       In the end of its work it calls generateNewSault. So each call of GET_SAULT should produce new random looking sault
-       Available in applet states PERSONALIZED and DELETE_KEY_FROM_KEYCHAIN_MODE.
+       * GET_SAULT
+       
+       * CLA: 0xB0
+       * INS: 0xBD
+       * P1: 0x00
+       * P2: 0x00
+       * LE: 0x20
+       
+       * The command outputs random 32-bytes sault produced by card. This sault must be used  by the host to generate HMAC.
+       * In the end of its work it calls generateNewSault. So each call of GET_SAULT should produce new random looking sault
+       * Available in applet states PERSONALIZED and DELETE_KEY_FROM_KEYCHAIN_MODE.
     */
     static let GET_SAULT_APDU = NFCISO7816APDU(instructionClass : WALLET_APPLET_CLA, instructionCode : INS_GET_SAULT, p1Parameter : P1, p2Parameter : P2, data : Data(), expectedResponseLength : TonWalletAppletConstants.SAULT_LENGTH)
     
     /**
-       This function returns SHA256 hash of encrypted binary blob saved during registration in Recovery service. This is necessary to control the integrity.
-       Available in applet states PERSONALIZED and DELETE_KEY_FROM_KEYCHAIN_MODE.
+        * GET_RECOVERY_DATA_HASH
+        
+        * CLA: 0xB0
+        * INS: 0xD3
+        * P1: 0x00
+        * P2: 0x00
+        * LE: 0x20
+        
+        * This function returns SHA256 hash of encrypted binary blob saved during registration in Recovery service. This is necessary to control the integrity.
+        * Available in applet states PERSONALIZED and DELETE_KEY_FROM_KEYCHAIN_MODE.
     */
     static let GET_RECOVERY_DATA_HASH_APDU = NFCISO7816APDU(instructionClass : WALLET_APPLET_CLA, instructionCode : INS_GET_RECOVERY_DATA_HASH, p1Parameter : P1, p2Parameter : P2, data : Data(), expectedResponseLength : TonWalletAppletConstants.SHA_HASH_SIZE)
     
     /**
-       This function returns real length of recovery data  saved in applet's internal buffer.
-       Available in applet states PERSONALIZED and DELETE_KEY_FROM_KEYCHAIN_MODE.
+       * GET_RECOVERY_DATA_LEN
+       
+       * CLA: 0xB0
+       * INS: 0xD4
+       * P1: 0x00
+       * P2: 0x00
+       * LE:  0x02
+       
+       * This function returns real length of recovery data  saved in applet's internal buffer.
+       * Available in applet states PERSONALIZED and DELETE_KEY_FROM_KEYCHAIN_MODE.
     */
     static let GET_RECOVERY_DATA_LEN_APDU = NFCISO7816APDU(instructionClass : WALLET_APPLET_CLA, instructionCode : INS_GET_RECOVERY_DATA_LEN, p1Parameter : P1, p2Parameter : P2, data : Data(), expectedResponseLength : TonWalletAppletConstants.GET_RECOVERY_DATA_LEN_LE)
     
     /**
-       Returns 0x01 if recovery data is set, 0x00 if not.
-       Available in applet states PERSONALIZED and DELETE_KEY_FROM_KEYCHAIN_MODE.
+       * IS_RECOVERY_DATA_SET
+       
+       * CLA: 0xB0
+       * INS: 0xD6
+       * P1: 0x00
+       * P2: 0x00
+       * LE: 0x01
+       
+       * Returns 0x01 if recovery data is set, 0x00 if not.
+       * Available in applet states PERSONALIZED and DELETE_KEY_FROM_KEYCHAIN_MODE.
     */
     static let IS_RECOVERY_DATA_SET_APDU = NFCISO7816APDU(instructionClass : WALLET_APPLET_CLA, instructionCode : INS_IS_RECOVERY_DATA_SET, p1Parameter : P1, p2Parameter : P2, data : Data(), expectedResponseLength : TonWalletAppletConstants.IS_RECOVERY_DATA_SET_LE)
     
     /**
-       This function reset recovery data, internal buffer is filled by zeros, internal variable realRecoveryDataLen is set to 0, internal flag  isRecoveryDataSet is set to false.
-       Available in applet states PERSONALIZED and DELETE_KEY_FROM_KEYCHAIN_MODE
+       * RESET_RECOVERY_DATA
+       
+       * CLA: 0xB0
+       * INS: 0xD5
+       * P1: 0x00
+       * P2: 0x00
+       
+       * This function reset recovery data, internal buffer is filled by zeros, internal variable realRecoveryDataLen is set to 0, internal flag  isRecoveryDataSet is set to false.
+       * Available in applet states PERSONALIZED and DELETE_KEY_FROM_KEYCHAIN_MODE
     */
     static let RESET_RECOVERY_DATA_APDU = NFCISO7816APDU(instructionClass : WALLET_APPLET_CLA, instructionCode : INS_RESET_RECOVERY_DATA, p1Parameter : P1, p2Parameter : P2, data : Data(), expectedResponseLength : CommonConstants.LE_NO_RESPONSE_DATA)
     
