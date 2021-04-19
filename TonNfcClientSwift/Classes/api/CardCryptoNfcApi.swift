@@ -162,7 +162,7 @@ public class CardCryptoNfcApi: TonNfcApi {
             }
             .then{(sault : Data) -> Promise<Data> in
                 self.apduRunner.sendApdu(apduCommand:
-                    try TonWalletAppletApduCommands.getSignShortMessageApdu(dataForSigning: ByteArrayAndHexHelper.hexStrToUInt8Array(hexStr: data), ind: ByteArrayAndHexHelper.digitalStrIntoAsciiUInt8Array(digitalStr: hdIndex), sault: sault.bytes))
+                    try TonWalletAppletApduCommands.getSignShortMessageApdu(dataForSigning: ByteArrayAndHexHelper.hexStrToUInt8Array(hexStr: data), hdIndex: ByteArrayAndHexHelper.digitalStrIntoAsciiUInt8Array(digitalStr: hdIndex), sault: sault.bytes))
             }
             .then{(response : Data)  -> Promise<String> in
                 if (response.count != TonWalletAppletConstants.SIG_LEN) {
@@ -199,7 +199,7 @@ public class CardCryptoNfcApi: TonNfcApi {
             }
             .then{(sault : Data) -> Promise<Data> in
                 self.apduRunner.sendApdu(apduCommand:
-                    try TonWalletAppletApduCommands.getSignShortMessageApdu(dataForSigning: ByteArrayAndHexHelper.hexStrToUInt8Array(hexStr: data), ind: ByteArrayAndHexHelper.digitalStrIntoAsciiUInt8Array(digitalStr: hdIndex), sault: sault.bytes))
+                    try TonWalletAppletApduCommands.getSignShortMessageApdu(dataForSigning: ByteArrayAndHexHelper.hexStrToUInt8Array(hexStr: data), hdIndex: ByteArrayAndHexHelper.digitalStrIntoAsciiUInt8Array(digitalStr: hdIndex), sault: sault.bytes))
             }
             .then{(response : Data)  -> Promise<String> in
                 if (response.count != TonWalletAppletConstants.SIG_LEN) {

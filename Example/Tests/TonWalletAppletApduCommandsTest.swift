@@ -420,7 +420,7 @@ class TonWalletAppletApduCommandsTest: QuickSpec  {
         context("When it's requesting SIGN_SHORT_MESSAGE APDU command with hdIndex of incorrect length", {
             it("throws a error") {
                 for badHdIndex in badHdIndices {
-                    expect ( expression: {try TonWalletAppletApduCommands.getSignShortMessageApdu(dataForSigning : dataForSigning, ind : badHdIndex, sault : sault) })
+                    expect ( expression: {try TonWalletAppletApduCommands.getSignShortMessageApdu(dataForSigning : dataForSigning, hdIndex : badHdIndex, sault : sault) })
                         .to(throwError { (error: Error) in
                                 expect(error.localizedDescription) == ResponsesConstants.ERROR_MSG_HD_INDEX_BYTES_SIZE_INCORRECT})
                 }
@@ -430,7 +430,7 @@ class TonWalletAppletApduCommandsTest: QuickSpec  {
         context("When it's requesting SIGN_SHORT_MESSAGE APDU command with sault of incorrect length", {
             it("throws a error") {
                 for badSault in badSaults {
-                    expect ( expression: {try TonWalletAppletApduCommands.getSignShortMessageApdu(dataForSigning : dataForSigning, ind : hdIndex, sault : badSault) })
+                    expect ( expression: {try TonWalletAppletApduCommands.getSignShortMessageApdu(dataForSigning : dataForSigning, hdIndex : hdIndex, sault : badSault) })
                         .to(throwError { (error: Error) in
                                 expect(error.localizedDescription) == ResponsesConstants.ERROR_MSG_SAULT_BYTES_SIZE_INCORRECT})
                 }
@@ -440,7 +440,7 @@ class TonWalletAppletApduCommandsTest: QuickSpec  {
         context("When it's requesting SIGN_SHORT_MESSAGE APDU command with data of incorrect length", {
             it("throws a error") {
                 for badData in badDataForSigning {
-                    expect ( expression: {try TonWalletAppletApduCommands.getSignShortMessageApdu(dataForSigning : badData, ind : hdIndex, sault : sault) })
+                    expect ( expression: {try TonWalletAppletApduCommands.getSignShortMessageApdu(dataForSigning : badData, hdIndex : hdIndex, sault : sault) })
                         .to(throwError { (error: Error) in
                                 expect(error.localizedDescription) == ResponsesConstants.ERROR_MSG_DATA_WITH_HD_PATH_BYTES_SIZE_INCORRECT})
                 }
@@ -450,7 +450,7 @@ class TonWalletAppletApduCommandsTest: QuickSpec  {
         context("When it's requesting SIGN_SHORT_MESSAGE APDU command", {
             it("returns NFCISO7816APDU object with correct APDU fields") {
                 do {
-                    let apdu = try TonWalletAppletApduCommands.getSignShortMessageApdu(dataForSigning : dataForSigning, ind : hdIndex, sault : sault)
+                    let apdu = try TonWalletAppletApduCommands.getSignShortMessageApdu(dataForSigning : dataForSigning, hdIndex : hdIndex, sault : sault)
                     expect(apdu.instructionClass) == TonWalletAppletApduCommands.WALLET_APPLET_CLA
                     expect(apdu.instructionCode) == TonWalletAppletApduCommands.INS_SIGN_SHORT_MESSAGE
                     expect(apdu.p1Parameter) == TonWalletAppletApduCommands.P1
@@ -1101,7 +1101,7 @@ class TonWalletAppletApduCommandsTest: QuickSpec  {
         context("When it's requesting GET_HMAC APDU command with sault of incorrect length", {
             it("throws a error") {
                 for badSault in badSaults {
-                    expect ( expression: {try TonWalletAppletApduCommands.getGetHmacApdu(ind : keyIndex, sault : badSault)   })
+                    expect ( expression: {try TonWalletAppletApduCommands.getGetHmacApdu(index : keyIndex, sault : badSault)   })
                         .to(throwError { (error: Error) in
                                 expect(error.localizedDescription) == ResponsesConstants.ERROR_MSG_SAULT_BYTES_SIZE_INCORRECT})
                 }
@@ -1111,7 +1111,7 @@ class TonWalletAppletApduCommandsTest: QuickSpec  {
         context("When it's requesting GET_HMAC APDU command with keyIndex of incorrect length", {
             it("throws a error") {
                 for badKeyIndex in badKeyIndices {
-                    expect ( expression: {try TonWalletAppletApduCommands.getGetHmacApdu(ind : badKeyIndex, sault :  sault)   })
+                    expect ( expression: {try TonWalletAppletApduCommands.getGetHmacApdu(index : badKeyIndex, sault :  sault)   })
                         .to(throwError { (error: Error) in
                                 expect(error.localizedDescription) == ResponsesConstants.ERROR_MSG_KEY_INDEX_BYTES_SIZE_INCORRECT})
                 }
@@ -1121,7 +1121,7 @@ class TonWalletAppletApduCommandsTest: QuickSpec  {
         context("When it's requesting GET_HMAC command", {
             it("returns NFCISO7816APDU object with correct APDU fields") {
                 do {
-                    let apdu = try TonWalletAppletApduCommands.getGetHmacApdu(ind : keyIndex, sault :  sault)
+                    let apdu = try TonWalletAppletApduCommands.getGetHmacApdu(index : keyIndex, sault :  sault)
                     expect(apdu.instructionClass) == TonWalletAppletApduCommands.WALLET_APPLET_CLA
                     expect(apdu.instructionCode) == TonWalletAppletApduCommands.INS_GET_HMAC
                     expect(apdu.p1Parameter) == TonWalletAppletApduCommands.P1
@@ -1152,7 +1152,7 @@ class TonWalletAppletApduCommandsTest: QuickSpec  {
         context("When it's requesting GET_KEY_CHUNK APDU command with sault of incorrect length", {
             it("throws a error") {
                 for badSault in badSaults {
-                    expect ( expression: {try TonWalletAppletApduCommands.getGetKeyChunkApdu(ind : keyIndex, startPos: 0x00, sault : badSault, le : TonWalletAppletConstants.DATA_PORTION_MAX_SIZE)    })
+                    expect ( expression: {try TonWalletAppletApduCommands.getGetKeyChunkApdu(index : keyIndex, startPos: 0x00, sault : badSault, le : TonWalletAppletConstants.DATA_PORTION_MAX_SIZE)    })
                         .to(throwError { (error: Error) in
                                 expect(error.localizedDescription) == ResponsesConstants.ERROR_MSG_SAULT_BYTES_SIZE_INCORRECT})
                 }
@@ -1162,7 +1162,7 @@ class TonWalletAppletApduCommandsTest: QuickSpec  {
         context("When it's requesting GET_KEY_CHUNK APDU command with keyIndex of incorrect length", {
             it("throws a error") {
                 for badKeyIndex in badKeyIndices {
-                    expect ( expression: {try TonWalletAppletApduCommands.getGetKeyChunkApdu(ind : badKeyIndex, startPos: 0x00, sault : sault, le : TonWalletAppletConstants.DATA_PORTION_MAX_SIZE)    })
+                    expect ( expression: {try TonWalletAppletApduCommands.getGetKeyChunkApdu(index : badKeyIndex, startPos: 0x00, sault : sault, le : TonWalletAppletConstants.DATA_PORTION_MAX_SIZE)    })
                         .to(throwError { (error: Error) in
                                 expect(error.localizedDescription) == ResponsesConstants.ERROR_MSG_KEY_INDEX_BYTES_SIZE_INCORRECT})
                 }
@@ -1172,7 +1172,7 @@ class TonWalletAppletApduCommandsTest: QuickSpec  {
         context("When it's requesting GET_KEY_CHUNK APDU command with incorrect le", {
             it("throws a error") {
                 for badLe in badLEs {
-                    expect ( expression: {try TonWalletAppletApduCommands.getGetKeyChunkApdu(ind : keyIndex, startPos: 0x00, sault : sault, le : badLe)    })
+                    expect ( expression: {try TonWalletAppletApduCommands.getGetKeyChunkApdu(index : keyIndex, startPos: 0x00, sault : sault, le : badLe)    })
                         .to(throwError { (error: Error) in
                                 expect(error.localizedDescription) == ResponsesConstants.ERROR_MSG_LE_INCORRECT})
                 }
@@ -1183,7 +1183,7 @@ class TonWalletAppletApduCommandsTest: QuickSpec  {
             it("returns NFCISO7816APDU object with correct APDU fields") {
                 do {
                     for le in 1...CommonConstants.LE_GET_ALL_RESPONSE_DATA {
-                        let apdu = try TonWalletAppletApduCommands.getGetKeyChunkApdu(ind : keyIndex, startPos: 0x00, sault : sault, le : le)
+                        let apdu = try TonWalletAppletApduCommands.getGetKeyChunkApdu(index : keyIndex, startPos: 0x00, sault : sault, le : le)
                         expect(apdu.instructionClass) == TonWalletAppletApduCommands.WALLET_APPLET_CLA
                         expect(apdu.instructionCode) == TonWalletAppletApduCommands.INS_GET_KEY_CHUNK
                         expect(apdu.p1Parameter) == TonWalletAppletApduCommands.P1

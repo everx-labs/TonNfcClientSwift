@@ -308,7 +308,7 @@ import CoreNFC
             }
             .then{(sault : Data) -> Promise<Data> in
                 print("packet# " + String(index))
-                return self.apduRunner.sendAppletApduAndCheckAppletState(apduCommand: try TonWalletAppletApduCommands.getGetKeyChunkApdu(ind: ind, startPos: startPos, sault: sault.bytes, le: TonWalletAppletConstants.DATA_PORTION_MAX_SIZE))
+                return self.apduRunner.sendAppletApduAndCheckAppletState(apduCommand: try TonWalletAppletApduCommands.getGetKeyChunkApdu(index: ind, startPos: startPos, sault: sault.bytes, le: TonWalletAppletConstants.DATA_PORTION_MAX_SIZE))
                 
             }
             .then{(keyChunk : Data) -> Promise<Data> in
@@ -328,7 +328,7 @@ import CoreNFC
                 self.checkStateAndGetSault()
             }
             .then{(sault : Data) -> Promise<Data> in
-                return self.apduRunner.sendAppletApduAndCheckAppletState(apduCommand: try TonWalletAppletApduCommands.getGetKeyChunkApdu(ind: ind, startPos: startPos, sault: sault.bytes, le: tailLen))
+                return self.apduRunner.sendAppletApduAndCheckAppletState(apduCommand: try TonWalletAppletApduCommands.getGetKeyChunkApdu(index: ind, startPos: startPos, sault: sault.bytes, le: tailLen))
             }
             .then{(keyChunk : Data) -> Promise<Data> in
                 guard keyChunk.count == tailLen else {
@@ -818,7 +818,7 @@ import CoreNFC
                 self.getSaultPromise()
             }
             .then{(sault : Data) -> Promise<Data> in
-                self.apduRunner.sendApdu(apduCommand: try TonWalletAppletApduCommands.getGetHmacApdu(ind: [UInt8(keyIndex >> 8), UInt8(keyIndex)], sault: sault.bytes))
+                self.apduRunner.sendApdu(apduCommand: try TonWalletAppletApduCommands.getGetHmacApdu(index: [UInt8(keyIndex >> 8), UInt8(keyIndex)], sault: sault.bytes))
             }
             .then{(response : Data)  -> Promise<Data> in
                 if (response.count != TonWalletAppletConstants.HMAC_SHA_SIG_SIZE + 2){

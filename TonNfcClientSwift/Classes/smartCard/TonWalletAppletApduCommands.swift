@@ -433,15 +433,15 @@ class TonWalletAppletApduCommands {
        Available in applet states PERSONALIZED and DELETE_KEY_FROM_KEYCHAIN_MODE.
        Precondition:  1)* GET_SAULT should be called before to get new sault from card. 2) VERIFY_PIN should be called before.
     */
-    static func getSignShortMessageApdu(dataForSigning : [UInt8], ind : [UInt8], sault : [UInt8]) throws -> NFCISO7816APDU {
+    static func getSignShortMessageApdu(dataForSigning : [UInt8], hdIndex : [UInt8], sault : [UInt8]) throws -> NFCISO7816APDU {
         if (dataForSigning.count == 0 ||
             dataForSigning.count > TonWalletAppletConstants.DATA_FOR_SIGNING_MAX_SIZE_FOR_CASE_WITH_PATH) {
             throw ResponsesConstants.ERROR_MSG_DATA_WITH_HD_PATH_BYTES_SIZE_INCORRECT
         }
-        try checkHdIndex(ind)
+        try checkHdIndex(hdIndex)
         try checkSault(sault)
-        let indAndSault = ind + sault
-        let dataChunk = [0x00, UInt8(dataForSigning.count)] + dataForSigning + [UInt8(ind.count)] + indAndSault
+        let indAndSault = hdIndex + sault
+        let dataChunk = [0x00, UInt8(dataForSigning.count)] + dataForSigning + [UInt8(hdIndex.count)] + indAndSault
         let data = try prepareApduData(dataChunk)
         return NFCISO7816APDU(instructionClass : WALLET_APPLET_CLA, instructionCode : INS_SIGN_SHORT_MESSAGE, p1Parameter : P1, p2Parameter : P2, data : data, expectedResponseLength : TonWalletAppletConstants.SIG_LEN)
     }
@@ -461,9 +461,9 @@ class TonWalletAppletApduCommands {
        Example: ind = 171 ⇒ {0x31, 0x37, 0x31}
        Available in applet states PERSONALIZED and DELETE_KEY_FROM_KEYCHAIN_MODE.
     */
-    static func getPublicKeyApdu(_ ind : [UInt8]) throws -> NFCISO7816APDU {
-        try checkHdIndex(ind)
-        return NFCISO7816APDU(instructionClass : WALLET_APPLET_CLA, instructionCode : INS_GET_PUBLIC_KEY, p1Parameter : P1, p2Parameter : P2, data : Data(_ : ind), expectedResponseLength : TonWalletAppletConstants.PK_LEN)
+    static func getPublicKeyApdu(_ hdIndex : [UInt8]) throws -> NFCISO7816APDU {
+        try checkHdIndex(hdIndex)
+        return NFCISO7816APDU(instructionClass : WALLET_APPLET_CLA, instructionCode : INS_GET_PUBLIC_KEY, p1Parameter : P1, p2Parameter : P2, data : Data(_ : hdIndex), expectedResponseLength : TonWalletAppletConstants.PK_LEN)
     }
     
     /**
@@ -742,10 +742,10 @@ class TonWalletAppletApduCommands {
        Precondition:  GET_SAULT should be called before to get new sault from card.
        Available in applet states PERSONALIZED and DELETE_KEY_FROM_KEYCHAIN_MODE.
     */
-    static func getGetHmacApdu(ind : [UInt8], sault : [UInt8]) throws -> NFCISO7816APDU {
-        try checkKeyChainKeyIndex(ind)
+    static func getGetHmacApdu(index : [UInt8], sault : [UInt8]) throws -> NFCISO7816APDU {
+        try checkKeyChainKeyIndex(index)
         try checkSault(sault)
-        let data = try prepareApduData(ind + sault)
+        let data = try prepareApduData(index + sault)
         return NFCISO7816APDU(instructionClass : WALLET_APPLET_CLA, instructionCode : INS_GET_HMAC, p1Parameter : P1, p2Parameter : P2, data : data, expectedResponseLength : TonWalletAppletConstants.GET_HMAC_LE)
     }
     
@@ -765,12 +765,12 @@ class TonWalletAppletApduCommands {
        Available in applet states PERSONALIZED and DELETE_KEY_FROM_KEYCHAIN_MODE.
     */
     // TODO: startPos must be verified
-    static func getGetKeyChunkApdu(ind : [UInt8], startPos: UInt16, sault : [UInt8], le : Int) throws -> NFCISO7816APDU {
+    static func getGetKeyChunkApdu(index : [UInt8], startPos: UInt16, sault : [UInt8], le : Int) throws -> NFCISO7816APDU {
         try checkLe(le)
-        try checkKeyChainKeyIndex(ind)
+        try checkKeyChainKeyIndex(index)
         try checkSault(sault)
         let startPosBytes = withUnsafeBytes(of : startPos.bigEndian, Array.init)
-        let data = try prepareApduData(ind + startPosBytes + sault)
+        let data = try prepareApduData(index + startPosBytes + sault)
         return NFCISO7816APDU(instructionClass : WALLET_APPLET_CLA, instructionCode:INS_GET_KEY_CHUNK, p1Parameter : P1, p2Parameter : P2, data : data, expectedResponseLength : le)
     }
     
@@ -855,14 +855,14 @@ class TonWalletAppletApduCommands {
         }
     }
     
-    static func checkHdIndex(_ ind : [UInt8]) throws {
-        if ind.count == 0 || ind.count > TonWalletAppletConstants.MAX_IND_SIZE {
+    static func checkHdIndex(_ hdIndex : [UInt8]) throws {
+        if hdIndex.count == 0 || hdIndex.count > TonWalletAppletConstants.MAX_IND_SIZE {
             throw ResponsesConstants.ERROR_MSG_HD_INDEX_BYTES_SIZE_INCORRECT
         }
     }
     
-    static func checkKeyChainKeyIndex(_ ind : [UInt8]) throws {
-        if ind.count != TonWalletAppletConstants.KEYCHAIN_KEY_INDEX_LEN {
+    static func checkKeyChainKeyIndex(_ index : [UInt8]) throws {
+        if index.count != TonWalletAppletConstants.KEYCHAIN_KEY_INDEX_LEN {
             throw ResponsesConstants.ERROR_MSG_KEY_INDEX_BYTES_SIZE_INCORRECT
         }
     }
