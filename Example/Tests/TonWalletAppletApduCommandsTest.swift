@@ -101,12 +101,53 @@ class TonWalletAppletApduCommandsTest: QuickSpec  {
             CommonConstants.LE_GET_ALL_RESPONSE_DATA + 1
         ]
         
+        
         let startPos : [UInt8] = [0x00, 0x00]
         let badStartPositions  : [[UInt8]] = [
             [],
             [UInt8](repeating: 0x06, count: Int(TonWalletAppletConstants.START_POS_LEN) + 1),
-            [UInt8](repeating: 0x34, count: Int(TonWalletAppletConstants.START_POS_LEN) + 200)
+            [UInt8](repeating: 0x34, count: Int(TonWalletAppletConstants.START_POS_LEN) - 1)
         ]
+        
+        let keySizeBytes : [UInt8] = [0x00, 0x00]
+        let badKeySizesBytes  : [[UInt8]] = [
+            [],
+            [UInt8](repeating: 0x06, count: Int(TonWalletAppletConstants.KEY_SIZE_BYTES_LEN) + 1),
+            [UInt8](repeating: 0x34, count: Int(TonWalletAppletConstants.KEY_SIZE_BYTES_LEN) - 1)
+        ]
+        
+        let hmac : [UInt8] = [UInt8](repeating: 0x06, count: Int(TonWalletAppletConstants.HMAC_SHA_SIG_SIZE))
+        let badHmacBytes  : [[UInt8]] = [
+            [],
+            [UInt8](repeating: 0x06, count: Int(TonWalletAppletConstants.HMAC_SHA_SIG_SIZE) + 1),
+            [UInt8](repeating: 0x34, count: Int(TonWalletAppletConstants.HMAC_SHA_SIG_SIZE) - 1)
+        ]
+        
+        let keyIndex : [UInt8] = [UInt8](repeating: 0x06, count: Int(TonWalletAppletConstants.KEYCHAIN_KEY_INDEX_LEN ))
+        let badKeyIndices  : [[UInt8]] = [
+            [],
+            [UInt8](repeating: 0x00, count: Int(TonWalletAppletConstants.KEYCHAIN_KEY_INDEX_LEN) + 1),
+            [UInt8](repeating: 0x01, count: Int(TonWalletAppletConstants.KEYCHAIN_KEY_INDEX_LEN) - 1)
+        ]
+        
+        let SEND_KEY_CHUNK_INSTRUCTIONS : [UInt8] = [TonWalletAppletApduCommands.INS_ADD_KEY_CHUNK, TonWalletAppletApduCommands.INS_CHANGE_KEY_CHUNK]
+        
+        let keyChunk : [UInt8] = [UInt8](repeating: 0x06, count: 100)
+        let badKeyChunks  : [[UInt8]] = [
+            [],
+            [UInt8](repeating: 0x00, count: Int(TonWalletAppletConstants.DATA_PORTION_MAX_SIZE) + 1),
+            [UInt8](repeating: 0x01, count: Int(TonWalletAppletConstants.DATA_PORTION_MAX_SIZE) + 100)
+        ]
+        
+        /**
+         static func checkKeyChainKeyIndex(_ ind : [UInt8]) throws {
+             if ind.count != TonWalletAppletConstants.KEYCHAIN_KEY_INDEX_LEN {
+                 throw ResponsesConstants.ERROR_MSG_KEY_INDEX_BYTES_SIZE_INCORRECT
+             }
+         }
+         */
+        
+        
         
         /**
              * GET_RECOVERY_DATA_PART
@@ -507,6 +548,789 @@ class TonWalletAppletApduCommandsTest: QuickSpec  {
             }
         })
         
+        /**
+             GET_NUMBER_OF_KEYS
+             CLA: 0xB0
+             INS: 0xB8
+             P1: 0x00
+             P2: 0x00
+             LC: 0x40
+             Data: sault (32 bytes) | mac (32 bytes)
+             LE: 0x02
+         */
+        
+        context("When it's requesting GET_NUMBER_OF_KEYS APDU command with sault of incorrect length", {
+            it("throws a error") {
+                for badSault in badSaults {
+                    expect ( expression: {try TonWalletAppletApduCommands.getNumberOfKeysApdu(badSault)})
+                        .to(throwError { (error: Error) in
+                                expect(error.localizedDescription) == ResponsesConstants.ERROR_MSG_SAULT_BYTES_SIZE_INCORRECT})
+                }
+            }
+        })
+        
+        context("When it's requesting GET_NUMBER_OF_KEYS APDU command", {
+            it("returns NFCISO7816APDU object with correct APDU fields") {
+                do {
+                    let apdu = try TonWalletAppletApduCommands.getNumberOfKeysApdu(sault)
+                    expect(apdu.instructionClass) == TonWalletAppletApduCommands.WALLET_APPLET_CLA
+                    expect(apdu.instructionCode) == TonWalletAppletApduCommands.INS_GET_NUMBER_OF_KEYS
+                    expect(apdu.p1Parameter) == TonWalletAppletApduCommands.P1
+                    expect(apdu.p2Parameter) == TonWalletAppletApduCommands.P2
+                    var dataField = Data(_  :  sault)
+                    let mac = try hmacHelper.computeHmac(data: dataField)
+                    dataField.append(mac)
+                    expect(apdu.data) == dataField
+                    expect(apdu.expectedResponseLength) == TonWalletAppletConstants.GET_NUMBER_OF_KEYS_LE
+                }
+                catch{
+                    fail()
+                }
+            }
+        })
+        
+        /**
+             GET_OCCUPIED_STORAGE_SIZE
+             CLA: 0xB0
+             INS: 0xBA
+             P1: 0x00
+             P2: 0x00
+             LC: 0x40
+             Data: sault (32 bytes) | mac (32 bytes)
+             LE: 0x02
+        */
+        
+        context("When it's requesting GET_OCCUPIED_STORAGE_SIZE APDU command with sault of incorrect length", {
+            it("throws a error") {
+                for badSault in badSaults {
+                    expect ( expression: {try TonWalletAppletApduCommands.getGetOccupiedSizeApdu(badSault)})
+                        .to(throwError { (error: Error) in
+                                expect(error.localizedDescription) == ResponsesConstants.ERROR_MSG_SAULT_BYTES_SIZE_INCORRECT})
+                }
+            }
+        })
+        
+        context("When it's requesting GET_OCCUPIED_STORAGE_SIZE APDU command", {
+            it("returns NFCISO7816APDU object with correct APDU fields") {
+                do {
+                    let apdu = try TonWalletAppletApduCommands.getGetOccupiedSizeApdu(sault)
+                    expect(apdu.instructionClass) == TonWalletAppletApduCommands.WALLET_APPLET_CLA
+                    expect(apdu.instructionCode) == TonWalletAppletApduCommands.INS_GET_OCCUPIED_STORAGE_SIZE
+                    expect(apdu.p1Parameter) == TonWalletAppletApduCommands.P1
+                    expect(apdu.p2Parameter) == TonWalletAppletApduCommands.P2
+                    var dataField = Data(_  :  sault)
+                    let mac = try hmacHelper.computeHmac(data: dataField)
+                    dataField.append(mac)
+                    expect(apdu.data) == dataField
+                    expect(apdu.expectedResponseLength) == TonWalletAppletConstants.GET_OCCUPIED_SIZE_LE
+                }
+                catch{
+                    fail()
+                }
+            }
+        })
+        
+        /**
+             GET_FREE_STORAGE_SIZE
+             CLA: 0xB0
+             INS: 0xB9
+             P1: 0x00
+             P2: 0x00
+             LC: 0x40
+             Data: sault (32 bytes) | mac (32 bytes)
+             LE: 0x02
+        */
+        
+        context("When it's requesting GET_FREE_STORAGE_SIZE APDU command with sault of incorrect length", {
+            it("throws a error") {
+                for badSault in badSaults {
+                    expect ( expression: {try TonWalletAppletApduCommands.getGetFreeSizeApdu(badSault)})
+                        .to(throwError { (error: Error) in
+                                expect(error.localizedDescription) == ResponsesConstants.ERROR_MSG_SAULT_BYTES_SIZE_INCORRECT})
+                }
+            }
+        })
+        
+        context("When it's requesting GET_FREE_STORAGE_SIZE APDU command", {
+            it("returns NFCISO7816APDU object with correct APDU fields") {
+                do {
+                    let apdu = try TonWalletAppletApduCommands.getGetFreeSizeApdu(sault)
+                    expect(apdu.instructionClass) == TonWalletAppletApduCommands.WALLET_APPLET_CLA
+                    expect(apdu.instructionCode) == TonWalletAppletApduCommands.INS_GET_FREE_STORAGE_SIZE
+                    expect(apdu.p1Parameter) == TonWalletAppletApduCommands.P1
+                    expect(apdu.p2Parameter) == TonWalletAppletApduCommands.P2
+                    var dataField = Data(_  :  sault)
+                    let mac = try hmacHelper.computeHmac(data: dataField)
+                    dataField.append(mac)
+                    expect(apdu.data) == dataField
+                    expect(apdu.expectedResponseLength) == TonWalletAppletConstants.GET_FREE_SIZE_LE
+                }
+                catch{
+                    fail()
+                }
+            }
+        })
+        
+        /**
+             CHECK_AVAILABLE_VOL_FOR_NEW_KEY
+             CLA: 0xB0
+             INS: 0xB3
+             P1: 0x00
+             P2: 0x00
+             LC: 0x42
+             Data: length of new key (2 bytes) | sault (32 bytes) | mac (32 bytes)
+        */
+        
+        context("When it's requesting CHECK_AVAILABLE_VOL_FOR_NEW_KEY APDU command with sault of incorrect length", {
+            it("throws a error") {
+                for badSault in badSaults {
+                    expect ( expression: {try TonWalletAppletApduCommands.getCheckAvailableVolForNewKeyApdu(keySize : keySizeBytes, sault : badSault)})
+                        .to(throwError { (error: Error) in
+                                expect(error.localizedDescription) == ResponsesConstants.ERROR_MSG_SAULT_BYTES_SIZE_INCORRECT})
+                }
+            }
+        })
+        
+        context("When it's requesting CHECK_AVAILABLE_VOL_FOR_NEW_KEY APDU command with keySizeBytes of incorrect length", {
+            it("throws a error") {
+                for badKeySize in badKeySizesBytes {
+                    expect ( expression: {try TonWalletAppletApduCommands.getCheckAvailableVolForNewKeyApdu(keySize : badKeySize, sault : sault)})
+                        .to(throwError { (error: Error) in
+                                expect(error.localizedDescription) == ResponsesConstants.ERROR_MSG_KEY_SIZE_BYTE_REPRESENTATION_SIZE_INCORRECT})
+                }
+            }
+        })
+        
+        context("When it's requesting CHECK_AVAILABLE_VOL_FOR_NEW_KEY APDU command", {
+            it("returns NFCISO7816APDU object with correct APDU fields") {
+                do {
+                    let apdu = try TonWalletAppletApduCommands.getCheckAvailableVolForNewKeyApdu(keySize : keySizeBytes, sault : sault)
+                    expect(apdu.instructionClass) == TonWalletAppletApduCommands.WALLET_APPLET_CLA
+                    expect(apdu.instructionCode) == TonWalletAppletApduCommands.INS_CHECK_AVAILABLE_VOL_FOR_NEW_KEY
+                    expect(apdu.p1Parameter) == TonWalletAppletApduCommands.P1
+                    expect(apdu.p2Parameter) == TonWalletAppletApduCommands.P2
+                    var dataField = Data(_  :  keySizeBytes + sault)
+                    let mac = try hmacHelper.computeHmac(data: dataField)
+                    dataField.append(mac)
+                    expect(apdu.data) == dataField
+                    expect(apdu.expectedResponseLength) == CommonConstants.LE_NO_RESPONSE_DATA
+                }
+                catch{
+                    fail()
+                }
+            }
+        })
+        
+        /**
+             CHECK_KEY_HMAC_CONSISTENCY
+             CLA: 0xB0
+             INS: 0xB0
+             P1: 0x00
+             P2: 0x00
+             LC: 0x60
+             Data: keyMac (32 bytes) | sault (32 bytes) | mac (32 bytes)
+        */
+        
+        context("When it's requesting CHECK_KEY_HMAC_CONSISTENCY APDU command with sault of incorrect length", {
+            it("throws a error") {
+                for badSault in badSaults {
+                    expect ( expression: {try TonWalletAppletApduCommands.getCheckKeyHmacConsistencyApdu(keyHmac: hmac, sault : badSault) })
+                        .to(throwError { (error: Error) in
+                                expect(error.localizedDescription) == ResponsesConstants.ERROR_MSG_SAULT_BYTES_SIZE_INCORRECT})
+                }
+            }
+        })
+        
+        context("When it's requesting CHECK_KEY_HMAC_CONSISTENCY APDU command with keyHmac of incorrect length", {
+            it("throws a error") {
+                for badHmac in badHmacBytes {
+                    expect ( expression: {try TonWalletAppletApduCommands.getCheckKeyHmacConsistencyApdu(keyHmac: badHmac, sault : sault) })
+                        .to(throwError { (error: Error) in
+                                expect(error.localizedDescription) == ResponsesConstants.ERROR_MSG_KEY_MAC_BYTES_SIZE_INCORRECT})
+                }
+            }
+        })
+        
+        context("When it's requesting CHECK_KEY_HMAC_CONSISTENCY APDU command", {
+            it("returns NFCISO7816APDU object with correct APDU fields") {
+                do {
+                    let apdu = try TonWalletAppletApduCommands.getCheckKeyHmacConsistencyApdu(keyHmac: hmac, sault : sault)
+                    expect(apdu.instructionClass) == TonWalletAppletApduCommands.WALLET_APPLET_CLA
+                    expect(apdu.instructionCode) == TonWalletAppletApduCommands.INS_CHECK_KEY_HMAC_CONSISTENCY
+                    expect(apdu.p1Parameter) == TonWalletAppletApduCommands.P1
+                    expect(apdu.p2Parameter) == TonWalletAppletApduCommands.P2
+                    var dataField = Data(_  :  hmac + sault)
+                    let mac = try hmacHelper.computeHmac(data: dataField)
+                    dataField.append(mac)
+                    expect(apdu.data) == dataField
+                    expect(apdu.expectedResponseLength) == CommonConstants.LE_NO_RESPONSE_DATA
+                }
+                catch{
+                    fail()
+                }
+            }
+        })
+        
+        /**
+             INITIATE_CHANGE_OF_KEY
+             CLA: 0xB0
+             INS: 0xB5
+             P1: 0x00
+             P2: 0x00
+             LC: 0x42
+             Data: index of key (2 bytes) | sault (32 bytes) | mac (32 bytes)
+        */
+        
+        context("When it's requesting INITIATE_CHANGE_OF_KEY APDU command with sault of incorrect length", {
+            it("throws a error") {
+                for badSault in badSaults {
+                    expect ( expression: {try TonWalletAppletApduCommands.getInitiateChangeOfKeyApdu(index : keyIndex, sault : badSault)  })
+                        .to(throwError { (error: Error) in
+                                expect(error.localizedDescription) == ResponsesConstants.ERROR_MSG_SAULT_BYTES_SIZE_INCORRECT})
+                }
+            }
+        })
+        
+        context("When it's requesting INITIATE_CHANGE_OF_KEY APDU command with key index of incorrect length", {
+            it("throws a error") {
+                for badKeyIndex in badKeyIndices {
+                    expect ( expression: {try TonWalletAppletApduCommands.getInitiateChangeOfKeyApdu(index : badKeyIndex, sault : sault)  })
+                        .to(throwError { (error: Error) in
+                                expect(error.localizedDescription) == ResponsesConstants.ERROR_MSG_KEY_INDEX_BYTES_SIZE_INCORRECT})
+                }
+            }
+        })
+        
+        context("When it's requesting INITIATE_CHANGE_OF_KEY APDU command", {
+            it("returns NFCISO7816APDU object with correct APDU fields") {
+                do {
+                    let apdu = try TonWalletAppletApduCommands.getInitiateChangeOfKeyApdu(index : keyIndex, sault : sault)
+                    expect(apdu.instructionClass) == TonWalletAppletApduCommands.WALLET_APPLET_CLA
+                    expect(apdu.instructionCode) == TonWalletAppletApduCommands.INS_INITIATE_CHANGE_OF_KEY
+                    expect(apdu.p1Parameter) == TonWalletAppletApduCommands.P1
+                    expect(apdu.p2Parameter) == TonWalletAppletApduCommands.P2
+                    var dataField = Data(_  :  keyIndex + sault)
+                    let mac = try hmacHelper.computeHmac(data: dataField)
+                    dataField.append(mac)
+                    expect(apdu.data) == dataField
+                    expect(apdu.expectedResponseLength) == CommonConstants.LE_NO_RESPONSE_DATA
+                }
+                catch{
+                    fail()
+                }
+            }
+        })
+        
+        /**
+             GET_KEY_INDEX_IN_STORAGE_AND_LEN
+             CLA: 0xB0
+             INS: 0xB1
+             P1: 0x00
+             P2: 0x00
+             LC: 0x60
+             Data: hmac of key (32 bytes) | sault (32 bytes) | mac (32 bytes)
+             LE: 0x04
+        */
+
+        context("When it's requesting GET_KEY_INDEX_IN_STORAGE_AND_LEN, APDU command with sault of incorrect length", {
+            it("throws a error") {
+                for badSault in badSaults {
+                    expect ( expression: {try TonWalletAppletApduCommands.getGetIndexAndLenOfKeyInKeyChainApdu(keyHmac : hmac, sault : badSault)  })
+                        .to(throwError { (error: Error) in
+                                expect(error.localizedDescription) == ResponsesConstants.ERROR_MSG_SAULT_BYTES_SIZE_INCORRECT})
+                }
+            }
+        })
+        
+        context("When it's requesting GET_KEY_INDEX_IN_STORAGE_AND_LEN, APDU command with keyHmac of incorrect length", {
+            it("throws a error") {
+                for badHmac in badHmacBytes {
+                    expect ( expression: {try TonWalletAppletApduCommands.getGetIndexAndLenOfKeyInKeyChainApdu(keyHmac : badHmac, sault : sault)  })
+                        .to(throwError { (error: Error) in
+                                expect(error.localizedDescription) == ResponsesConstants.ERROR_MSG_KEY_MAC_BYTES_SIZE_INCORRECT})
+                }
+            }
+        })
+        
+        context("When it's requesting GET_KEY_INDEX_IN_STORAGE_AND_LEN APDU command", {
+            it("returns NFCISO7816APDU object with correct APDU fields") {
+                do {
+                    let apdu = try TonWalletAppletApduCommands.getGetIndexAndLenOfKeyInKeyChainApdu(keyHmac : hmac, sault : sault)
+                    expect(apdu.instructionClass) == TonWalletAppletApduCommands.WALLET_APPLET_CLA
+                    expect(apdu.instructionCode) == TonWalletAppletApduCommands.INS_GET_KEY_INDEX_IN_STORAGE_AND_LEN
+                    expect(apdu.p1Parameter) == TonWalletAppletApduCommands.P1
+                    expect(apdu.p2Parameter) == TonWalletAppletApduCommands.P2
+                    var dataField = Data(_  :  hmac + sault)
+                    let mac = try hmacHelper.computeHmac(data: dataField)
+                    dataField.append(mac)
+                    expect(apdu.data) == dataField
+                    expect(apdu.expectedResponseLength) == TonWalletAppletConstants.GET_KEY_INDEX_IN_STORAGE_AND_LEN_LE
+                }
+                catch{
+                    fail()
+                }
+            }
+        })
+        
+        /**
+             INITIATE_DELETE_KEY
+             CLA: 0xB0
+             INS: 0xB7
+             P1: 0x00
+             P2: 0x00
+             LC: 0x42
+             Data: key  index (2 bytes) | sault (32 bytes) | mac (32 bytes)
+             LE: 0x02
+        */
+        
+        context("When it's requesting INITIATE_DELETE_KEY, APDU command with sault of incorrect length", {
+            it("throws a error") {
+                for badSault in badSaults {
+                    expect ( expression: {try TonWalletAppletApduCommands.getInitiateDeleteOfKeyApdu(index : keyIndex, sault : badSault)   })
+                        .to(throwError { (error: Error) in
+                                expect(error.localizedDescription) == ResponsesConstants.ERROR_MSG_SAULT_BYTES_SIZE_INCORRECT})
+                }
+            }
+        })
+        
+        context("When it's requesting INITIATE_DELETE_KEY, APDU command with keyIndex of incorrect length", {
+            it("throws a error") {
+                for badKeyIndex in badKeyIndices {
+                    expect ( expression: {try TonWalletAppletApduCommands.getInitiateDeleteOfKeyApdu(index : badKeyIndex, sault : sault)   })
+                        .to(throwError { (error: Error) in
+                                expect(error.localizedDescription) == ResponsesConstants.ERROR_MSG_KEY_INDEX_BYTES_SIZE_INCORRECT})
+                }
+            }
+        })
+        
+        context("When it's requesting INITIATE_DELETE_KEY APDU command", {
+            it("returns NFCISO7816APDU object with correct APDU fields") {
+                do {
+                    let apdu = try TonWalletAppletApduCommands.getInitiateDeleteOfKeyApdu(index : keyIndex, sault : sault)
+                    expect(apdu.instructionClass) == TonWalletAppletApduCommands.WALLET_APPLET_CLA
+                    expect(apdu.instructionCode) == TonWalletAppletApduCommands.INS_INITIATE_DELETE_KEY
+                    expect(apdu.p1Parameter) == TonWalletAppletApduCommands.P1
+                    expect(apdu.p2Parameter) == TonWalletAppletApduCommands.P2
+                    var dataField = Data(_  :  keyIndex + sault)
+                    let mac = try hmacHelper.computeHmac(data: dataField)
+                    dataField.append(mac)
+                    expect(apdu.data) == dataField
+                    expect(apdu.expectedResponseLength) == TonWalletAppletConstants.INITIATE_DELETE_KEY_LE
+                }
+                catch{
+                    fail()
+                }
+            }
+        })
+        
+        /**
+             * GET_DELETE_KEY_CHUNK_NUM_OF_PACKETS
+             * CLA: 0xB0
+             * INS: 0xE1
+             * P1: 0x00
+             * P2: 0x00
+             * LC: 0x40
+             * Data: sault (32 bytes) | mac (32 bytes)
+             * LE: 0x02
+        */
+        
+        context("When it's requesting GET_DELETE_KEY_CHUNK_NUM_OF_PACKETS, APDU command with sault of incorrect length", {
+            it("throws a error") {
+                for badSault in badSaults {
+                    expect ( expression: {try TonWalletAppletApduCommands.getDeleteKeyChunkNumOfPacketsApdu(badSault)   })
+                        .to(throwError { (error: Error) in
+                                expect(error.localizedDescription) == ResponsesConstants.ERROR_MSG_SAULT_BYTES_SIZE_INCORRECT})
+                }
+            }
+        })
+        
+        context("When it's requesting GET_DELETE_KEY_CHUNK_NUM_OF_PACKETS command", {
+            it("returns NFCISO7816APDU object with correct APDU fields") {
+                do {
+                    let apdu = try TonWalletAppletApduCommands.getDeleteKeyChunkNumOfPacketsApdu(sault)
+                    expect(apdu.instructionClass) == TonWalletAppletApduCommands.WALLET_APPLET_CLA
+                    expect(apdu.instructionCode) == TonWalletAppletApduCommands.INS_GET_DELETE_KEY_CHUNK_NUM_OF_PACKETS
+                    expect(apdu.p1Parameter) == TonWalletAppletApduCommands.P1
+                    expect(apdu.p2Parameter) == TonWalletAppletApduCommands.P2
+                    var dataField = Data(_  :  sault)
+                    let mac = try hmacHelper.computeHmac(data: dataField)
+                    dataField.append(mac)
+                    expect(apdu.data) == dataField
+                    expect(apdu.expectedResponseLength) == TonWalletAppletConstants.GET_DELETE_KEY_CHUNK_NUM_OF_PACKETS_LE
+                }
+                catch{
+                    fail()
+                }
+            }
+        })
+        
+        /**
+             * GET_DELETE_KEY_RECORD_NUM_OF_PACKETS
+             * CLA: 0xB0
+             * INS: 0xE2
+             * P1: 0x00
+             * P2: 0x00
+             * LC: 0x40
+             * Data: sault (32 bytes) | mac (32 bytes)
+             * LE: 0x02
+        */
+        
+        context("When it's requesting GET_DELETE_KEY_RECORD_NUM_OF_PACKETS, APDU command with sault of incorrect length", {
+            it("throws a error") {
+                for badSault in badSaults {
+                    expect ( expression: {try TonWalletAppletApduCommands.getDeleteKeyRecordNumOfPacketsApdu(badSault)   })
+                        .to(throwError { (error: Error) in
+                                expect(error.localizedDescription) == ResponsesConstants.ERROR_MSG_SAULT_BYTES_SIZE_INCORRECT})
+                }
+            }
+        })
+        
+        context("When it's requesting GET_DELETE_KEY_RECORD_NUM_OF_PACKETS command", {
+            it("returns NFCISO7816APDU object with correct APDU fields") {
+                do {
+                    let apdu = try TonWalletAppletApduCommands.getDeleteKeyRecordNumOfPacketsApdu(sault)
+                    expect(apdu.instructionClass) == TonWalletAppletApduCommands.WALLET_APPLET_CLA
+                    expect(apdu.instructionCode) == TonWalletAppletApduCommands.INS_GET_DELETE_KEY_RECORD_NUM_OF_PACKETS
+                    expect(apdu.p1Parameter) == TonWalletAppletApduCommands.P1
+                    expect(apdu.p2Parameter) == TonWalletAppletApduCommands.P2
+                    var dataField = Data(_  :  sault)
+                    let mac = try hmacHelper.computeHmac(data: dataField)
+                    dataField.append(mac)
+                    expect(apdu.data) == dataField
+                    expect(apdu.expectedResponseLength) == TonWalletAppletConstants.GET_DELETE_KEY_RECORD_NUM_OF_PACKETS_LE
+                }
+                catch{
+                    fail()
+                }
+            }
+        })
+        
+        /**
+             DELETE_KEY_CHUNK
+             CLA: 0xB0
+             INS: 0xBE
+             P1: 0x00
+             P2: 0x00
+             LC: 0x40
+             Data: sault (32 bytes) | mac (32 bytes)
+             LE: 0x01
+        */
+        
+        context("When it's requesting DELETE_KEY_CHUNK, APDU command with sault of incorrect length", {
+            it("throws a error") {
+                for badSault in badSaults {
+                    expect ( expression: {try TonWalletAppletApduCommands.getDeleteKeyChunkApdu(badSault)   })
+                        .to(throwError { (error: Error) in
+                                expect(error.localizedDescription) == ResponsesConstants.ERROR_MSG_SAULT_BYTES_SIZE_INCORRECT})
+                }
+            }
+        })
+        
+        context("When it's requesting DELETE_KEY_CHUNK command", {
+            it("returns NFCISO7816APDU object with correct APDU fields") {
+                do {
+                    let apdu = try TonWalletAppletApduCommands.getDeleteKeyChunkApdu(sault)
+                    expect(apdu.instructionClass) == TonWalletAppletApduCommands.WALLET_APPLET_CLA
+                    expect(apdu.instructionCode) == TonWalletAppletApduCommands.INS_DELETE_KEY_CHUNK
+                    expect(apdu.p1Parameter) == TonWalletAppletApduCommands.P1
+                    expect(apdu.p2Parameter) == TonWalletAppletApduCommands.P2
+                    var dataField = Data(_  :  sault)
+                    let mac = try hmacHelper.computeHmac(data: dataField)
+                    dataField.append(mac)
+                    expect(apdu.data) == dataField
+                    expect(apdu.expectedResponseLength) == TonWalletAppletConstants.DELETE_KEY_CHUNK_LE
+                }
+                catch{
+                    fail()
+                }
+            }
+        })
+        
+        /**
+             DELETE_KEY_RECORD
+             CLA: 0xB0
+             INS: 0xBF
+             P1: 0x00
+             P2: 0x00
+             LC: 0x40
+             Data: sault (32 bytes) | mac (32 bytes)
+             LE: 0x01
+        */
+        
+        context("When it's requesting DELETE_KEY_RECORD, APDU command with sault of incorrect length", {
+            it("throws a error") {
+                for badSault in badSaults {
+                    expect ( expression: {try TonWalletAppletApduCommands.getDeleteKeyRecordApdu(badSault)   })
+                        .to(throwError { (error: Error) in
+                                expect(error.localizedDescription) == ResponsesConstants.ERROR_MSG_SAULT_BYTES_SIZE_INCORRECT})
+                }
+            }
+        })
+        
+        context("When it's requesting DELETE_KEY_RECORD command", {
+            it("returns NFCISO7816APDU object with correct APDU fields") {
+                do {
+                    let apdu = try TonWalletAppletApduCommands.getDeleteKeyRecordApdu(sault)
+                    expect(apdu.instructionClass) == TonWalletAppletApduCommands.WALLET_APPLET_CLA
+                    expect(apdu.instructionCode) == TonWalletAppletApduCommands.INS_DELETE_KEY_RECORD
+                    expect(apdu.p1Parameter) == TonWalletAppletApduCommands.P1
+                    expect(apdu.p2Parameter) == TonWalletAppletApduCommands.P2
+                    var dataField = Data(_  :  sault)
+                    let mac = try hmacHelper.computeHmac(data: dataField)
+                    dataField.append(mac)
+                    expect(apdu.data) == dataField
+                    expect(apdu.expectedResponseLength) == TonWalletAppletConstants.DELETE_KEY_RECORD_LE
+                }
+                catch{
+                    fail()
+                }
+            }
+        })
+        
+        /**
+             GET_HMAC
+             CLA: 0xB0
+             INS: 0xBB
+             P1: 0x00
+             P2: 0x00
+             LC: 0x42
+             Data: index of key (2 bytes) | sault (32 bytes) | mac (32 bytes)
+             LE: 0x22
+        */
+        
+        context("When it's requesting GET_HMAC APDU command with sault of incorrect length", {
+            it("throws a error") {
+                for badSault in badSaults {
+                    expect ( expression: {try TonWalletAppletApduCommands.getGetHmacApdu(ind : keyIndex, sault : badSault)   })
+                        .to(throwError { (error: Error) in
+                                expect(error.localizedDescription) == ResponsesConstants.ERROR_MSG_SAULT_BYTES_SIZE_INCORRECT})
+                }
+            }
+        })
+        
+        context("When it's requesting GET_HMAC APDU command with keyIndex of incorrect length", {
+            it("throws a error") {
+                for badKeyIndex in badKeyIndices {
+                    expect ( expression: {try TonWalletAppletApduCommands.getGetHmacApdu(ind : badKeyIndex, sault :  sault)   })
+                        .to(throwError { (error: Error) in
+                                expect(error.localizedDescription) == ResponsesConstants.ERROR_MSG_KEY_INDEX_BYTES_SIZE_INCORRECT})
+                }
+            }
+        })
+        
+        context("When it's requesting GET_HMAC command", {
+            it("returns NFCISO7816APDU object with correct APDU fields") {
+                do {
+                    let apdu = try TonWalletAppletApduCommands.getGetHmacApdu(ind : keyIndex, sault :  sault)
+                    expect(apdu.instructionClass) == TonWalletAppletApduCommands.WALLET_APPLET_CLA
+                    expect(apdu.instructionCode) == TonWalletAppletApduCommands.INS_GET_HMAC
+                    expect(apdu.p1Parameter) == TonWalletAppletApduCommands.P1
+                    expect(apdu.p2Parameter) == TonWalletAppletApduCommands.P2
+                    var dataField = Data(_  :  keyIndex + sault)
+                    let mac = try hmacHelper.computeHmac(data: dataField)
+                    dataField.append(mac)
+                    expect(apdu.data) == dataField
+                    expect(apdu.expectedResponseLength) == TonWalletAppletConstants.GET_HMAC_LE
+                }
+                catch{
+                    fail()
+                }
+            }
+        })
+        
+        /**
+             GET_KEY_CHUNK
+             CLA: 0xB0
+             INS: 0xB2
+             P1: 0x00
+             P2: 0x00
+             LC: 0x44
+             Data: key  index (2 bytes) | startPos (2 bytes) | sault (32 bytes) | mac (32 bytes)
+             LE: Key chunk length
+        */
+        
+        context("When it's requesting GET_KEY_CHUNK APDU command with sault of incorrect length", {
+            it("throws a error") {
+                for badSault in badSaults {
+                    expect ( expression: {try TonWalletAppletApduCommands.getGetKeyChunkApdu(ind : keyIndex, startPos: 0x00, sault : badSault, le : TonWalletAppletConstants.DATA_PORTION_MAX_SIZE)    })
+                        .to(throwError { (error: Error) in
+                                expect(error.localizedDescription) == ResponsesConstants.ERROR_MSG_SAULT_BYTES_SIZE_INCORRECT})
+                }
+            }
+        })
+        
+        context("When it's requesting GET_KEY_CHUNK APDU command with keyIndex of incorrect length", {
+            it("throws a error") {
+                for badKeyIndex in badKeyIndices {
+                    expect ( expression: {try TonWalletAppletApduCommands.getGetKeyChunkApdu(ind : badKeyIndex, startPos: 0x00, sault : sault, le : TonWalletAppletConstants.DATA_PORTION_MAX_SIZE)    })
+                        .to(throwError { (error: Error) in
+                                expect(error.localizedDescription) == ResponsesConstants.ERROR_MSG_KEY_INDEX_BYTES_SIZE_INCORRECT})
+                }
+            }
+        })
+        
+        context("When it's requesting GET_KEY_CHUNK APDU command with incorrect le", {
+            it("throws a error") {
+                for badLe in badLEs {
+                    expect ( expression: {try TonWalletAppletApduCommands.getGetKeyChunkApdu(ind : keyIndex, startPos: 0x00, sault : sault, le : badLe)    })
+                        .to(throwError { (error: Error) in
+                                expect(error.localizedDescription) == ResponsesConstants.ERROR_MSG_LE_INCORRECT})
+                }
+            }
+        })
+        
+        context("When it's requesting GET_KEY_CHUNK command", {
+            it("returns NFCISO7816APDU object with correct APDU fields") {
+                do {
+                    for le in 1...CommonConstants.LE_GET_ALL_RESPONSE_DATA {
+                        let apdu = try TonWalletAppletApduCommands.getGetKeyChunkApdu(ind : keyIndex, startPos: 0x00, sault : sault, le : le)
+                        expect(apdu.instructionClass) == TonWalletAppletApduCommands.WALLET_APPLET_CLA
+                        expect(apdu.instructionCode) == TonWalletAppletApduCommands.INS_GET_KEY_CHUNK
+                        expect(apdu.p1Parameter) == TonWalletAppletApduCommands.P1
+                        expect(apdu.p2Parameter) == TonWalletAppletApduCommands.P2
+                        var dataField = Data(_  :  keyIndex + [0x00, 0x00] + sault)
+                        let mac = try hmacHelper.computeHmac(data: dataField)
+                        dataField.append(mac)
+                        expect(apdu.data) == dataField
+                        expect(apdu.expectedResponseLength) == le
+                    }
+                }
+                catch{
+                    fail()
+                }
+            }
+        })
+        
+        /**
+             ADD_KEY_CHUNK
+             CLA: 0xB0
+             INS: 0xB4
+             P1: 0x00 (START_OF_TRANSMISSION), 0x01 or 0x02 (END_OF_TRANSMISSION)
+             P2: 0x00
+             LC:
+             if (P1 = 0x00 OR  0x01): 0x01 +  length of key chunk + 0x40
+             if (P1 = 0x02): 0x60
+             Data:
+             if (P1 = 0x00 OR  0x01): length of key chunk (1 byte) | key chunk | sault (32 bytes) | mac (32 bytes)
+             if (P1 = 0x02): hmac of key (32 bytes) | sault (32 bytes) | mac (32 bytes)
+             LE: if (P1 = 0x02): 0x02
+        */
+
+        /**
+             CHANGE_KEY_CHUNK
+             CLA: 0xB0
+             INS: 0xB6
+             P1: 0x00 (START_OF_TRANSMISSION), 0x01 or 0x02 (END_OF_TRANSMISSION)
+             P2: 0x00
+             LC:
+             if (P1 = 0x00 OR  0x01): 0x01 +  length of key chunk + 0x40
+             if (P1 = 0x02): 0x60
+             Data:
+             if (P1 = 0x00 OR  0x01): length of key chunk (1 byte) | key chunk | sault (32 bytes) | mac (32 bytes)
+             if (P1 = 0x02): hmac of key (32 bytes) | sault (32 bytes) | mac (32 bytes)
+             LE: if (P1 = 0x02): 0x02
+        */
+        
+        context("When it's requesting ADD_KEY_CHUNK/CHANGE_KEY_CHUNK APDU command with sault of incorrect length", {
+            it("throws a error") {
+                for ins in SEND_KEY_CHUNK_INSTRUCTIONS {
+                    for badSault in badSaults {
+                        expect ( expression: {try TonWalletAppletApduCommands.getSendKeyChunkApdu(ins : ins, p1 : 0x00, keyChunkOrMacBytes : keyChunk, sault : badSault)     })
+                            .to(throwError { (error: Error) in
+                                    expect(error.localizedDescription) == ResponsesConstants.ERROR_MSG_SAULT_BYTES_SIZE_INCORRECT})
+                    }
+                }
+            }
+        })
+        
+        context("When it's requesting ADD_KEY_CHUNK/CHANGE_KEY_CHUNK_KEY_CHUNK APDU command with keyChunk of incorrect length", {
+            it("throws a error") {
+                for ins in SEND_KEY_CHUNK_INSTRUCTIONS {
+                    for p1 in 0...1 {
+                        for badKeyChunk in badKeyChunks {
+                            expect ( expression: {try TonWalletAppletApduCommands.getSendKeyChunkApdu(ins : ins, p1 : UInt8(p1), keyChunkOrMacBytes : badKeyChunk, sault : sault)     })
+                                .to(throwError { (error: Error) in
+                                        expect(error.localizedDescription) == ResponsesConstants.ERROR_MSG_KEY_CHUNK_BYTES_SIZE_INCORRECT})
+                        }
+                    }
+                }
+            }
+        })
+        
+        context("When it's requesting ADD_KEY_CHUNK/CHANGE_KEY_CHUNK APDU command with keyHMac of incorrect length", {
+            it("throws a error") {
+                for ins in SEND_KEY_CHUNK_INSTRUCTIONS {
+                    for badHmac in badHmacBytes {
+                        expect ( expression: {try TonWalletAppletApduCommands.getSendKeyChunkApdu(ins : ins, p1 : 0x02, keyChunkOrMacBytes : badHmac , sault : sault)     })
+                            .to(throwError { (error: Error) in
+                                    expect(error.localizedDescription) == ResponsesConstants.ERROR_MSG_KEY_MAC_BYTES_SIZE_INCORRECT})
+                    }
+                    
+                }
+            }
+        })
+        
+        context("When it's requesting ADD_KEY_CHUNK/CHANGE_KEY_CHUNK APDU command with incorrect P1", {
+            it("throws a error") {
+                for ins in SEND_KEY_CHUNK_INSTRUCTIONS {
+                    for badP1 in badP1Params {
+                        expect ( expression: {try TonWalletAppletApduCommands.getSendKeyChunkApdu(ins : ins, p1 : badP1, keyChunkOrMacBytes : keyChunk, sault : sault)     })
+                            .to(throwError { (error: Error) in
+                                    expect(error.localizedDescription) == ResponsesConstants.ERROR_MSG_APDU_P1_INCORRECT})
+                    }
+                }
+            }
+        })
+        
+        context("When it's requesting ADD_KEY_CHUNK/CHANGE_KEY_CHUNK command for p1=0, 1", {
+            it("returns NFCISO7816APDU object with correct APDU fields") {
+                do {
+                    for ins in SEND_KEY_CHUNK_INSTRUCTIONS {
+                        for p1 in 0...1  {
+                            let apdu = try TonWalletAppletApduCommands.getSendKeyChunkApdu(ins : ins, p1 : UInt8(p1), keyChunkOrMacBytes : keyChunk, sault : sault)
+                            expect(apdu.instructionClass) == TonWalletAppletApduCommands.WALLET_APPLET_CLA
+                            expect(apdu.instructionCode) == ins
+                            expect(apdu.p1Parameter) == UInt8(p1)
+                            expect(apdu.p2Parameter) == TonWalletAppletApduCommands.P2
+                            var dataField = Data(_  :  [UInt8(keyChunk.count)] + keyChunk  + sault)
+                            let mac = try hmacHelper.computeHmac(data: dataField)
+                            dataField.append(mac)
+                            expect(apdu.data) == dataField
+                            expect(apdu.expectedResponseLength) == CommonConstants.LE_NO_RESPONSE_DATA
+                        }
+                    }
+                }
+                catch{
+                    fail()
+                }
+            }
+        })
+        
+        context("When it's requesting ADD_KEY_CHUNK/CHANGE_KEY_CHUNK command for p1=2", {
+            it("returns NFCISO7816APDU object with correct APDU fields") {
+                do {
+                    for ins in SEND_KEY_CHUNK_INSTRUCTIONS {
+                        let apdu = try TonWalletAppletApduCommands.getSendKeyChunkApdu(ins : ins, p1 : 0x02, keyChunkOrMacBytes : hmac, sault : sault)
+                        expect(apdu.instructionClass) == TonWalletAppletApduCommands.WALLET_APPLET_CLA
+                        expect(apdu.instructionCode) == ins
+                        expect(apdu.p1Parameter) == 0x02
+                        expect(apdu.p2Parameter) == TonWalletAppletApduCommands.P2
+                        var dataField = Data(_  :  hmac + sault)
+                        let mac = try hmacHelper.computeHmac(data : dataField)
+                        dataField.append(mac)
+                        expect(apdu.data) == dataField
+                        expect(apdu.expectedResponseLength) == TonWalletAppletConstants.SEND_CHUNK_LE
+                    }
+                }
+                catch{
+                    fail()
+                }
+            }
+        })
+        
+        /**
+            Tests for auxiliary methods
+         */
 
         context("When it's checking sault of incorrect length", {
             it("throws a error") {
@@ -518,7 +1342,45 @@ class TonWalletAppletApduCommandsTest: QuickSpec  {
             }
         })
         
+        context("When it's checking hdIndex of incorrect length", {
+            it("throws a error") {
+                for badHdIndex in badHdIndices {
+                    expect ( expression: {try TonWalletAppletApduCommands.checkHdIndex(badHdIndex)})
+                        .to(throwError { (error: Error) in
+                                expect(error.localizedDescription) == ResponsesConstants.ERROR_MSG_HD_INDEX_BYTES_SIZE_INCORRECT})
+                }
+            }
+        })
         
-       
+        context("When it's checking key index of incorrect length", {
+            it("throws a error") {
+                for badKeyIndex in badKeyIndices {
+                    expect ( expression: {try TonWalletAppletApduCommands.checkKeyChainKeyIndex(badKeyIndex)})
+                        .to(throwError { (error: Error) in
+                                expect(error.localizedDescription) == ResponsesConstants.ERROR_MSG_KEY_INDEX_BYTES_SIZE_INCORRECT})
+                }
+            }
+        })
+        
+        context("When it's checking hmac of incorrect length", {
+            it("throws a error") {
+                for badHmac in badHmacBytes {
+                    expect ( expression: {try TonWalletAppletApduCommands.checkHmac(badHmac)})
+                        .to(throwError { (error: Error) in
+                                expect(error.localizedDescription) == ResponsesConstants.ERROR_MSG_KEY_MAC_BYTES_SIZE_INCORRECT})
+                }
+            }
+        })
+        
+        context("When it's checking incorrect le", {
+            it("throws a error") {
+                for badLe in badLEs {
+                    expect ( expression: {try TonWalletAppletApduCommands.checkLe(badLe)})
+                        .to(throwError { (error: Error) in
+                                expect(error.localizedDescription) == ResponsesConstants.ERROR_MSG_LE_INCORRECT})
+                }
+            }
+        })
+        
     }
 }

@@ -59,6 +59,7 @@ public class TonWalletAppletConstants {
     public static let RECOVERY_DATA_MAX_SIZE: Int = 2048
     
     public static let START_POS_LEN = 2
+    public static let KEY_SIZE_BYTES_LEN = 2
     
     public static let SERIAL_NUMBER_SIZE: Int = 24
     
@@ -76,6 +77,7 @@ public class TonWalletAppletConstants {
     static let GET_DELETE_KEY_CHUNK_NUM_OF_PACKETS_LE: Int = 0x02
     static let GET_DELETE_KEY_RECORD_NUM_OF_PACKETS_LE: Int = 0x02
     static let GET_SERIAL_NUMBER_LE: Int = 0x18
+    static let GET_HMAC_LE: Int = Int(TonWalletAppletConstants.HMAC_SHA_SIG_SIZE + 2)
     
     public static let DEFAULT_SERIAL_NUMBER: String = "504394802433901126813236"
     

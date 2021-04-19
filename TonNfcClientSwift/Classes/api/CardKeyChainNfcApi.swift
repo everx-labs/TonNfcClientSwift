@@ -37,7 +37,7 @@ import CoreNFC
                     self.getSaultPromise()
                 }
                 .then{(sault : Data) -> Promise<Data> in
-                    self.apduRunner.sendApdu(apduCommand: try TonWalletAppletApduCommands.getNumberOfKeysApdu(sault: sault.bytes))
+                    self.apduRunner.sendApdu(apduCommand: try TonWalletAppletApduCommands.getNumberOfKeysApdu(sault.bytes))
                 }
                 .then{(numOfKeys : Data) -> Promise<Data> in
                     let numOfKeys = ByteArrayAndHexHelper.makeShort(src: numOfKeys.bytes, srcOff: 0)
@@ -78,21 +78,21 @@ import CoreNFC
                     self.getSaultPromise()
                 }
                 .then{(sault : Data) -> Promise<Data> in
-                    self.apduRunner.sendApdu(apduCommand: try TonWalletAppletApduCommands.getNumberOfKeysApdu(sault: sault.bytes))
+                    self.apduRunner.sendApdu(apduCommand: try TonWalletAppletApduCommands.getNumberOfKeysApdu(sault.bytes))
                 }
                 .then{(numOfKeys : Data) -> Promise<Data> in
                     keyChainInfo[self.NUMBER_OF_KEYS_FIELD] = String(ByteArrayAndHexHelper.makeShort(src: numOfKeys.bytes, srcOff: 0))
                     return self.getSaultPromise()
                 }
                 .then{(sault : Data) -> Promise<Data> in
-                    self.apduRunner.sendApdu(apduCommand: try TonWalletAppletApduCommands.getGetOccupiedSizeApdu(sault: sault.bytes))
+                    self.apduRunner.sendApdu(apduCommand: try TonWalletAppletApduCommands.getGetOccupiedSizeApdu(sault.bytes))
                 }
                 .then{(occupiedSize : Data) -> Promise<Data> in
                     keyChainInfo[self.OCCUPIED_SIZE_FIELD] = String(ByteArrayAndHexHelper.makeShort(src: occupiedSize.bytes, srcOff: 0))
                     return self.getSaultPromise()
                 }
                 .then{(sault : Data) -> Promise<Data> in
-                    self.apduRunner.sendApdu(apduCommand: try TonWalletAppletApduCommands.getGetFreeSizeApdu(sault: sault.bytes))
+                    self.apduRunner.sendApdu(apduCommand: try TonWalletAppletApduCommands.getGetFreeSizeApdu(sault.bytes))
                 }
                 .then{(freeSize : Data) -> Promise<Data> in
                     keyChainInfo[self.FREE_SIZE_FIELD] = String(ByteArrayAndHexHelper.makeShort(src: freeSize.bytes, srcOff: 0))
@@ -134,7 +134,7 @@ import CoreNFC
                     self.getSaultPromise()
                 }
                 .then{(sault : Data) -> Promise<Data> in
-                    self.apduRunner.sendApdu(apduCommand: try TonWalletAppletApduCommands.getNumberOfKeysApdu(sault: sault.bytes))
+                    self.apduRunner.sendApdu(apduCommand: try TonWalletAppletApduCommands.getNumberOfKeysApdu(sault.bytes))
                 }
                 .then{(numOfKeys : Data) -> Promise<Data> in
                     oldNumOfKeys = ByteArrayAndHexHelper.makeShort(src: numOfKeys.bytes, srcOff: 0)
@@ -182,7 +182,7 @@ import CoreNFC
                     self.getSaultPromise()
                 }
                 .then{(sault : Data) -> Promise<Data> in
-                    self.apduRunner.sendApdu(apduCommand: try TonWalletAppletApduCommands.getNumberOfKeysApdu(sault: sault.bytes))
+                    self.apduRunner.sendApdu(apduCommand: try TonWalletAppletApduCommands.getNumberOfKeysApdu(sault.bytes))
                 }
                 .then{(numOfKeys : Data) -> Promise<Data> in
                     oldNumOfKeys = ByteArrayAndHexHelper.makeShort(src: numOfKeys.bytes, srcOff: 0)
@@ -410,7 +410,7 @@ import CoreNFC
                 self.getSaultPromise()
             }
             .then{(sault : Data) -> Promise<Data> in
-                self.apduRunner.sendApdu(apduCommand: try TonWalletAppletApduCommands.getNumberOfKeysApdu(sault: sault.bytes))
+                self.apduRunner.sendApdu(apduCommand: try TonWalletAppletApduCommands.getNumberOfKeysApdu(sault.bytes))
             }
             .then{(response : Data)  -> Promise<String> in
                 return self.makeFinalPromise(result : String(ByteArrayAndHexHelper.makeShort(src: response.bytes, srcOff: 0)))
@@ -499,7 +499,7 @@ import CoreNFC
                 self.getSaultPromise()
             }
             .then{(sault : Data) -> Promise<Data> in
-                self.apduRunner.sendApdu(apduCommand: try TonWalletAppletApduCommands.getNumberOfKeysApdu(sault: sault.bytes))
+                self.apduRunner.sendApdu(apduCommand: try TonWalletAppletApduCommands.getNumberOfKeysApdu(sault.bytes))
             }
             .then{(response : Data)  -> Promise<String> in
                 return self.makeFinalPromise(result : String(ByteArrayAndHexHelper.makeShort(src: response.bytes, srcOff: 0)))
@@ -531,7 +531,7 @@ import CoreNFC
     
     private func deleteKeyChunkPromise(sault : Data) -> Promise<Data>{
         return Promise{promise in promise.fulfill(Data(_ : []))}
-            .then{_ in self.apduRunner.sendApdu(apduCommand: try TonWalletAppletApduCommands.getDeleteKeyChunkApdu(sault: sault.bytes))
+            .then{_ in self.apduRunner.sendApdu(apduCommand: try TonWalletAppletApduCommands.getDeleteKeyChunkApdu(sault.bytes))
             }
             .then{(response : Data) -> Promise<Data> in
                 if (response.count != TonWalletAppletConstants.DELETE_KEY_CHUNK_LE) {
@@ -547,7 +547,7 @@ import CoreNFC
     
     private func deleteKeyRecordPromise(sault : Data) -> Promise<Data> {
         return Promise{promise in promise.fulfill(Data(_ : []))}
-            .then{_ in self.apduRunner.sendApdu(apduCommand: try TonWalletAppletApduCommands.getDeleteKeyRecordApdu(sault: sault.bytes))
+            .then{_ in self.apduRunner.sendApdu(apduCommand: try TonWalletAppletApduCommands.getDeleteKeyRecordApdu(sault.bytes))
             }
             .then{(response : Data) -> Promise<Data> in
                 if (response.count != TonWalletAppletConstants.DELETE_KEY_RECORD_LE) {
@@ -579,7 +579,7 @@ import CoreNFC
     private func getDeleteKeyRecordNumOfPacketsPromise() -> Promise<Int> {
         self.selectTonAppletAndGetSault()
             .then{(sault : Data) -> Promise<Data> in
-                self.apduRunner.sendApdu(apduCommand: try TonWalletAppletApduCommands.getDeleteKeyRecordNumOfPacketsApdu(sault: sault.bytes))
+                self.apduRunner.sendApdu(apduCommand: try TonWalletAppletApduCommands.getDeleteKeyRecordNumOfPacketsApdu(sault.bytes))
             }
             .then{(response : Data)  -> Promise<Int> in
                 if (response.count != TonWalletAppletConstants.GET_DELETE_KEY_RECORD_NUM_OF_PACKETS_LE) {
@@ -611,7 +611,7 @@ import CoreNFC
     private func getDeleteKeyChunkNumOfPacketsPromise() -> Promise<Int> {
         self.selectTonAppletAndGetSault()
             .then{(sault : Data) -> Promise<Data> in
-                self.apduRunner.sendApdu(apduCommand: try TonWalletAppletApduCommands.getDeleteKeyChunkNumOfPacketsApdu(sault: sault.bytes))
+                self.apduRunner.sendApdu(apduCommand: try TonWalletAppletApduCommands.getDeleteKeyChunkNumOfPacketsApdu(sault.bytes))
             }
             .then{(response : Data)  -> Promise<Int> in
                 if (response.count != TonWalletAppletConstants.GET_DELETE_KEY_CHUNK_NUM_OF_PACKETS_LE) {
@@ -654,7 +654,7 @@ import CoreNFC
                     self.getSaultPromise()
                 }
                 .then{(sault : Data) -> Promise<Data> in
-                    self.apduRunner.sendApdu(apduCommand: try TonWalletAppletApduCommands.getNumberOfKeysApdu(sault: sault.bytes))
+                    self.apduRunner.sendApdu(apduCommand: try TonWalletAppletApduCommands.getNumberOfKeysApdu(sault.bytes))
                 }
                 .then{(response : Data)  -> Promise<String> in
                     if (response.count != TonWalletAppletConstants.GET_NUMBER_OF_KEYS_LE) {
@@ -679,7 +679,7 @@ import CoreNFC
                     self.getSaultPromise()
                 }
                 .then{(sault : Data) -> Promise<Data> in
-                    self.apduRunner.sendApdu(apduCommand: try TonWalletAppletApduCommands.getGetOccupiedSizeApdu(sault: sault.bytes))
+                    self.apduRunner.sendApdu(apduCommand: try TonWalletAppletApduCommands.getGetOccupiedSizeApdu(sault.bytes))
                 }
                 .then{(response : Data)  -> Promise<String> in
                     if (response.count != TonWalletAppletConstants.GET_OCCUPIED_SIZE_LE){
@@ -704,7 +704,7 @@ import CoreNFC
                     self.getSaultPromise()
                 }
                 .then{(sault : Data) -> Promise<Data> in
-                    self.apduRunner.sendApdu(apduCommand: try TonWalletAppletApduCommands.getGetFreeSizeApdu(sault: sault.bytes))
+                    self.apduRunner.sendApdu(apduCommand: try TonWalletAppletApduCommands.getGetFreeSizeApdu(sault.bytes))
                 }
                 .then{(response : Data)  -> Promise<String> in
                     if (response.count != TonWalletAppletConstants.GET_FREE_SIZE_LE){

@@ -39,6 +39,8 @@ import CoreNFC
  * 2) LE = -1 we use for the case when really LE is absent and we do not wait for response from the card.
  */
 
+//TODO: unify work with startPos everywhere and add some verification
+
 @available(iOS 13.0, *)
 class TonWalletAppletApduCommands {
     static let hmacHelper = HmacHelper.getInstance()
@@ -314,9 +316,7 @@ class TonWalletAppletApduCommands {
         if startPositionBytes.count != TonWalletAppletConstants.START_POS_LEN {
             throw ResponsesConstants.ERROR_MSG_START_POS_BYTE_REPRESENTATION_SIZE_INCORRECT
         }
-        if le <= 0 || le > CommonConstants.LE_GET_ALL_RESPONSE_DATA {
-            throw ResponsesConstants.ERROR_MSG_LE_INCORRECT
-        }
+        try checkLe(le)
         return NFCISO7816APDU(instructionClass : WALLET_APPLET_CLA, instructionCode : INS_GET_RECOVERY_DATA_PART, p1Parameter : P1, p2Parameter : P2, data: Data(_ : startPositionBytes), expectedResponseLength : le)
     }
     
@@ -484,112 +484,345 @@ class TonWalletAppletApduCommands {
         return NFCISO7816APDU(instructionClass : WALLET_APPLET_CLA, instructionCode : INS_RESET_KEYCHAIN, p1Parameter : P1, p2Parameter : P2, data : data, expectedResponseLength : CommonConstants.LE_NO_RESPONSE_DATA)
     }
     
-    static func getNumberOfKeysApdu(sault : [UInt8]) throws -> NFCISO7816APDU {
+    /**
+       GET_NUMBER_OF_KEYS
+       CLA: 0xB0
+       INS: 0xB8
+       P1: 0x00
+       P2: 0x00
+       LC: 0x40
+       Data: sault (32 bytes) | mac (32 bytes)
+       LE: 0x02
+       Outputs the number of keys that are stored by KeyChain at the present moment.
+       Precondition:  GET_SAULT should be called before to get new sault from card.
+       Available in applet states PERSONALIZED and DELETE_KEY_FROM_KEYCHAIN_MODE.
+    */
+    static func getNumberOfKeysApdu(_ sault : [UInt8]) throws -> NFCISO7816APDU {
         try checkSault(sault)
         let data = try prepareApduData(sault)
-        return NFCISO7816APDU(instructionClass:WALLET_APPLET_CLA, instructionCode:INS_GET_NUMBER_OF_KEYS, p1Parameter:0x00, p2Parameter:0x00, data: data, expectedResponseLength:TonWalletAppletConstants.GET_NUMBER_OF_KEYS_LE)
+        return NFCISO7816APDU(instructionClass : WALLET_APPLET_CLA, instructionCode : INS_GET_NUMBER_OF_KEYS, p1Parameter : P1, p2Parameter : P2, data : data, expectedResponseLength : TonWalletAppletConstants.GET_NUMBER_OF_KEYS_LE)
     }
     
+    /**
+       CHECK_KEY_HMAC_CONSISTENCY
+       CLA: 0xB0
+       INS: 0xB0
+       P1: 0x00
+       P2: 0x00
+       LC: 0x60
+       Data: keyMac (32 bytes) | sault (32 bytes) | mac (32 bytes)
+       Gets mac of key and checks that *mac(key bytes in keyStore)* coincides with this mac.
+       Precondition:  GET_SAULT should be called before to get new sault from card.
+       Available in applet states PERSONALIZED and DELETE_KEY_FROM_KEYCHAIN_MODE.
+    */
     static func getCheckKeyHmacConsistencyApdu(keyHmac : [UInt8], sault : [UInt8]) throws -> NFCISO7816APDU {
         try checkHmac(keyHmac)
         try checkSault(sault)
         let data = try prepareApduData(keyHmac + sault)
-        return NFCISO7816APDU(instructionClass:WALLET_APPLET_CLA, instructionCode:INS_CHECK_KEY_HMAC_CONSISTENCY, p1Parameter:0x00, p2Parameter:0x00, data: data, expectedResponseLength:-1)
+        return NFCISO7816APDU(instructionClass : WALLET_APPLET_CLA, instructionCode : INS_CHECK_KEY_HMAC_CONSISTENCY, p1Parameter : P1, p2Parameter : P2, data : data, expectedResponseLength : CommonConstants.LE_NO_RESPONSE_DATA)
     }
     
-    static func getCheckAvailableVolForNewKeyApdu(keySize: [UInt8], sault : [UInt8]) throws -> NFCISO7816APDU {
-        if keySize.count != 2 {
+    /**
+       CHECK_AVAILABLE_VOL_FOR_NEW_KEY
+       CLA: 0xB0
+       INS: 0xB3
+       P1: 0x00
+       P2: 0x00
+       LC: 0x42
+       Data: length of new key (2 bytes) | sault (32 bytes) | mac (32 bytes)
+       Gets from host the size of new key that user wants to add. It checks free space. And if it's enough it saves this value into internal applet variable.
+       Otherwise it will throw an exception. This command always should be called before adding new key.
+       Precondition:  GET_SAULT should be called before to get new sault from card.
+       Available in applet state PERSONALIZED.
+    */
+    static func getCheckAvailableVolForNewKeyApdu(keySize : [UInt8], sault : [UInt8]) throws -> NFCISO7816APDU {
+        if keySize.count != TonWalletAppletConstants.KEY_SIZE_BYTES_LEN {
             throw ResponsesConstants.ERROR_MSG_KEY_SIZE_BYTE_REPRESENTATION_SIZE_INCORRECT 
         }
         try checkSault(sault)
         let data = try prepareApduData(keySize + sault)
-        return NFCISO7816APDU(instructionClass:WALLET_APPLET_CLA, instructionCode:INS_CHECK_AVAILABLE_VOL_FOR_NEW_KEY, p1Parameter:0x00, p2Parameter:0x00, data: data, expectedResponseLength:-1)
+        return NFCISO7816APDU(instructionClass : WALLET_APPLET_CLA, instructionCode : INS_CHECK_AVAILABLE_VOL_FOR_NEW_KEY, p1Parameter : P1, p2Parameter : P2, data : data, expectedResponseLength : CommonConstants.LE_NO_RESPONSE_DATA)
     }
     
-    static func getInitiateChangeOfKeyApdu(index: [UInt8], sault: [UInt8]) throws -> NFCISO7816APDU {
+    /**
+       INITIATE_CHANGE_OF_KEY
+       CLA: 0xB0
+       INS: 0xB5
+       P1: 0x00
+       P2: 0x00
+       LC: 0x42
+       Data: index of key (2 bytes) | sault (32 bytes) | mac (32 bytes)
+       Gets from the host  the real index of key to be changed and stores this index into internal applet variable.
+       Precondition:  GET_SAULT should be called before to get new sault from card.
+       Available in applet state PERSONALIZED.
+    */
+    static func getInitiateChangeOfKeyApdu(index : [UInt8], sault : [UInt8]) throws -> NFCISO7816APDU {
         try checkKeyChainKeyIndex(index)
         try checkSault(sault)
         let data = try prepareApduData(index + sault)
-        return NFCISO7816APDU(instructionClass:WALLET_APPLET_CLA, instructionCode:INS_INITIATE_CHANGE_OF_KEY, p1Parameter:0x00, p2Parameter:0x00, data: data, expectedResponseLength:-1)
+        return NFCISO7816APDU(instructionClass : WALLET_APPLET_CLA, instructionCode : INS_INITIATE_CHANGE_OF_KEY, p1Parameter : P1, p2Parameter : P2, data : data, expectedResponseLength : CommonConstants.LE_NO_RESPONSE_DATA)
     }
     
+    /**
+       GET_KEY_INDEX_IN_STORAGE_AND_LEN
+       CLA: 0xB0
+       INS: 0xB1
+       P1: 0x00
+       P2: 0x00
+       LC: 0x60
+       Data: hmac of key (32 bytes) | sault (32 bytes) | mac (32 bytes)
+       LE: 0x04
+       Gets hmac of the key from host. It outputs its real index in keyOffsets array and key length.
+       Precondition:  GET_SAULT should be called before to get new sault from card.
+       Available in applet states PERSONALIZED and DELETE_KEY_FROM_KEYCHAIN_MODE.
+    */
     static func getGetIndexAndLenOfKeyInKeyChainApdu(keyHmac : [UInt8], sault : [UInt8]) throws -> NFCISO7816APDU {
         try checkHmac(keyHmac)
         try checkSault(sault)
         let data = try prepareApduData(keyHmac + sault)
-        return NFCISO7816APDU(instructionClass:WALLET_APPLET_CLA, instructionCode:INS_GET_KEY_INDEX_IN_STORAGE_AND_LEN, p1Parameter:0x00, p2Parameter:0x00, data: data, expectedResponseLength:TonWalletAppletConstants.GET_KEY_INDEX_IN_STORAGE_AND_LEN_LE)
+        return NFCISO7816APDU(instructionClass : WALLET_APPLET_CLA, instructionCode : INS_GET_KEY_INDEX_IN_STORAGE_AND_LEN, p1Parameter : P1, p2Parameter : P2, data : data, expectedResponseLength:TonWalletAppletConstants.GET_KEY_INDEX_IN_STORAGE_AND_LEN_LE)
     }
     
+    /**
+       INITIATE_DELETE_KEY
+       CLA: 0xB0
+       INS: 0xB7
+       P1: 0x00
+       P2: 0x00
+       LC: 0x42
+       Data: key  index (2 bytes) | sault (32 bytes) | mac (32 bytes)
+       LE: 0x02
+       Gets from host the real index of key in keyOffsets array and stores this index into internal applet variable.
+       Outputs length of key to be deleted. In the case of success in the end it changes the state of applet on DELETE_KEY_FROM_KEYCHAIN_MODE.
+       Precondition:  1) GET_SAULT should be called before to get new sault from card. 2) call GET_KEY_INDEX_IN_STORAGE_AND_LEN to get key index.
+       Available in applet state PERSONALIZED.
+    */
     static func getInitiateDeleteOfKeyApdu(index : [UInt8], sault : [UInt8]) throws -> NFCISO7816APDU {
         try checkKeyChainKeyIndex(index)
         try checkSault(sault)
         let data = try prepareApduData(index + sault)
-        return NFCISO7816APDU(instructionClass:WALLET_APPLET_CLA, instructionCode:INS_INITIATE_DELETE_KEY, p1Parameter:0x00, p2Parameter:0x00, data: data, expectedResponseLength:TonWalletAppletConstants.INITIATE_DELETE_KEY_LE)
+        return NFCISO7816APDU(instructionClass : WALLET_APPLET_CLA, instructionCode : INS_INITIATE_DELETE_KEY, p1Parameter : P1, p2Parameter : P2, data : data, expectedResponseLength : TonWalletAppletConstants.INITIATE_DELETE_KEY_LE)
     }
     
-    static func getDeleteKeyChunkApdu(sault : [UInt8]) throws -> NFCISO7816APDU {
+    /**
+       DELETE_KEY_CHUNK
+       CLA: 0xB0
+       INS: 0xBE
+       P1: 0x00
+       P2: 0x00
+       LC: 0x40
+       Data: sault (32 bytes) | mac (32 bytes)
+       LE: 0x01
+       Deletes the portion of key bytes in internal buffer. Max size of portion = 128 bytes.
+       The command should be called (totalOccupied size - offsetOfNextKey) / 128  times + 1 times for tail having length  (totalOccupied size - offsetOfNextKey) % 128.
+       The response contains status byte. If status == 0 then we should continue calling DELETE_LEY_CHUNK. Else if status == 1 then process is finished.
+       Such splitting into multiple calls was implemented only because we wanted to use javacard transaction for deleting to control data integrity in keychain.
+       But our device has small internal buffer for transactions and can not handle big transactions.
+       Precondition: 1) GET_SAULT should be called before to get new sault from card.  2) INITIATE_DELETE_KEY should be called before to set the index of key to be deleted.
+       Available in applet state DELETE_KEY_FROM_KEYCHAIN_MODE.
+    */
+    static func getDeleteKeyChunkApdu(_ sault : [UInt8]) throws -> NFCISO7816APDU {
         try checkSault(sault)
         let data = try prepareApduData(sault)
-        return NFCISO7816APDU(instructionClass:WALLET_APPLET_CLA, instructionCode:INS_DELETE_KEY_CHUNK, p1Parameter:0x00, p2Parameter:0x00, data: data, expectedResponseLength:TonWalletAppletConstants.DELETE_KEY_CHUNK_LE)
+        return NFCISO7816APDU(instructionClass : WALLET_APPLET_CLA, instructionCode : INS_DELETE_KEY_CHUNK, p1Parameter : P1, p2Parameter : P2, data: data, expectedResponseLength : TonWalletAppletConstants.DELETE_KEY_CHUNK_LE)
     }
     
-    static func getDeleteKeyRecordApdu(sault : [UInt8]) throws -> NFCISO7816APDU {
+    /**
+       DELETE_KEY_RECORD
+       CLA: 0xB0
+       INS: 0xBF
+       P1: 0x00
+       P2: 0x00
+       LC: 0x40
+       Data: sault (32 bytes) | mac (32 bytes)
+       LE: 0x01
+       Processes the portion of elements in internal buffer storing record about keys. Max size of portion = 12.
+       The command should be called (numberOfStoredKeys - indOfKeyToDelete - 1) / 12  times + 1 times for tail having length  (numberOfStoredKeys - indOfKeyToDelete - 1) % 12.
+       The response contains status byte. If status == 0 then we should continue calling DELETE_LEY_RECORD. Else if status == 1 then process is finished.
+       In the end when status is set to 1 and delete operation is finished applet state is changed on APP_PERSONALIZED.
+       And again one may conduct new add, change or delete operation in keychain,
+       Such splitting into multiple calls was implemented only because we wanted to use javacard transaction for deleting to control data integrity in keychain.
+       But our device has small internal buffer for transactions and can not handle big transactions.
+       Precondition: 1) GET_SAULT should be called before to get new sault from card.  2) DELETE_KEY _CHUNK should be called before to clear keyStore array
+       (it should be called until it will return response byte = 1).
+       Available in applet state DELETE_KEY_FROM_KEYCHAIN_MODE.
+    */
+    static func getDeleteKeyRecordApdu(_ sault : [UInt8]) throws -> NFCISO7816APDU {
         try checkSault(sault)
         let data = try prepareApduData(sault)
-        return NFCISO7816APDU(instructionClass:WALLET_APPLET_CLA, instructionCode:INS_DELETE_KEY_RECORD, p1Parameter:0x00, p2Parameter:0x00, data: data, expectedResponseLength:TonWalletAppletConstants.DELETE_KEY_RECORD_LE)
+        return NFCISO7816APDU(instructionClass : WALLET_APPLET_CLA, instructionCode : INS_DELETE_KEY_RECORD, p1Parameter : P1, p2Parameter : P2, data : data, expectedResponseLength : TonWalletAppletConstants.DELETE_KEY_RECORD_LE)
     }
     
-    static func getDeleteKeyChunkNumOfPacketsApdu(sault : [UInt8]) throws -> NFCISO7816APDU{
+    /**
+       * GET_DELETE_KEY_CHUNK_NUM_OF_PACKETS
+       * CLA: 0xB0
+       * INS: 0xE1
+       * P1: 0x00
+       * P2: 0x00
+       * LC: 0x40
+       * Data: sault (32 bytes) | mac (32 bytes)
+       * LE: 0x02
+       * Outputs total number of iterations that is necessary to remove key chunk from keychain.
+       * Precondition: GET_SAULT should be called before to get new sault from card.
+       * Available in applet state DELETE_KEY_FROM_KEYCHAIN_MODE.
+    */
+    static func getDeleteKeyChunkNumOfPacketsApdu(_ sault : [UInt8]) throws -> NFCISO7816APDU{
         try checkSault(sault)
         let data = try prepareApduData(sault)
-        return NFCISO7816APDU(instructionClass:WALLET_APPLET_CLA, instructionCode:INS_GET_DELETE_KEY_CHUNK_NUM_OF_PACKETS, p1Parameter:0x00, p2Parameter:0x00, data: data, expectedResponseLength:TonWalletAppletConstants.GET_DELETE_KEY_CHUNK_NUM_OF_PACKETS_LE)
-    }
-      
-    static func getDeleteKeyRecordNumOfPacketsApdu(sault : [UInt8]) throws -> NFCISO7816APDU{
-        try checkSault(sault)
-        let data = try prepareApduData(sault)
-        return NFCISO7816APDU(instructionClass:WALLET_APPLET_CLA, instructionCode:INS_GET_DELETE_KEY_RECORD_NUM_OF_PACKETS, p1Parameter:0x00, p2Parameter:0x00, data: data, expectedResponseLength:TonWalletAppletConstants.GET_DELETE_KEY_RECORD_NUM_OF_PACKETS_LE)
-    }
-      
-    static func getGetOccupiedSizeApdu(sault : [UInt8]) throws -> NFCISO7816APDU {
-        try checkSault(sault)
-        let data = try prepareApduData(sault)
-        return NFCISO7816APDU(instructionClass:WALLET_APPLET_CLA, instructionCode:INS_GET_OCCUPIED_STORAGE_SIZE, p1Parameter:0x00, p2Parameter:0x00, data: data, expectedResponseLength:TonWalletAppletConstants.GET_OCCUPIED_SIZE_LE)
-    }
-     
-    static func getGetFreeSizeApdu(sault : [UInt8]) throws -> NFCISO7816APDU {
-        try checkSault(sault)
-        let data = try prepareApduData(sault)
-        return NFCISO7816APDU(instructionClass:WALLET_APPLET_CLA, instructionCode:INS_GET_FREE_STORAGE_SIZE, p1Parameter:0x00, p2Parameter:0x00, data: data, expectedResponseLength:TonWalletAppletConstants.GET_FREE_SIZE_LE)
+        return NFCISO7816APDU(instructionClass : WALLET_APPLET_CLA, instructionCode : INS_GET_DELETE_KEY_CHUNK_NUM_OF_PACKETS, p1Parameter : P1, p2Parameter : P2, data : data, expectedResponseLength : TonWalletAppletConstants.GET_DELETE_KEY_CHUNK_NUM_OF_PACKETS_LE)
     }
     
+    /**
+       * GET_DELETE_KEY_RECORD_NUM_OF_PACKETS
+       * CLA: 0xB0
+       * INS: 0xE2
+       * P1: 0x00
+       * P2: 0x00
+       * LC: 0x40
+       * Data: sault (32 bytes) | mac (32 bytes)
+       * LE: 0x02
+       * Outputs total number of iterations that is necessary to remove key record from keychain.
+       * Precondition: GET_SAULT should be called before to get new sault from card.
+       * Available in applet state DELETE_KEY_FROM_KEYCHAIN_MODE.
+    */
+    static func getDeleteKeyRecordNumOfPacketsApdu(_ sault : [UInt8]) throws -> NFCISO7816APDU{
+        try checkSault(sault)
+        let data = try prepareApduData(sault)
+        return NFCISO7816APDU(instructionClass : WALLET_APPLET_CLA, instructionCode : INS_GET_DELETE_KEY_RECORD_NUM_OF_PACKETS, p1Parameter : P1, p2Parameter : P2, data : data, expectedResponseLength : TonWalletAppletConstants.GET_DELETE_KEY_RECORD_NUM_OF_PACKETS_LE)
+    }
+    
+    /**
+       GET_OCCUPIED_STORAGE_SIZE
+       CLA: 0xB0
+       INS: 0xBA
+       P1: 0x00
+       P2: 0x00
+       LC: 0x40
+       Data: sault (32 bytes) | mac (32 bytes)
+       LE: 0x02
+       Outputs the volume of occupied size (in bytes) in KeyChain.
+       Precondition:  GET_SAULT should be called before to get new sault from card.
+       Available in applet states PERSONALIZED and DELETE_KEY_FROM_KEYCHAIN_MODE.
+    */
+    static func getGetOccupiedSizeApdu(_ sault : [UInt8]) throws -> NFCISO7816APDU {
+        try checkSault(sault)
+        let data = try prepareApduData(sault)
+        return NFCISO7816APDU(instructionClass : WALLET_APPLET_CLA, instructionCode : INS_GET_OCCUPIED_STORAGE_SIZE, p1Parameter : P1, p2Parameter : P2, data : data, expectedResponseLength : TonWalletAppletConstants.GET_OCCUPIED_SIZE_LE)
+    }
+    
+    /**
+       GET_FREE_STORAGE_SIZE
+       CLA: 0xB0
+       INS: 0xB9
+       P1: 0x00
+       P2: 0x00
+       LC: 0x40
+       Data: sault (32 bytes) | mac (32 bytes)
+       LE: 0x02
+       Outputs the volume of free size in keyStore.
+       Precondition:  GET_SAULT should be called before to get new sault from card.
+       Available in applet states PERSONALIZED and DELETE_KEY_FROM_KEYCHAIN_MODE.
+    */
+    static func getGetFreeSizeApdu(_ sault : [UInt8]) throws -> NFCISO7816APDU {
+        try checkSault(sault)
+        let data = try prepareApduData(sault)
+        return NFCISO7816APDU(instructionClass : WALLET_APPLET_CLA, instructionCode : INS_GET_FREE_STORAGE_SIZE, p1Parameter : P1, p2Parameter : P2, data : data, expectedResponseLength : TonWalletAppletConstants.GET_FREE_SIZE_LE)
+    }
+    
+    /**
+       GET_HMAC
+       CLA: 0xB0
+       INS: 0xBB
+       P1: 0x00
+       P2: 0x00
+       LC: 0x42
+       Data: index of key (2 bytes) | sault (32 bytes) | mac (32 bytes)
+       LE: 0x22
+       Gets the index of key (≥ 0 and  < numberOfStoredKeys) and outputs its hmac.
+       Precondition:  GET_SAULT should be called before to get new sault from card.
+       Available in applet states PERSONALIZED and DELETE_KEY_FROM_KEYCHAIN_MODE.
+    */
     static func getGetHmacApdu(ind : [UInt8], sault : [UInt8]) throws -> NFCISO7816APDU {
         try checkKeyChainKeyIndex(ind)
         try checkSault(sault)
         let data = try prepareApduData(ind + sault)
-        return NFCISO7816APDU(instructionClass:WALLET_APPLET_CLA, instructionCode:INS_GET_HMAC, p1Parameter:0x00, p2Parameter:0x00, data: data, expectedResponseLength: Int(TonWalletAppletConstants.HMAC_SHA_SIG_SIZE + 2))
-    }
-     
-    static func getGetKeyChunkApdu(ind : [UInt8], startPos: UInt16, sault : [UInt8], le : Int) throws -> NFCISO7816APDU {
-        if le <= -1 || le > TonWalletAppletConstants.DATA_PORTION_MAX_SIZE {
-            throw ResponsesConstants.ERROR_MSG_LE_INCORRECT
-        }
-        try checkKeyChainKeyIndex(ind)
-        try checkSault(sault)
-        let startPosBytes = withUnsafeBytes(of: startPos.bigEndian, Array.init)
-        print(startPosBytes.count)
-        print(startPosBytes[0])
-        print(startPosBytes[1])
-        let data = try prepareApduData(ind + startPosBytes + sault)
-        return NFCISO7816APDU(instructionClass:WALLET_APPLET_CLA, instructionCode:INS_GET_KEY_CHUNK, p1Parameter:0x00, p2Parameter:0x00, data: data, expectedResponseLength: le)
-    }
-     
-    static func getAddKeyChunkApdu(p1 : UInt8, keyChunkOrMacBytes : [UInt8], sault : [UInt8]) throws -> NFCISO7816APDU {
-        try getSendKeyChunkApdu(ins: INS_ADD_KEY_CHUNK, p1: p1, keyChunkOrMacBytes:keyChunkOrMacBytes, sault: sault)
+        return NFCISO7816APDU(instructionClass : WALLET_APPLET_CLA, instructionCode : INS_GET_HMAC, p1Parameter : P1, p2Parameter : P2, data : data, expectedResponseLength : TonWalletAppletConstants.GET_HMAC_LE)
     }
     
+    /**
+       GET_KEY_CHUNK
+       CLA: 0xB0
+       INS: 0xB2
+       P1: 0x00
+       P2: 0x00
+       LC: 0x44
+       Data: key  index (2 bytes) | startPos (2 bytes) | sault (32 bytes) | mac (32 bytes)
+       LE: Key chunk length
+       Gets from host  the real index of key in keyOffsets array and relative start position from which key bytes should be read (at first time startPos = 0).
+       Applet calculates real offset inside keyStore based on its data and startPos and outputs key chunk. Max size of key chunk is 255 bytes.
+       So if key size > 255 bytes GET_KEY_CHUNK will be called multiple times. After getting all data host should verify that hmac of received data is correct and we did not lose any packet.
+       Precondition:  1) GET_SAULT should be called before to get new sault from card. 2)  call GET_KEY_INDEX_IN_STORAGE_AND_LEN.
+       Available in applet states PERSONALIZED and DELETE_KEY_FROM_KEYCHAIN_MODE.
+    */
+    // TODO: startPos must be verified
+    static func getGetKeyChunkApdu(ind : [UInt8], startPos: UInt16, sault : [UInt8], le : Int) throws -> NFCISO7816APDU {
+        try checkLe(le)
+        try checkKeyChainKeyIndex(ind)
+        try checkSault(sault)
+        let startPosBytes = withUnsafeBytes(of : startPos.bigEndian, Array.init)
+        let data = try prepareApduData(ind + startPosBytes + sault)
+        return NFCISO7816APDU(instructionClass : WALLET_APPLET_CLA, instructionCode:INS_GET_KEY_CHUNK, p1Parameter : P1, p2Parameter : P2, data : data, expectedResponseLength : le)
+    }
+    
+    /**
+       ADD_KEY_CHUNK
+       CLA: 0xB0
+       INS: 0xB4
+       P1: 0x00 (START_OF_TRANSMISSION), 0x01 or 0x02 (END_OF_TRANSMISSION)
+       P2: 0x00
+       LC:
+       if (P1 = 0x00 OR  0x01): 0x01 +  length of key chunk + 0x40
+       if (P1 = 0x02): 0x60
+       Data:
+       if (P1 = 0x00 OR  0x01): length of key chunk (1 byte) | key chunk | sault (32 bytes) | mac (32 bytes)
+       if (P1 = 0x02): hmac of key (32 bytes) | sault (32 bytes) | mac (32 bytes)
+       LE: if (P1 = 0x02): 0x02
+       Gets keychunk from the host and adds it into the end of keyStore array. Max size of key chunk is 128 bytes.
+       So if total key size > 128 bytes ADD_KEY_CHUNK will be called multiple times. After all key data is transmitted we call ADD_KEY_CHUNK once again, its input data is Hmac of the key.
+       Applet checks that hmac of received sequence equals to this hmac got from host. So we did not lose any packet and key is not replaced by adversary.
+       And also  ADD_KEY_CHUNK  checks that size of new key equals to size set previously by command CHECK_AVAILABLE_VOL_FOR_NEW_KEY.
+       If verification is ok all ket data is added into keyMacs, keyOffsets and keyLebs buffers, keys counter is incremented  and since this moment the key is registered and can be requested from the card.
+       Precondition:  1) GET_SAULT should be called before to get new sault from card. 2) call CHECK_AVAILABLE_VOL_FOR_NEW_KEY.
+       Then ADD_KEY_CHUNK is called multiple times.
+       Available in applet states PERSONALIZED.
+    */
+    static func getAddKeyChunkApdu(p1 : UInt8, keyChunkOrMacBytes : [UInt8], sault : [UInt8]) throws -> NFCISO7816APDU {
+        try getSendKeyChunkApdu(ins : INS_ADD_KEY_CHUNK, p1 : p1, keyChunkOrMacBytes : keyChunkOrMacBytes, sault : sault)
+    }
+    
+    /**
+       CHANGE_KEY_CHUNK
+       CLA: 0xB0
+       INS: 0xB6
+       P1: 0x00 (START_OF_TRANSMISSION), 0x01 or 0x02 (END_OF_TRANSMISSION)
+       P2: 0x00
+       LC:
+       if (P1 = 0x00 OR  0x01): 0x01 +  length of key chunk + 0x40
+       if (P1 = 0x02): 0x60
+       Data:
+       if (P1 = 0x00 OR  0x01): length of key chunk (1 byte) | key chunk | sault (32 bytes) | mac (32 bytes)
+       if (P1 = 0x02): hmac of key (32 bytes) | sault (32 bytes) | mac (32 bytes)
+       LE: if (P1 = 0x02): 0x02
+       Gets keychunk bytes from the host and puts it into keyStore array in place of old key bytes. Max size of key chunk is 128 bytes.
+       So if total key size > 128 bytes CHANGE_KEY_CHUNK will be called multiple times.  We control that lengthes of old key and new key are the same.
+       After all new key data is transmitted we call CHANGE_KEY_CHUNK once again, its input data is Hmac of new key and it is verified by applet.
+       If it is ok then corresponding data about key  is changed in keyOffsets, keyMacs and keyLens buffers.
+       Precondition:  1) GET_SAULT should be called before to get new sault from card. 2)call  GET_KEY_INDEX_IN_STORAGE_AND_LEN , INIATE_CHANGE_OF_KEY.
+       Then call CHANGE_KEY_CHUNK multiple times.
+       Available in applet states PERSONALIZED.
+    */
     static func getChangeKeyChunkApdu(p1 : UInt8, keyChunkOrMacBytes : [UInt8], sault : [UInt8] ) throws -> NFCISO7816APDU {
-        try getSendKeyChunkApdu(ins: INS_CHANGE_KEY_CHUNK, p1: p1, keyChunkOrMacBytes:keyChunkOrMacBytes, sault: sault)
+        try getSendKeyChunkApdu(ins : INS_CHANGE_KEY_CHUNK, p1 : p1, keyChunkOrMacBytes : keyChunkOrMacBytes, sault : sault)
     }
     
     static func getSendKeyChunkApdu(ins : UInt8, p1 : UInt8, keyChunkOrMacBytes : [UInt8], sault : [UInt8] ) throws -> NFCISO7816APDU {
@@ -605,13 +838,13 @@ class TonWalletAppletApduCommands {
         }
         let data = (p1 == 2) ? try prepareApduData(keyChunkOrMacBytes + sault) :
             try prepareApduData([UInt8(keyChunkOrMacBytes.count)] + keyChunkOrMacBytes + sault)
-        return (p1 == 2) ? NFCISO7816APDU(instructionClass:WALLET_APPLET_CLA, instructionCode:ins, p1Parameter:p1, p2Parameter:0x00, data: Data(_ : data), expectedResponseLength: TonWalletAppletConstants.SEND_CHUNK_LE) :
-            NFCISO7816APDU(instructionClass:WALLET_APPLET_CLA, instructionCode:ins, p1Parameter:p1, p2Parameter:0x00, data: data, expectedResponseLength: -1)
+        return (p1 == 2) ? NFCISO7816APDU(instructionClass : WALLET_APPLET_CLA, instructionCode : ins, p1Parameter : p1, p2Parameter : P2, data : Data(_ : data), expectedResponseLength : TonWalletAppletConstants.SEND_CHUNK_LE) :
+            NFCISO7816APDU(instructionClass : WALLET_APPLET_CLA, instructionCode : ins, p1Parameter : p1, p2Parameter : P2, data : data, expectedResponseLength: CommonConstants.LE_NO_RESPONSE_DATA)
     }
     
     static func prepareApduData(_ dataChunk : [UInt8]) throws -> Data {
         var dataField = Data(_  :  dataChunk)
-        let mac = try hmacHelper.computeHmac(data: dataField)
+        let mac = try hmacHelper.computeHmac(data : dataField)
         dataField.append(mac)
         return dataField
     }
@@ -634,9 +867,15 @@ class TonWalletAppletApduCommands {
         }
     }
     
-    static func checkHmac(_ hmac: [UInt8]) throws {
+    static func checkHmac(_ hmac : [UInt8]) throws {
         if (hmac.count != TonWalletAppletConstants.HMAC_SHA_SIG_SIZE) {
             throw ResponsesConstants.ERROR_MSG_KEY_MAC_BYTES_SIZE_INCORRECT
+        }
+    }
+    
+    static func checkLe(_ le : Int) throws {
+        if le <= 0 || le > CommonConstants.LE_GET_ALL_RESPONSE_DATA {
+            throw ResponsesConstants.ERROR_MSG_LE_INCORRECT
         }
     }
 
