@@ -71,6 +71,7 @@ import CoreNFC
     public func getKeyChainInfo(resolve : @escaping NfcResolver, reject : @escaping NfcRejecter) {
         print("Start card operation: getKeyChainInfo")
         var keyChainInfo: [String : String] = [:]
+        keyChainInfo[JsonHelper.STATUS_FIELD] = ResponsesConstants.SUCCESS_STATUS
         apduRunner.setCallback(resolve : resolve, reject : reject)
         apduRunner.setCardOperation(cardOperation: { () in
             self.reselectKeyForHmac()
