@@ -29,8 +29,8 @@ class ErrorHelper: NSObject {
     
     func callRejectWith(errMsg :  String, reject: NfcRejecter?){
         let data = jsonHelper.createErrorJsonMap(msg: errMsg)
-        let errorId = data[jsonHelper.ERROR_TYPE_ID_FIELD]!
-        let errorCode = Int(data[jsonHelper.ERROR_CODE_FIELD] ?? "0") ?? 0x00
+        let errorId = data[JsonHelper.ERROR_TYPE_ID_FIELD]!
+        let errorCode = Int(data[JsonHelper.ERROR_CODE_FIELD] ?? "0") ?? 0x00
         let errorName = ResponsesConstants.getErrorTypeName(typeId: errorId) ?? ResponsesConstants.SWIFT_INTERNAL_ERROR_TYPE
         let json = jsonHelper.makeJsonString(data: data)
         let error = NSError(domain: errorName, code: errorCode, userInfo: [NSLocalizedDescriptionKey: json])

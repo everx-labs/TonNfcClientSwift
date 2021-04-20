@@ -87,6 +87,26 @@
                                     <action selector="addChangeKey:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="nM1-oV-E3g"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PLO-nb-0pW">
+                                <rect key="frame" x="139" y="507" width="136" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.3962255388" green="1" blue="0.90901214360000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" systemColor="opaqueSeparatorColor"/>
+                                <state key="normal" title="Get keychain info"/>
+                                <connections>
+                                    <action selector="getKeyChainInfo:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="GcB-49-gDo"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o1w-JX-Pba">
+                                <rect key="frame" x="112" y="564" width="190" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.3962255388" green="1" blue="0.90901214360000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" systemColor="opaqueSeparatorColor"/>
+                                <state key="normal" title="Get hashes for activation"/>
+                                <connections>
+                                    <action selector="getHashes:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="6UA-Wy-ITt"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>

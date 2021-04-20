@@ -24,6 +24,18 @@ class ViewController: UIViewController {
     let cardActivationApi : CardActivationNfcApi = CardActivationNfcApi()
     let cardKeyChainNfcApi : CardKeyChainNfcApi = CardKeyChainNfcApi()
     
+    
+    @IBAction func getKeyChainInfo(_ sender: Any) {
+        Promise<String> { promise in
+            cardKeyChainNfcApi.getKeyChainInfo(resolve: { msg in promise.fulfill(msg as! String) }, reject: { (errMsg : String, err : NSError) in promise.reject(err) })
+        }
+        .done{response in
+            print("KeyChain info : " + response)
+        }
+        .catch{ error in
+            print("Error happened : " + error.localizedDescription)
+        }
+    }
     @IBAction func addChangeKey(_ sender: Any) {
         Promise<String> { promise in
             cardKeyChainNfcApi.resetKeyChain(resolve: { msg in promise.fulfill(msg as! String) }, reject: { (errMsg : String, err : NSError) in promise.reject(err) })
@@ -77,6 +89,36 @@ class ViewController: UIViewController {
         }
     }
     
+    @IBAction func getHashes(_ sender: Any) {
+        Promise<String> { promise in
+            cardCoinManagerNfcApi.getRootKeyStatus(resolve: { msg in promise.fulfill(msg as! String) }, reject: { (errMsg : String, err : NSError) in promise.reject(err) })
+        }
+        .then{(response : String)  -> Promise<String> in
+            print("Response from getRootKeyStatus : " + response)
+            let message = try self.extractMessage(jsonStr : response)
+            if (message == "generated") {
+                return Promise<String> { promise in promise.fulfill("Seed exists already")}
+            }
+            sleep(5)
+            return Promise<String> { promise in
+                self.cardCoinManagerNfcApi.generateSeed(pin : self.DEFAULT_PIN, resolve: { msg in promise.fulfill(msg as! String) }, reject: { (errMsg : String, err : NSError) in promise.reject(err) })
+            }
+        }
+        .then{(response : String)  -> Promise<String> in
+            print("Response from generateSeed : " + response)
+            sleep(5)
+            return Promise<String> { promise in
+                self.cardActivationApi.getHashes(resolve: { msg in promise.fulfill(msg as! String) }, reject: { (errMsg : String, err : NSError) in promise.reject(err) })
+            }
+        }
+        .done{response in
+            print("Response from getHashes: " + response)
+        }
+        .catch{ error in
+            print("Error happened : " + error.localizedDescription)
+        }
+    }
+    
     @IBAction func activateCard(_ sender: Any) {
         Promise<String> { promise in
             cardCoinManagerNfcApi.getRootKeyStatus(resolve: { msg in promise.fulfill(msg as! String) }, reject: { (errMsg : String, err : NSError) in promise.reject(err) })
@@ -123,7 +165,7 @@ class ViewController: UIViewController {
             //check hashOfEncryptedPassword
             sleep(5)
             return Promise<String> { promise in
-                self.cardActivationApi.turnOnWallet(newPin: self.DEFAULT_PIN, authenticationPassword: self.PASSWORD, commonSecret: self.COMMON_SECRET, initialVector: self.IV, resolve: { msg in promise.fulfill(msg as! String) }, reject: { (errMsg : String, err : NSError) in promise.reject(err) })
+                self.cardActivationApi.turnOnWallet(/*newPin: self.DEFAULT_PIN,*/ authenticationPassword: self.PASSWORD, commonSecret: self.COMMON_SECRET, initialVector: self.IV, resolve: { msg in promise.fulfill(msg as! String) }, reject: { (errMsg : String, err : NSError) in promise.reject(err) })
             }
         }
         .done{response in

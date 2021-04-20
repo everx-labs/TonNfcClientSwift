@@ -18,7 +18,14 @@ import CoreNFC
 @available(iOS 13.0, *)
 public class CardActivationNfcApi: CardCoinManagerNfcApi {
     
+    public static let ECS_HASH_FIELD = "ecsHash"
+    public static let EP_HASH_FIELD = "epHash"
+    
     public override init() {}
+    
+    public func turnOnWallet(authenticationPassword : String, commonSecret : String, initialVector : String, resolve : @escaping NfcResolver, reject : @escaping NfcRejecter) {
+        self.turnOnWallet(newPin : TonWalletAppletConstants.DEFAULT_PIN, authenticationPassword : authenticationPassword, commonSecret : commonSecret, initialVector : initialVector, resolve : resolve, reject : reject)
+    }
 
     public func turnOnWallet(newPin : String, authenticationPassword : String, commonSecret : String, initialVector : String, resolve : @escaping NfcResolver, reject : @escaping NfcRejecter) {
         print("Start card operation: turnOnColdWallet" )
@@ -125,6 +132,34 @@ public class CardActivationNfcApi: CardCoinManagerNfcApi {
         apduRunner.startScan()
         
     }
+    
+    public func getHashes(resolve : @escaping NfcResolver, reject : @escaping NfcRejecter) {
+        print("Start card operation: getHashes")
+        var hashesInfo: [String : String] = [:]
+        hashesInfo[JsonHelper.STATUS_FIELD] = ResponsesConstants.SUCCESS_STATUS
+        apduRunner.setCallback(resolve : resolve, reject : reject)
+        apduRunner.setCardOperation(cardOperation: { () in
+            self.apduRunner.sendTonWalletAppletApdu(apduCommand: TonWalletAppletApduCommands.GET_HASH_OF_ENCRYPTED_COMMON_SECRET_APDU)
+                .then{(response : Data)  -> Promise<Data> in
+                    if (response.count != TonWalletAppletConstants.SHA_HASH_SIZE) {
+                        throw ResponsesConstants.ERROR_MSG_HASH_OF_ENCRYPTED_COMMON_SECRET_RESPONSE_LEN_INCORRECT
+                    }
+                    hashesInfo[CardActivationNfcApi.ECS_HASH_FIELD] = response.hexEncodedString()
+                    return self.apduRunner.sendApdu(apduCommand: TonWalletAppletApduCommands.GET_HASH_OF_ENCRYPTED_PASSWORD_APDU)
+                }
+                .then{(response : Data)  -> Promise<String> in
+                    if (response.count != TonWalletAppletConstants.SHA_HASH_SIZE) {
+                        throw ResponsesConstants.ERROR_MSG_HASH_OF_ENCRYPTED_PASSWORD_RESPONSE_LEN_INCORRECT
+                    }
+                    hashesInfo[CardActivationNfcApi.EP_HASH_FIELD] = response.hexEncodedString()
+                    return Promise<String> { promise in
+                        promise.fulfill(self.jsonHelper.makeJsonString(data: hashesInfo))
+                    }
+                }
+        })
+        apduRunner.startScan()
+    }
+    
     
     public func getHashOfEncryptedCommonSecret(resolve : @escaping NfcResolver, reject : @escaping NfcRejecter) {
         print("Start card operation: getHashOfEncryptedCommonSecret")

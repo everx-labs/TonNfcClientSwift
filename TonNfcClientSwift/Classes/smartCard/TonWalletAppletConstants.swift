@@ -83,4 +83,6 @@ public class TonWalletAppletConstants {
     
     public static let EMPTY_SERIAL_NUMBER: String = "empty"
     
+    public static let DEFAULT_PIN = "5555"
+    
 }
