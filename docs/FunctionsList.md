@@ -317,7 +317,7 @@ And also some special functions are available in CardActivationApi. They are nec
 
 - **getHashes()**
 
-    Return SHA256 hash of encrypted password and encrypted common secret.
+    Return SHA256 hashes of encrypted password and encrypted common secret.
 
     *Exemplary responses:*
 
