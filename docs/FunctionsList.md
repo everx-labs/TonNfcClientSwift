@@ -279,6 +279,25 @@ And also some special functions are available in CardActivationApi. They are nec
     *Response:*
 
         {"message":"TonWalletApplet is personalized.","status":"ok"}
+        
+- **turnOnWallet(authenticationPassword : String, commonSecret : String, initialVector : String)**
+
+    This function makes TON Labs wallet applet activation. After its succesfull call applet will be in working personalized state (so getTonAppletState() will return {"message":"TonWalletApplet is personalized.","status":"ok"}). It uses default PIN '5555'.
+
+    *Arguments requirements:*
+
+        authenticationPassword — hex string of length 256, 
+        example: "4A0FD62FFC3249A45ED369BD9B9CB340829179E94B8BE546FB19A1BC67C9411BC5DC85B5E38F96689B921A64DEF1A3B6F4D2F5C7D2B0BD7CCE420DBD281BA1CC82EE0B233820EB5CFE505B7201903ABB12959B251A5A8525B2515F57ACDE30905E70C2A375D5C0EC10A5EA6E264206395BF163969632398FA4A88D359FEA21D9"
+
+        commonSecret — hex string of length 64, example: "9CEE28E284487EEB8FA6CE7C101C1184BB368F0CCAD057C9D89F7EC3307E72BA"
+
+        initialVector — hex string of length 32, example: "E439F75C6FC516F1C4725E825164216C"
+
+    _Note:_ Use here activation data tuple  (authenticationPassword, commonSecret, initialVector) that is correct for your card, i.e. corresponds to your serialNumber.
+
+    *Response:*
+
+        {"message":"TonWalletApplet is personalized.","status":"ok"}
 
 - **getHashOfEncryptedCommonSecret()**
 
@@ -295,6 +314,15 @@ And also some special functions are available in CardActivationApi. They are nec
     *Exemplary responses:*
 
         {"message":"26D4B03C0C0E168DC33E48BBCEB457C21364658C9D487341827BBFFB4D8B38F3","status":"ok"}
+
+- **getHashes()**
+
+    Return SHA256 hash of encrypted password and encrypted common secret.
+
+    *Exemplary responses:*
+
+        {"ecsHash":"26D4B03C0C0E168DC33E48BBCEB457C21364658C9D487341827BBFFB4D8B38F3","epHash":"EFBF24AC1563B34ADB0FFE0B0A53659E72E26765704C109C95346EEAA1D4BEAF","status":"ok"}
+
 
 ### CardCryptoApi functions
 
