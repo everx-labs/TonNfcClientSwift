@@ -28,7 +28,7 @@ public class CardActivationNfcApi: CardCoinManagerNfcApi {
     }
 
     public func turnOnWallet(newPin : String, authenticationPassword : String, commonSecret : String, initialVector : String, resolve : @escaping NfcResolver, reject : @escaping NfcRejecter) {
-        print("Start card operation: turnOnColdWallet" )
+        print("Start card operation: turnOnWallet" )
         guard  dataVerifier.checkPasswordSize(password: authenticationPassword, reject : reject) &&
                 dataVerifier.checkPasswordFormat(password: authenticationPassword, reject : reject) &&
                 dataVerifier.checkCommonSecretSize(commonSecret: commonSecret, reject : reject) &&
@@ -63,7 +63,7 @@ public class CardActivationNfcApi: CardCoinManagerNfcApi {
                         throw ResponsesConstants.ERROR_MSG_STATE_RESPONSE_LEN_INCORRECT
                     }
                     let appletState = response.bytes[0]
-                    guard appletState == TonWalletAppletConstants.APP_WAITE_AUTHORIZATION_MODE else {
+                    guard appletState == TonWalletAppletConstants.APP_WAITE_AUTHENTICATION_MODE else {
                         throw ResponsesConstants.ERROR_MSG_APPLET_DOES_NOT_WAIT_AUTHORIZATION + TonWalletAppletConstants.APPLET_STATES[response.bytes[0]]!
                     }
                     return Promise { promise in promise.fulfill(Data())}

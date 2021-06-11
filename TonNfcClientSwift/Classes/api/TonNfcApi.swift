@@ -288,7 +288,7 @@ public class TonNfcApi {
         apduRunner.setCardOperation(cardOperation: { () in
             self.apduRunner.sendTonWalletAppletApdu(apduCommand: apdu)
                 .then{(response : Data)  -> Promise<String> in
-                    let boolResponse = response.bytes[0] == 0 ? "false" : "true"
+                    let boolResponse = response.bytes[0] == 0 ? ResponsesConstants.FALSE_MSG : ResponsesConstants.TRUE_MSG
                     return self.makeFinalPromise(result : boolResponse)
                 }
         })

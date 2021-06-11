@@ -23,7 +23,7 @@ public class ResponsesConstants {
     public static let GENERATED_MSG: String =  "generated"
     public static let NOT_GENERATED_MSG: String =  "not generated"
     
-    static let HMAC_KEYS_DOES_NOT_FOUND_MSG: String =  "HMac keys are not found in iOS keychain."
+    static let HMAC_KEYS_DOES_NOT_FOUND_MSG: String =  "HMAC-SHA256 keys are not found."
     static let HMAC_KEY_GENERATED_MSG: String =  "HMac key to sign APDU data is generated"
     static let PIN_SET_MSG: String =  "Pin is set"
     

@@ -44,7 +44,7 @@ class JsonHelper {
     }
     
     func createJsonWithSerialNumbers(serialNumbers : [String]) -> String {
-        let data : [String : Any] = [JsonHelper.SERIAl_NUMBERS_FIELD : serialNumbers, JsonHelper.STATUS_FIELD : ResponsesConstants.SUCCESS_STATUS]
+        let data : [String : Any] = [JsonHelper.MESSAGE_FIELD : serialNumbers, JsonHelper.STATUS_FIELD : ResponsesConstants.SUCCESS_STATUS]
         return makeJsonString(data: data)
     }
     

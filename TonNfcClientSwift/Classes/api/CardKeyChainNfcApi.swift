@@ -27,6 +27,7 @@ import CoreNFC
     
     public override init() {}
     
+    //Todo: response must look as for TonNfcClientAndroid
     public func getKeyChainDataAboutAllKeys(resolve : @escaping NfcResolver, reject : @escaping NfcRejecter) {
         print("Start card operation: getAllHmacsOfKeysFromCard")
         var keyHmacsAndLens = [[String: String]]()
@@ -745,6 +746,7 @@ import CoreNFC
         apduRunner.startScan()
     }
     
+    //Todo: response must look as for TonNfcClientAndroid
     public func getIndexAndLenOfKeyInKeyChain(keyHmac: String, resolve : @escaping NfcResolver, reject : @escaping NfcRejecter){
         print("Start card operation: getIndexAndLenOfKeyInKeyChain" )
         guard dataVerifier.checkMacSize(mac: keyHmac, reject : reject) &&
@@ -829,6 +831,7 @@ import CoreNFC
             }
     }
     
+    //Todo: response must look as for TonNfcClientAndroid
     public func getHmac(index: String, resolve : @escaping NfcResolver, reject : @escaping NfcRejecter){
         print("Start card operation: getHmac" )
         guard dataVerifier.checkKeyIndexFormat(index : index, reject : reject) else {

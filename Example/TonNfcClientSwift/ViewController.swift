@@ -24,6 +24,28 @@ class ViewController: UIViewController {
     let cardActivationApi : CardActivationNfcApi = CardActivationNfcApi()
     let cardKeyChainNfcApi : CardKeyChainNfcApi = CardKeyChainNfcApi()
     
+    @IBAction func generateSeed(_ sender: Any) {
+        Promise<String> { promise in
+            cardCoinManagerNfcApi.generateSeed(pin: "5555", resolve: { msg in promise.fulfill(msg as! String) }, reject: { (errMsg : String, err : NSError) in promise.reject(err) })
+        }
+        .done{response in
+            print("Generate seed result : " + response)
+        }
+        .catch{ error in
+            print("Error happened : " + error.localizedDescription)
+        }
+    }
+    @IBAction func getTonAppletState(_ sender: Any) {
+        Promise<String> { promise in
+            cardKeyChainNfcApi.getTonAppletState(resolve: { msg in promise.fulfill(msg as! String) }, reject: { (errMsg : String, err : NSError) in promise.reject(err) })
+        }
+        .done{response in
+            print("applet state : " + response)
+        }
+        .catch{ error in
+            print("Error happened : " + error.localizedDescription)
+        }
+    }
     
     @IBAction func getKeyChainInfo(_ sender: Any) {
         Promise<String> { promise in

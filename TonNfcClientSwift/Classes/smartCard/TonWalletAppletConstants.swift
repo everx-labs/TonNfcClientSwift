@@ -16,20 +16,20 @@ import Foundation
 public class TonWalletAppletConstants {
     public static let APP_INSTALLED: UInt8 = 0x07
     public static let APP_PERSONALIZED: UInt8 =  0x17
-    public static let APP_WAITE_AUTHORIZATION_MODE: UInt8 = 0x27
+    public static let APP_WAITE_AUTHENTICATION_MODE: UInt8 = 0x27
     public static let APP_DELETE_KEY_FROM_KEYCHAIN_MODE: UInt8 = 0x37
     public static let APP_BLOCKED_MODE: UInt8 =  0x47
     
     public static let APPLET_STATES = [ APP_PERSONALIZED : "TonWalletApplet is personalized.",
                                  APP_BLOCKED_MODE : "TonWalletApplet is blocked.",
-                                 APP_WAITE_AUTHORIZATION_MODE : "TonWalletApplet waits two-factor authorization.",
+                                 APP_WAITE_AUTHENTICATION_MODE : "TonWalletApplet waits two-factor authentication.",
                                  APP_DELETE_KEY_FROM_KEYCHAIN_MODE : "TonWalletApplet is personalized and waits finishing key deleting from keychain.",
                                  APP_INSTALLED : "TonWalletApplet is invalid (is not personalized)"  ]
     
-    static let ALL_APPLET_STATES = [APP_INSTALLED, APP_PERSONALIZED, APP_WAITE_AUTHORIZATION_MODE, APP_DELETE_KEY_FROM_KEYCHAIN_MODE, APP_BLOCKED_MODE]
+    static let ALL_APPLET_STATES = [APP_INSTALLED, APP_PERSONALIZED, APP_WAITE_AUTHENTICATION_MODE, APP_DELETE_KEY_FROM_KEYCHAIN_MODE, APP_BLOCKED_MODE]
     static let INSTALLED_STATE = [APP_INSTALLED]
     static let PERSONALIZED_STATE = [APP_PERSONALIZED]
-    static let WAITE_AUTHORIZATION_STATE = [APP_WAITE_AUTHORIZATION_MODE]
+    static let WAITE_AUTHENTICATION_STATE = [APP_WAITE_AUTHENTICATION_MODE]
     static let PERSONALIZED_AND_DELETE_STATE = [APP_PERSONALIZED, APP_DELETE_KEY_FROM_KEYCHAIN_MODE]
     
     public static let PK_LEN = 0x20
