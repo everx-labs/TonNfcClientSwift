@@ -17,8 +17,7 @@ import CoreNFC
 class JsonHelper {
     static let MALFORMED_JON_MSG: String = "Malformed data for json."
     static let STATUS_FIELD: String = "status"
-    static let SERIAl_NUMBERS_FIELD = "serial_numbers"
-    static let ERROR_CODE_FIELD: String = "errorCode"
+    static let ERROR_CODE_FIELD: String = "code"
     static let ERROR_TYPE_FIELD: String = "errorType"
     static let ERROR_TYPE_ID_FIELD: String = "errorTypeId"
     static let MESSAGE_FIELD: String = "message"
