@@ -163,7 +163,7 @@ class ViewController: UIViewController {
                 self.cardActivationApi.getTonAppletState(resolve: { msg in promise.fulfill(msg as! String) }, reject: { (errMsg : String, err : NSError) in promise.reject(err) })
             }
         }
-        .then{(response : String)  -> Promise<String> in
+        /*.then{(response : String)  -> Promise<String> in
             print("Response from getTonAppletState : " + response)
             let message = try self.extractMessage(jsonStr : response)
             if (message != "TonWalletApplet waits two-factor authorization.") {
@@ -181,7 +181,7 @@ class ViewController: UIViewController {
             return Promise<String> { promise in
                 self.cardActivationApi.getHashOfEncryptedPassword(resolve: { msg in promise.fulfill(msg as! String) }, reject: { (errMsg : String, err : NSError) in promise.reject(err) })
             }
-        }
+        }*/
         .then{(response : String)  -> Promise<String> in
             print("Response from getHashOfEncryptedPassword : " + response)
             //check hashOfEncryptedPassword
@@ -213,7 +213,7 @@ class ViewController: UIViewController {
     @IBAction func sign(_ sender: Any) {
         let hdIndex = "65"
         let msg = "A456"
-        let pin = "5555"
+        let pin = "55555"
         Promise<String> { promise in
             cardCryptoNfcApi.createKeyForHmac(authenticationPassword: PASSWORD, commonSecret: COMMON_SECRET, serialNumber: SERIAL_NUMBER, resolve: { msg in promise.fulfill(msg as! String) }, reject: { (errMsg : String, err : NSError) in promise.reject(err) })
         }

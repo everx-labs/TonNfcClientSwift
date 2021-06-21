@@ -128,7 +128,7 @@ class ApduRunner: NSObject, NFCTagReaderSessionDelegate {
             if TonWalletAppletApduCommands.APPLET_COMMAND_STATE_MAPPING[apduCommand.instructionCode]?.contains(response.last!) ?? false {
                 return self.sendApdu(apduCommand: apduCommand)
             }
-            throw "APDU command " + TonWalletAppletApduCommands.APDU_COMMAND_NAMES[apduCommand.instructionCode]! + " is not supported in state " + TonWalletAppletConstants.APPLET_STATES[response.last!]!
+            throw ResponsesConstants.ERROR_MSG_APDU_NOT_SUPPORTED + " : " + TonWalletAppletApduCommands.APDU_COMMAND_NAMES[apduCommand.instructionCode]! + " in " + TonWalletAppletConstants.APPLET_STATES[response.last!]!
         }
     }
     

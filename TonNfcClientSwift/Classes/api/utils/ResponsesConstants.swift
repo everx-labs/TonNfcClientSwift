@@ -288,7 +288,7 @@ public class ResponsesConstants {
     /**
      * IMPROPER_APPLET_STATE_ERROR_TYPE_ID = 5
      */
-    static let ERROR_MSG_APDU_NOT_SUPPORTED: String = "APDU command is not supported" //not used
+    static let ERROR_MSG_APDU_NOT_SUPPORTED: String = "APDU command is not supported" 
     static let ERROR_MSG_APPLET_DOES_NOT_WAIT_AUTHORIZATION: String = "Applet must be in mode that waits authorization. Now it is: "
     static let ERROR_MSG_APPLET_IS_NOT_PERSONALIZED: String = "Applet must be in personalized mode. Now it is: "
     static let ERROR_MSG_APPLET_DOES_NOT_WAIT_TO_DELETE_KEY: String = "Applet must be in mode for deleting key. Now it is "

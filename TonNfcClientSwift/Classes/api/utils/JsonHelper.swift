@@ -76,6 +76,8 @@ class JsonHelper {
         data[JsonHelper.STATUS_FIELD] = ResponsesConstants.FAIL_STATUS
         
         let errCode = ResponsesConstants.getErrorCode(errMsg: msg) ?? ResponsesConstants.SWIFT_INTERNAL_ERROR_TYPE_ID
+        print("errCode2223424")
+        print(errCode)
         let errTypeId = errCode.substring(with: 0..<1)
         
         data[JsonHelper.ERROR_TYPE_ID_FIELD] = errTypeId
