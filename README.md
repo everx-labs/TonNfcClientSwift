@@ -12,7 +12,7 @@ You must have iOS version >= 13 and iPhone model >= 7.
 ## Installation
 
 TonNfcClientSwift is available through [CocoaPods](https://cocoapods.org). To install
-it, add the following line to your Podfile:
+it, add the following line into your Podfile:
 
 ```ruby
 pod 'TonNfcClientSwift'
