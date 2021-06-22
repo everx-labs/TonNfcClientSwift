@@ -121,7 +121,7 @@ In the case of successful operation with the card any function of TonNfcClientSw
 
 	{"message":"done","status":"ok"}
 	{"message":"generated","status":"ok"}
-	{"message":"HMac key to sign APDU data is generated","status":"ok"}
+	{"message":"true","status":"ok"}
 	{"message":"980133A56A59F3A59F174FD457EB97BE0E3BAD59E271E291C1859C74C795A83368FD8C7405BC37E1C4146F4D175CF36421BF6AD2AFF4329F5A6C6D772247ED03","status":"ok"}
 	etc.
 
