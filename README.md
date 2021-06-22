@@ -136,7 +136,7 @@ It is the case when applet (installed on the card) threw some error status word 
 	{
 		"message":"Incorrect PIN (from Ton wallet applet).",
 		"status":"fail",
-		"errorCode":"6F07",
+		"code":"6F07",
 		"errorTypeId":0,
 		"errorType":"Applet fail: card operation error",
 		"cardInstruction":"VERIFY_PIN",
@@ -144,7 +144,7 @@ It is the case when applet (installed on the card) threw some error status word 
 	}
 	
 Here:
-+ *errorCode* — error status word (SW) produced by the card (applet)
++ *code* — error status word (SW) produced by the card (applet)
 
 + *cardInstruction* — title of APDU command that failed
 
@@ -163,7 +163,7 @@ It is the case when error happened in Swift code itself. The basic examples: tro
 	{
 		"errorType": "Native code fail: incorrect format of input data",
 		"errorTypeId": "3",
-		"errorCode": "30006",
+		"code": "30006",
 		"message": "Pin must be a numeric string of length 4.",
 		"status": "fail"
 	}
