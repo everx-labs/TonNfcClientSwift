@@ -188,7 +188,7 @@ After you prepared the application, you may run it on your iPhone. Then you need
 <img src="../master/docs/images/Screenshot2.png" width="200">
 </p>
 
-To establish connection hold the card to the top of iPhone (field near the camera) as close as possible. After that iPhone sends APDU commands to the card. In above example it sends request getMaxPinTries. To keep connection alive you must not move the card and iPhone and they should have physical contact. Wait until you see the following picture.
+To establish connection hold the card to the top of iPhone (field near the camera) as close as possible. After that iPhone sends APDU commands to the card. In the above example it sends request getMaxPinTries. To keep connection alive you must not move the card and iPhone and they should have physical contact. Wait until you see the following picture.
 
 <p align="center">
 <img src="../master/docs/images/Screenshot1.png" width="200">
