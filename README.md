@@ -67,7 +67,6 @@ import TonNfcClientSwift
 var cardCoinManagerNfcApi: CardCoinManagerNfcApi = CardCoinManagerNfcApi()
 
 let resolve : NfcResolver = {(msg : Any) -> Void  in
-	print("Caught msg : ")
 	print(msg)
 }
 let reject : NfcRejecter = {(errMsg : String, err : NSError) -> Void in
@@ -80,8 +79,6 @@ cardCoinManagerNfcApi.getMaxPinTries(resolve: resolve, reject: reject)
 Run application and you get an invitation dialog to connect the card. Hold the connection until you will get the response from the card (for simple operations it usually takes 1-6 seconds). Check your Xcode console. You should find the following output.
 
 ```
-Caught msg :
-
 {"message":"10","status":"ok"}
 ```
     
