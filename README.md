@@ -86,7 +86,7 @@ This is a response from NFC card wrapped into json.
 
 ## Work with promises
 
-TonNfcClientSwift library uses [PromiseKit](https://cocoapods.org/pods/PromiseKit). So you may also use PromiseKit in the project. It gives a convinient way to make the chain of NFC card operations and avoid callback hell. So let's rewrite above example using promises.
+TonNfcClientSwift library uses [PromiseKit](https://cocoapods.org/pods/PromiseKit). So you may also use PromiseKit in the project. It gives a convinient way to make the chain of NFC card operations and avoid callback hell. So let's rewrite the above example using promises.
 
 ```swift
 import TonNfcClientSwift
