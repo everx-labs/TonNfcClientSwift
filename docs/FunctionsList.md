@@ -2,6 +2,22 @@
 
 There is full functions list provided by TonNfcClientSwift API to make different requests to NFC TON Labs Security cards. All these functions work via callbacks. The last two arguments of each function are _resolve : @escaping NfcResolver, reject : @escaping NfcRejecter_ (we omit them below for short). In the case of success card response is put into _resolve_. In the case of exception error message and error object are put into _reject_.
 
+The below constsants will be useful for processing the results of card operations. See more detaild in here: [ResponsesConstants](https://github.com/tonlabs/TonNfcClientSwift/blob/master/TonNfcClientSwift/Classes/api/utils/ResponsesConstants.swift)
+
+```swift
+public class ResponsesConstants {
+    public static let FAIL_STATUS: String =  "fail"
+    public static let SUCCESS_STATUS: String =  "ok"
+    public static let DONE_MSG: String =  "done"
+    public static let FALSE_MSG: String =  "false"
+    public static let TRUE_MSG: String =  "true"
+    public static let GENERATED_MSG: String =  "generated"
+    public static let NOT_GENERATED_MSG: String =  "not generated"
+    public static let HMAC_KEYS_DOES_NOT_FOUND_MSG: String =  "HMAC-SHA256 keys are not found."
+    ...
+}
+```
+
 ## NFC related functions
 
 Here there are functions to check/change the state of your NFC hardware.  In TonNfcClientSwift library there is a class NfcApi for this.
