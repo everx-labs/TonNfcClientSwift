@@ -2,7 +2,7 @@
 
 There is full functions list provided by TonNfcClientSwift API to make different requests to NFC TON Labs Security cards. All these functions work via callbacks. The last two arguments of each function are _resolve : @escaping NfcResolver, reject : @escaping NfcRejecter_ (we omit them below for short). In the case of success card response is put into _resolve_. In the case of exception error message and error object are put into _reject_.
 
-The below constsants will be useful for processing the results of card operations. See more detaild in here: [ResponsesConstants](https://github.com/tonlabs/TonNfcClientSwift/blob/master/TonNfcClientSwift/Classes/api/utils/ResponsesConstants.swift).
+The below constsants will be useful for processing the results of card operations. See more detailes in here: [ResponsesConstants](https://github.com/tonlabs/TonNfcClientSwift/blob/master/TonNfcClientSwift/Classes/api/utils/ResponsesConstants.swift).
 
 ```swift
 public class ResponsesConstants {
