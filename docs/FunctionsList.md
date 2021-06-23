@@ -161,7 +161,7 @@ The functions are naturally divided into four groups. And there are respectively
 
     *Exemplary responses:*
 
-        {"message":"TonWalletApplet waits two-factor authorization.","status":"ok"}
+        {"message":"TonWalletApplet waits two-factor authentication.","status":"ok"}
         {"message":"TonWalletApplet is personalized.","status":"ok"}
 
 - **getSerialNumber()**
