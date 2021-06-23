@@ -431,7 +431,7 @@ Inside NFC TON Labs security card we implemented small flexible independent keyc
 
 Each key has its unique id. This is its HMAC SHA256 signature created using the key elaborated based on card activation data. So id is a hex a string of length 64.
 
-The below snippet demonstrates the work with the keychain. We add one key, then retrieve it from the card. Then we replace it by a new key of the same length. At the end we delete the key.
+The below snippet demonstrates the work with the keychain. We add one key, then retrieve it from the card. Then we replace it by a new key of the same length. In the end we delete the key.
 
 ```swift
 //the snippet is going to be hear soon
