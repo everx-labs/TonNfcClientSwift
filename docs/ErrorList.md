@@ -4,7 +4,7 @@ In the case of any error functions of TonNfcClientSwift library throws an except
 
 Here there are errors produced by NFC card (TON Labs wallet applet itself). So Swift code just catches it and puts error message into callback. Below there are exemplary jsons. Their fields have the following meanings:
 
-+ *errorCode* — error status word (SW) produced by the card (applet)
++ *code* — error status word (SW) produced by the card (applet)
 
 + *cardInstruction* — title of APDU command that failed
 
