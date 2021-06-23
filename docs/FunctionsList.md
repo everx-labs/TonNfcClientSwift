@@ -1,6 +1,6 @@
 # Full functions list (TonNfcClientSwift API)
 
-There is full functions list provided by TonNfcClientSwift API to make different requests to NFC TON Labs Security cards. All these functions work via callbacks. The last two arguments of each function are _resolve : @escaping NfcResolver, reject : @escaping NfcRejecter_ (we omit them below for short). In the case of success wrapped card response is put into _resolve_. In the case of exception error message and error object are put into _reject_.
+There is full functions list provided by TonNfcClientSwift API to make different requests to NFC TON Labs Security cards. All these functions work via callbacks. The last two arguments of each function are _resolve : @escaping NfcResolver, reject : @escaping NfcRejecter_ (we omit them below for short). In the case of success card response is put into _resolve_. In the case of exception error message and error object are put into _reject_.
 
 ## NFC related functions
 
