@@ -14,7 +14,7 @@ All notable changes to this project will be documented in this file.
 
 - Added several new errors.
 - Added samples of library usage for ed25519 and card activation stuff.
-- Added basic readme (need to be extended by more samples for keychain andrecovery soon), added error list (only internal errors list is not finished), added list of API functions.
+- Added basic readme (need to be extended by more samples for keychain and recovery soon), added error list (only internal errors list is not finished), added list of API functions.
 
 ### Fixed
 
