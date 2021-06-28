@@ -168,7 +168,7 @@ class ViewController: UIViewController {
         .then{(response : String)  -> Promise<String> in
             print("Response from getRootKeyStatus : " + response)
             let message = try self.extractMessage(jsonStr : response)
-            if (message == "generated") {
+            if (message == ResponsesConstants.GENERATED_MSG) {
                 return Promise<String> { promise in promise.fulfill("Seed exists already")}
             }
             sleep(5)
@@ -186,7 +186,7 @@ class ViewController: UIViewController {
         /*.then{(response : String)  -> Promise<String> in
             print("Response from getTonAppletState : " + response)
             let message = try self.extractMessage(jsonStr : response)
-            if (message != "TonWalletApplet waits two-factor authorization.") {
+            if (message != TonWalletAppletConstants.WAITE_AUTHENTICATION_MSG) {
                 throw "Incorrect applet state : " + message
             }
             sleep(5)
@@ -213,7 +213,7 @@ class ViewController: UIViewController {
         .done{response in
             print("Response from getTonAppletState : " + response)
             let message = try self.extractMessage(jsonStr : response)
-            if (message != "TonWalletApplet is personalized.") {
+            if (message != TonWalletAppletConstants.PERSONALIZED_STATE_MSG) {
                 throw "Applet state is not personalized. Incorrect applet state : " + message
             }
         }
