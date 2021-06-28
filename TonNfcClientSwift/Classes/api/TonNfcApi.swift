@@ -328,12 +328,14 @@ public class TonNfcApi {
         apduRunner.startScan()
     }
     
+    
     func makeFinalPromise(result : String) -> Promise<String> {
         return Promise<String> { promise in
             let json = jsonHelper.createJson(msg: result)
             promise.fulfill(json)
         }
     }
+    
     
     func reselectKeyForHmac() -> Promise<Data> {
         self.selectTonAppletAndGetSerialNumber().then{ (response : Data) -> Promise<Data> in

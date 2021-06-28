@@ -58,6 +58,26 @@ class ViewController: UIViewController {
             print("Error happened : " + error.localizedDescription)
         }
     }
+    
+    @IBAction func verifyPIN(_ sender: Any) {
+        let pin = "5555"
+        Promise<String> { promise in
+            cardCryptoNfcApi.createKeyForHmac(authenticationPassword: PASSWORD, commonSecret: COMMON_SECRET, serialNumber: SERIAL_NUMBER, resolve: { msg in promise.fulfill(msg as! String) }, reject: { (errMsg : String, err : NSError) in promise.reject(err) })
+        }
+        .then{(response : String)  -> Promise<String> in
+            print("Response from createKeyForHmac : " + response)
+            return Promise<String> { promise in
+                self.cardCryptoNfcApi.verifyPin(pin: pin, resolve: { msg in promise.fulfill(msg as! String) }, reject: { (errMsg : String, err : NSError) in promise.reject(err) })
+            }
+        }
+        .done{response in
+            print("Pin verified : "  + response)
+        }
+        .catch{ error in
+            print("Error happened : " + error.localizedDescription)
+        }
+    }
+    
     @IBAction func addChangeKey(_ sender: Any) {
         Promise<String> { promise in
             cardKeyChainNfcApi.resetKeyChain(resolve: { msg in promise.fulfill(msg as! String) }, reject: { (errMsg : String, err : NSError) in promise.reject(err) })
@@ -213,14 +233,18 @@ class ViewController: UIViewController {
     @IBAction func sign(_ sender: Any) {
         let hdIndex = "65"
         let msg = "A456"
-        let pin = "55555"
+        let pin = "5555"
         Promise<String> { promise in
             cardCryptoNfcApi.createKeyForHmac(authenticationPassword: PASSWORD, commonSecret: COMMON_SECRET, serialNumber: SERIAL_NUMBER, resolve: { msg in promise.fulfill(msg as! String) }, reject: { (errMsg : String, err : NSError) in promise.reject(err) })
         }
         .then{(response : String)  -> Promise<String> in
             print("Response from createKeyForHmac : " + response)
             return Promise<String> { promise in
-                self.cardCryptoNfcApi.verifyPinAndSign(data: msg, hdIndex: hdIndex, pin: pin, resolve: { msg in promise.fulfill(msg as! String) }, reject: { (errMsg : String, err : NSError) in promise.reject(err) })
+                self.cardCryptoNfcApi
+                   .checkSerialNumberAndVerifyPinAndSign(serialNumber: self.SERIAL_NUMBER, data: msg, hdIndex: hdIndex, pin: pin,  resolve: { msg in promise.fulfill(msg as! String) }, reject: { (errMsg : String, err : NSError) in promise.reject(err) })
+              /* .checkSerialNumberAndVerifyPinAndSignForDefaultHdPath(serialNumber: self.SERIAL_NUMBER, data: msg, pin: pin,  resolve: { msg in promise.fulfill(msg as! String) }, reject: { (errMsg : String, err : NSError) in promise.reject(err) })*/
+               /* self.cardCryptoNfcApi.checkSerialNumberAndSignForDefaultHdPath(serialNumber: self.SERIAL_NUMBER, data: msg, resolve: { msg in promise.fulfill(msg as! String) }, reject: { (errMsg : String, err : NSError) in promise.reject(err) })*/
+                /*self.cardCryptoNfcApi.verifyPinAndSign(data: msg, hdIndex: hdIndex, pin: pin, resolve: { msg in promise.fulfill(msg as! String) }, reject: { (errMsg : String, err : NSError) in promise.reject(err) })*/
             }
         }
         .done{response in
@@ -234,7 +258,11 @@ class ViewController: UIViewController {
     @IBAction func getPublicKey(_ sender: Any) {
         let hdIndex = "65"
         Promise<String> { promise in
-            cardCryptoNfcApi.getPublicKey(hdIndex: hdIndex, resolve: { msg in promise.fulfill(msg as! String) }, reject: { (errMsg : String, err : NSError) in promise.reject(err) })
+            cardCryptoNfcApi.checkSerialNumberAndGetPublicKey(serialNumber: SERIAL_NUMBER, hdIndex: hdIndex, resolve: { msg in promise.fulfill(msg as! String) }, reject: { (errMsg : String, err : NSError) in promise.reject(err) })
+            
+            /*getPublicKeyForDefaultPath(resolve: { msg in promise.fulfill(msg as! String) }, reject: { (errMsg : String, err : NSError) in promise.reject(err) })*/
+                
+                //.getPublicKey(hdIndex: hdIndex, resolve: { msg in promise.fulfill(msg as! String) }, reject: { (errMsg : String, err : NSError) in promise.reject(err) })
         }
         .done{response in
             print("Got public key : "  + response)
