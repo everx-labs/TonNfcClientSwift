@@ -48,3 +48,9 @@ All notable changes to this project will be documented in this file.
 ### Fixed
 
 - Fix usage of error message ERROR_MSG_APDU_NOT_SUPPORTED.
+
+## [1.1.0] – 2021-06-28
+
+### New
+
+- Add functions: checkSerialNumberAndGetPublicKeyForDefaultPath, checkSerialNumberAndGetPublicKey, checkSerialNumberAndSignForDefaultHdPath, checkSerialNumberAndSign, checkSerialNumberAndVerifyPinAndSignForDefaultHdPath, checkSerialNumberAndVerifyPinAndSign. They get SN as input and check that SN from card equals to it. If it is then it makes ed25519 operations.
