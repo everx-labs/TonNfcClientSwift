@@ -23,6 +23,19 @@ class ViewController: UIViewController {
     let cardCoinManagerNfcApi: CardCoinManagerNfcApi = CardCoinManagerNfcApi()
     let cardActivationApi : CardActivationNfcApi = CardActivationNfcApi()
     let cardKeyChainNfcApi : CardKeyChainNfcApi = CardKeyChainNfcApi()
+    let nfcApi : NfcApi = NfcApi()
+    
+    @IBAction func checkIsNfcSupported(_ sender: Any) {
+        Promise<String> { promise in
+            nfcApi.checkIfNfcSupported(resolve: { msg in promise.fulfill(msg as! String) }, reject: { (errMsg : String, err : NSError) in promise.reject(err) })
+        }
+        .done{response in
+            print("checkIsNfcSupported result : " + response)
+        }
+        .catch{ error in
+            print("Error happened : " + error.localizedDescription)
+        }
+    }
     
     @IBAction func generateSeed(_ sender: Any) {
         Promise<String> { promise in
