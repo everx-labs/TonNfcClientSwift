@@ -54,3 +54,15 @@ All notable changes to this project will be documented in this file.
 ### New
 
 - Add functions: checkSerialNumberAndGetPublicKeyForDefaultPath, checkSerialNumberAndGetPublicKey, checkSerialNumberAndSignForDefaultHdPath, checkSerialNumberAndSign, checkSerialNumberAndVerifyPinAndSignForDefaultHdPath, checkSerialNumberAndVerifyPinAndSign. They get SN as input and check that SN from card equals to it. If it is then it makes ed25519 operations.
+
+## [1.1.1] – 2021-06-29
+
+### Fixed
+
+- Make NfcApi public.
+
+## [1.1.2] – 2021-06-29
+
+### Fixed
+
+- checkIfNfcSupported returns json.
