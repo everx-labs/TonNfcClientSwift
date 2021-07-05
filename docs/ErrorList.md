@@ -1318,3 +1318,14 @@ Here there is a list of possible errors that can happen during work with hmac ke
 "status": "fail" 
 }
 ```
+## WRONG_CARD_ERROR
+
+```json
+{
+"errorType": "Native code fail: wrong card",
+"errorTypeId": "7",
+"code": "70000",
+"message": "You try to use security card with incorrect serial number.",
+"status": "fail"
+}
+```
