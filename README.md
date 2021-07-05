@@ -373,7 +373,7 @@ You may work with multiple NFC TON Labs security cards. In this case in your iOS
 
 The list of operations protected by HMAC SHA256:
 
-- verifyPin, signForDefaultHdPath, sign, verifyPinAndSign, verifyPinAndSignForDefaultHdPath
+- verifyPin, signForDefaultHdPath, sign, verifyPinAndSign, verifyPinAndSignForDefaultHdPath, checkSerialNumberAndSign, checkSerialNumberAndSignForDefaultHdPath, checkSerialNumberAndVerifyPinAndSignForDefaultHdPath,  checkSerialNumberAndVerifyPinAndSign.
 - all functions related to the card's keychain
 
 ## Request ED25519 signature
