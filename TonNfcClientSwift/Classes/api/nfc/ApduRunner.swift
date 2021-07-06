@@ -25,7 +25,9 @@ extension NFCISO7816APDU {
 
 
 @available(iOS 13.0, *)
-class ApduRunner: NSObject, NFCTagReaderSessionDelegate {
+public class ApduRunner: NSObject, NFCTagReaderSessionDelegate {
+    public static let NFC_TAG_CONNECTED_EVENT:String = "nfcTagConnected"
+    
     var sessionEx: NFCTagReaderSession?
     var cardOperation: (() -> Promise<String>)?
     var resolve: NfcResolver?
@@ -42,14 +44,17 @@ class ApduRunner: NSObject, NFCTagReaderSessionDelegate {
         self.reject = reject
     }
     
+    public static func setNotificator(observer: Any, notificationAction: Selector) {
+        NotificationCenter.default.addObserver(observer, selector: notificationAction, name: NSNotification.Name(rawValue: NFC_TAG_CONNECTED_EVENT), object: nil)
+    }
+    
     func startScan() {
         self.sessionEx = NFCTagReaderSession(pollingOption: .iso14443, delegate: self)
         self.sessionEx?.begin()
     }
     
-    
-    
-    func tagReaderSession(_ session: NFCTagReaderSession, didDetect tags: [NFCTag]) {
+
+    public func tagReaderSession(_ session: NFCTagReaderSession, didDetect tags: [NFCTag]) {
         guard self.resolve != nil && self.reject != nil else {
             print("NfcCallback is empty.")
             return
@@ -75,12 +80,15 @@ class ApduRunner: NSObject, NFCTagReaderSessionDelegate {
                 }
                 
                 print("Nfc Tag is connected.")
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: ApduRunner.NFC_TAG_CONNECTED_EVENT), object: nil)
                 //NfcEventEmitter.emitter.sendEvent(withName: NfcEventEmitter.NFC_TAG_CONNECTED_EVENT, body: nil)
                 
                 self.handleApduResponse(apduResponse : self.cardOperation!())
             }
         }
     }
+    
+    
     
     private func handleApduResponse(apduResponse: Promise<String>) {
        // Promise in
@@ -190,11 +198,11 @@ class ApduRunner: NSObject, NFCTagReaderSessionDelegate {
         sessionEx?.invalidate(errorMessage: msg)
     }
     
-    func tagReaderSessionDidBecomeActive(_ session: NFCTagReaderSession) {
+    public func tagReaderSessionDidBecomeActive(_ session: NFCTagReaderSession) {
         print("Nfc session is active")
     }
     
-    func tagReaderSession(_ session: NFCTagReaderSession, didInvalidateWithError error: Error) {
+    public func tagReaderSession(_ session: NFCTagReaderSession, didInvalidateWithError error: Error) {
         print("Error happend: " + error.localizedDescription)
     }
     

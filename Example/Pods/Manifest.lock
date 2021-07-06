@@ -10,7 +10,7 @@ PODS:
   - PromiseKit/UIKit (6.13.1):
     - PromiseKit/CorePromise
   - Quick (2.2.1)
-  - TonNfcClientSwift (0.0.4):
+  - TonNfcClientSwift (1.1.3):
     - PromiseKit (~> 6.8)
 
 DEPENDENCIES:
@@ -32,7 +32,7 @@ SPEC CHECKSUMS:
   Nimble: 98b888285a615fd34f20e61753cf58ea1402bde4
   PromiseKit: 28fda91c973cc377875d8c0ea4f973013c05b6db
   Quick: f5754d69b7013f5864c29aab9ae6f0c79c5bc200
-  TonNfcClientSwift: ae8bd106d6a9c924a0b0b442c149c518b47209a2
+  TonNfcClientSwift: 29dd878c6df19f18a09e41315ba50fad6518e36f
 
 PODFILE CHECKSUM: 86a5617393cacf324729ffb4579f5aab038b888c
 

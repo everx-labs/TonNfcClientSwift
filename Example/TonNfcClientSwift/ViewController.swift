@@ -72,6 +72,10 @@ class ViewController: UIViewController {
         }
     }
     
+    @objc func catchNotification() {
+        print("Nfc connected!!!!!!!!!!")
+    }
+    
     @IBAction func verifyPIN(_ sender: Any) {
         let pin = "5555"
         Promise<String> { promise in
@@ -154,14 +158,14 @@ class ViewController: UIViewController {
             if (message == "generated") {
                 return Promise<String> { promise in promise.fulfill("Seed exists already")}
             }
-            sleep(5)
+            //sleep(5)
             return Promise<String> { promise in
                 self.cardCoinManagerNfcApi.generateSeed(pin : self.DEFAULT_PIN, resolve: { msg in promise.fulfill(msg as! String) }, reject: { (errMsg : String, err : NSError) in promise.reject(err) })
             }
         }
         .then{(response : String)  -> Promise<String> in
             print("Response from generateSeed : " + response)
-            sleep(5)
+           // sleep(5)
             return Promise<String> { promise in
                 self.cardActivationApi.getHashes(resolve: { msg in promise.fulfill(msg as! String) }, reject: { (errMsg : String, err : NSError) in promise.reject(err) })
             }
@@ -287,6 +291,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        ApduRunner.setNotificator(observer: self, notificationAction: #selector(self.catchNotification))
     }
     
     
