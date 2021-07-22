@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'TonNfcClientSwift'
-  s.version          = '1.1.4'
+  s.version          = '1.1.5'
   s.summary          = 'This is a library to work with TON NFC security cards.'
   s.description      = 'This library provides functions allowing to make all available TON NFC cards operations.'
 
