@@ -204,6 +204,7 @@ public class ApduRunner: NSObject, NFCTagReaderSessionDelegate {
     
     public func tagReaderSession(_ session: NFCTagReaderSession, didInvalidateWithError error: Error) {
         print("Error happend: " + error.localizedDescription)
+        errorHelper.callRejectWith(errMsg : ResponsesConstants.ERROR_NFC_CONNECTION_INTERRUPTED, reject: reject)
     }
     
 }

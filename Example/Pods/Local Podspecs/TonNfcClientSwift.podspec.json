@@ -1,6 +1,6 @@
 {
   "name": "TonNfcClientSwift",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "summary": "This is a library to work with TON NFC security cards.",
   "description": "This library provides functions allowing to make all available TON NFC cards operations.",
   "homepage": "https://github.com/tonlabs/TonNfcClientSwift",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/tonlabs/TonNfcClientSwift.git",
-    "tag": "1.1.4"
+    "tag": "1.1.5"
   },
   "platforms": {
     "ios": "11.0"

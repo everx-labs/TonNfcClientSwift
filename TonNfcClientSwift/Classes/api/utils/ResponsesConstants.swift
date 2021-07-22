@@ -119,11 +119,13 @@ public class ResponsesConstants {
     /**
     * ANDROID_NFC_ERROR_TYPE_ID = 2
     */
+    static let ERROR_NFC_CONNECTION_INTERRUPTED = "Nfc connection was interrupted by user."
     static let ERROR_MSG_NFC_SESSION_IS_NIL: String =  "NFC session is not established (session is empty)."
     static let ERROR_MSG_NFC_TAG_NOT_DETECTED: String =  "NFC Tag is not detected."
     static let ERROR_MSG_NFC_TAG_NOT_CONNECTED: String =  "Can not establish connection with NFC Tag, more details:"
     
     static let IOS_NFC_ERRORS = [
+        ERROR_NFC_CONNECTION_INTERRUPTED,
         ERROR_MSG_NFC_SESSION_IS_NIL,
         ERROR_MSG_NFC_TAG_NOT_DETECTED,
         ERROR_MSG_NFC_TAG_NOT_CONNECTED
