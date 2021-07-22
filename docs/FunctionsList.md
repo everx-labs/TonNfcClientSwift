@@ -277,7 +277,7 @@ And also some special functions are available in CardActivationApi. They are nec
 
 - **turnOnWallet(newPin : String, authenticationPassword : String, commonSecret : String, initialVector : String)**
 
-    This function makes TON Labs wallet applet activation. After its succesfull call applet will be in working personalized state (so getTonAppletState() will return {"message":"TonWalletApplet is personalized.","status":"ok"}).
+    This function makes TON Labs wallet applet activation. After its succesfull call applet will be in working personalized state (so getTonAppletState() will return {"message":"TonWalletApplet is personalized.","status":"ok"}). At the begining of its work it reset seed and pin and generate new seed.
 
     *Arguments requirements:*
 
