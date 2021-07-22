@@ -66,3 +66,15 @@ All notable changes to this project will be documented in this file.
 ### Fixed
 
 - checkIfNfcSupported returns json.
+
+## [1.1.3] – 2021-07-06
+
+### New
+
+- Add NFC connection notification
+
+## [1.1.4] – 2021-07-22
+
+### New
+
+- Add generateSeedAndGetHashes + add final check state into turnOnWallet. This was done to reduce the number of card reconnects during card activation.
