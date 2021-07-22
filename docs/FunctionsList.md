@@ -338,6 +338,14 @@ And also some special functions are available in CardActivationApi. They are nec
     *Exemplary responses:*
 
         {"ecsHash":"26D4B03C0C0E168DC33E48BBCEB457C21364658C9D487341827BBFFB4D8B38F3","epHash":"EFBF24AC1563B34ADB0FFE0B0A53659E72E26765704C109C95346EEAA1D4BEAF","status":"ok"}
+        
+- **generateSeedAndGetHashes()**
+
+    Generate seed and return SHA256 hashes of encrypted password and encrypted common secret.
+
+    *Exemplary responses:*
+
+        {"ecsHash":"26D4B03C0C0E168DC33E48BBCEB457C21364658C9D487341827BBFFB4D8B38F3","epHash":"EFBF24AC1563B34ADB0FFE0B0A53659E72E26765704C109C95346EEAA1D4BEAF","status":"ok"}
 
 
 ### CardCryptoApi functions
