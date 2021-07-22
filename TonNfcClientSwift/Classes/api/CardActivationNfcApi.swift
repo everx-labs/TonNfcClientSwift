@@ -102,6 +102,16 @@ public class CardActivationNfcApi: CardCoinManagerNfcApi {
                     try self.createKeyForHmac(password : passwordBytes, commonSecret : commonSecretBytes, serialNumber : serialNumber.makeDigitalString())
                     return self.apduRunner.sendApdu(apduCommand: TonWalletAppletApduCommands.GET_APP_INFO_APDU)
                 }
+                .then{(response : Data)  -> Promise<Data> in
+                    if (response.count != TonWalletAppletConstants.GET_APP_INFO_LE) {
+                        throw ResponsesConstants.ERROR_MSG_STATE_RESPONSE_LEN_INCORRECT
+                    }
+                    let appletState = response.bytes[0]
+                    guard appletState == TonWalletAppletConstants.APP_PERSONALIZED else {
+                        throw ResponsesConstants.ERROR_MSG_APPLET_IS_NOT_PERSONALIZED + TonWalletAppletConstants.APPLET_STATES[response.bytes[0]]!
+                    }
+                    return Promise { promise in promise.fulfill(response)}
+                }
                 .then{(response : Data)  -> Promise<String> in
                     let state = TonWalletAppletConstants.APPLET_STATES[response.bytes[0]]!
                     return self.makeFinalPromise(result : state)
@@ -131,6 +141,60 @@ public class CardActivationNfcApi: CardCoinManagerNfcApi {
         })
         apduRunner.startScan()
         
+    }
+    
+    
+    public func generateSeedAndGetHashes(resolve : @escaping NfcResolver, reject : @escaping NfcRejecter) {
+        print("Start card operation: generateSeedAndGetHashes")
+        var hashesInfo: [String : String] = [:]
+        hashesInfo[JsonHelper.STATUS_FIELD] = ResponsesConstants.SUCCESS_STATUS
+        apduRunner.setCallback(resolve : resolve, reject : reject)
+        apduRunner.setCardOperation(cardOperation: { () in
+            self.apduRunner.sendCoinManagerAppletApdu(apduCommand: CoinManagerApduCommands.GET_ROOT_KEY_STATUS_APDU)
+                .then{(response : Data)  -> Promise<Data> in
+                    if (response.count == 0) {
+                        throw ResponsesConstants.ERROR_MSG_GET_ROOT_KEY_STATUS_RESPONSE_LEN_INCORRECT
+                    }
+                    let seedStatus = response.bytes[0] == CoinManagerConstants.POSITIVE_ROOT_KEY_STATUS
+                    if (!seedStatus) {
+                        return self.apduRunner.sendApdu(apduCommand:       CoinManagerApduCommands.RESET_WALLET_APDU).then{(response : Data)  -> Promise<Data> in self.apduRunner.sendApdu(apduCommand: CoinManagerApduCommands.GEN_SEED_FOR_DEFAULT_PIN)}
+                    }
+                    return Promise { promise in promise.fulfill(Data())}
+                }
+                .then{(response : Data)  -> Promise<Data> in
+                    self.apduRunner.sendTonWalletAppletApdu(apduCommand: TonWalletAppletApduCommands.GET_APP_INFO_APDU)
+                }
+                .then{(response : Data)  -> Promise<Data> in
+                    if (response.count != TonWalletAppletConstants.GET_APP_INFO_LE) {
+                        throw ResponsesConstants.ERROR_MSG_STATE_RESPONSE_LEN_INCORRECT
+                    }
+                    let appletState = response.bytes[0]
+                    guard appletState == TonWalletAppletConstants.APP_WAITE_AUTHENTICATION_MODE else {
+                        throw ResponsesConstants.ERROR_MSG_APPLET_DOES_NOT_WAIT_AUTHORIZATION + TonWalletAppletConstants.APPLET_STATES[response.bytes[0]]!
+                    }
+                    return Promise { promise in promise.fulfill(Data())}
+                }
+                .then{(response : Data)  -> Promise<Data> in
+                    self.apduRunner.sendApdu(apduCommand: TonWalletAppletApduCommands.GET_HASH_OF_ENCRYPTED_COMMON_SECRET_APDU)
+                }
+                .then{(response : Data)  -> Promise<Data> in
+                    if (response.count != TonWalletAppletConstants.SHA_HASH_SIZE) {
+                        throw ResponsesConstants.ERROR_MSG_HASH_OF_ENCRYPTED_COMMON_SECRET_RESPONSE_LEN_INCORRECT
+                    }
+                    hashesInfo[CardActivationNfcApi.ECS_HASH_FIELD] = response.hexEncodedString()
+                    return self.apduRunner.sendApdu(apduCommand: TonWalletAppletApduCommands.GET_HASH_OF_ENCRYPTED_PASSWORD_APDU)
+                }
+                .then{(response : Data)  -> Promise<String> in
+                    if (response.count != TonWalletAppletConstants.SHA_HASH_SIZE) {
+                        throw ResponsesConstants.ERROR_MSG_HASH_OF_ENCRYPTED_PASSWORD_RESPONSE_LEN_INCORRECT
+                    }
+                    hashesInfo[CardActivationNfcApi.EP_HASH_FIELD] = response.hexEncodedString()
+                    return Promise<String> { promise in
+                        promise.fulfill(self.jsonHelper.makeJsonString(data: hashesInfo))
+                    }
+                }
+        })
+        apduRunner.startScan()
     }
     
     public func getHashes(resolve : @escaping NfcResolver, reject : @escaping NfcRejecter) {
