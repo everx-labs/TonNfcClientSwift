@@ -248,64 +248,15 @@ let cardCoinManagerNfcApi: CardCoinManagerNfcApi = CardCoinManagerNfcApi()
 let cardActivationApi : CardActivationNfcApi = CardActivationNfcApi()
 
 Promise<String> { promise in
-	cardCoinManagerNfcApi.getRootKeyStatus(
+	cardCoinManagerNfcApi.generateSeedAndGetHashes(
 		resolve: { msg in promise.fulfill(msg as! String) }, 
 		reject: { (errMsg : String, err : NSError) in promise.reject(err) }
 	)
 }
+
 .then{(response : String)  -> Promise<String> in
-	print("Response from getRootKeyStatus : " + response)
-	let message = try self.extractMessage(jsonStr : response)
-	if (message == ResponsesConstants.GENERATED_MSG) {
-		return Promise<String> { promise in promise.fulfill("Seed exists already")}
-	}
-	sleep(5)
-        return Promise<String> { promise in
-		self.cardCoinManagerNfcApi.generateSeed(
-			pin : self.DEFAULT_PIN, 
-			resolve: { msg in promise.fulfill(msg as! String) }, 
-			reject: { (errMsg : String, err : NSError) in promise.reject(err) }
-		)
-        }
-}
-.then{(response : String)  -> Promise<String> in
-	print("Response from generateSeed : " + response)
-	sleep(5)
-	return Promise<String> { promise in
-		self.cardActivationApi.getTonAppletState(
-			resolve: { msg in promise.fulfill(msg as! String) }, 
-			reject: { (errMsg : String, err : NSError) in promise.reject(err) }
-		)
-        }
-}
-.then{(response : String)  -> Promise<String> in
-	print("Response from getTonAppletState : " + response)
-        let message = try self.extractMessage(jsonStr : response)
-        if (message != TonWalletAppletConstants.WAITE_AUTHENTICATION_MSG) {
-		throw "Incorrect applet state : " + message
-	}
-	sleep(5)
-	return Promise<String> { promise in
-		self.cardActivationApi.getHashOfEncryptedCommonSecret(
-			resolve: { msg in promise.fulfill(msg as! String) }, 
-			reject: { (errMsg : String, err : NSError) in promise.reject(err) }
-		)
-        }
-}
-.then{(response : String)  -> Promise<String> in
-	print("Response from getHashOfEncryptedCommonSecret : " + response)
-	//check hashOfEncryptedCommonSecret
-	sleep(5)
-	return Promise<String> { promise in
-		self.cardActivationApi.getHashOfEncryptedPassword(
-			resolve: { msg in promise.fulfill(msg as! String) }, 
-			reject: { (errMsg : String, err : NSError) in promise.reject(err) }
-		)
-        }
-}
-.then{(response : String)  -> Promise<String> in
-	print("Response from getHashOfEncryptedPassword : " + response)
-	//check hashOfEncryptedPassword
+	print("Response from getHashes : " + response)
+	//check hashes
 	sleep(5)
 	return Promise<String> { promise in
 		self.cardActivationApi.turnOnWallet(
@@ -318,9 +269,6 @@ Promise<String> { promise in
 .done{response in
 	print("Response from getTonAppletState : " + response)
 	let message = try self.extractMessage(jsonStr : response)
-	if (message != TonWalletAppletConstants.PERSONALIZED_STATE_MSG) {
-		throw "Applet state is not personalized. Incorrect applet state : " + message
-	}
 }
 .catch{ error in
 	print("Error happened : " + error.localizedDescription)
@@ -329,10 +277,10 @@ Promise<String> { promise in
 Here there is a chain of NFC card operations built using promises. To make each card operation you must reconnect the card. Each time you will get invitation dialog to establish the connection (see previous section _Test work with the card_). iPhones have peculiarities of working with NFC. After one NFC session is finished, it may be not possible to establish a new session immediately (at least for iPhone 7 and 8 it is true). So if you write the following code you may get a error.
 
 ```swift
-cardCoinManagerNfcApi.getRootKeyStatus(resolve: resolve, reject: reject)
-cardCoinManagerNfcApi.generateSeed(pin: DEFAULT_PIN, resolve: resolve, reject: reject)
+cardCoinManagerNfcApi.generateSeedAndGetHashes(resolve: resolve, reject: reject)
+cardCoinManagerNfcApi.turnOnWallet(pin: DEFAULT_PIN, resolve: resolve, reject: reject)
 ```
-Here the first call of _getRootKeyStatus_ will work, but attempt to call _generateSeed_ immediately may throw a error _"System resource is unavailable"_. We need to make a short delay (approximately 3-5 seconds) before we start new NFC session. So these two calls must be separated for example by the call of _sleep_ function. That is why in above snippet demonstrating card activation before each API call there is a string _sleep(5)_.   
+Here the first call of _generateSeedAndGetHashes_ will work, but attempt to call _turnOnWallet_ immediately may throw a error _"System resource is unavailable"_. We need to make a short delay (approximately 3-5 seconds) before we start new NFC session. So these two calls must be separated for example by the call of _sleep_ function. That is why in above snippet demonstrating card activation before each API call there is a string _sleep(5)_.   
 
 ## About applet states and provided functionality
 
