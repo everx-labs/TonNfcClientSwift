@@ -201,6 +201,16 @@ class ViewController: UIViewController {
                 /*self.cardCryptoNfcApi.verifyPinAndSign(data: msg, hdIndex: hdIndex, pin: pin, resolve: { msg in promise.fulfill(msg as! String) }, reject: { (errMsg : String, err : NSError) in promise.reject(err) })*/
             }
         }
+        .then{(response : String)  -> Promise<String> in
+            print("Response from createKeyForHmac : " + response)
+            return Promise<String> { promise in
+                self.cardCryptoNfcApi
+                   .checkSerialNumberAndVerifyPinAndSign(serialNumber: self.SERIAL_NUMBER, data: msg, hdIndex: hdIndex, pin: pin,  resolve: { msg in promise.fulfill(msg as! String) }, reject: { (errMsg : String, err : NSError) in promise.reject(err) })
+              /* .checkSerialNumberAndVerifyPinAndSignForDefaultHdPath(serialNumber: self.SERIAL_NUMBER, data: msg, pin: pin,  resolve: { msg in promise.fulfill(msg as! String) }, reject: { (errMsg : String, err : NSError) in promise.reject(err) })*/
+               /* self.cardCryptoNfcApi.checkSerialNumberAndSignForDefaultHdPath(serialNumber: self.SERIAL_NUMBER, data: msg, resolve: { msg in promise.fulfill(msg as! String) }, reject: { (errMsg : String, err : NSError) in promise.reject(err) })*/
+                /*self.cardCryptoNfcApi.verifyPinAndSign(data: msg, hdIndex: hdIndex, pin: pin, resolve: { msg in promise.fulfill(msg as! String) }, reject: { (errMsg : String, err : NSError) in promise.reject(err) })*/
+            }
+        }
         .done{response in
             print("Got signature : "  + response)
         }

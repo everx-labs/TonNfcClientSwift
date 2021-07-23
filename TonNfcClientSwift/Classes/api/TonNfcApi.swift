@@ -67,7 +67,7 @@ public class TonNfcApi {
             }
         }
         catch {
-            errorHelper.callRejectWith(errMsg : error as! String, reject : reject)
+            errorHelper.callRejectWith(error as! String, reject)
         }
     }
     
@@ -99,7 +99,7 @@ public class TonNfcApi {
             resolve(jsonHelper.createJson(msg : msg))
         }
         catch {
-            errorHelper.callRejectWith(errMsg : error as! String, reject : reject)
+            errorHelper.callRejectWith(error as! String, reject)
         }
     }
     
@@ -131,7 +131,7 @@ public class TonNfcApi {
             }
         }
         catch {
-            errorHelper.callRejectWith(errMsg : error as! String, reject : reject)
+            errorHelper.callRejectWith(error as! String, reject)
         }
     }
     
@@ -170,7 +170,7 @@ public class TonNfcApi {
             resolve(jsonHelper.createJson(msg : ResponsesConstants.DONE_MSG))
         }
         catch {
-            errorHelper.callRejectWith(errMsg : error as! String, reject : reject)
+            errorHelper.callRejectWith(error as! String, reject)
         }
     }
     
@@ -230,7 +230,7 @@ public class TonNfcApi {
             }
         }
         catch {
-            errorHelper.callRejectWith(errMsg : error as! String, reject : reject)
+            errorHelper.callRejectWith(error as! String, reject)
         }
     }
     

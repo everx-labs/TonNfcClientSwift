@@ -58,6 +58,9 @@ class JsonHelper {
         if let msg = CardErrorCodes.getErrorMsg(sw: sw) {
             data[JsonHelper.MESSAGE_FIELD] = msg
         }
+        else {
+            data[JsonHelper.MESSAGE_FIELD] = "Unknown card status word."
+        }
         data[JsonHelper.STATUS_FIELD] = ResponsesConstants.FAIL_STATUS
         data[JsonHelper.ERROR_TYPE_ID_FIELD] = ResponsesConstants.CARD_ERROR_TYPE_ID
         data[JsonHelper.ERROR_TYPE_FIELD] = ResponsesConstants.CARD_ERROR_TYPE_MSG
@@ -76,7 +79,6 @@ class JsonHelper {
         data[JsonHelper.STATUS_FIELD] = ResponsesConstants.FAIL_STATUS
         
         let errCode = ResponsesConstants.getErrorCode(errMsg: msg) ?? ResponsesConstants.SWIFT_INTERNAL_ERROR_TYPE_ID
-        print("errCode2223424")
         print(errCode)
         let errTypeId = errCode.substring(with: 0..<1)
         
