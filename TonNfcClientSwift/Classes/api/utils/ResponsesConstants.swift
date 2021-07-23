@@ -184,6 +184,8 @@ public class ResponsesConstants {
         ERROR_MSG_PIN_LEN_INCORRECT,
         ERROR_MSG_PIN_FORMAT_INCORRECT,
         ERROR_MSG_DATA_FOR_SIGNING_NOT_HEX,
+        ERROR_MSG_DATA_FOR_SIGNING_LEN_INCORRECT,
+        ERROR_MSG_DATA_FOR_SIGNING_WITH_PATH_LEN_INCORRECT,
         ERROR_MSG_RECOVERY_DATA_NOT_HEX,
         ERROR_MSG_RECOVERY_DATA_LEN_INCORRECT,
         ERROR_MSG_HD_INDEX_LEN_INCORRECT,
@@ -220,11 +222,11 @@ public class ResponsesConstants {
     static let ERROR_MSG_SIG_RESPONSE_LEN_INCORRECT: String =  "Signature must have length " + String(TonWalletAppletConstants.SIG_LEN) + "."
     static let ERROR_MSG_PUBLIC_KEY_RESPONSE_LEN_INCORRECT: String =  "Public key must have length " + String(TonWalletAppletConstants.PK_LEN) + "."
     static let ERROR_MSG_GET_NUMBER_OF_KEYS_RESPONSE_LEN_INCORRECT: String =  "Response from GET_NUMBER_OF_KEYS card operation must have length " + String(TonWalletAppletConstants.GET_NUMBER_OF_KEYS_LE) + "."
-    static let ERROR_MSG_NUMBER_OF_KEYS_RESPONSE_INCORRECT: String = "Number of keys in keychain must be > 0 and <= " + String(TonWalletAppletConstants.MAX_NUMBER_OF_KEYS_IN_KEYCHAIN)
+    static let ERROR_MSG_NUMBER_OF_KEYS_RESPONSE_INCORRECT: String = "Number of keys in keychain must be > 0 and <= " + String(TonWalletAppletConstants.MAX_NUMBER_OF_KEYS_IN_KEYCHAIN) + "."
     static let ERROR_MSG_GET_OCCUPIED_SIZE_RESPONSE_LEN_INCORRECT: String = "Response from GET_OCCUPIED_SIZE card operation must have length " + String(TonWalletAppletConstants.GET_NUMBER_OF_KEYS_LE) + "."
     static let ERROR_MSG_GET_FREE_SIZE_RESPONSE_LEN_INCORRECT: String = "Response from GET_FREE_SIZE_RESPONSE card operation must have length " + String(TonWalletAppletConstants.GET_NUMBER_OF_KEYS_LE) + "."
-    static let ERROR_MSG_OCCUPIED_SIZE_RESPONSE_INCORRECT: String = "Occupied size in keychain can not be negative"
-    static let ERROR_MSG_FREE_SIZE_RESPONSE_INCORRECT: String = "Free size in keychain can not be negative"
+    static let ERROR_MSG_OCCUPIED_SIZE_RESPONSE_INCORRECT: String = "Occupied size in keychain can not be negative."
+    static let ERROR_MSG_FREE_SIZE_RESPONSE_INCORRECT: String = "Free size in keychain can not be negative."
     static let ERROR_MSG_GET_KEY_INDEX_IN_STORAGE_AND_LEN_RESPONSE_LEN_INCORRECT: String =  "Response from GET_KEY_INDEX_IN_STORAGE_AND_LEN card operation must have length " + String(TonWalletAppletConstants.GET_KEY_INDEX_IN_STORAGE_AND_LEN_LE) + "."
     static let ERROR_MSG_KEY_INDEX_INCORRECT: String = "Key index must be >= 0 and <= " + String(TonWalletAppletConstants.MAX_NUMBER_OF_KEYS_IN_KEYCHAIN - 1) + "."
     static let ERROR_MSG_KEY_LENGTH_INCORRECT: String = "Key length (in keychain) must be > 0 and <= " + String(TonWalletAppletConstants.MAX_KEY_SIZE_IN_KEYCHAIN) + "."
@@ -237,7 +239,7 @@ public class ResponsesConstants {
     static let ERROR_MSG_GET_DELETE_KEY_RECORD_NUM_OF_PACKETS_RESPONSE_LEN_INCORRECT: String =  "Response from GET_DELETE_KEY_RECORD card operation must have length " + String(TonWalletAppletConstants.GET_DELETE_KEY_RECORD_NUM_OF_PACKETS_LE) + "."
     static let ERROR_MSG_GET_DELETE_KEY_RECORD_NUM_OF_PACKETS_RESPONSE_INCORRECT = "Response from GET_DELETE_KEY_RECORD_NUM_OF_PACKETS card operation can not be negative."
     static let ERROR_MSG_NUM_OF_KEYS_INCORRECT_AFTER_ADD: String = "After ADD_KEY card operation number of keys must be increased by 1."
-    static let ERROR_MSG_NUM_OF_KEYS_INCORRECT_AFTER_CHANGE: String = "After ADD_KEY card operation number of keys must not be changed."
+    static let ERROR_MSG_NUM_OF_KEYS_INCORRECT_AFTER_CHANGE: String = "After CHANGE_KEY card operation number of keys must not be changed."
     static let ERROR_MSG_SEND_CHUNK_RESPONSE_LEN_INCORRECT: String = "Response from SEND_CHUNK card operation must have length " + String(TonWalletAppletConstants.SEND_CHUNK_LE) + "."
     static let ERROR_MSG_GET_HMAC_RESPONSE_LEN_INCORRECT: String = "Hash of key (from keychain) must have length " + String(TonWalletAppletConstants.SHA_HASH_SIZE) + "."
     static let ERROR_MSG_INITIATE_DELETE_KEY_RESPONSE_LEN_INCORRECT: String = "Response from INITIATE_DELETE_KEY card operation must have length " + String(TonWalletAppletConstants.INITIATE_DELETE_KEY_LE) + "."
@@ -271,8 +273,8 @@ public class ResponsesConstants {
         ERROR_MSG_NUMBER_OF_KEYS_RESPONSE_INCORRECT,
         ERROR_MSG_GET_OCCUPIED_SIZE_RESPONSE_LEN_INCORRECT,
         ERROR_MSG_GET_FREE_SIZE_RESPONSE_LEN_INCORRECT,
-        ERROR_MSG_OCCUPIED_SIZE_RESPONSE_INCORRECT, // fix message for android
-        ERROR_MSG_FREE_SIZE_RESPONSE_INCORRECT, // fix message for android
+        ERROR_MSG_OCCUPIED_SIZE_RESPONSE_INCORRECT,
+        ERROR_MSG_FREE_SIZE_RESPONSE_INCORRECT,
         ERROR_MSG_GET_KEY_INDEX_IN_STORAGE_AND_LEN_RESPONSE_LEN_INCORRECT,
         ERROR_MSG_KEY_INDEX_INCORRECT,
         ERROR_MSG_KEY_LENGTH_INCORRECT,
@@ -284,8 +286,8 @@ public class ResponsesConstants {
         ERROR_MSG_GET_DELETE_KEY_CHUNK_NUM_OF_PACKETS_RESPONSE_INCORRECT,
         ERROR_MSG_GET_DELETE_KEY_RECORD_NUM_OF_PACKETS_RESPONSE_LEN_INCORRECT,
         ERROR_MSG_GET_DELETE_KEY_RECORD_NUM_OF_PACKETS_RESPONSE_INCORRECT,
-        ERROR_MSG_NUM_OF_KEYS_INCORRECT_AFTER_ADD, // fix title fo android
-        ERROR_MSG_NUM_OF_KEYS_INCORRECT_AFTER_CHANGE,// fix title fo android
+        ERROR_MSG_NUM_OF_KEYS_INCORRECT_AFTER_ADD,
+        ERROR_MSG_NUM_OF_KEYS_INCORRECT_AFTER_CHANGE,
         ERROR_MSG_SEND_CHUNK_RESPONSE_LEN_INCORRECT,
         ERROR_MSG_GET_HMAC_RESPONSE_LEN_INCORRECT,
         ERROR_MSG_INITIATE_DELETE_KEY_RESPONSE_LEN_INCORRECT,
