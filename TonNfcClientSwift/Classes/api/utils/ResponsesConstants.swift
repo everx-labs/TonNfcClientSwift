@@ -29,17 +29,19 @@ public class ResponsesConstants {
     
     static let CARD_ERROR_TYPE_ID: String =  "0"
     static let SWIFT_INTERNAL_ERROR_TYPE_ID: String =  "1"
-    static let IOS_NFC_ERROR_TYPE_ID: String =  "2"
+    static let NFC_INTERRUPTION_TYPE_ID: String = "2"
+    static let IOS_NFC_ERROR_TYPE_ID: String =  "21"
     static let INPUT_DATA_FORMAT_ERROR_TYPE_ID: String =  "3"
     static let CARD_RESPONSE_DATA_ERROR_TYPE_ID: String =  "4"
     static let IMPROPER_APPLET_STATE_ERROR_TYPE_ID: String =  "5"
-    static let HMAC_KEY_ERROR_TYPE_ID: String =  "6"
+    static let IOS_KEYCHAIN_HMAC_KEY_ERROR_TYPE_ID: String =  "6"
     static let WRONG_CARD_ERROR_TYPE_ID: String = "7"
     
-    static let ERROR_TYPE_IDS = [CARD_ERROR_TYPE_ID, SWIFT_INTERNAL_ERROR_TYPE_ID, IOS_NFC_ERROR_TYPE_ID, INPUT_DATA_FORMAT_ERROR_TYPE_ID, CARD_RESPONSE_DATA_ERROR_TYPE_ID, IMPROPER_APPLET_STATE_ERROR_TYPE_ID, HMAC_KEY_ERROR_TYPE_ID, WRONG_CARD_ERROR_TYPE_ID]
+    static let ERROR_TYPE_IDS = [CARD_ERROR_TYPE_ID, SWIFT_INTERNAL_ERROR_TYPE_ID, NFC_INTERRUPTION_TYPE_ID, IOS_NFC_ERROR_TYPE_ID, INPUT_DATA_FORMAT_ERROR_TYPE_ID, CARD_RESPONSE_DATA_ERROR_TYPE_ID, IMPROPER_APPLET_STATE_ERROR_TYPE_ID, IOS_KEYCHAIN_HMAC_KEY_ERROR_TYPE_ID, WRONG_CARD_ERROR_TYPE_ID]
     
     static let CARD_ERROR_TYPE: String =  "CARD_ERROR"
     static let SWIFT_INTERNAL_ERROR_TYPE: String =  "SWIFT_INTERNAL_ERROR"
+    static let NFC_INTERRUPTION_TYPE: String =  "NFC_INTERRUPTION_ERROR"
     static let IOS_NFC_ERROR_TYPE: String =  "IOS_NFC_ERROR"
     static let INPUT_DATA_FORMAT_ERROR_TYPE: String =  "INPUT_DATA_FORMAT_ERROR"
     static let CARD_RESPONSE_DATA_ERROR_TYPE: String =  "CARD_RESPONSE_DATA_ERROR"
@@ -47,18 +49,19 @@ public class ResponsesConstants {
     static let HMAC_KEY_ERROR_TYPE: String =  "HMAC_KEY_ERROR"
     static let WRONG_CARD_ERROR_TYPE: String = "WRONG_CARD_ERROR"
     
-    static let ERROR_TYPE_NAMES = [CARD_ERROR_TYPE, SWIFT_INTERNAL_ERROR_TYPE, IOS_NFC_ERROR_TYPE, INPUT_DATA_FORMAT_ERROR_TYPE, CARD_RESPONSE_DATA_ERROR_TYPE, IMPROPER_APPLET_STATE_ERROR_TYPE, HMAC_KEY_ERROR_TYPE, WRONG_CARD_ERROR_TYPE]
+    static let ERROR_TYPE_NAMES = [CARD_ERROR_TYPE, SWIFT_INTERNAL_ERROR_TYPE, NFC_INTERRUPTION_TYPE, IOS_NFC_ERROR_TYPE, INPUT_DATA_FORMAT_ERROR_TYPE, CARD_RESPONSE_DATA_ERROR_TYPE, IMPROPER_APPLET_STATE_ERROR_TYPE, HMAC_KEY_ERROR_TYPE, WRONG_CARD_ERROR_TYPE]
     
     static let CARD_ERROR_TYPE_MSG: String =  "Applet fail: card operation error"
     static let SWIFT_INTERNAL_ERROR_TYPE_MSG: String =  "Swift code fail: internal error"
+    static let NFC_INTERRUPTION_TYPE_MSG = "Native code fail: NFC connection interruption"
     static let IOS_NFC_ERROR_TYPE_MSG: String =  "Swift code fail: NFC error"
     static let INPUT_DATA_FORMAT_ERROR_TYPE_MSG: String =  "Native code fail: incorrect format of input data"
     static let CARD_RESPONSE_DATA_ERROR_TYPE_MSG: String =  "Native code fail: incorrect response from card"
     static let IMPROPER_APPLET_STATE_ERROR_TYPE_MSG: String =  "Native code fail: improper applet state"
-    static let HMAC_KEY_ERROR_TYPE_MSG: String =  "Native code fail: hmac key issue"
+    static let IOS_KEYCHAIN_HMAC_KEY_ERROR_TYPE_MSG: String =  "Native code (iOS) fail: hmac key issue"
     static let WRONG_CARD_ERROR_TYPE_MSG: String = "Native code fail: wrong card"
     
-    static let ERROR_TYPE_MSGS = [CARD_ERROR_TYPE_MSG, SWIFT_INTERNAL_ERROR_TYPE_MSG, IOS_NFC_ERROR_TYPE_MSG, INPUT_DATA_FORMAT_ERROR_TYPE_MSG, CARD_RESPONSE_DATA_ERROR_TYPE_MSG, IMPROPER_APPLET_STATE_ERROR_TYPE_MSG, HMAC_KEY_ERROR_TYPE_MSG, WRONG_CARD_ERROR_TYPE_MSG]
+    static let ERROR_TYPE_MSGS = [CARD_ERROR_TYPE_MSG, SWIFT_INTERNAL_ERROR_TYPE_MSG, NFC_INTERRUPTION_TYPE_MSG, IOS_NFC_ERROR_TYPE_MSG, INPUT_DATA_FORMAT_ERROR_TYPE_MSG, CARD_RESPONSE_DATA_ERROR_TYPE_MSG, IMPROPER_APPLET_STATE_ERROR_TYPE_MSG, IOS_KEYCHAIN_HMAC_KEY_ERROR_TYPE_MSG, WRONG_CARD_ERROR_TYPE_MSG]
     
     static let errorTypeIdToErrorTypeMsgMap: [String: String] = {
         var map: [String: String] = [:]
@@ -76,7 +79,7 @@ public class ResponsesConstants {
         return map
     }()
     
-    /* ANDROID_INTERNAL_ERROR_TYPE_ID = 1
+    /* SWIFT_INTERNAL_ERROR_TYPE_ID = 1
      **/
     static let ERROR_MSG_CARD_OPERATION_EMPTY: String =  "Card operation for ApduRunner is not set."
     
@@ -117,15 +120,23 @@ public class ResponsesConstants {
     
     
     /**
-    * ANDROID_NFC_ERROR_TYPE_ID = 2
+    * NFC_INTERRUPTION_TYPE_ID = 2
     */
     static let ERROR_NFC_CONNECTION_INTERRUPTED = "Nfc connection was interrupted by user."
+    
+    static let NFC_INTERRUPTION_ERRORS = [
+        ERROR_NFC_CONNECTION_INTERRUPTED
+    ]
+    
+    /**
+    * IOS_NFC_ERROR_TYPE_ID = 21
+    */
+    
     static let ERROR_MSG_NFC_SESSION_IS_NIL: String =  "NFC session is not established (session is empty)."
     static let ERROR_MSG_NFC_TAG_NOT_DETECTED: String =  "NFC Tag is not detected."
     static let ERROR_MSG_NFC_TAG_NOT_CONNECTED: String =  "Can not establish connection with NFC Tag, more details:"
     
     static let IOS_NFC_ERRORS = [
-        ERROR_NFC_CONNECTION_INTERRUPTED,
         ERROR_MSG_NFC_SESSION_IS_NIL,
         ERROR_MSG_NFC_TAG_NOT_DETECTED,
         ERROR_MSG_NFC_TAG_NOT_CONNECTED
@@ -296,7 +307,7 @@ public class ResponsesConstants {
     static let ERROR_MSG_APDU_NOT_SUPPORTED: String = "APDU command is not supported" 
     static let ERROR_MSG_APPLET_DOES_NOT_WAIT_AUTHORIZATION: String = "Applet must be in mode that waits authorization. Now it is: "
     static let ERROR_MSG_APPLET_IS_NOT_PERSONALIZED: String = "Applet must be in personalized mode. Now it is: "
-    static let ERROR_MSG_APPLET_DOES_NOT_WAIT_TO_DELETE_KEY: String = "Applet must be in mode for deleting key. Now it is "
+    static let ERROR_MSG_APPLET_DOES_NOT_WAIT_TO_DELETE_KEY: String = "Applet must be in mode for deleting key. Now it is: "
     
     static let IMPROPER_APPLET_STATE_ERRORS = [
         ERROR_MSG_APDU_NOT_SUPPORTED,
@@ -306,7 +317,7 @@ public class ResponsesConstants {
     ]
     
     /**
-     * HMAC_KEY_ERROR_TYPE_ID = 6
+     *IOS_KEYCHAIN_HMAC_KEY_ERROR_TYPE_ID = 6
      */
     static let ERROR_MSG_KEY_FOR_HMAC_DOES_NOT_EXIST_IN_IOS_KEYCHAIN: String = "Key for hmac signing for specified serial number does not exist."
     static let ERROR_MSG_CURRENT_SERIAL_NUMBER_IS_NOT_SET_IN_IOS_KEYCHAIN: String = "Current serial number is not set. Can not select key for hmac."
@@ -317,7 +328,7 @@ public class ResponsesConstants {
     static let ERROR_MSG_UNABLE_UPDATE_KEY_IN_IOS_KEYCHAIN: String =  "Unable to update key in keychain."
     
     
-    static let HMAC_KEY_ERRORS = [
+    static let IOS_KEYCHAIN_HMAC_KEY_ERRORS = [
         ERROR_MSG_KEY_FOR_HMAC_DOES_NOT_EXIST_IN_IOS_KEYCHAIN,
         ERROR_MSG_CURRENT_SERIAL_NUMBER_IS_NOT_SET_IN_IOS_KEYCHAIN,
         ERROR_MSG_UNABLE_RETRIEVE_ANY_KEY_FROM_IOS_KEYCHAIN,
@@ -339,11 +350,12 @@ public class ResponsesConstants {
     
     static let ALL_NATIVE_ERROR_MESSAGES = [
         SWIFT_INTERNAL_ERRORS,
+        NFC_INTERRUPTION_ERRORS,
         IOS_NFC_ERRORS,
         INPUT_DATA_FORMAT_ERRORS,
         CARD_RESPONSE_DATA_ERRORS,
         IMPROPER_APPLET_STATE_ERRORS,
-        HMAC_KEY_ERRORS,
+        IOS_KEYCHAIN_HMAC_KEY_ERRORS,
         WRONG_CARD_ERRORS
     ]
     
