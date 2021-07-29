@@ -595,30 +595,41 @@ Here there are some internal errors that may happen inside Swift code. It means 
 ```
 //List will be added later
 ```
+## NFC_INTERRUPTION_ERRORS
+
+```json
+{
+  "code": "20000",
+  "errorType": "Native code fail: NFC connection interruption",
+  "errorTypeId": "2",
+  "message": "Nfc connection was interrupted by user.",
+  "status": "fail"
+}
+
 ## IOS_NFC_ERRORS
 
 Here there is a list of any troubles with NFC hardware and connection.
 
 ```
 { 
-"errorType": "Android code fail: NFC error", 
-"errorTypeId": "2", 
-"code": "20000", 
+"errorType": "iOS code fail: NFC error", 
+"errorTypeId": "21", 
+"code": "210000", 
 "message": "NFC session is not established (session is empty).", 
 "status": "fail" 
 }
 
 { 
-"errorType": "Android code fail: NFC error", 
-"errorTypeId": "2", 
-"code": "20001", 
+"errorType": "iOS code fail: NFC error", 
+"errorTypeId": "21", 
+"code": "210001", 
 "message": "NFC Tag is not detected.", 
 "status": "fail" }
 
 { 
-"errorType": "Android code fail: NFC error", 
-"errorTypeId": "2", 
-"code": "20002", 
+"errorType": "iOS code fail: NFC error", 
+"errorTypeId": "21", 
+"code": "210002", 
 "message": "Can not establish connection with NFC Tag, more details:", 
 "status": "fail" 
 }
@@ -1263,7 +1274,7 @@ Here there is a list of possible errors that can happen during work with hmac ke
 
 ```
 { 
-"errorType": "Native code fail: hmac key issue", 
+"errorType": "Native code (iOS) fail: hmac key issue", 
 "errorTypeId": "6", 
 "code": "60000", 
 "message": "Key for hmac signing for specified serial number does not exist.", 
@@ -1271,7 +1282,7 @@ Here there is a list of possible errors that can happen during work with hmac ke
 }
 
 { 
-"errorType": "Native code fail: hmac key issue", 
+"errorType": "Native code (iOS) fail: hmac key issue", 
 "errorTypeId": "6", 
 "code": "60001", 
 "message": "Current serial number is not set. Can not select key for hmac.", 
@@ -1279,7 +1290,7 @@ Here there is a list of possible errors that can happen during work with hmac ke
 }
 
 { 
-"errorType": "Native code fail: hmac key issue", 
+"errorType": "Native code (iOS) fail: hmac key issue", 
 "errorTypeId": "6", 
 "code": "60002", 
 "message": "Unable to retrieve any key from keychain.", 
@@ -1287,7 +1298,7 @@ Here there is a list of possible errors that can happen during work with hmac ke
 }
 
 { 
-"errorType": "Native code fail: hmac key issue", 
+"errorType": "Native code (iOS) fail: hmac key issue", 
 "errorTypeId": "6", 
 "code": "60003", 
 "message": "Unable to retrieve info about key from keychain.", 
@@ -1295,7 +1306,7 @@ Here there is a list of possible errors that can happen during work with hmac ke
 }
 
 { 
-"errorType": "Native code fail: hmac key issue", 
+"errorType": "Native code (iOS) fail: hmac key issue", 
 "errorTypeId": "6", 
 "code": "60004", 
 "message": "Unable to save key into keychain.", 
@@ -1303,7 +1314,7 @@ Here there is a list of possible errors that can happen during work with hmac ke
 }
 
 { 
-"errorType": "Native code fail: hmac key issue", 
+"errorType": "Native code (iOS) fail: hmac key issue", 
 "errorTypeId": "6", 
 "code": "60005", 
 "message": "Unable to delete key from keychain.", 
@@ -1311,7 +1322,7 @@ Here there is a list of possible errors that can happen during work with hmac ke
 }
 
 { 
-"errorType": "Native code fail: hmac key issue", 
+"errorType": "Native code (iOS) fail: hmac key issue", 
 "errorTypeId": "6", 
 "code": "60006", 
 "message": "Unable to update key in keychain.", 
