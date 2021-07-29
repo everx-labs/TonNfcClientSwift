@@ -3,7 +3,7 @@ This specification describes all TON Wallet applet modes and APDU commands avail
 TON Wallet applet may be in one of the following states (modes):
 
 - Personalization (APP_INSTALLED = 0x07);
-- Waiting for authorization (APP_WAITE_AUTHORIZATION_MODE = 0x27);
+- Waiting for authentication(APP_WAITE_AUTHENTICATION_MODE = 0x27);
 - Main working mode (APP_PERSONALIZED = 0x17);
 - Blocked mode (APP_BLOCKED_MODE = 0x47);
 - Delete key from keychain mode (APP_DELETE_KEY_FROM_KEYCHAIN_MODE = (byte) 0x37).
@@ -63,7 +63,7 @@ APDU command to select TON Wallet applet.
 
 After applet loading and installation on the card it will be in mode APP_INSTALLED. It will wait for personalization. Personalization will be done at factory. The following APDU commands will be available.
 
-**Note**: After personalization is done applet state is switched into APP_WAITE_AUTHORIZATION_MODE. And this transition is irreversible. So the end user will not ever get the card with applet in this state.
+**Note**: After personalization is done applet state is switched into APP_WAITE_AUTHENTICAION_MODE. And this transition is irreversible. So the end user will not ever get the card with applet in this state.
 
 - **SET_SERIAL_NUMBER**
 
@@ -189,7 +189,7 @@ After applet loading and installation on the card it will be in mode APP_INSTALL
 
 - **FINISH_PERS**
 
-    This command finishes personalization and changes the state of applet. APP_WAITE_AUTHORIZATION_MODE state will be switched on .
+    This command finishes personalization and changes the state of applet. APP_WAITE_AUTHENTICATION_MODE state will be switched on .
 
     *Precondition:*  SET_PASSWORD_FOR_CARD_AUTHENTICATION and SET_COMMON_SECRE**T** should be called before, otherwise exception will be thrown.
 
@@ -297,9 +297,9 @@ After applet loading and installation on the card it will be in mode APP_INSTALL
 
     32 bytes of SHA256(common secret)
     
-## APP_WAITE_AUTHORIZATION_MODE state/Applet authorization
+## APP_WAITE_AUTHENTICATION_MODE state/Applet authentication
 
-After finishing the production applet will be in APP_WAITE_AUTHORIZATION_MODE. After getting the device the end user should complete the procedure of two-factor authorization to make applet working. For this he must know unencrypted activation password.
+After finishing the production applet will be in APP_WAITE_AUTHENTICATION_MODE. After getting the device the end user should complete the procedure of two-factor authentication to make applet working. For this he must know unencrypted activation password.
 
 The following APDU commands will be available here.   
 
@@ -338,7 +338,7 @@ The following APDU commands will be available here.
 - **INS_GET_SERIAL_NUMBER**
 - **GET_APP_INFO**
 
-***Examplary APDU script to authorize the applet:***
+***Examplary APDU script to activate the applet:***
 
 **a)** GET_HASH_OF_ENCRYPTED_PASSWORD: B0 93 00 00 20
 

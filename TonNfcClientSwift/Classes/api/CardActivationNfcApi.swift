@@ -64,7 +64,7 @@ public class CardActivationNfcApi: CardCoinManagerNfcApi {
                     }
                     let appletState = response.bytes[0]
                     guard appletState == TonWalletAppletConstants.APP_WAITE_AUTHENTICATION_MODE else {
-                        throw ResponsesConstants.ERROR_MSG_APPLET_DOES_NOT_WAIT_AUTHORIZATION + TonWalletAppletConstants.APPLET_STATES[response.bytes[0]]!
+                        throw ResponsesConstants.ERROR_MSG_APPLET_DOES_NOT_WAIT_AUTHENTICATION + TonWalletAppletConstants.APPLET_STATES[response.bytes[0]]!
                     }
                     return Promise { promise in promise.fulfill(Data())}
                 }
@@ -170,7 +170,7 @@ public class CardActivationNfcApi: CardCoinManagerNfcApi {
                     }
                     let appletState = response.bytes[0]
                     guard appletState == TonWalletAppletConstants.APP_WAITE_AUTHENTICATION_MODE else {
-                        throw ResponsesConstants.ERROR_MSG_APPLET_DOES_NOT_WAIT_AUTHORIZATION + TonWalletAppletConstants.APPLET_STATES[response.bytes[0]]!
+                        throw ResponsesConstants.ERROR_MSG_APPLET_DOES_NOT_WAIT_AUTHENTICATION + TonWalletAppletConstants.APPLET_STATES[response.bytes[0]]!
                     }
                     return Promise { promise in promise.fulfill(Data())}
                 }

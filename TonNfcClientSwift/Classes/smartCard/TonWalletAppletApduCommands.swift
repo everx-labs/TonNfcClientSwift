@@ -265,7 +265,7 @@ class TonWalletAppletApduCommands {
        * P2: 0x00
        * LE: 0x20
     
-       * This command returns SHA256 hash of encrypted (by AES) activation password. Available only in WAITE_AUTHORIZATION_MODE state of applet.
+       * This command returns SHA256 hash of encrypted (by AES) activation password. Available only in WAITE_AUTHENTICATION_MODE state of applet.
     */
     static let GET_HASH_OF_ENCRYPTED_PASSWORD_APDU = NFCISO7816APDU(instructionClass: WALLET_APPLET_CLA, instructionCode: INS_GET_HASH_OF_ENCRYPTED_PASSWORD, p1Parameter : P1, p2Parameter : P2, data : Data(), expectedResponseLength: TonWalletAppletConstants.SHA_HASH_SIZE)
     
@@ -278,7 +278,7 @@ class TonWalletAppletApduCommands {
        * P2: 0x00
        * LE: 0x20
        
-       * This command returns SHA256 hash of encrypted (by AES) activation common secret. Available only in WAITE_AUTHORIZATION_MODE state of applet.
+       * This command returns SHA256 hash of encrypted (by AES) activation common secret. Available only in WAITE_AUTHENTICATION_MODE state of applet.
     */
     static let GET_HASH_OF_ENCRYPTED_COMMON_SECRET_APDU = NFCISO7816APDU(instructionClass : WALLET_APPLET_CLA, instructionCode : INS_GET_HASH_OF_ENCRYPTED_COMMON_SECRET, p1Parameter : P1, p2Parameter : P2, data : Data(), expectedResponseLength : TonWalletAppletConstants.SHA_HASH_SIZE)
     
@@ -424,9 +424,9 @@ class TonWalletAppletApduCommands {
        P2: 0x00
        LC: 0x90
        Data: 128 bytes of unencrypted activation password | 16 bytes of IV for AES128 CBC
-       This function is available only in WAITE_AUTHORIZATION_MODE state of applet.
-       It makes activation password verification and in the case of success it changes the state of applet: WAITE_AUTHORIZATION_MODE -> PERSONALIZED.
-       After 20 unsuccessful attempts to verify password this functions changes the state of applet: WAITE_AUTHORIZATION_MODE -> BLOCKED_MODE. In this case applet is blocked.
+       This function is available only in WAITE_AUTHENTICATION_MODE state of applet.
+       It makes activation password verification and in the case of success it changes the state of applet: WAITE_AUTHENTICATION_MODE -> PERSONALIZED.
+       After 20 unsuccessful attempts to verify password this functions changes the state of applet: WAITE_AUTHENTICATION_MODE -> BLOCKED_MODE. In this case applet is blocked.
        This is irreversible and card becomes useless.
     */
     

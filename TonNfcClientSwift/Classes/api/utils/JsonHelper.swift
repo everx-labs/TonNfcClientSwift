@@ -80,7 +80,8 @@ class JsonHelper {
         
         let errCode = ResponsesConstants.getErrorCode(errMsg: msg) ?? ResponsesConstants.SWIFT_INTERNAL_ERROR_TYPE_ID
         print(errCode)
-        let errTypeId = errCode.substring(with: 0..<1)
+        let errTypeId = errCode.hasPrefix(ResponsesConstants.IOS_NFC_ERROR_TYPE_ID) ?
+            ResponsesConstants.IOS_NFC_ERROR_TYPE_ID : errCode.substring(with: 0..<1)
         
         data[JsonHelper.ERROR_TYPE_ID_FIELD] = errTypeId
         

@@ -52,9 +52,9 @@ public class ResponsesConstants {
     static let ERROR_TYPE_NAMES = [CARD_ERROR_TYPE, SWIFT_INTERNAL_ERROR_TYPE, NFC_INTERRUPTION_TYPE, IOS_NFC_ERROR_TYPE, INPUT_DATA_FORMAT_ERROR_TYPE, CARD_RESPONSE_DATA_ERROR_TYPE, IMPROPER_APPLET_STATE_ERROR_TYPE, HMAC_KEY_ERROR_TYPE, WRONG_CARD_ERROR_TYPE]
     
     static let CARD_ERROR_TYPE_MSG: String =  "Applet fail: card operation error"
-    static let SWIFT_INTERNAL_ERROR_TYPE_MSG: String =  "Swift code fail: internal error"
+    static let SWIFT_INTERNAL_ERROR_TYPE_MSG: String =  "iOS code fail: internal error"
     static let NFC_INTERRUPTION_TYPE_MSG = "Native code fail: NFC connection interruption"
-    static let IOS_NFC_ERROR_TYPE_MSG: String =  "Swift code fail: NFC error"
+    static let IOS_NFC_ERROR_TYPE_MSG: String =  "iOS code fail: NFC error"
     static let INPUT_DATA_FORMAT_ERROR_TYPE_MSG: String =  "Native code fail: incorrect format of input data"
     static let CARD_RESPONSE_DATA_ERROR_TYPE_MSG: String =  "Native code fail: incorrect response from card"
     static let IMPROPER_APPLET_STATE_ERROR_TYPE_MSG: String =  "Native code fail: improper applet state"
@@ -82,9 +82,6 @@ public class ResponsesConstants {
     /* SWIFT_INTERNAL_ERROR_TYPE_ID = 1
      **/
     static let ERROR_MSG_CARD_OPERATION_EMPTY: String =  "Card operation for ApduRunner is not set."
-    
-    
-    
     static let ERROR_MSG_APDU_EMPTY: String =  "Apdu command is null"
     static let ERROR_MSG_APDU_DATA_FIELD_LEN_INCORRECT: String =  "Datafield in APDU must have length > 0 and <= 255 bytes."
     static let ERROR_MSG_SW_TOO_SHORT: String =  "APDU response bytes are incorrect. It must contain at least 2 bytes of status word (SW) from the card."
@@ -217,8 +214,8 @@ public class ResponsesConstants {
     static let ERROR_RECOVERY_DATA_PORTION_INCORRECT_LEN = "Recovery data portion must have length = ";
     static let ERROR_MSG_HASH_OF_ENCRYPTED_PASSWORD_RESPONSE_LEN_INCORRECT: String =  "Hash of encrypted password must have length " + String(TonWalletAppletConstants.SHA_HASH_SIZE) + "."
     static let ERROR_MSG_HASH_OF_ENCRYPTED_COMMON_SECRET_RESPONSE_LEN_INCORRECT: String =  "Hash of encrypted common secret must have length " + String(TonWalletAppletConstants.SHA_HASH_SIZE) + "."
-    static let ERROR_MSG_HASH_OF_ENCRYPTED_COMMON_SECRET_RESPONSE_INCORRECT: String =  "Card two-factor authorization failed: Hash of encrypted common secret is invalid."
-    static let ERROR_MSG_HASH_OF_ENCRYPTED_PASSWORD_RESPONSE_INCORRECT: String =  "Card two-factor authorization failed: Hash of encrypted password is invalid."
+    static let ERROR_MSG_HASH_OF_ENCRYPTED_COMMON_SECRET_RESPONSE_INCORRECT: String =  "Card two-factor authentication failed: Hash of encrypted common secret is invalid."
+    static let ERROR_MSG_HASH_OF_ENCRYPTED_PASSWORD_RESPONSE_INCORRECT: String =  "Card two-factor authentication failed: Hash of encrypted password is invalid."
     static let ERROR_MSG_SIG_RESPONSE_LEN_INCORRECT: String =  "Signature must have length " + String(TonWalletAppletConstants.SIG_LEN) + "."
     static let ERROR_MSG_PUBLIC_KEY_RESPONSE_LEN_INCORRECT: String =  "Public key must have length " + String(TonWalletAppletConstants.PK_LEN) + "."
     static let ERROR_MSG_GET_NUMBER_OF_KEYS_RESPONSE_LEN_INCORRECT: String =  "Response from GET_NUMBER_OF_KEYS card operation must have length " + String(TonWalletAppletConstants.GET_NUMBER_OF_KEYS_LE) + "."
@@ -307,13 +304,13 @@ public class ResponsesConstants {
      * IMPROPER_APPLET_STATE_ERROR_TYPE_ID = 5
      */
     static let ERROR_MSG_APDU_NOT_SUPPORTED: String = "APDU command is not supported" 
-    static let ERROR_MSG_APPLET_DOES_NOT_WAIT_AUTHORIZATION: String = "Applet must be in mode that waits authorization. Now it is: "
+    static let ERROR_MSG_APPLET_DOES_NOT_WAIT_AUTHENTICATION: String = "Applet must be in mode that waits authentication. Now it is: "
     static let ERROR_MSG_APPLET_IS_NOT_PERSONALIZED: String = "Applet must be in personalized mode. Now it is: "
     static let ERROR_MSG_APPLET_DOES_NOT_WAIT_TO_DELETE_KEY: String = "Applet must be in mode for deleting key. Now it is: "
     
     static let IMPROPER_APPLET_STATE_ERRORS = [
         ERROR_MSG_APDU_NOT_SUPPORTED,
-        ERROR_MSG_APPLET_DOES_NOT_WAIT_AUTHORIZATION,
+        ERROR_MSG_APPLET_DOES_NOT_WAIT_AUTHENTICATION,
         ERROR_MSG_APPLET_IS_NOT_PERSONALIZED,
         ERROR_MSG_APPLET_DOES_NOT_WAIT_TO_DELETE_KEY
     ]

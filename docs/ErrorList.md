@@ -934,7 +934,7 @@ This sublist of errors is about additional checking of data that comes into TonN
 "errorType": "Native code fail: incorrect response from card", 
 "errorTypeId": "4", 
 "code": "40010", 
-"message": "Card two-factor authorization failed: Hash of encrypted common secret is invalid.", 
+"message": "Card two-factor authentication failed: Hash of encrypted common secret is invalid.", 
 "status": "fail" 
 }
 
@@ -942,7 +942,7 @@ This sublist of errors is about additional checking of data that comes into TonN
 "errorType": "Native code fail: incorrect response from card", 
 "errorTypeId": "4", 
 "code": "40011", 
-"message": "Card two-factor authorization failed: Hash of encrypted password is invalid.", 
+"message": "Card two-factor authentication failed: Hash of encrypted password is invalid.", 
 "status": "fail" 
 }
 
@@ -1237,7 +1237,7 @@ Before sending some APDU command into applet Swift code usually checks applet st
 "errorType": "Native code fail: improper applet state", 
 "errorTypeId": "5", 
 "code": "50001", 
-"message": "Applet must be in mode that waits authorization. Now it is: ", 
+"message": "Applet must be in mode that waits authentication. Now it is: ", 
 "status": "fail" 
 }
 

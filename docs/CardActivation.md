@@ -37,7 +37,7 @@ Specification:
 
 **3) Man in the middle protection.** We want to protect the communication channel between card and Ton.Surf application. Some malware may be installed on smartphone, it may intercepts APDU commands from Ton.Surf, steal PIN code and try to make impersonation attack.
 
-a) To solve 1) and 2) we implemented **two-factor authorization procedure based on** ***activation password (AP).*** 
+a) To solve 1) and 2) we implemented **two-factor authentication procedure based on** ***activation password (AP).*** 
 
 b) Problem 3) was solved by HmacSha26 signing of all APDU data except keychain. The secret key for signature is elaborated based on ***common secret (CS)*** of card and TonSurf app that will never be transmitted in their communication channel. 
 
@@ -104,7 +104,7 @@ Note: SC service can identify secure card by its number (SN) inside TSC in case 
 
 ### 5. Card Activation
 
-Card activation procedure implement 2-way authorization protocol to determine that:
+Card activation procedure implement 2-way authentication protocol to determine that:
 
 - Security Card integrity wasn't broken during delivery
 - user which receives the security card is the same person who ordered the card
