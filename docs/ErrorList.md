@@ -625,7 +625,8 @@ Here there is a list of any troubles with NFC hardware and connection.
 "errorTypeId": "21", 
 "code": "210001", 
 "message": "NFC Tag is not detected.", 
-"status": "fail" }
+"status": "fail" 
+}
 
 { 
 "errorType": "iOS code fail: NFC error", 
