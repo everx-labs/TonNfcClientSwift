@@ -605,6 +605,7 @@ Here there are some internal errors that may happen inside Swift code. It means 
   "message": "Nfc connection was interrupted by user.",
   "status": "fail"
 }
+```
 
 ## IOS_NFC_ERRORS
 
