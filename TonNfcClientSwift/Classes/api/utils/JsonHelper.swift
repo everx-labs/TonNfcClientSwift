@@ -39,17 +39,20 @@ class JsonHelper {
         var data: [String : String] = [:]
         data[JsonHelper.MESSAGE_FIELD] = msg
         data[JsonHelper.STATUS_FIELD] = ResponsesConstants.SUCCESS_STATUS
-        return makeJsonString(data: data)
+        return makeJsonString(data)
     }
     
     func createJsonWithSerialNumbers(serialNumbers : [String]) -> String {
         let data : [String : Any] = [JsonHelper.MESSAGE_FIELD : serialNumbers, JsonHelper.STATUS_FIELD : ResponsesConstants.SUCCESS_STATUS]
-        return makeJsonString(data: data)
+        return makeJsonString(data)
     }
     
     func createJson(index : Int, len : Int) -> String {
-        let data : [String : Any] = [JsonHelper.KEY_INDEX_FIELD : index, JsonHelper.KEY_LENGTH_FIELD : len]
-        return makeJsonString(data: data)
+        var data : [String : Any] = [:]
+        let keyData : [String : Int] = [JsonHelper.KEY_INDEX_FIELD : index, JsonHelper.KEY_LENGTH_FIELD : len]
+        data[JsonHelper.MESSAGE_FIELD] = keyData
+        data[JsonHelper.STATUS_FIELD] = ResponsesConstants.SUCCESS_STATUS
+        return makeJsonString(data)
     }
     
     @available(iOS 13.0, *)
@@ -70,7 +73,7 @@ class JsonHelper {
         }
         data[JsonHelper.APDU_FIELD] = apdu.toHexString()
         
-        return makeJsonString(data: data)
+        return makeJsonString(data)
     }
     
     func createErrorJsonMap(msg : String) -> [String : String] {
@@ -98,10 +101,10 @@ class JsonHelper {
     
     func createErrorJson(msg : String) -> String {
         let data: [String : String] = createErrorJsonMap(msg : msg)
-        return makeJsonString(data: data)
+        return makeJsonString(data)
     }
     
-    func makeJsonString(data : [String : Any]) -> String {
+    func makeJsonString(_ data : [String : Any]) -> String {
         do {
             let jsonData = try JSONSerialization.data(withJSONObject: data, options: .prettyPrinted)
             let jsonString = String(data: jsonData, encoding: .utf8)!

@@ -102,7 +102,7 @@ import CoreNFC
                 }
                 .then{(response : Data) -> Promise<String> in
                     Promise<String> { promise in
-                        promise.fulfill(self.jsonHelper.makeJsonString(data: keyChainInfo))
+                        promise.fulfill(self.jsonHelper.makeJsonString(keyChainInfo))
                     }
                 }
         })

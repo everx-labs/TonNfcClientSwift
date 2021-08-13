@@ -190,7 +190,7 @@ public class CardActivationNfcApi: CardCoinManagerNfcApi {
                     }
                     hashesInfo[CardActivationNfcApi.EP_HASH_FIELD] = response.hexEncodedString()
                     return Promise<String> { promise in
-                        promise.fulfill(self.jsonHelper.makeJsonString(data: hashesInfo))
+                        promise.fulfill(self.jsonHelper.makeJsonString(hashesInfo))
                     }
                 }
         })
@@ -217,7 +217,7 @@ public class CardActivationNfcApi: CardCoinManagerNfcApi {
                     }
                     hashesInfo[CardActivationNfcApi.EP_HASH_FIELD] = response.hexEncodedString()
                     return Promise<String> { promise in
-                        promise.fulfill(self.jsonHelper.makeJsonString(data: hashesInfo))
+                        promise.fulfill(self.jsonHelper.makeJsonString(hashesInfo))
                     }
                 }
         })

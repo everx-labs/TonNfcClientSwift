@@ -32,7 +32,7 @@ class ErrorHelper: NSObject {
         let errorId = data[JsonHelper.ERROR_TYPE_ID_FIELD]!
         let errorCode = Int(data[JsonHelper.ERROR_CODE_FIELD] ?? "0") ?? 0x00
         let errorName = ResponsesConstants.getErrorTypeName(typeId: errorId) ?? ResponsesConstants.SWIFT_INTERNAL_ERROR_TYPE
-        let json = jsonHelper.makeJsonString(data: data)
+        let json = jsonHelper.makeJsonString(data)
         let error = NSError(domain: errorName, code: errorCode, userInfo: [NSLocalizedDescriptionKey: json])
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             reject?(errorName, error)
