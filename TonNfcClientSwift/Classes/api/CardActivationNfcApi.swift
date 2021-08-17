@@ -20,6 +20,7 @@ public class CardActivationNfcApi: CardCoinManagerNfcApi {
     
     public static let ECS_HASH_FIELD = "ecsHash"
     public static let EP_HASH_FIELD = "epHash"
+    public static let SN_FIELD = "serialNumber"
     
     public override init() {}
     
@@ -184,11 +185,18 @@ public class CardActivationNfcApi: CardCoinManagerNfcApi {
                     hashesInfo[CardActivationNfcApi.ECS_HASH_FIELD] = response.hexEncodedString()
                     return self.apduRunner.sendApdu(apduCommand: TonWalletAppletApduCommands.GET_HASH_OF_ENCRYPTED_PASSWORD_APDU)
                 }
-                .then{(response : Data)  -> Promise<String> in
+                .then{(response : Data)  -> Promise<Data> in
                     if (response.count != TonWalletAppletConstants.SHA_HASH_SIZE) {
                         throw ResponsesConstants.ERROR_MSG_HASH_OF_ENCRYPTED_PASSWORD_RESPONSE_LEN_INCORRECT
                     }
                     hashesInfo[CardActivationNfcApi.EP_HASH_FIELD] = response.hexEncodedString()
+                    return self.apduRunner.sendApdu(apduCommand: TonWalletAppletApduCommands.GET_SERIAL_NUMBER_APDU)
+                }
+                .then{(response : Data)  -> Promise<String> in
+                    if (response.count != TonWalletAppletConstants.SERIAL_NUMBER_SIZE) {
+                        throw ResponsesConstants.ERROR_MSG_GET_SERIAL_NUMBER_RESPONSE_LEN_INCORRECT
+                    }
+                    hashesInfo[CardActivationNfcApi.SN_FIELD] = response.makeDigitalString()
                     return Promise<String> { promise in
                         promise.fulfill(self.jsonHelper.makeJsonString(hashesInfo))
                     }
@@ -211,15 +219,23 @@ public class CardActivationNfcApi: CardCoinManagerNfcApi {
                     hashesInfo[CardActivationNfcApi.ECS_HASH_FIELD] = response.hexEncodedString()
                     return self.apduRunner.sendApdu(apduCommand: TonWalletAppletApduCommands.GET_HASH_OF_ENCRYPTED_PASSWORD_APDU)
                 }
-                .then{(response : Data)  -> Promise<String> in
+                .then{(response : Data)  -> Promise<Data> in
                     if (response.count != TonWalletAppletConstants.SHA_HASH_SIZE) {
                         throw ResponsesConstants.ERROR_MSG_HASH_OF_ENCRYPTED_PASSWORD_RESPONSE_LEN_INCORRECT
                     }
                     hashesInfo[CardActivationNfcApi.EP_HASH_FIELD] = response.hexEncodedString()
+                    return self.apduRunner.sendApdu(apduCommand: TonWalletAppletApduCommands.GET_SERIAL_NUMBER_APDU)
+                }
+                .then{(response : Data)  -> Promise<String> in
+                    if (response.count != TonWalletAppletConstants.SERIAL_NUMBER_SIZE) {
+                        throw ResponsesConstants.ERROR_MSG_GET_SERIAL_NUMBER_RESPONSE_LEN_INCORRECT
+                    }
+                    hashesInfo[CardActivationNfcApi.SN_FIELD] = response.makeDigitalString()
                     return Promise<String> { promise in
                         promise.fulfill(self.jsonHelper.makeJsonString(hashesInfo))
                     }
                 }
+            
         })
         apduRunner.startScan()
     }
